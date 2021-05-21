@@ -114,11 +114,11 @@ namespace Microsoft.Maui.Controls.Compatibility
 					typeof(RendererToHandlerShim).Assembly,
 					(controlType) =>
 					{
-						foreach (var type in ControlsWithHandlers)
-						{
-							if (type.IsAssignableFrom(controlType))
-								return;
-						}
+						//foreach (var type in ControlsWithHandlers)
+						//{
+						//	if (type.IsAssignableFrom(controlType))
+						//		return;
+						//}
 
 						_handlers?.AddHandler(controlType, typeof(RendererToHandlerShim));
 					});

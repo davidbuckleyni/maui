@@ -38,15 +38,8 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 
 			renderer.View.SetCameraDistance(3600);
 
-			if (!_context.IsDesignerContext())
-			{
-				_attachTracker = AttachTracker.Instance;
-				renderer.View.AddOnAttachStateChangeListener(_attachTracker);
-			}
-			else
-			{
-				_attachTracker = new AttachTracker();
-			}
+			_attachTracker = AttachTracker.Instance;
+			renderer.View.AddOnAttachStateChangeListener(_attachTracker);
 		}
 
 		public void Dispose()

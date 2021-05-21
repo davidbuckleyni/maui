@@ -950,7 +950,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
 
 			if (isNavigated)
 			{
-				if (NavigationPage.GetHasBackButton(currentPage) && !Context.IsDesignerContext())
+				if (NavigationPage.GetHasBackButton(currentPage))
 				{
 					if (toggle != null)
 					{
@@ -958,8 +958,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
 						toggle.SyncState();
 					}
 
-					var activity = (AppCompatActivity)context.GetActivity();
-					var icon = new DrawerArrowDrawable(activity.SupportActionBar.ThemedContext);
+					var icon = new DrawerArrowDrawable(context.GetThemedContext());
 					icon.Progress = 1;
 					bar.NavigationIcon = icon;
 

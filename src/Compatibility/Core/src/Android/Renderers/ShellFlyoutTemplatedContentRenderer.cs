@@ -57,13 +57,6 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 
 			var context = shellContext.AndroidContext;
 
-			// Android designer can't load fragments or resources from layouts
-			if (context.IsDesignerContext())
-			{
-				_rootView = new FrameLayout(context);
-				return;
-			}
-
 			var coordinator = (ViewGroup)LayoutInflater.FromContext(context).Inflate(Resource.Layout.flyoutcontent, null);
 
 			Profile.FramePartition("Find AppBar");

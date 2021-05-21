@@ -258,10 +258,6 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 		{
 			Profile.FrameBegin();
 
-			Profile.FramePartition("IsDesignerContext");
-			if (AndroidContext.IsDesignerContext())
-				return;
-
 			Profile.FramePartition("CreateShellItemRenderer");
 			var previousRenderer = _currentRenderer;
 			_currentRenderer = CreateShellItemRenderer(newItem);

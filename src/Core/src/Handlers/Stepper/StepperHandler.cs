@@ -4,10 +4,13 @@
 	{
 		public static PropertyMapper<IStepper, StepperHandler> StepperMapper = new PropertyMapper<IStepper, StepperHandler>(ViewHandler.ViewMapper)
 		{
-			[nameof(IStepper.Minimum)] = MapMinimum,
-			[nameof(IStepper.Maximum)] = MapMaximum,
 			[nameof(IStepper.Interval)] = MapIncrement,
-			[nameof(IStepper.Value)] = MapValue
+			[nameof(IStepper.Maximum)] = MapMaximum,
+			[nameof(IStepper.Minimum)] = MapMinimum,
+			[nameof(IStepper.Value)] = MapValue,
+#if WINDOWS
+			[nameof(IStepper.Background)] = MapBackground,
+#endif
 		};
 
 		public StepperHandler() : base(StepperMapper)

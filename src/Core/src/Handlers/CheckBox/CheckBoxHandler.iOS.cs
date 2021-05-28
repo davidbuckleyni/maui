@@ -1,8 +1,9 @@
 ﻿using System;
+using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Handlers
 {
-	public partial class CheckBoxHandler : AbstractViewHandler<ICheckBox, MauiCheckBox>
+	public partial class CheckBoxHandler : ViewHandler<ICheckBox, MauiCheckBox>
 	{
 		protected virtual float MinimumSize => 44f;
 
@@ -26,6 +27,16 @@ namespace Microsoft.Maui.Handlers
 			base.DisconnectHandler(nativeView);
 
 			nativeView.CheckedChanged -= OnCheckedChanged;
+		}
+
+		public static void MapIsChecked(CheckBoxHandler handler, ICheckBox check)
+		{
+			handler.NativeView?.UpdateIsChecked(check);
+		}
+
+		public static void MapForeground(CheckBoxHandler handler, ICheckBox check)
+		{
+			handler.NativeView?.UpdateForeground(check);
 		}
 
 		public override Size GetDesiredSize(double widthConstraint, double heightConstraint)

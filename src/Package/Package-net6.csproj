@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0;net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks>net6.0;$(MauiPlatforms)</TargetFrameworks>
 		<RootNamespace>Microsoft.Maui</RootNamespace>
 		<AssemblyName>Microsoft.Maui.Package</AssemblyName>
 		<Nullable>enable</Nullable>
@@ -21,6 +21,7 @@
 		<ProjectReference Include="..\Controls\src\Xaml\Controls.Xaml-net6.csproj" />
 		<ProjectReference Include="..\Essentials\src\Essentials-net6.csproj" />
 		<ProjectReference Include="..\SingleProject\Resizetizer\src\Resizetizer.csproj" />
+		<ProjectReference Include="..\Controls\src\SourceGen\Controls.SourceGen-net6.csproj"/>
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetPlatformIdentifier)' == 'android' ">

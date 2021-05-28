@@ -63,7 +63,7 @@ namespace Microsoft.Maui.DeviceTests
 		}
 
 		MauiTimePicker GetNativeTimePicker(TimePickerHandler timePickerHandler) =>
-			(MauiTimePicker)timePickerHandler.View;
+			(MauiTimePicker)timePickerHandler.NativeView;
 
 		async Task ValidateTime(ITimePicker timePickerStub, Action action = null)
 		{
@@ -98,7 +98,7 @@ namespace Microsoft.Maui.DeviceTests
 		}
 
 		bool GetNativeIsBold(TimePickerHandler timePickerHandler) =>
-			GetNativeTimePicker(timePickerHandler).Typeface.IsBold;
+			GetNativeTimePicker(timePickerHandler).Typeface.GetFontWeight() == FontWeight.Bold;
 
 		bool GetNativeIsItalic(TimePickerHandler timePickerHandler) =>
 			GetNativeTimePicker(timePickerHandler).Typeface.IsItalic;

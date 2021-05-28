@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Specialized;
+using Microsoft.Extensions.DependencyInjection;
 using UIKit;
 using RectangleF = CoreGraphics.CGRect;
 
 namespace Microsoft.Maui.Handlers
 {
-	public partial class PickerHandler : AbstractViewHandler<IPicker, MauiPicker>
+	public partial class PickerHandler : ViewHandler<IPicker, MauiPicker>
 	{
 		UIPickerView? _pickerView;
 
@@ -22,13 +23,13 @@ namespace Microsoft.Maui.Handlers
 			var doneButton = new UIBarButtonItem(UIBarButtonSystemItem.Done, (o, a) =>
 			{
 				var pickerSource = (PickerSource)_pickerView.Model;
-
-				if (pickerSource.SelectedIndex == -1 && VirtualView?.Items != null && VirtualView.Items.Count > 0)
+				var count = VirtualView?.GetCount() ?? 0;
+				if (pickerSource.SelectedIndex == -1 && count > 0)
 					UpdatePickerSelectedIndex(0);
 
-				if (VirtualView?.SelectedIndex == -1 && VirtualView.Items != null && VirtualView.Items.Count > 0)
+				if (VirtualView?.SelectedIndex == -1 && count > 0)
 				{
-					TypedNativeView?.SetSelectedIndex(VirtualView, 0);
+					NativeView?.SetSelectedIndex(VirtualView, 0);
 				}
 
 				UpdatePickerFromPickerSource(pickerSource);
@@ -61,8 +62,6 @@ namespace Microsoft.Maui.Handlers
 			nativeView.EditingDidEnd += OnEnded;
 			nativeView.EditingChanged += OnEditing;
 
-			if (VirtualView != null && VirtualView.Items is INotifyCollectionChanged notifyCollectionChanged)
-				notifyCollectionChanged.CollectionChanged += OnCollectionChanged;
 
 			base.ConnectHandler(nativeView);
 		}
@@ -71,9 +70,6 @@ namespace Microsoft.Maui.Handlers
 		{
 			nativeView.EditingDidEnd -= OnEnded;
 			nativeView.EditingChanged -= OnEditing;
-
-			if (VirtualView != null && VirtualView.Items is INotifyCollectionChanged notifyCollectionChanged)
-				notifyCollectionChanged.CollectionChanged -= OnCollectionChanged;
 
 			if (_pickerView != null)
 			{
@@ -90,29 +86,45 @@ namespace Microsoft.Maui.Handlers
 
 			base.DisconnectHandler(nativeView);
 		}
+		void Reload()
+		{
+			if (VirtualView == null || NativeView == null)
+				return;
+
+			NativeView.UpdatePicker(VirtualView);
+		}
+
+		public static void MapReload(PickerHandler handler, IPicker picker) => handler.Reload();
 
 		public static void MapTitle(PickerHandler handler, IPicker picker)
 		{
-			handler.TypedNativeView?.UpdateTitle(picker);
+			handler.NativeView?.UpdateTitle(picker);
 		}
 
 		public static void MapSelectedIndex(PickerHandler handler, IPicker picker)
 		{
-			handler.TypedNativeView?.UpdateSelectedIndex(picker);
+			handler.NativeView?.UpdateSelectedIndex(picker);
 		}
 
 		public static void MapCharacterSpacing(PickerHandler handler, IPicker picker)
 		{
-			handler.TypedNativeView?.UpdateCharacterSpacing(picker);
+			handler.NativeView?.UpdateCharacterSpacing(picker);
 		}
 
-		void OnCollectionChanged(object? sender, EventArgs e)
+		public static void MapFont(PickerHandler handler, IPicker picker)
 		{
-			if (VirtualView == null || TypedNativeView == null)
-				return;
+			var fontManager = handler.GetRequiredService<IFontManager>();
 
-			TypedNativeView.UpdatePicker(VirtualView);
+			handler.NativeView?.UpdateFont(picker, fontManager);
 		}
+
+		public static void MapHorizontalTextAlignment(PickerHandler handler, IPicker picker)
+		{
+			handler.NativeView?.UpdateHorizontalTextAlignment(picker);
+		}
+
+		[MissingMapper]
+		public static void MapTextColor(PickerHandler handler, IPicker view) { }
 
 		void OnEnded(object? sender, EventArgs eventArgs)
 		{
@@ -129,24 +141,24 @@ namespace Microsoft.Maui.Handlers
 
 		void OnEditing(object? sender, EventArgs eventArgs)
 		{
-			if (VirtualView == null || TypedNativeView == null)
+			if (VirtualView == null || NativeView == null)
 				return;
 
 			// Reset the TextField's Text so it appears as if typing with a keyboard does not work.
 			var selectedIndex = VirtualView.SelectedIndex;
-			var items = VirtualView.Items;
-			TypedNativeView.Text = selectedIndex == -1 || items == null ? string.Empty : items[selectedIndex];
+
+			NativeView.Text = VirtualView.GetItem(selectedIndex);
 
 			// Also clears the undo stack (undo/redo possible on iPads)
-			TypedNativeView.UndoManager.RemoveAllActions();
+			NativeView.UndoManager.RemoveAllActions();
 		}
 
 		void UpdatePickerFromPickerSource(PickerSource pickerSource)
 		{
-			if (VirtualView == null || TypedNativeView == null)
+			if (VirtualView == null || NativeView == null)
 				return;
 
-			TypedNativeView.Text = pickerSource.SelectedItem;
+			NativeView.Text = VirtualView.GetItem(pickerSource.SelectedIndex);
 			VirtualView.SelectedIndex = pickerSource.SelectedIndex;
 		}
 
@@ -157,7 +169,6 @@ namespace Microsoft.Maui.Handlers
 
 			var source = (PickerSource)_pickerView.Model;
 			source.SelectedIndex = formsIndex;
-			source.SelectedItem = formsIndex >= 0 ? VirtualView.Items[formsIndex] : null;
 			_pickerView.Select(Math.Max(formsIndex, 0), 0, true);
 		}
 	}
@@ -174,36 +185,19 @@ namespace Microsoft.Maui.Handlers
 
 		public int SelectedIndex { get; internal set; }
 
-		public string? SelectedItem { get; internal set; }
-
 		public override nint GetComponentCount(UIPickerView picker)
 		{
 			return 1;
 		}
 
-		public override nint GetRowsInComponent(UIPickerView pickerView, nint component)
-		{
-			return _virtualView?.Items != null ? _virtualView.Items.Count : 0;
-		}
+		public override nint GetRowsInComponent(UIPickerView pickerView, nint component) =>
+			_virtualView?.GetCount() ?? 0;
 
-		public override string GetTitle(UIPickerView picker, nint row, nint component)
-		{
-			return _virtualView != null ? _virtualView.Items[(int)row] : string.Empty;
-		}
+		public override string GetTitle(UIPickerView picker, nint row, nint component) =>
+			_virtualView?.GetItem((int)row) ?? "";
 
-		public override void Selected(UIPickerView picker, nint row, nint component)
-		{
-			if (_virtualView?.Items.Count == 0)
-			{
-				SelectedItem = null;
-				SelectedIndex = -1;
-			}
-			else
-			{
-				SelectedItem = _virtualView?.Items[(int)row];
-				SelectedIndex = (int)row;
-			}
-		}
+		public override void Selected(UIPickerView picker, nint row, nint component) =>
+			SelectedIndex = (int)row;
 
 		protected override void Dispose(bool disposing)
 		{

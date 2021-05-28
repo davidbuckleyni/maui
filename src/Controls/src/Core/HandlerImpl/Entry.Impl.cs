@@ -4,6 +4,11 @@
 	{
 		Font? _font;
 
-		Font IText.Font => _font ??= Font.OfSize(FontFamily, FontSize).WithAttributes(FontAttributes);
+		Font ITextStyle.Font => _font ??= Font.OfSize(FontFamily, FontSize).WithAttributes(FontAttributes);
+
+		void IEntry.Completed()
+		{
+			(this as IEntryController).SendCompleted();
+		}
 	}
 }

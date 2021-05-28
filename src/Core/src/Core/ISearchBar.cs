@@ -3,8 +3,11 @@
 	/// <summary>
 	/// Represents a View used to initiating a search.
 	/// </summary>
-	public interface ISearchBar : IView, IText, IPlaceholder, ITextAlignment
+	public interface ISearchBar : IView, ITextInput, ITextAlignment
 	{
-
+		/// <summary>
+		/// Notify when the user presses the Search button.
+		/// </summary>
+		void SearchButtonPressed();
 	}
 }

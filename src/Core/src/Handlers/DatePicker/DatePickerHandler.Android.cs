@@ -1,9 +1,14 @@
-﻿using Android.App;
+﻿using System;
+using Android.App;
+using Android.Graphics.Drawables;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Microsoft.Maui.Handlers
 {
-	public partial class DatePickerHandler : AbstractViewHandler<IDatePicker, MauiDatePicker>
+	public partial class DatePickerHandler : ViewHandler<IDatePicker, MauiDatePicker>
 	{
+		static Drawable? DefaultBackground;
+
 		DatePickerDialog? _dialog;
 
 		protected override MauiDatePicker CreateNativeView()
@@ -20,6 +25,13 @@ namespace Microsoft.Maui.Handlers
 				_dialog = CreateDatePickerDialog(date.Value.Year, date.Value.Month, date.Value.Day);
 
 			return mauiDatePicker;
+		}
+
+		protected override void SetupDefaults(MauiDatePicker nativeView)
+		{
+			DefaultBackground = nativeView.Background;
+
+			base.SetupDefaults(nativeView);
 		}
 
 		internal DatePickerDialog? DatePickerDialog { get { return _dialog; } }
@@ -47,25 +59,46 @@ namespace Microsoft.Maui.Handlers
 			return dialog;
 		}
 
+		// This is a Android-specific mapping
+		public static void MapBackground(DatePickerHandler handler, IDatePicker datePicker)
+		{
+			handler.NativeView?.UpdateBackground(datePicker, DefaultBackground);
+		}
+
 		public static void MapFormat(DatePickerHandler handler, IDatePicker datePicker)
 		{
-			handler.TypedNativeView?.UpdateFormat(datePicker);
+			handler.NativeView?.UpdateFormat(datePicker);
 		}
 
 		public static void MapDate(DatePickerHandler handler, IDatePicker datePicker)
 		{
-			handler.TypedNativeView?.UpdateDate(datePicker);
+			handler.NativeView?.UpdateDate(datePicker);
 		}
 
 		public static void MapMinimumDate(DatePickerHandler handler, IDatePicker datePicker)
 		{
-			handler.TypedNativeView?.UpdateMinimumDate(datePicker, handler._dialog);
+			handler.NativeView?.UpdateMinimumDate(datePicker, handler._dialog);
 		}
 
 		public static void MapMaximumDate(DatePickerHandler handler, IDatePicker datePicker)
 		{
-			handler.TypedNativeView?.UpdateMaximumDate(datePicker, handler._dialog);
+			handler.NativeView?.UpdateMaximumDate(datePicker, handler._dialog);
 		}
+
+		public static void MapCharacterSpacing(DatePickerHandler handler, IDatePicker datePicker)
+		{
+			handler.NativeView?.UpdateCharacterSpacing(datePicker);
+		}
+
+		public static void MapFont(DatePickerHandler handler, IDatePicker datePicker)
+		{
+			var fontManager = handler.GetRequiredService<IFontManager>();
+
+			handler.NativeView?.UpdateFont(datePicker, fontManager);
+		}
+
+		[MissingMapper]
+		public static void MapTextColor(DatePickerHandler handler, IDatePicker datePicker) { }
 
 		void ShowPickerDialog()
 		{

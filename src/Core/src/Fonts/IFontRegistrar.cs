@@ -1,14 +1,15 @@
-﻿using System.Reflection;
+﻿#nullable enable
+using System.Reflection;
 
 namespace Microsoft.Maui
 {
 	public interface IFontRegistrar
 	{
-		void Register(string filename, string alias, Assembly assembly);
+		void Register(string filename, string? alias, Assembly assembly);
 
 		void Register(string filename, string? alias);
 
-		//TODO: Investigate making this Async
-		(bool hasFont, string? fontPath) HasFont(string font);
+		// TODO: this should be async as it involves copying files
+		string? GetFont(string font);
 	}
 }

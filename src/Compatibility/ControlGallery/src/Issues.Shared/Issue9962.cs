@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -28,7 +27,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			var boxView = new BoxView
 			{
-				BackgroundColor = Colors.Blue,
+				BackgroundColor = Color.Blue,
 				WidthRequest = 100,
 				HeightRequest = 100
 			};
@@ -44,7 +43,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				{
 					var color = DependencyService.Get<INativeColorService>()?.GetConvertedColor(true);
 
-					boxView.BackgroundColor = color ?? Colors.Black;
+					boxView.BackgroundColor = color ?? Color.Black;
 
 				}
 				catch (InvalidOperationException ex)
@@ -65,7 +64,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					var color = DependencyService.Get<INativeColorService>()?.GetConvertedColor(false);
 
 					debugLabel.Text = color?.ToString();
-					boxView.BackgroundColor = color ?? Colors.Black;
+					boxView.BackgroundColor = color ?? Color.Black;
 				}
 				catch (Exception ex)
 				{

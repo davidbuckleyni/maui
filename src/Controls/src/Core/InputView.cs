@@ -1,6 +1,5 @@
 using System;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls
 {

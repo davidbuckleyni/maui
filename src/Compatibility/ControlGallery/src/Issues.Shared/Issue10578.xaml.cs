@@ -3,7 +3,6 @@ using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -45,8 +44,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			{
 				Padding = 12,
 				Margin = 12,
-				BackgroundColor = Colors.Black,
-				TextColor = Colors.White,
+				BackgroundColor = Color.Black,
+				TextColor = Color.White,
 				Text = "If the NavigationBar Separator is hidden, the test has passed."
 			};
 

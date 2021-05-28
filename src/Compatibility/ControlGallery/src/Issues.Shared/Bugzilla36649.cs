@@ -1,6 +1,5 @@
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -24,7 +23,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			};
 			var testLabel = new Label
 			{
-				TextColor = Colors.Red,
+				TextColor = Color.Red,
 				Style = Device.Styles.BodyStyle,
 				FontSize = 20,
 				LineBreakMode = LineBreakMode.NoWrap,

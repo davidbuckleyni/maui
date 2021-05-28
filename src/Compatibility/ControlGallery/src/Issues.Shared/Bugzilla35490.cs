@@ -1,6 +1,5 @@
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -23,8 +22,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			var label = new Label
 			{
-				BackgroundColor = Colors.Red,
-				TextColor = Colors.White,
+				BackgroundColor = Color.Red,
+				TextColor = Color.White,
 				HorizontalTextAlignment = TextAlignment.Center,
 				VerticalTextAlignment = TextAlignment.Center,
 				HeightRequest = 200,

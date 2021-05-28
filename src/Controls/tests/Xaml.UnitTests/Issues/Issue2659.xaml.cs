@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Core.UnitTests;
-using Microsoft.Maui.Graphics;
 using NUnit.Framework;
 
 namespace Microsoft.Maui.Controls.Xaml.UnitTests
@@ -34,7 +33,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 		{
 			EnumerateButtons((Button button) =>
 			{
-				button.TextColor = Colors.Red;
+				button.TextColor = Color.Red;
 				button.FontAttributes = FontAttributes.Bold;
 			});
 		}
@@ -76,7 +75,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 				Assert.AreEqual(LayoutOptions.Center, button.HorizontalOptions);
 				Assert.AreEqual(LayoutOptions.CenterAndExpand, button.VerticalOptions);
 				Assert.AreEqual(16, button.FontSize);
-				Assert.AreEqual(Colors.Blue, button.TextColor);
+				Assert.AreEqual(Color.Blue, button.TextColor);
 				Assert.AreEqual(FontAttributes.Italic, button.FontAttributes);
 			}
 
@@ -105,7 +104,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 
 			void AssertPropertiesApplied(Button button)
 			{
-				Assert.AreEqual(Colors.Red, button.TextColor);
+				Assert.AreEqual(Color.Red, button.TextColor);
 				Assert.AreEqual(FontAttributes.Bold, button.FontAttributes);
 			}
 

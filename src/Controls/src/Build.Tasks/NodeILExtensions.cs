@@ -165,7 +165,6 @@ namespace Microsoft.Maui.Controls.Build.Tasks
 				throw new BuildException(BuildExceptionCode.Conversion, lineInfo, fex, str, typeof(T));
 			}
 		}
-
 		public static IEnumerable<Instruction> PushConvertedValue(this ValueNode node, ILContext context,
 			TypeReference targetTypeRef, TypeReference typeConverter, IEnumerable<Instruction> pushServiceProvider,
 			bool boxValueTypes, bool unboxValueTypes)

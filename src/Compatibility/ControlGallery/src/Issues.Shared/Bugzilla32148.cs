@@ -6,7 +6,6 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 #if UITEST
 using Microsoft.Maui.Controls.Compatibility.UITests;
 using Xamarin.UITest;
@@ -193,7 +192,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 				Label title = new Label
 				{
-					TextColor = Colors.White,
+					TextColor = Color.White,
 					VerticalOptions = LayoutOptions.Center
 				};
 
@@ -203,7 +202,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				{
 					HorizontalOptions = LayoutOptions.FillAndExpand,
 					HeightRequest = 23,
-					BackgroundColor = Colors.Pink,
+					BackgroundColor = Color.Pink,
 					Orientation = StackOrientation.Horizontal,
 					Padding = new Thickness(Sizes.GroupingSidePadding, 0, 0, 0),
 					Children = { title }

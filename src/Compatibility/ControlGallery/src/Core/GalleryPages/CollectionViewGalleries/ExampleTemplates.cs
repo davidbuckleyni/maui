@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.CollectionViewGalleries
 {
@@ -16,7 +15,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Coll
 					RowDefinitions = new RowDefinitionCollection { new RowDefinition(), new RowDefinition() },
 					WidthRequest = 200,
 					HeightRequest = 100,
-					BackgroundColor = Colors.White
+					BackgroundColor = Color.White
 				};
 
 				var image = new Image
@@ -77,7 +76,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Coll
 				{
 					FontSize = 12,
 					HorizontalOptions = LayoutOptions.Fill,
-					BackgroundColor = Colors.Aquamarine,
+					BackgroundColor = Color.Aquamarine,
 					HorizontalTextAlignment = TextAlignment.Center
 				};
 
@@ -106,7 +105,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Coll
 			{
 				var grid = new Grid
 				{
-					BackgroundColor = Colors.LightBlue,
+					BackgroundColor = Color.LightBlue,
 					RowDefinitions = new RowDefinitionCollection
 					{
 						new RowDefinition(),
@@ -125,7 +124,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Coll
 
 				var caption = new Button
 				{
-					BackgroundColor = Colors.Gray,
+					BackgroundColor = Color.Gray,
 					HorizontalOptions = LayoutOptions.Fill,
 					Margin = new Thickness(5)
 				};
@@ -145,7 +144,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Coll
 				var frame = new Frame
 				{
 					Padding = new Thickness(5),
-					BackgroundColor = Colors.Transparent,
+					BackgroundColor = Color.Transparent,
 					Content = grid
 				};
 
@@ -181,7 +180,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Coll
 			{
 				var templateLayout = new Grid
 				{
-					BackgroundColor = Colors.Bisque,
+					BackgroundColor = Color.Bisque,
 
 					RowDefinitions = new RowDefinitionCollection
 						{ new RowDefinition(), new RowDefinition { Height = GridLength.Auto } },
@@ -207,7 +206,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Coll
 					HorizontalTextAlignment = TextAlignment.Center,
 					HeightRequest = 40,
 					WidthRequest = 100,
-					BackgroundColor = Colors.Crimson,
+					BackgroundColor = Color.Crimson,
 					Text = "Caption"
 				};
 
@@ -228,7 +227,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Coll
 			{
 				var templateLayout = new Grid
 				{
-					BackgroundColor = Colors.Bisque,
+					BackgroundColor = Color.Bisque,
 
 					RowDefinitions = new RowDefinitionCollection { new RowDefinition(), new RowDefinition { Height = GridLength.Auto } },
 					WidthRequest = 100,
@@ -253,7 +252,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Coll
 					HorizontalTextAlignment = TextAlignment.Center,
 					HeightRequest = 40,
 					WidthRequest = 100,
-					BackgroundColor = Colors.Crimson,
+					BackgroundColor = Color.Crimson,
 					Text = "Caption"
 				};
 
@@ -274,7 +273,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Coll
 			{
 				var templateLayout = new Grid
 				{
-					BackgroundColor = Colors.Bisque,
+					BackgroundColor = Color.Bisque,
 					RowDefinitions = new RowDefinitionCollection { new RowDefinition { Height = GridLength.Auto } },
 					WidthRequest = 100,
 					HeightRequest = 140
@@ -375,7 +374,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Coll
 						new RowDefinition() { Height = GridLength.Auto },
 						new RowDefinition() { Height = GridLength.Auto }
 					},
-					BackgroundColor = Colors.LightGoldenrodYellow,
+					BackgroundColor = Color.LightGoldenrodYellow,
 					Margin = 10
 				};
 
@@ -387,7 +386,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Coll
 					VerticalOptions = LayoutOptions.Center,
 					Margin = new Thickness(2, 5, 2, 2),
 					AutomationId = "frame",
-					BackgroundColor = Colors.CadetBlue
+					BackgroundColor = Color.CadetBlue
 				};
 
 				var date = new Label
@@ -454,7 +453,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Coll
 					RowDefinitions = new RowDefinitionCollection { new RowDefinition(), new RowDefinition() },
 					WidthRequest = 120,
 					HeightRequest = 100,
-					BackgroundColor = Colors.BlanchedAlmond
+					BackgroundColor = Color.BlanchedAlmond
 				};
 
 				var image = new Image
@@ -567,7 +566,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Coll
 
 		class IndexColorConverter : IValueConverter
 		{
-			Color[] _colors = new Color[] { Colors.Red, Colors.Green, Colors.Blue, Colors.Orange, Colors.BlanchedAlmond };
+			Color[] _colors = new Color[] { Color.Red, Color.Green, Color.Blue, Color.Orange, Color.BlanchedAlmond };
 
 			public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 			{

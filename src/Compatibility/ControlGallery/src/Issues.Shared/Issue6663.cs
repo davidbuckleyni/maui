@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using NUnit.Framework;
@@ -20,7 +19,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		public Issue6663()
 		{
 			Title = "Issue 6663";
-			BackgroundColor = Colors.Green;
+			BackgroundColor = Color.Green;
 
 			var layout = new StackLayout();
 
@@ -51,7 +50,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		public Issue663SecondPage()
 		{
 			Title = "Issue 6663 SecondPage";
-			BackgroundColor = Colors.Red;
+			BackgroundColor = Color.Red;
 
 			var layout = new StackLayout();
 

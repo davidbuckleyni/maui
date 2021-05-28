@@ -6,7 +6,6 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -94,11 +93,11 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			BindingContext = new AbsolutePositioningExplorationViewModel();
 			var absLayout = new AbsoluteLayout
 			{
-				BackgroundColor = Colors.Gray,
+				BackgroundColor = Color.Gray,
 				VerticalOptions = LayoutOptions.FillAndExpand
 			};
 
-			var rect = new BoxView { Color = Colors.Lime };
+			var rect = new BoxView { Color = Color.Lime };
 
 			var xSlider = new Slider();
 			var ySlider = new Slider();

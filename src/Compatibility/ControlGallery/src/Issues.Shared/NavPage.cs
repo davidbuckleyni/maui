@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -17,7 +16,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		{
 			NavigationPage page = null;
 
-			var popButton1 = new Button() { Text = "Pop", BackgroundColor = Colors.Blue };
+			var popButton1 = new Button() { Text = "Pop", BackgroundColor = Color.Blue };
 			popButton1.Clicked += (s, a) => Navigation.PopModalAsync();
 
 			page = new NavigationPage(new ContentPage { Content = popButton1 });

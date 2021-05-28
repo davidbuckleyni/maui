@@ -5,7 +5,6 @@ using Android.Runtime;
 using Android.Views;
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
-using Microsoft.Maui.Graphics;
 using AView = Android.Views.View;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
@@ -217,17 +216,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 				RemoveView(_view.View);
 				AppCompat.Platform.SetRenderer(_viewCell.View, null);
 				_viewCell.View.IsPlatformEnabled = false;
-
-				// Adding a special case for HandlerToRendererShim so that DisconnectHandler gets called;
-				// Pending https://github.com/xamarin/Xamarin.Forms/pull/14288 being merged, we won't need the special case
-				if (_view is HandlerToRendererShim htrs)
-				{
-					htrs.Dispose();
-				}
-				else
-				{
-					_view.View.Dispose();
-				}
+				_view.View.Dispose();
 
 				_viewCell = cell;
 				_view = AppCompat.Platform.CreateRenderer(_viewCell.View, Context);

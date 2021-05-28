@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Graphics;
-
-namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
+﻿namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
 	public interface INativeColorService
 	{

@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS.UnitTests
 {
@@ -17,7 +16,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS.UnitTests
 				foreach (var element in BasicViews
 					.Where(e => !(e is Label) && !(e is BoxView) && !(e is Frame)))
 				{
-					element.BackgroundColor = Colors.AliceBlue;
+					element.BackgroundColor = Color.AliceBlue;
 					yield return new TestCaseData(element)
 						.SetCategory(element.GetType().Name);
 				}
@@ -37,7 +36,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS.UnitTests
 		[Description("Frame background color should match renderer background color")]
 		public async Task FrameBackgroundColorConsistent()
 		{
-			var frame = new Frame { BackgroundColor = Colors.AliceBlue };
+			var frame = new Frame { BackgroundColor = Color.AliceBlue };
 			var expectedColor = frame.BackgroundColor.ToUIColor();
 			var screenshot = await GetRendererProperty(frame, (ver) => ver.NativeView.ToBitmap(), requiresLayout: true);
 			screenshot.AssertColorAtCenter(expectedColor);
@@ -47,7 +46,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS.UnitTests
 		[Description("Label background color should match renderer background color")]
 		public async Task LabelBackgroundColorConsistent()
 		{
-			var label = new Label { Text = "foo", BackgroundColor = Colors.AliceBlue };
+			var label = new Label { Text = "foo", BackgroundColor = Color.AliceBlue };
 			var expected = label.BackgroundColor.ToUIColor();
 			var actual = await GetRendererProperty(label, r => r.NativeView.BackgroundColor);
 			Assert.That(actual, Is.EqualTo(expected));
@@ -57,7 +56,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS.UnitTests
 		[Description("BoxView background color should match renderer background color")]
 		public async Task BoxViewBackgroundColorConsistent2()
 		{
-			var boxView = new BoxView { BackgroundColor = Colors.AliceBlue };
+			var boxView = new BoxView { BackgroundColor = Color.AliceBlue };
 			var expectedColor = boxView.BackgroundColor.ToUIColor();
 			var screenshot = await GetRendererProperty(boxView, (ver) => ver.NativeView.ToBitmap(), requiresLayout: true);
 			screenshot.AssertColorAtCenter(expectedColor);

@@ -1,6 +1,5 @@
 using System;
 using Microsoft.Maui.Controls.Core.UnitTests;
-using Microsoft.Maui.Graphics;
 using NUnit.Framework;
 using NUnit.Framework.Constraints;
 
@@ -39,8 +38,8 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 			public void StyleSheetsAreApplied(bool useCompiledXaml)
 			{
 				var layout = new StyleSheet(useCompiledXaml);
-				Assert.That(layout.label0.TextColor, Is.EqualTo(Colors.Azure));
-				Assert.That(layout.label0.BackgroundColor, Is.EqualTo(Colors.AliceBlue));
+				Assert.That(layout.label0.TextColor, Is.EqualTo(Color.Azure));
+				Assert.That(layout.label0.BackgroundColor, Is.EqualTo(Color.AliceBlue));
 			}
 		}
 	}

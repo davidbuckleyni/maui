@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Graphics;
-
-namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.SwipeViewGalleries
+﻿namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.SwipeViewGalleries
 {
 	public class SwipeItemIconGallery : ContentPage
 	{
@@ -17,7 +15,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Swip
 
 			var fileSwipeItem = new SwipeItem
 			{
-				BackgroundColor = Colors.Red,
+				BackgroundColor = Color.Red,
 				IconImageSource = "calculator.png",
 				Text = "File"
 			};
@@ -30,7 +28,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Swip
 
 			var fileSwipeContent = new Grid
 			{
-				BackgroundColor = Colors.Gray
+				BackgroundColor = Color.Gray
 			};
 
 			var fileSwipeLabel = new Label
@@ -54,7 +52,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Swip
 
 			var urlSwipeItem = new SwipeItem
 			{
-				BackgroundColor = Colors.Red,
+				BackgroundColor = Color.Red,
 				IconImageSource = "https://image.flaticon.com/icons/png/512/61/61848.png",
 				Text = "Url"
 			};
@@ -67,7 +65,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Swip
 
 			var urlSwipeContent = new Grid
 			{
-				BackgroundColor = Colors.Gray
+				BackgroundColor = Color.Gray
 			};
 
 			var urlSwipeLabel = new Label
@@ -107,7 +105,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Swip
 
 			var fontSwipeItem = new SwipeItem
 			{
-				BackgroundColor = Colors.Red,
+				BackgroundColor = Color.Red,
 				IconImageSource = new FontImageSource
 				{
 					Glyph = "\uf101",
@@ -125,7 +123,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Swip
 
 			var fontSwipeContent = new Grid
 			{
-				BackgroundColor = Colors.Gray
+				BackgroundColor = Color.Gray
 			};
 
 			var fontSwipeLabel = new Label

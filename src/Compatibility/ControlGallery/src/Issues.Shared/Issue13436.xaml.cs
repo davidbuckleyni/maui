@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -38,19 +37,19 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				{
 					Name = "N1",
 					Desc = "D1",
-					Color = Colors.Yellow
+					Color = Color.Yellow
 				},
 				new Issue13436Model
 				{
 					Name = "N2",
 					Desc = "D2",
-					Color = Colors.Orange
+					Color = Color.Orange
 				},
 				new Issue13436Model
 				{
 					Name = "N3",
 					Desc = "D3",
-					Color = Colors.AliceBlue
+					Color = Color.AliceBlue
 				}
 			};
 		}

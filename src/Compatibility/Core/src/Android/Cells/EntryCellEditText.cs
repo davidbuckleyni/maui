@@ -27,7 +27,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 
 		protected override void OnFocusChanged(bool gainFocus, FocusSearchDirection direction, ARect previouslyFocusedRect)
 		{
-			var window = Context.GetActivity().Window;
+			Window window = Context.GetActivity().Window;
 			if (gainFocus)
 			{
 				_startingMode = window.Attributes.SoftInputMode;

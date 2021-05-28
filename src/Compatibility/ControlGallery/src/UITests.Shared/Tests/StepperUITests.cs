@@ -1,5 +1,5 @@
-using Microsoft.Maui.Controls.CustomAttributes;
 using NUnit.Framework;
+using Microsoft.Maui.Controls.CustomAttributes;
 
 namespace Microsoft.Maui.Controls.Compatibility.UITests
 {
@@ -37,7 +37,7 @@ namespace Microsoft.Maui.Controls.Compatibility.UITests
 		{
 		}
 
-#if __ANDROID__ || __IOS__ || WINDOWS
+#if __ANDROID__ || __IOS__ || __WINDOWS__
 		[Ignore("This is covered by the platform tests")]
 #endif
 		[Category(UITestCategories.UwpIgnore)]
@@ -51,7 +51,7 @@ namespace Microsoft.Maui.Controls.Compatibility.UITests
 		[Ignore("This is covered by the platform tests")]
 		public override void _IsVisible() { }
 #else
-		[Category(UITestCategories.UwpIgnore)]
+		[Category(UITestCategories.UwpIgnore)] 
 		public override void _IsVisible()
 		{
 			base._IsVisible();
@@ -71,7 +71,7 @@ namespace Microsoft.Maui.Controls.Compatibility.UITests
 		public override void _Opacity() { }
 #endif
 
-#if __ANDROID__ || __IOS__ || WINDOWS
+#if __ANDROID__ || __IOS__ || __WINDOWS__
 		[Ignore("This is covered by the platform tests")]
 		public override void _Rotation() { }
 
@@ -90,7 +90,7 @@ namespace Microsoft.Maui.Controls.Compatibility.UITests
 		public override void _TranslationY() { }
 #endif
 
-#if __IOS__ || WINDOWS
+#if __IOS__ || __WINDOWS__
 		[Ignore("This is covered by the platform tests")]
 		public override void _Scale() { }
 #endif

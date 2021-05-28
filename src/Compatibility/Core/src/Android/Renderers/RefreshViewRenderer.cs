@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using Android.Content;
 using Android.OS;
@@ -9,8 +9,6 @@ using AndroidX.Core.Widget;
 using AndroidX.RecyclerView.Widget;
 using AndroidX.SwipeRefreshLayout.Widget;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Controls.Platform;
-using Microsoft.Maui.Graphics;
 using AView = Android.Views.View;
 using AWebView = Android.Webkit.WebView;
 
@@ -135,9 +133,9 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 			if (RefreshView == null)
 				return;
 
-			if (RefreshView.RefreshColor != null)
+			if (RefreshView.RefreshColor != Color.Default)
 				SetColorSchemeColors(RefreshView.RefreshColor.ToAndroid());
-			if (RefreshView.BackgroundColor != null)
+			if (RefreshView.BackgroundColor != Color.Default)
 				SetProgressBackgroundColorSchemeColor(RefreshView.BackgroundColor.ToAndroid());
 		}
 

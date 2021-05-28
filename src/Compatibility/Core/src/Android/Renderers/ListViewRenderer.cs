@@ -8,7 +8,6 @@ using AndroidX.Core.Widget;
 using AndroidX.SwipeRefreshLayout.Widget;
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
-using Microsoft.Maui.Graphics;
 using AListView = Android.Widget.ListView;
 using AView = Android.Views.View;
 
@@ -457,7 +456,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 
 		void UpdateSpinnerColor()
 		{
-			if (_refresh != null && Element.RefreshControlColor != null)
+			if (_refresh != null)
 				_refresh.SetColorSchemeColors(Element.RefreshControlColor.ToAndroid());
 		}
 

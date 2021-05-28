@@ -2,7 +2,6 @@ using System;
 
 namespace Microsoft.Maui.Controls
 {
-	[ContentProperty(nameof(Children))]
 	public class CarouselPage : MultiPage<ContentPage>, IElementConfiguration<CarouselPage>
 	{
 		readonly Lazy<PlatformConfigurationRegistry<CarouselPage>> _platformConfigurationRegistry;

@@ -5,7 +5,6 @@ using System.Diagnostics;
 using System.Linq;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Microsoft.Maui.Controls.Compatibility.UITests;
@@ -51,7 +50,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			{
 				AutomationId = carouselAutomationId,
 				Margin = new Thickness(30),
-				BackgroundColor = Colors.Yellow,
+				BackgroundColor = Color.Yellow,
 				ItemTemplate = new DataTemplate(() =>
 				{
 

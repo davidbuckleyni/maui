@@ -2,7 +2,6 @@
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -15,8 +14,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 	{
 		protected override void Init()
 		{
-			BarBackgroundColor = Colors.White;
-			BarTextColor = Colors.GhostWhite;
+			BarBackgroundColor = Color.White;
+			BarTextColor = Color.GhostWhite;
 
 			PushAsync(new ContentPage()
 			{

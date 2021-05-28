@@ -99,13 +99,13 @@ namespace Microsoft.Maui.Controls
 			{
 				var dataView = args.Data;
 				var internalProperties = dataView.PropertiesInternal;
-				IView dragSource = null;
+				VisualElement dragSource = null;
 				ImageSource sourceTarget = await dataView.GetImageAsync();
 				string text = await dataView.GetTextAsync();
 
 				if (internalProperties.ContainsKey("DragSource"))
 				{
-					dragSource = (IView)internalProperties["DragSource"];
+					dragSource = (VisualElement)internalProperties["DragSource"];
 					if (sourceTarget == null && dragSource is IImageElement imageElement)
 						sourceTarget = imageElement.Source;
 

@@ -2,7 +2,6 @@
 
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -44,7 +43,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				{
 					Text = "Add Level",
 					AutomationId = "btnAdd",
-					BackgroundColor = Colors.Aqua
+					BackgroundColor = Color.Aqua
 				};
 
 				buttonAdd.Clicked += (sender, e) => Navigation.PushAsync(new TestDemoPage(_level + 1));
@@ -53,7 +52,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				{
 					Text = "Show Navigation Stack",
 					AutomationId = "btnStack",
-					BackgroundColor = Colors.Aqua
+					BackgroundColor = Color.Aqua
 				};
 
 				buttonStack.Clicked += (object sender, EventArgs e) =>

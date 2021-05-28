@@ -32,7 +32,6 @@
 
 using System;
 using System.Collections.Generic;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls
 {
@@ -51,6 +50,7 @@ namespace Microsoft.Maui.Controls
 			{ typeof(Rectangle), typeof(RectangleTypeConverter) },
 			{ typeof(Size), typeof(SizeTypeConverter) },
 			{ typeof(Thickness), typeof(ThicknessTypeConverter) },
+			{ typeof(Rect), typeof(RectTypeConverter) },
 			{ typeof(Point), typeof(PointTypeConverter) },
 		};
 

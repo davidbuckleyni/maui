@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Microsoft.Maui.UnitTests
+namespace Microsoft.Maui.Tests
 {
 	class HandlersContextStub : IMauiContext
 	{

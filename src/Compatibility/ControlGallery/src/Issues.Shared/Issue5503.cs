@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.Text;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Microsoft.Maui.Controls.Compatibility.UITests;
@@ -56,7 +55,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			}
 
 			Padding = new Thickness(10);
-			BackgroundColor = Colors.LightGray;
+			BackgroundColor = Color.LightGray;
 
 			var changeAppearanceButton = new Button()
 			{

@@ -1,6 +1,6 @@
 using Microsoft.Maui.Handlers;
 
-namespace Microsoft.Maui.UnitTests
+namespace Microsoft.Maui.Tests
 {
 	class ButtonHandlerStub : ButtonHandler
 	{

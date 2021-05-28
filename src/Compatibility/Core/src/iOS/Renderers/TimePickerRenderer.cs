@@ -3,9 +3,8 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using Foundation;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Microsoft.Maui.Platform.iOS;
 using UIKit;
+using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using RectangleF = CoreGraphics.CGRect;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
@@ -187,7 +186,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 		{
 			var textColor = Element.TextColor;
 
-			if (textColor == null || (!Element.IsEnabled && _useLegacyColorManagement))
+			if (textColor.IsDefault || (!Element.IsEnabled && _useLegacyColorManagement))
 				Control.TextColor = _defaultTextColor;
 			else
 				Control.TextColor = textColor.ToUIColor();
@@ -199,7 +198,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 		[PortHandler]
 		void UpdateCharacterSpacing()
 		{
-			var textAttr = Control.AttributedText.WithCharacterSpacing(Element.CharacterSpacing);
+			var textAttr = Control.AttributedText.AddCharacterSpacing(Control.Text, Element.CharacterSpacing);
 
 			if (textAttr != null)
 				Control.AttributedText = textAttr;
@@ -214,7 +213,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 							  .Where(c => c.Name.EndsWith("-" + iOSLocale)).FirstOrDefault();
 			if (cultureInfos == null)
 				cultureInfos = CultureInfo.InvariantCulture;
-
+			
 			if (String.IsNullOrEmpty(Element.Format))
 			{
 				string timeformat = cultureInfos.DateTimeFormat.ShortTimePattern;

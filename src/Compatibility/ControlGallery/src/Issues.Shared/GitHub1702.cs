@@ -5,7 +5,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -27,35 +26,35 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					new Button()
 					{
 						ImageSource = "coffee.png",
-						BackgroundColor = Colors.GreenYellow,
+						BackgroundColor = Color.GreenYellow,
 						Text = "No padding? Height 100",
 						HeightRequest = 100,
 					},
 					new Button()
 					{
 						ImageSource = "coffee.png",
-						BackgroundColor = Colors.Green,
+						BackgroundColor = Color.Green,
 						Padding = new Thickness(100, 0, 0, 0),
 						Text = "Do I have left padding? I should have left padding.",
 					},
 					new Button()
 					{
 						ImageSource = "coffee.png",
-						BackgroundColor = Colors.LawnGreen,
+						BackgroundColor = Color.LawnGreen,
 						Padding = new Thickness(0, 30, 0, 0),
 						Text = "Do I have top padding? I should have top padding."
 					},
 					new Button()
 					{
 						ImageSource = "coffee.png",
-						BackgroundColor = Colors.LightGreen,
+						BackgroundColor = Color.LightGreen,
 						Padding = new Thickness(0, 0, 100, 0),
 						Text = "Do I have right padding? I should have right padding."
 					},
 					new Button()
 					{
 						ImageSource = "coffee.png",
-						BackgroundColor = Colors.ForestGreen,
+						BackgroundColor = Color.ForestGreen,
 						Padding = new Thickness(0, 0, 0, 30),
 						Text = "Do I have bottom padding? I should have bottom padding."
 					}

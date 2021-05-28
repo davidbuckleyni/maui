@@ -5,7 +5,6 @@ using Android.Graphics.Drawables;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
 using Microsoft.Maui.Controls.CustomAttributes;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.UnitTests
 {
@@ -19,7 +18,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.UnitTests
 				foreach (var element in BasicElements
 					.Where(e => !(e is Button) && !(e is ImageButton) && !(e is Frame)))
 				{
-					element.BackgroundColor = Colors.AliceBlue;
+					element.BackgroundColor = Color.AliceBlue;
 					yield return new TestCaseData(element)
 						.SetCategory(element.GetType().Name);
 				}
@@ -34,7 +33,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.UnitTests
 			{ 
 				Text = "      ",
 				HeightRequest = 100, WidthRequest = 100,
-				BackgroundColor = Colors.AliceBlue 
+				BackgroundColor = Color.AliceBlue 
 			};
 
 			var expectedColor = button.BackgroundColor.ToAndroid();
@@ -50,7 +49,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.UnitTests
 			{
 				HeightRequest = 100,
 				WidthRequest = 100,
-				BackgroundColor = Colors.AliceBlue
+				BackgroundColor = Color.AliceBlue
 			};
 
 			var expectedColor = button.BackgroundColor.ToAndroid();
@@ -66,7 +65,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.UnitTests
 			{
 				HeightRequest = 100,
 				WidthRequest = 100,
-				BackgroundColor = Colors.AliceBlue
+				BackgroundColor = Color.AliceBlue
 			};
 
 			var expectedColor = frame.BackgroundColor.ToAndroid();

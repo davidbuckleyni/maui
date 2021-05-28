@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls
 {
@@ -173,17 +172,6 @@ namespace Microsoft.Maui.Controls
 			return navPage;
 		}
 
-		internal static IMauiContext FindMauiContextOnParent(this Element element)
-		{
-			var navPage = element
-				.GetParentsPath()
-				.OfType<IView>()
-				.Where(x => x.Handler?.MauiContext != null)
-				.FirstOrDefault();
-
-			return navPage?.Handler?.MauiContext;
-		}
-
 		internal static IEnumerable<Element> GetParentsPath(this Element self)
 		{
 			Element current = self;
@@ -195,24 +183,24 @@ namespace Microsoft.Maui.Controls
 			}
 		}
 
-		internal static string GetStringValue(this IView element)
+		internal static string GetStringValue(this Element element)
 		{
 			string text = null;
-			if (element is ILabel label)
+			if (element is Label label)
 				text = label.Text;
-			else if (element is IEntry entry)
+			else if (element is Entry entry)
 				text = entry.Text;
-			else if (element is IEditor editor)
+			else if (element is Editor editor)
 				text = editor.Text;
-			else if (element is ITimePicker tp)
+			else if (element is TimePicker tp)
 				text = tp.Time.ToString();
-			else if (element is IDatePicker dp)
+			else if (element is DatePicker dp)
 				text = dp.Date.ToString();
-			else if (element is ICheckBox cb)
+			else if (element is CheckBox cb)
 				text = cb.IsChecked.ToString();
-			else if (element is ISwitch sw)
-				text = sw.IsOn.ToString();
-			else if (element is IRadioButton rb)
+			else if (element is Switch sw)
+				text = sw.IsToggled.ToString();
+			else if (element is RadioButton rb)
 				text = rb.IsChecked.ToString();
 
 			return text;

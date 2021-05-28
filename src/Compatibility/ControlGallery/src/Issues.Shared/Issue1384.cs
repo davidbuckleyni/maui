@@ -2,7 +2,6 @@
 
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -15,7 +14,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 	{
 		public Issue1384()
 		{
-			var grid = new Grid { BackgroundColor = Colors.Red, VerticalOptions = LayoutOptions.Start };
+			var grid = new Grid { BackgroundColor = Color.Red, VerticalOptions = LayoutOptions.Start };
 			grid.Children.Add(new Image { Source = "photo.jpg", Aspect = Aspect.AspectFit });
 			grid.Children.Add(new Label
 			{
@@ -27,7 +26,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				VerticalOptions = LayoutOptions.Start,
 				HorizontalOptions = LayoutOptions.End,
 				HeightRequest = 30,
-				TextColor = Colors.White
+				TextColor = Color.White
 			});
 			grid.Children.Add(new Label
 			{
@@ -37,8 +36,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
 				VerticalOptions = LayoutOptions.End,
 				HeightRequest = 40,
-				TextColor = Colors.White,
-				BackgroundColor = Colors.Green,
+				TextColor = Color.White,
+				BackgroundColor = Color.Green,
 			});
 			Content = grid;
 		}

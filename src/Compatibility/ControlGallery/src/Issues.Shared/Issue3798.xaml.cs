@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 #if UITEST
 using Xamarin.UITest;
 using NUnit.Framework;
@@ -51,7 +50,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			//Uncomment the below code to test ListView SeparatorVisibility (Updating dynamically)
 			//listView.SeparatorVisibility = _showRedSeparator ? SeparatorVisibility.None : SeparatorVisibility.Default;
 #if APP
-			listView.SeparatorColor = _showRedSeparator ? Colors.Red : Colors.Green;
+			listView.SeparatorColor = _showRedSeparator ? Color.Red : Color.Green;
 #endif
 			((ListView)sender).SelectedItem = null; // de-select the row
 

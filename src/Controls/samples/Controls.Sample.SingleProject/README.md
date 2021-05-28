@@ -5,7 +5,7 @@ A "single project", is a multi-targeted .NET Maui project, such as:
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net6.0-ios;net6.0-android</TargetFrameworks>
+    <TargetFrameworks>net6.0-android;net6.0-ios</TargetFrameworks>
     <OutputType>Exe</OutputType>
     <!-- Opts into the new project type -->
     <SingleProject>true</SingleProject>
@@ -23,17 +23,20 @@ This project type does not currently work well in IDEs.
 
 To build, use the command-line:
 
-```dotnetcli
-.\bin\dotnet\dotnet build Maui.Controls.Sample.SingleProject.csproj
+```bash
+$ dotnet build Maui.Controls.Sample.SingleProject.csproj
 ```
 
 To run:
 
-```dotnetcli
-.\bin\dotnet\dotnet build Maui.Controls.Sample.SingleProject.csproj -t:Run -f net6.0-android
+```bash
+$ dotnet build Maui.Controls.Sample.SingleProject.csproj -t:Run -f net6.0-android --no-restore
 ```
 
-Use `-f net6.0-android`, `-f net6.0-ios`, or `-f net6.0-maccatalyst` to select your platform.
+Use `-f net6.0-android` or `-f net6.0-ios` or `-f net6.0-maccatalyst` to select your platform.
+
+> NOTE: You need to add the `--no-restore` switch until
+> [dotnet#15485][15485] is resolved.
 
 For further reading about "Single Project" initiative and .NET 6, see:
 

@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Microsoft.Maui.Hosting.Internal
 {
-	interface IServiceFactoryAdapter
+	internal interface IServiceFactoryAdapter
 	{
 		object CreateBuilder(IServiceCollection services);
 

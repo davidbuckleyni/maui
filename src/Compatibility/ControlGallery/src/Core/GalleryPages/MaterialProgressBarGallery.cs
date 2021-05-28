@@ -1,5 +1,4 @@
 using System;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -69,7 +68,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 					{
 						HeightRequest = 1,
 						Margin = new Thickness(-10, 0),
-						Color = Colors.Black
+						Color = Color.Black
 					},
 
 					progressBar,

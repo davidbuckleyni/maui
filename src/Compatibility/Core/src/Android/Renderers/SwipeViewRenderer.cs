@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -11,9 +11,7 @@ using AndroidX.Core.Widget;
 using AndroidX.RecyclerView.Widget;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Controls.Platform;
 using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
-using Microsoft.Maui.Graphics;
 using AButton = AndroidX.AppCompat.Widget.AppCompatButton;
 using APointF = Android.Graphics.PointF;
 using ARect = Android.Graphics.Rect;
@@ -114,7 +112,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 
 		protected override void UpdateBackgroundColor()
 		{
-			if (Element.BackgroundColor != null)
+			if (Element.BackgroundColor != Color.Default)
 				SetBackgroundColor(Element.BackgroundColor.ToAndroid());
 			else
 				Control?.SetWindowBackground();
@@ -372,7 +370,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 		AView CreateEmptyContent()
 		{
 			var emptyContentView = new AView(_context);
-			emptyContentView.SetBackgroundColor(Colors.Transparent.ToAndroid());
+			emptyContentView.SetBackgroundColor(Color.Default.ToAndroid());
 
 			return emptyContentView;
 		}
@@ -881,9 +879,9 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 
 		Color GetSwipeItemColor(Color backgroundColor)
 		{
-			var luminosity = 0.2126f * backgroundColor.Red + 0.7152f * backgroundColor.Green + 0.0722f * backgroundColor.Blue;
+			var luminosity = 0.2126 * backgroundColor.R + 0.7152 * backgroundColor.G + 0.0722 * backgroundColor.B;
 
-			return luminosity < 0.75f ? Colors.White : Colors.Black;
+			return luminosity < 0.75 ? Color.White : Color.Black;
 		}
 
 		void UnsubscribeSwipeItemEvents()

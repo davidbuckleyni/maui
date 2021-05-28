@@ -1,12 +1,10 @@
-using Microsoft.Maui;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui.Graphics;
+using Xamarin.Forms;
 
 namespace Samples.Helpers
 {
 	public static class ViewHelpers
 	{
-		public static Rectangle GetAbsoluteBounds(this Microsoft.Maui.Controls.View element)
+		public static Rectangle GetAbsoluteBounds(this Xamarin.Forms.View element)
 		{
 			Element looper = element;
 
@@ -18,7 +16,7 @@ namespace Samples.Helpers
 			while (looper.Parent != null)
 			{
 				looper = looper.Parent;
-				if (looper is Microsoft.Maui.Controls.View v)
+				if (looper is Xamarin.Forms.View v)
 				{
 					absoluteX += v.X + v.Margin.Top;
 					absoluteY += v.Y + v.Margin.Left;
@@ -27,5 +25,8 @@ namespace Samples.Helpers
 
 			return new Rectangle(absoluteX, absoluteY, element.Width, element.Height);
 		}
+
+		public static System.Drawing.Rectangle ToSystemRectangle(this Rectangle rect) =>
+			new System.Drawing.Rectangle((int)rect.X, (int)rect.Y, (int)rect.Width, (int)rect.Height);
 	}
 }

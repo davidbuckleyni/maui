@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using NUnit.Framework;
@@ -29,12 +28,12 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			Button modal = new Button
 			{
 				Text = "Modal Push Pop Test",
-				Font = Font.SystemFontOfSize(25, FontWeight.Bold),
+				Font = Font.SystemFontOfSize(25, FontAttributes.Bold),
 				HorizontalOptions = LayoutOptions.Center
 			};
 			modal.Clicked += async (object sender, EventArgs e) =>
 			{
-				var page = new ContentPage() { BackgroundColor = Colors.Red };
+				var page = new ContentPage() { BackgroundColor = Color.Red };
 
 				await Navigation.PushModalAsync(page);
 

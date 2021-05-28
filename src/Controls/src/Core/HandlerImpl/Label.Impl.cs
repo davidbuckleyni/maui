@@ -4,6 +4,17 @@ namespace Microsoft.Maui.Controls
 	{
 		Font? _font;
 
-		Font ITextStyle.Font => _font ??= Font.OfSize(FontFamily, FontSize).WithAttributes(FontAttributes);
+		Font IText.Font
+		{
+			get
+			{
+				if (_font == null)
+				{
+					_font = Font.OfSize(FontFamily, FontSize).WithAttributes(FontAttributes);
+				}
+
+				return _font.Value;
+			}
+		}
 	}
 }

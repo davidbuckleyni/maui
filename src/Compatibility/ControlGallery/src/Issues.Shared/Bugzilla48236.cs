@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -20,7 +19,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		{
 			var stepper = new Stepper
 			{
-				BackgroundColor = Colors.Green,
+				BackgroundColor = Color.Green,
 				Minimum = 0,
 				Maximum = 10
 			};
@@ -36,11 +35,11 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					stepper,
 					new Button
 					{
-						BackgroundColor = Colors.Aqua,
+						BackgroundColor = Color.Aqua,
 						Text = "Change Stepper Color to Yellow",
 						Command = new Command(() =>
 						{
-							stepper.BackgroundColor = Colors.Yellow;
+							stepper.BackgroundColor = Color.Yellow;
 						})
 					}
 				}

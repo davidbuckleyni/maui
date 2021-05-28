@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -23,7 +22,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			Content = new StackLayout
 			{
-				BackgroundColor = Colors.Gray,
+				BackgroundColor = Color.Gray,
 				Children = {
 					instructions,
 					new ListView {

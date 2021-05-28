@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Microsoft.Maui.Controls.Compatibility.UITests;
@@ -74,7 +73,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					Source = new UrlWebViewSource { Url = "https://www.microsoft.com/" },
 					HorizontalOptions = LayoutOptions.FillAndExpand,
 					VerticalOptions = LayoutOptions.FillAndExpand,
-					BackgroundColor = Colors.Red
+					BackgroundColor = Color.Red
 
 				};
 

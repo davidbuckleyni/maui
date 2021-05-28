@@ -1,5 +1,4 @@
 using Microsoft.Maui.Controls.CustomAttributes;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -18,14 +17,14 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			var tableSectionContainer = new ViewContainer<TableView>(Test.TableView.TableSection, new TableView());
 			var section = new TableSection("Test")
 			{
-				TextColor = Colors.Red
+				TextColor = Color.Red
 			};
 
 			section.Add(new TextCell { Text = "Worked!" });
 
 			var section1 = new TableSection("Testing")
 			{
-				TextColor = Colors.Green
+				TextColor = Color.Green
 			};
 
 			section1.Add(new TextCell { Text = "Workeding!" });

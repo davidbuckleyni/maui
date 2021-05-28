@@ -3,14 +3,6 @@ using System.Collections.Generic;
 
 namespace Microsoft.Maui.Controls
 {
-	[Flags]
-	public enum FontAttributes
-	{
-		None = 0,
-		Bold = 1 << 0,
-		Italic = 1 << 1
-	}
-
 	[Xaml.TypeConversion(typeof(FontAttributes))]
 	public sealed class FontAttributesConverter : TypeConverter
 	{

@@ -1,7 +1,6 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Drawing;
 using CoreGraphics;
-using Microsoft.Maui.Controls.Platform;
 using UIKit;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
@@ -62,7 +61,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 		}
 
 		public virtual void SetupLayer()
-		{
+		{			
 			if (_actualView == null)
 				return;
 
@@ -74,7 +73,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 			_actualView.Layer.CornerRadius = cornerRadius;
 			_actualView.Layer.MasksToBounds = cornerRadius > 0;
 
-			if (Element.BackgroundColor == null)
+			if (Element.BackgroundColor == Color.Default)
 				_actualView.Layer.BackgroundColor = ColorExtensions.BackgroundColor.CGColor;
 			else
 			{
@@ -98,7 +97,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 				}
 			}
 
-			if (Element.BorderColor == null)
+			if (Element.BorderColor == Color.Default)
 				_actualView.Layer.BorderColor = UIColor.Clear.CGColor;
 			else
 			{
@@ -185,7 +184,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 
 			public override bool PointInside(CGPoint point, UIEvent uievent)
 			{
-				foreach (var view in Subviews)
+				foreach(var view in Subviews)
 				{
 					if (view.HitTest(ConvertPointToView(point, view), uievent) != null)
 						return true;

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using NUnit.Framework;
@@ -51,7 +50,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			_collectionView = new CollectionView
 			{
-				BackgroundColor = Colors.LightGreen,
+				BackgroundColor = Color.LightGreen,
 				SelectionMode = SelectionMode.None,
 				HeightRequest = 500
 			};
@@ -101,7 +100,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				cell.SetBinding(Label.TextProperty, "Text");
 				cell.FontSize = 20;
 				cell.FontAttributes = FontAttributes.Bold;
-				cell.BackgroundColor = Colors.LightBlue;
+				cell.BackgroundColor = Color.LightBlue;
 				grid.Children.Add(cell, 0, 0);
 
 				for (int i = 0; i < columns; i++)
@@ -110,7 +109,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					cell = new Label() { };
 					cell.Text = "Col:" + i;
 					cell.FontAttributes = FontAttributes.Bold;
-					cell.BackgroundColor = Colors.Beige;
+					cell.BackgroundColor = Color.Beige;
 					grid.Children.Add(cell, i + 1, 0);
 				}
 				return grid;

@@ -1,5 +1,4 @@
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 using NUnit.Framework;
 
 namespace Microsoft.Maui.Controls.Core.UnitTests
@@ -25,8 +24,8 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 		public void TestDynamicResourceOverride()
 		{
 			Application.Current.Resources = new ResourceDictionary();
-			Application.Current.Resources.Add("GreenColor", Colors.Green);
-			Application.Current.Resources.Add("RedColor", Colors.Red);
+			Application.Current.Resources.Add("GreenColor", Color.Green);
+			Application.Current.Resources.Add("RedColor", Color.Red);
 
 			var setter = new Setter()
 			{
@@ -51,7 +50,7 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 				}
 			};
 
-			Assert.AreEqual(Colors.Green, label.TextColor);
+			Assert.AreEqual(Color.Green, label.TextColor);
 		}
 
 		[Test]

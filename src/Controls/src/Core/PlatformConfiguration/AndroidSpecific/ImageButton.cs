@@ -1,6 +1,5 @@
-﻿namespace Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific
+namespace Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific
 {
-	using Microsoft.Maui.Graphics;
 	using FormsImageButton = Maui.Controls.ImageButton;
 
 	public static class ImageButton
@@ -29,7 +28,7 @@
 			return config;
 		}
 
-		public static readonly BindableProperty ShadowColorProperty = BindableProperty.Create("ShadowColor", typeof(Color), typeof(ImageButton), null);
+		public static readonly BindableProperty ShadowColorProperty = BindableProperty.Create("ShadowColor", typeof(Color), typeof(ImageButton), Color.Default);
 
 		public static Color GetShadowColor(BindableObject element)
 		{

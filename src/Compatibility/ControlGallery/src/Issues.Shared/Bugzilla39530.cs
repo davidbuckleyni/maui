@@ -1,6 +1,5 @@
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using NUnit.Framework;
@@ -35,7 +34,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				HasShadow = false,
 				HorizontalOptions = LayoutOptions.Fill,
 				VerticalOptions = LayoutOptions.Fill,
-				BackgroundColor = Colors.White,
+				BackgroundColor = Color.White,
 				Padding = new Thickness(5),
 				HeightRequest = 300,
 				WidthRequest = 300,
@@ -60,7 +59,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			Content = new StackLayout
 			{
-				BackgroundColor = Colors.Olive,
+				BackgroundColor = Color.Olive,
 				Children = { taps, pans, pinches, frame }
 			};
 		}

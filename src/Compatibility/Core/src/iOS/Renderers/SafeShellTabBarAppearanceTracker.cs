@@ -44,14 +44,14 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 				}
 			}
 
-			if (backgroundColor != null)
+			if (!backgroundColor.IsDefault)
 				tabBar.BarTintColor = backgroundColor.ToUIColor();
-			if (titleColor != null)
+			if (!titleColor.IsDefault)
 				tabBar.TintColor = titleColor.ToUIColor();
 
 			if (operatingSystemSupportsUnselectedTint)
 			{
-				if (unselectedColor != null)
+				if (!unselectedColor.IsDefault)
 					tabBar.UnselectedItemTintColor = unselectedColor.ToUIColor();
 			}
 		}

@@ -15,7 +15,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 	[Preserve(AllMembers = true)]
 	[Issue(IssueTracker.Github, 2399, "Label Renderer Dispose never called")]
 
-#if WINDOWS
+#if __WINDOWS__
 	// this test works fine when ran manually but when executed through the test runner
 	// it fails. Not sure the difference
 	[NUnit.Framework.Category(Compatibility.UITests.UITestCategories.ManualReview)]

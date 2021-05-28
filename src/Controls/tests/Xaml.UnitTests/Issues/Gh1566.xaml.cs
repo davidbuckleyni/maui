@@ -1,6 +1,5 @@
 using System;
 using Microsoft.Maui.Controls.Core.UnitTests;
-using Microsoft.Maui.Graphics;
 using NUnit.Framework;
 
 namespace Microsoft.Maui.Controls.Xaml.UnitTests
@@ -36,7 +35,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 			public void ObsoletePropsDoNotThrow(bool useCompiledXaml)
 			{
 				var layout = new Gh1566(useCompiledXaml);
-				Assert.That(layout.frame.BorderColor, Is.EqualTo(Colors.Red));
+				Assert.That(layout.frame.BorderColor, Is.EqualTo(Color.Red));
 			}
 		}
 	}

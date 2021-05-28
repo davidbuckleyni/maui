@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Graphics;
-
-namespace Microsoft.Maui.DeviceTests.Stubs
+﻿namespace Microsoft.Maui.DeviceTests.Stubs
 {
 	public partial class SearchBarStub : StubBase, ISearchBar
 	{
@@ -17,15 +15,5 @@ namespace Microsoft.Maui.DeviceTests.Stubs
 		public Font Font { get; set; }
 
 		public TextAlignment HorizontalTextAlignment { get; set; }
-
-		public bool IsTextPredictionEnabled { get; set; } = true;
-
-		public bool IsReadOnly { get; set; }
-
-		public int MaxLength { get; set; }
-
-		public Keyboard Keyboard { get; set; }
-
-		public void SearchButtonPressed() { }
 	}
 }

@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -10,8 +9,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 	{
 		protected override void Init()
 		{
-			var mainStackLayout = new StackLayout { Margin = new Thickness(100), IsClippedToBounds = true, BackgroundColor = Colors.Red };
-			mainStackLayout.Children.Add(new Grid() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand, BackgroundColor = Colors.Aqua, TranslationX = -50, TranslationY = -50 });
+			var mainStackLayout = new StackLayout { Margin = new Thickness(100), IsClippedToBounds = true, BackgroundColor = Color.Red };
+			mainStackLayout.Children.Add(new Grid() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand, BackgroundColor = Color.Aqua, TranslationX = -50, TranslationY = -50 });
 
 			var button = new Button() { Text = "Toggle IsClippedToBounds" };
 			button.Clicked += (sender, e) => mainStackLayout.IsClippedToBounds = !mainStackLayout.IsClippedToBounds;

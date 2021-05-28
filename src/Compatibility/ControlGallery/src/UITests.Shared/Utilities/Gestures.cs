@@ -108,7 +108,7 @@ namespace Microsoft.Maui.Controls.Compatibility.UITests
 				rect.CenterY);
 #elif __ANDROID__
 			app.TouchAndHold(target);
-#elif WINDOWS
+#elif __WINDOWS__
 			// Since we know we're on desktop for the moment, just use ContextClick. If we get this running
 			// on actual touch devices at some point, we'll need to check for that and use TouchAndHold
 			app.Invoke("ContextClick", target);
@@ -123,9 +123,9 @@ namespace Microsoft.Maui.Controls.Compatibility.UITests
 			app.TapCoordinates(screenbounds.CenterX, screenbounds.CenterY);
 #elif __ANDROID__
 			app.Back();
-#elif WINDOWS
+#elif __WINDOWS__
 			var screenbounds = app.RootViewRect();
-			app.TapCoordinates(screenbounds.CenterX, screenbounds.CenterY);
+			app.TapCoordinates (screenbounds.CenterX, screenbounds.CenterY);
 #endif
 		}
 	}

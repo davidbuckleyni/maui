@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Microsoft.Maui.Controls.Compatibility.UITests;
@@ -29,7 +28,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			{
 				var label = new Label
 				{
-					TextColor = Colors.Black,
+					TextColor = Color.Black,
 					HorizontalOptions = LayoutOptions.FillAndExpand,
 					HorizontalTextAlignment = TextAlignment.End
 				};

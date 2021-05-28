@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.Text;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 
 #if UITEST
@@ -45,8 +44,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 								HeightRequest = 50,
 								WidthRequest = 50,
 								CornerRadius = 25,
-								BackgroundColor = Colors.Purple,
-								BorderColor = Colors.Green,
+								BackgroundColor = Color.Purple,
+								BorderColor = Color.Green,
 								ImageSource = "coffee.png"
 							},
 							new ImageButton()
@@ -54,8 +53,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 								HeightRequest = 50,
 								WidthRequest = 50,
 								CornerRadius = 25,
-								BackgroundColor = Colors.Purple,
-								BorderColor = Colors.Green,
+								BackgroundColor = Color.Purple,
+								BorderColor = Color.Green,
 								Source = "coffee.png"
 							}
 						}
@@ -71,8 +70,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 								HeightRequest = 50,
 								WidthRequest = 50,
 								CornerRadius = 25,
-								BackgroundColor = Colors.Purple,
-								BorderColor = Colors.Green,
+								BackgroundColor = Color.Purple,
+								BorderColor = Color.Green,
 								ImageSource = "coffee.png"
 							},
 							new ImageButton()
@@ -80,8 +79,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 								HeightRequest = 50,
 								WidthRequest = 50,
 								CornerRadius = 25,
-								BackgroundColor = Colors.Purple,
-								BorderColor = Colors.Green,
+								BackgroundColor = Color.Purple,
+								BorderColor = Color.Green,
 								Source = "coffee.png"
 							}
 						}
@@ -92,13 +91,13 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					},
 					new BoxView()
 					{
-						BackgroundColor = Colors.Red,
+						BackgroundColor = Color.Red,
 						HeightRequest = 2
 					},
 					new Button()
 					{
-						BorderColor = Colors.Red,
-						BackgroundColor = Colors.White,
+						BorderColor = Color.Red,
+						BackgroundColor = Color.White,
 						CornerRadius = 25,
 						BorderWidth = 2
 					},
@@ -108,13 +107,13 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					},
 					new BoxView()
 					{
-						BackgroundColor = Colors.Red,
+						BackgroundColor = Color.Red,
 						HeightRequest = 5
 					},
 					new Button()
 					{
-						BorderColor = Colors.Red,
-						BackgroundColor = Colors.White,
+						BorderColor = Color.Red,
+						BackgroundColor = Color.White,
 						CornerRadius = 25,
 						BorderWidth = 5
 					},
@@ -124,13 +123,13 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					},
 					new BoxView()
 					{
-						BackgroundColor = Colors.Red,
+						BackgroundColor = Color.Red,
 						HeightRequest = 1
 					},
 					new Button()
 					{
-						BorderColor = Colors.Red,
-						BackgroundColor = Colors.White,
+						BorderColor = Color.Red,
+						BackgroundColor = Color.White,
 						CornerRadius = 25,
 						BorderWidth = 1
 					}

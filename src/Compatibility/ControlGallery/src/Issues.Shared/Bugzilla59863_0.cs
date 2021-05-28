@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -38,7 +37,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			{
 				WidthRequest = 100,
 				HeightRequest = 100,
-				BackgroundColor = Colors.Bisque,
+				BackgroundColor = Color.Bisque,
 				AutomationId = SingleTapBoxId
 			};
 

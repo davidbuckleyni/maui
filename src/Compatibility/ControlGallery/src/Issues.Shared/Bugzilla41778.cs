@@ -2,7 +2,6 @@
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -23,7 +22,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			Flyout = new ContentPage
 			{
 				Title = "Menu",
-				BackgroundColor = Colors.Blue
+				BackgroundColor = Color.Blue
 			};
 
 			Detail = new DetailPage41778();
@@ -38,7 +37,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				{
 					Spacing = 20,
 					Margin = 20,
-					BackgroundColor = Colors.Beige,
+					BackgroundColor = Color.Beige,
 					Orientation = StackOrientation.Vertical,
 					HorizontalOptions = LayoutOptions.FillAndExpand,
 					VerticalOptions = LayoutOptions.CenterAndExpand

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -65,7 +64,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				var button = new Button
 				{
 					Text = "Go To List",
-					BackgroundColor = Colors.Beige,
+					BackgroundColor = Color.Beige,
 					HeightRequest = 40,
 					WidthRequest = 100,
 					VerticalOptions = LayoutOptions.Center,

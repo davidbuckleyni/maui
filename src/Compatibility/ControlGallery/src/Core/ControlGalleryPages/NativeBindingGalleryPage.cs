@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -25,7 +24,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			var vm = new NestedNativeViewModel();
 			vm.FormsLabel = "Forms Label Binding";
 			vm.NativeLabel = "Native Label Binding";
-			vm.NativeLabelColor = Colors.Red;
+			vm.NativeLabelColor = Color.Red;
 			vm.Age = 45;
 
 			Layout = new StackLayout { Padding = 20, VerticalOptions = LayoutOptions.FillAndExpand };
@@ -42,7 +41,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 				vm = new NestedNativeViewModel();
 				vm.FormsLabel = "Forms Label Binding Changed";
 				vm.NativeLabel = "Native Label Binding Changed";
-				vm.NativeLabelColor = Colors.Pink;
+				vm.NativeLabelColor = Color.Pink;
 				vm.Age = 10;
 
 				BindingContext = ViewModel = vm;

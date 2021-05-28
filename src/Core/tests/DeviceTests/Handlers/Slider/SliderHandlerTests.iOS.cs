@@ -1,5 +1,4 @@
 using System.Threading.Tasks;
-using Microsoft.Maui.Graphics;
 using Microsoft.Maui.Handlers;
 using UIKit;
 using Xunit;
@@ -9,7 +8,7 @@ namespace Microsoft.Maui.DeviceTests
 	public partial class SliderHandlerTests
 	{
 		UISlider GetNativeSlider(SliderHandler sliderHandler) =>
-			(UISlider)sliderHandler.NativeView;
+			(UISlider)sliderHandler.View;
 
 		double GetNativeProgress(SliderHandler sliderHandler) =>
 			GetNativeSlider(sliderHandler).Value;

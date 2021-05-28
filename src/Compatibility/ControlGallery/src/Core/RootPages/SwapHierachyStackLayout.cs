@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -27,7 +26,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 		{
 			AutomationId = "ChoosePageScrollView";
 
-			BackgroundColor = Colors.Blue;
+			BackgroundColor = Color.Blue;
 
 			var buttons = new[] {
 				new SwapRootButton ("Content", new Command (() => Application.Current.MainPage = new RootContentPage ("Content"))),

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using NUnit.Framework;
@@ -48,7 +47,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			var tableView = new TableView
 			{
-				BackgroundColor = Colors.Wheat,
+				BackgroundColor = Color.Wheat,
 				HasUnevenRows = true,
 				RowHeight = 100
 			};
@@ -81,7 +80,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			Children.Add(new ContentPage
 			{
-				BackgroundColor = Colors.Red,
+				BackgroundColor = Color.Red,
 				Content = new StackLayout
 				{
 					Children = { GenerateNewPicker(), tableView }
@@ -90,7 +89,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			Children.Add(new ContentPage
 			{
-				BackgroundColor = Colors.Blue,
+				BackgroundColor = Color.Blue,
 				Content = new StackLayout
 				{
 					Children = { GenerateNewPicker() }
@@ -115,7 +114,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			{
 				View = new StackLayout
 				{
-					BackgroundColor = Colors.Pink,
+					BackgroundColor = Color.Pink,
 					Children = {
 						label,
 						picker,

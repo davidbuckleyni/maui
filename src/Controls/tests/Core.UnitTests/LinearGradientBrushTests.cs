@@ -1,4 +1,3 @@
-using Microsoft.Maui.Graphics;
 using NUnit.Framework;
 
 namespace Microsoft.Maui.Controls.Core.UnitTests
@@ -25,8 +24,8 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 		{
 			var gradientStops = new GradientStopCollection
 			{
-				new GradientStop { Color = Colors.Red, Offset = 0.1f },
-				new GradientStop { Color = Colors.Orange, Offset = 0.8f }
+				new GradientStop { Color = Color.Red, Offset = 0.1f },
+				new GradientStop { Color = Color.Orange, Offset = 0.8f }
 			};
 
 			LinearGradientBrush linearGradientBrush = new LinearGradientBrush(gradientStops, new Point(0, 0), new Point(0, 1));
@@ -48,8 +47,8 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 				EndPoint = new Point(1, 0),
 				GradientStops = new GradientStopCollection
 				{
-					new GradientStop { Color = Colors.Orange, Offset = 0.1f },
-					new GradientStop { Color = Colors.Red, Offset = 0.8f }
+					new GradientStop { Color = Color.Orange, Offset = 0.1f },
+					new GradientStop { Color = Color.Red, Offset = 0.8f }
 				}
 			};
 
@@ -71,8 +70,8 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 				EndPoint = new Point(1, 0),
 				GradientStops = new GradientStopCollection
 				{
-					new GradientStop { Color = Colors.Orange, Offset = 0.1f },
-					new GradientStop { Color = Colors.Red, Offset = 0.8f }
+					new GradientStop { Color = Color.Orange, Offset = 0.1f },
+					new GradientStop { Color = Color.Red, Offset = 0.8f }
 				}
 			};
 
@@ -102,7 +101,7 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 			{
 				GradientStops = new GradientStopCollection
 				{
-					new GradientStop { Color = Colors.Red, }
+					new GradientStop { Color = Color.Red, }
 				},
 				StartPoint = new Point(0, 0),
 				EndPoint = new Point(1, 0)
@@ -118,8 +117,8 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 			{
 				GradientStops = new GradientStopCollection
 				{
-					new GradientStop { Color = Colors.Red, Offset = 0.1f },
-					new GradientStop { Color = Colors.Blue, Offset = 1.0f }
+					new GradientStop { Color = Color.Red, Offset = 0.1f },
+					new GradientStop { Color = Color.Blue, Offset = 1.0f }
 				},
 				StartPoint = new Point(0, 0),
 				EndPoint = new Point(1, 0)

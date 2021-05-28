@@ -3,7 +3,6 @@ using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -42,7 +41,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 				Text = "Press me",
 				BackgroundColor = Color.FromUint(0xFF6E932D),
-				TextColor = Colors.White,
+				TextColor = Color.White,
 			};
 			_btnLogin.Clicked += BtnLogin_Clicked;
 			layout.Children.Add(_btnLogin, new Rectangle(0.5f, 0.5f, 0.25f, 0.25f), AbsoluteLayoutFlags.All);

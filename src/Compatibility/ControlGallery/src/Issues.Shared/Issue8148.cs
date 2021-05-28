@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -15,7 +14,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				Children =
 				{
 					new Label() { Text = "Start typing - text should be red immediately as you typing" },
-					new Entry { TextColor = Colors.Red },
+					new Entry { TextColor = Color.Red },
 				}
 			};
 		}

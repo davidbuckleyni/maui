@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.Text;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 
 #if UITEST
@@ -34,7 +33,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				AnchorY = 0,
 				HeightRequest = 150,
 				WidthRequest = 150,
-				Color = Colors.Red,
+				Color = Color.Red,
 				TranslationX = 101,
 				TranslationY = 201,
 				AutomationId = BoxViewId

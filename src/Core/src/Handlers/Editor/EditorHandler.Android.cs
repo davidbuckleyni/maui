@@ -1,19 +1,15 @@
-﻿using Android.Content.Res;
-using Android.Graphics.Drawables;
+﻿using System;
+using Android.Content.Res;
 using Android.Views;
 using Android.Views.InputMethods;
 using AndroidX.AppCompat.Widget;
-using static Android.Views.View;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Microsoft.Maui.Handlers
 {
-	public partial class EditorHandler : ViewHandler<IEditor, AppCompatEditText>
+	public partial class EditorHandler : AbstractViewHandler<IEditor, AppCompatEditText>
 	{
-		static ColorStateList? DefaultTextColors { get; set; }
 		static ColorStateList? DefaultPlaceholderTextColors { get; set; }
-		static Drawable? DefaultBackground;
-
-		EditorFocusChangeListener FocusChangeListener { get; } = new EditorFocusChangeListener();
 
 		protected override AppCompatEditText CreateNativeView()
 		{
@@ -30,96 +26,54 @@ namespace Microsoft.Maui.Handlers
 			return editText;
 		}
 
-		protected override void ConnectHandler(AppCompatEditText nativeView)
-		{
-			FocusChangeListener.Handler = this;
-
-			nativeView.OnFocusChangeListener = FocusChangeListener;
-		}
-
-		protected override void DisconnectHandler(AppCompatEditText nativeView)
-		{
-			nativeView.OnFocusChangeListener = null;
-
-			FocusChangeListener.Handler = null;
-		}
-
 		protected override void SetupDefaults(AppCompatEditText nativeView)
 		{
 			base.SetupDefaults(nativeView);
-
-			DefaultTextColors = nativeView.TextColors;
 			DefaultPlaceholderTextColors = nativeView.HintTextColors;
-			DefaultBackground = nativeView.Background;
-		}
-
-		// This is a Android-specific mapping
-		public static void MapBackground(EditorHandler handler, IEditor editor)
-		{
-			handler.NativeView?.UpdateBackground(editor, DefaultBackground);
 		}
 
 		public static void MapText(EditorHandler handler, IEditor editor)
 		{
-			handler.NativeView?.UpdateText(editor);
-		}
-
-		public static void MapTextColor(EditorHandler handler, IEditor editor)
-		{
-			handler.NativeView?.UpdateTextColor(editor, DefaultTextColors);
+			handler.TypedNativeView?.UpdateText(editor);
 		}
 
 		public static void MapPlaceholder(EditorHandler handler, IEditor editor)
 		{
-			handler.NativeView?.UpdatePlaceholder(editor);
+			handler.TypedNativeView?.UpdatePlaceholder(editor);
 		}
 
 		public static void MapPlaceholderColor(EditorHandler handler, IEditor editor)
 		{
-			handler.NativeView?.UpdatePlaceholderColor(editor, DefaultPlaceholderTextColors);
+			handler.TypedNativeView?.UpdatePlaceholderColor(editor, DefaultPlaceholderTextColors);
 		}
 
 		public static void MapCharacterSpacing(EditorHandler handler, IEditor editor)
 		{
-			handler.NativeView?.UpdateCharacterSpacing(editor);
+			handler.TypedNativeView?.UpdateCharacterSpacing(editor);
 		}
 
 		public static void MapMaxLength(EditorHandler handler, IEditor editor)
 		{
-			handler.NativeView?.UpdateMaxLength(editor);
+			handler.TypedNativeView?.UpdateMaxLength(editor);
 		}
 
 		public static void MapIsReadOnly(EditorHandler handler, IEditor editor)
 		{
-			handler.NativeView?.UpdateIsReadOnly(editor);
+			handler.TypedNativeView?.UpdateIsReadOnly(editor);
 		}
 
 		public static void MapIsTextPredictionEnabled(EditorHandler handler, IEditor editor)
 		{
-			handler.NativeView?.UpdateIsTextPredictionEnabled(editor);
+			handler.TypedNativeView?.UpdateIsTextPredictionEnabled(editor);
 		}
 
 		public static void MapFont(EditorHandler handler, IEditor editor)
 		{
-			var fontManager = handler.GetRequiredService<IFontManager>();
+			var services = handler.Services
+				   ?? throw new InvalidOperationException($"Unable to find service provider, the handler.Services was null.");
+			var fontManager = services.GetRequiredService<IFontManager>();
 
-			handler.NativeView?.UpdateFont(editor, fontManager);
-		}
-
-		void OnFocusedChange(bool hasFocus)
-		{
-			if (!hasFocus)
-				VirtualView?.Completed();
-		}
-
-		class EditorFocusChangeListener : Java.Lang.Object, IOnFocusChangeListener
-		{
-			public EditorHandler? Handler { get; set; }
-
-			public void OnFocusChange(View? v, bool hasFocus)
-			{
-				Handler?.OnFocusedChange(hasFocus);
-			}
+			handler.TypedNativeView?.UpdateFont(editor, fontManager);
 		}
 	}
 }

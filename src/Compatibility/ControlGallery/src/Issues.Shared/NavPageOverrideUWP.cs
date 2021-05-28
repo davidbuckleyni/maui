@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -10,7 +9,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 	{
 		public NavPageOverrideUWP()
 		{
-			var pushModalButton = new Button() { Text = "Open NavPage with overrides", BackgroundColor = Colors.Blue, TextColor = Colors.White };
+			var pushModalButton = new Button() { Text = "Open NavPage with overrides", BackgroundColor = Color.Blue, TextColor = Color.White };
 			pushModalButton.Clicked += (s, a) => Navigation.PushModalAsync(new CustomNavPageForOverride(new Page1()));
 
 			Content = new StackLayout { Children = { pushModalButton } };
@@ -20,10 +19,10 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		{
 			public Page1()
 			{
-				var pushButton = new Button() { Text = "Push with custom animation", BackgroundColor = Colors.Blue, TextColor = Colors.White };
+				var pushButton = new Button() { Text = "Push with custom animation", BackgroundColor = Color.Blue, TextColor = Color.White };
 				pushButton.Clicked += (s, a) => Navigation.PushAsync(new Page2());
 
-				var popModalButton = new Button() { Text = "Pop modal", BackgroundColor = Colors.Blue, TextColor = Colors.White };
+				var popModalButton = new Button() { Text = "Pop modal", BackgroundColor = Color.Blue, TextColor = Color.White };
 				popModalButton.Clicked += (s, a) => Navigation.PopModalAsync();
 
 				Content = new StackLayout()
@@ -31,7 +30,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					Padding = 40,
 					VerticalOptions = LayoutOptions.Center,
 					HorizontalOptions = LayoutOptions.Center,
-					BackgroundColor = Colors.Red,
+					BackgroundColor = Color.Red,
 					Children = { pushButton, popModalButton }
 				};
 			}
@@ -41,7 +40,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		{
 			public Page2()
 			{
-				var popButton = new Button() { Text = "Pop with custom animation", BackgroundColor = Colors.Blue, TextColor = Colors.White, HeightRequest = 50 };
+				var popButton = new Button() { Text = "Pop with custom animation", BackgroundColor = Color.Blue, TextColor = Color.White, HeightRequest = 50 };
 				popButton.Clicked += (s, a) => Navigation.PopAsync();
 
 				Content = new StackLayout
@@ -49,7 +48,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					Padding = 40,
 					VerticalOptions = LayoutOptions.Center,
 					HorizontalOptions = LayoutOptions.Center,
-					BackgroundColor = Colors.Yellow,
+					BackgroundColor = Color.Yellow,
 					Children = { popButton }
 				};
 			}

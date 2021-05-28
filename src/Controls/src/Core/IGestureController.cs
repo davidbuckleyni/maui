@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Internals
 {

@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -32,7 +31,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			{
 				HeightRequest = 200,
 				WidthRequest = 200,
-				BackgroundColor = Colors.Green,
+				BackgroundColor = Color.Green,
 				CornerRadius = new CornerRadius(3)
 			};
 

@@ -2,7 +2,6 @@ using System.Threading.Tasks;
 
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using NUnit.Framework;
@@ -20,7 +19,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 	{
 		protected override void Init()
 		{
-			Content = new Label { HeightRequest = 30, WidthRequest = 200, BackgroundColor = Colors.Purple.WithLuminosity(.7f) };
+			Content = new Label { HeightRequest = 30, WidthRequest = 200, BackgroundColor = Color.Purple.WithLuminosity(.7) };
 			Content.SetBinding(Label.TextProperty, ".");
 
 			DelayUpdatingBindingContext();

@@ -1,4 +1,5 @@
 using System;
+using Microsoft.Maui.Controls.Compatibility.Internals;
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.Xaml.Internals;
 #if __MOBILE__

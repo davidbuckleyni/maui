@@ -1,4 +1,3 @@
-#nullable enable
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -124,6 +123,7 @@ namespace Microsoft.Maui
 			_cachedKeys = null;
 		}
 
+
 		public override (Action<IViewHandler, IFrameworkElement>? Action, bool RunOnUpdateAll) Get(string key)
 		{
 			if (_mapper.TryGetValue(key, out var action))
@@ -140,6 +140,9 @@ namespace Microsoft.Maui
 
 		IEnumerator IEnumerable.GetEnumerator() => _mapper.GetEnumerator();
 	}
+
+
+
 
 	public class PropertyMapper<TVirtualView> : PropertyMapper<TVirtualView, IViewHandler>
 		where TVirtualView : IFrameworkElement

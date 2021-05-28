@@ -7,7 +7,6 @@ using System.Text;
 using Microsoft.Maui.Controls.Compatibility.ControlGallery.Effects;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -73,8 +72,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			{
 				ViewCell cell = new ViewCell();
 				AttachedStateEffectLabel label = new AttachedStateEffectLabel();
-				label.TextColor = Colors.Black;
-				label.BackgroundColor = Colors.White;
+				label.TextColor = Color.Black;
+				label.BackgroundColor = Color.White;
 				label.SetBinding(Label.TextProperty, "Text");
 				attachedStateEffectList.Add(label);
 				label.BindingContextChanged += (_, __) =>

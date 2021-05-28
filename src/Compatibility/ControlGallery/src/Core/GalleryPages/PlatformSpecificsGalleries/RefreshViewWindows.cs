@@ -2,7 +2,6 @@
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;
-using Microsoft.Maui.Graphics;
 using static Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific.RefreshView;
 using WindowsOS = Microsoft.Maui.Controls.PlatformConfiguration.Windows;
 
@@ -24,8 +23,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Plat
 
 			var refreshView = new RefreshView
 			{
-				BackgroundColor = Colors.Red,
-				RefreshColor = Colors.Yellow
+				BackgroundColor = Color.Red,
+				RefreshColor = Color.Yellow
 			};
 
 			refreshView.SetBinding(RefreshView.CommandProperty, "RefreshCommand");

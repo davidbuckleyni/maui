@@ -1,12 +1,16 @@
 ﻿using Microsoft.Maui;
-using Microsoft.Maui.Controls;
 
 namespace Maui.Controls.Sample.SingleProject
 {
-	public class MainWindow : Window
+	public class MainWindow : IWindow
 	{
-		public MainWindow() : base(Startup.UseBlazor ? new BlazorPage() : new MainPage())
+		public MainWindow()
 		{
+			Page = new MainPage();
 		}
+
+		public IPage Page { get; set; }
+
+		public IMauiContext MauiContext { get; set; }
 	}
 }

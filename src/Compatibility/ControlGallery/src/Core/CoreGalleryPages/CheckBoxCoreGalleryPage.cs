@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Maui.Controls.CustomAttributes;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -23,7 +22,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			var isCheckedContainer = new ValueViewContainer<CheckBox>(Test.CheckBox.IsChecked, new CheckBox() { IsChecked = true, HorizontalOptions = LayoutOptions.Start }, "IsChecked", value => value.ToString());
 			Add(isCheckedContainer);
 
-			var checkedColorContainer = new ValueViewContainer<CheckBox>(Test.CheckBox.CheckedColor, new CheckBox() { IsChecked = true, Color = Colors.Orange, HorizontalOptions = LayoutOptions.Start }, "Color", value => value.ToString());
+			var checkedColorContainer = new ValueViewContainer<CheckBox>(Test.CheckBox.CheckedColor, new CheckBox() { IsChecked = true, Color = Color.Orange, HorizontalOptions = LayoutOptions.Start }, "Color", value => value.ToString());
 			Add(checkedColorContainer);
 
 			var groupList = new VisualStateGroupList();
@@ -35,7 +34,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			checkedVisualState.Setters.Add(new Setter
 			{
 				Property = CheckBox.ColorProperty,
-				Value = Colors.Orange
+				Value = Color.Orange
 			});
 
 			group.States.Add(checkedVisualState);
@@ -47,13 +46,13 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			normalVisualState.Setters.Add(new Setter
 			{
 				Property = CheckBox.ColorProperty,
-				Value = Colors.Red
+				Value = Color.Red
 			});
 			group.States.Add(normalVisualState);
 			groupList.Add(group);
 
 
-			var checkBoxStateManaged = new CheckBox() { Color = Colors.Red, HorizontalOptions = LayoutOptions.Start };
+			var checkBoxStateManaged = new CheckBox() { Color = Color.Red, HorizontalOptions = LayoutOptions.Start };
 			VisualStateManager.SetVisualStateGroups(checkBoxStateManaged, groupList);
 
 

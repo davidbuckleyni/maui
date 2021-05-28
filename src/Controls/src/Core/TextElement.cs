@@ -1,11 +1,9 @@
-﻿using Microsoft.Maui.Graphics;
-
 namespace Microsoft.Maui.Controls
 {
 	static class TextElement
 	{
 		public static readonly BindableProperty TextColorProperty =
-			BindableProperty.Create(nameof(ITextElement.TextColor), typeof(Color), typeof(ITextElement), null,
+			BindableProperty.Create(nameof(ITextElement.TextColor), typeof(Color), typeof(ITextElement), Color.Default,
 									propertyChanged: OnTextColorPropertyChanged);
 
 		public static readonly BindableProperty CharacterSpacingProperty =

@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using NUnit.Framework;
@@ -19,13 +18,13 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			Title = "Issue 181";
 			Content = new Frame
 			{
-				BorderColor = Colors.Red,
-				BackgroundColor = new Color(1.0f, 1.0f, 0.0f),
+				BorderColor = Color.Red,
+				BackgroundColor = new Color(1.0, 1.0, 0.0),
 				Content = new Label
 				{
 					Text = "I should have red text",
-					TextColor = Colors.Red,
-					BackgroundColor = new Color(0.5f, 0.5f, 0.5f),
+					TextColor = Color.Red,
+					BackgroundColor = new Color(0.5, 0.5, 0.5),
 					HorizontalTextAlignment = TextAlignment.Center,
 					VerticalTextAlignment = TextAlignment.Center
 				}

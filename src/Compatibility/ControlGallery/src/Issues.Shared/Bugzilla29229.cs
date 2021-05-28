@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Maui.Controls.CustomAttributes;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -16,7 +15,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		public Bugzilla29229()
 		{
 			var absLayout = new AbsoluteLayout();
-			absLayout.BackgroundColor = Colors.Red;
+			absLayout.BackgroundColor = Color.Red;
 			absLayout.Scale = 1;
 
 			var cPx = new ListView();

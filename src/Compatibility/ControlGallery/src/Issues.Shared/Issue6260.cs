@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.Text;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 
 #if UITEST
@@ -34,7 +33,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var button = new Button()
 			{
 				Text = "Click me",
-				BackgroundColor = Colors.Green,
+				BackgroundColor = Color.Green,
 
 			};
 

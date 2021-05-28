@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -18,12 +17,12 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			var red = new Frame
 			{
-				BackgroundColor = Colors.Red,
+				BackgroundColor = Color.Red,
 				Content = new Frame
 				{
-					BorderColor = Colors.Black,
+					BorderColor = Color.Black,
 					HeightRequest = layoutHeight,
-					BackgroundColor = Colors.Transparent
+					BackgroundColor = Color.Transparent
 				}
 			};
 			AbsoluteLayout.SetLayoutBounds(red, new Rectangle(0, 0, layoutWidth, layoutHeight));

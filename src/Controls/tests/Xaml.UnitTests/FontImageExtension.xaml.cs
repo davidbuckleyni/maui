@@ -1,5 +1,4 @@
 using Microsoft.Maui.Controls.Core.UnitTests;
-using Microsoft.Maui.Graphics;
 using NUnit.Framework;
 
 namespace Microsoft.Maui.Controls.Xaml.UnitTests
@@ -14,7 +13,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 
 		public static string FontFamily => "MyFontFamily";
 		public static string Glyph => "MyGlyph";
-		public static Color Color => Colors.Black;
+		public static Color Color => Color.Black;
 		public static double Size = 50d;
 
 		[TestFixture]

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Microsoft.Maui.Graphics;
 using NUnit.Framework;
 
 namespace Microsoft.Maui.Controls.Xaml.UnitTests
@@ -41,7 +40,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 				var p = new CompiledTypeConverter(useCompiledXaml);
 				Assert.AreEqual(new Rectangle(0, 1, 2, 4), p.RectangleP);
 				Assert.AreEqual(new Rectangle(4, 8, 16, 32), p.RectangleBP);
-				Assert.AreEqual(Colors.Pink, p.BackgroundColor);
+				Assert.AreEqual(Color.Pink, p.BackgroundColor);
 				Assert.AreEqual(LayoutOptions.EndAndExpand, p.label.GetValue(View.HorizontalOptionsProperty));
 				var xConstraint = RelativeLayout.GetXConstraint(p.label);
 				Assert.AreEqual(2, xConstraint.Compute(null));

@@ -155,7 +155,6 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
 			UpdatePicker();
 		}
 
-		[PortHandler]
 		void UpdateFont()
 		{
 			EditText.Typeface = Element.ToTypeface();
@@ -223,7 +222,6 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
 			EditText.Hint = Element.Title;
 		}
 
-		[PortHandler("Partially ported, still missing VerticalTextAligment.")]
 		protected override void UpdateGravity()
 		{
 			EditText.Gravity = Element.HorizontalTextAlignment.ToHorizontalGravityFlags() | Element.VerticalTextAlignment.ToVerticalGravityFlags();

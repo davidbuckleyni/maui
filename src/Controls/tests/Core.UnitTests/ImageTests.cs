@@ -257,10 +257,9 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 				if (initialLoad && Element.Source != null)
 				{
 					initialLoad = false;
-					var controller = (IImageController)Element;
-					controller.SetIsLoading(true);
-					await ((IStreamImageSource)Element.Source).GetStreamAsync();
-					controller.SetIsLoading(false);
+					Element.SetIsLoading(true);
+					await (Element.Source as UriImageSource).GetStreamAsync();
+					Element.SetIsLoading(false);
 				}
 			}
 

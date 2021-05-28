@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -18,7 +17,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 
 			var content = new ContentPage
 			{
-				BackgroundColor = Colors.Yellow,
+				BackgroundColor = Color.Yellow,
 				Title = "Testing 123",
 				Content = new SwapHierachyStackLayout(hierarchy)
 			};

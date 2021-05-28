@@ -2,7 +2,6 @@
 using System.Windows.Input;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -37,7 +36,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			var refreshColorContainer = new ViewContainer<RefreshView>(Test.RefreshView.RefreshColor, new RefreshView
 			{
 				Content = CreateContent(),
-				RefreshColor = Colors.Red
+				RefreshColor = Color.Red
 			});
 
 			refreshColorContainer.View.SetBinding(RefreshView.CommandProperty, "RefreshCommand");
@@ -50,7 +49,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 		{
 			var scrollView = new ScrollView
 			{
-				BackgroundColor = Colors.Green,
+				BackgroundColor = Color.Green,
 				HeightRequest = 250
 			};
 
@@ -60,7 +59,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			{
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.Center,
-				TextColor = Colors.White
+				TextColor = Color.White
 			};
 
 			refreshLabel.SetBinding(Label.TextProperty, "Info");

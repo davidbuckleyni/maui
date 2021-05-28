@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -62,17 +61,17 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 
 			toggleColorButton.Clicked += (sender, e) =>
 			{
-				if (normal.TextColor == null)
+				if (normal.TextColor == Color.Default)
 				{
-					normal.TextColor = Colors.Red;
-					password.TextColor = Colors.Red;
-					numericPassword.TextColor = Colors.Red;
+					normal.TextColor = Color.Red;
+					password.TextColor = Color.Red;
+					numericPassword.TextColor = Color.Red;
 				}
 				else
 				{
-					normal.TextColor = null;
-					password.TextColor = null;
-					numericPassword.TextColor = null;
+					normal.TextColor = Color.Default;
+					password.TextColor = Color.Default;
+					numericPassword.TextColor = Color.Default;
 				}
 			};
 

@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Graphics;
-
-namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.SwipeViewGalleries
+﻿namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.SwipeViewGalleries
 {
 	public class OpenCloseSwipeGallery : ContentPage
 	{
@@ -54,7 +52,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Swip
 
 			var swipeItem = new SwipeItem
 			{
-				BackgroundColor = Colors.Red,
+				BackgroundColor = Color.Red,
 				IconImageSource = "calculator.png",
 				Text = "File"
 			};
@@ -67,7 +65,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Swip
 
 			var swipeContent = new Grid
 			{
-				BackgroundColor = Colors.Gray
+				BackgroundColor = Color.Gray
 			};
 
 			var fileSwipeLabel = new Label

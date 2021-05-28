@@ -8,7 +8,6 @@ using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Microsoft.Maui.Controls.Compatibility.UITests;
@@ -33,13 +32,13 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			On<Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
 
 			pageCountLabel = new Label() { AutomationId = "PageCount" };
-			var popButton1 = new Button() { Text = "Pop", BackgroundColor = Colors.Blue };
+			var popButton1 = new Button() { Text = "Pop", BackgroundColor = Color.Blue };
 			popButton1.Clicked += (s, a) => Navigation.PopModalAsync();
 
-			var popButton2 = new Button() { Text = "Pop 2", BackgroundColor = Colors.Blue };
+			var popButton2 = new Button() { Text = "Pop 2", BackgroundColor = Color.Blue };
 			popButton2.Clicked += (s, a) => Navigation.PopModalAsync();
 
-			var longerTest = new Button() { Text = "Manual Color Tests", BackgroundColor = Colors.Blue };
+			var longerTest = new Button() { Text = "Manual Color Tests", BackgroundColor = Color.Blue };
 
 			Children.Add(new ContentPage() { Title = "Page 1", Content = popButton1, IconImageSource = "coffee.png" });
 			Children.Add(new ContentPage() { Title = "Page 2", Content = popButton2, IconImageSource = "bank.png" });
@@ -55,14 +54,14 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				Text = "Change Bar Text",
 				Command = new Command(() =>
 				{
-					if (BarTextColor == null)
+					if (BarTextColor == Color.Default)
 					{
-						BarTextColor = Colors.HotPink;
+						BarTextColor = Color.HotPink;
 						btnChangeBarText.Text = $"Bar Text: HotPink";
 					}
 					else
 					{
-						BarTextColor = null;
+						BarTextColor = Color.Default;
 						btnChangeBarText.Text = $"Bar Text: Default";
 					}
 				})
@@ -74,14 +73,14 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				Text = "Change Item Color",
 				Command = new Command(() =>
 				{
-					if (On<Android>().Element.UnselectedTabColor == null)
+					if (On<Android>().Element.UnselectedTabColor == Color.Default)
 					{
 						On<Android>().Element.UnselectedTabColor = new Color(0, 255, 0, 128);
 						btnChangeBarItemColorText.Text = $"Item Color: Less Green";
 					}
 					else
 					{
-						On<Android>().Element.UnselectedTabColor = null;
+						On<Android>().Element.UnselectedTabColor = Color.Default;
 						btnChangeBarItemColorText.Text = $"Item Color: Default";
 					}
 				})
@@ -93,14 +92,14 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				Text = "Change Selected Item Color",
 				Command = new Command(() =>
 				{
-					if (On<Android>().Element.SelectedTabColor == null)
+					if (On<Android>().Element.SelectedTabColor == Color.Default)
 					{
-						On<Android>().Element.SelectedTabColor = Colors.Green;
+						On<Android>().Element.SelectedTabColor = Color.Green;
 						btnChangeBarSelectedItemColorText.Text = $"Selected Item Color: Green";
 					}
 					else
 					{
-						On<Android>().Element.SelectedTabColor = null;
+						On<Android>().Element.SelectedTabColor = Color.Default;
 						btnChangeBarSelectedItemColorText.Text = $"Selected Item Color: Default";
 					}
 				})
@@ -147,10 +146,10 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 							Text = "Change Bar Background Color",
 							Command = new Command(()=>
 							{
-								if(BarBackgroundColor == null)
-									BarBackgroundColor = Colors.Fuchsia;
+								if(BarBackgroundColor == Color.Default)
+									BarBackgroundColor = Color.Fuchsia;
 								else
-									BarBackgroundColor = null;
+									BarBackgroundColor = Color.Default;
 							})
 						},
 						btnAddPage,

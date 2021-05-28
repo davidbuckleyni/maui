@@ -79,7 +79,7 @@ namespace Microsoft.Maui.Controls
 		}
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
-		public DragStartingEventArgs SendDragStarting(IView element)
+		public DragStartingEventArgs SendDragStarting(VisualElement element)
 		{
 			var args = new DragStartingEventArgs();
 

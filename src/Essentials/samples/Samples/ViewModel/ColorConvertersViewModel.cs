@@ -1,9 +1,7 @@
 using System;
 using System.Windows.Input;
-using Microsoft.Maui;
-using Microsoft.Maui.Controls;
 using Microsoft.Maui.Essentials;
-using Microsoft.Maui.Graphics;
+using Xamarin.Forms;
 
 namespace Samples.ViewModel
 {
@@ -85,12 +83,12 @@ namespace Samples.ViewModel
 		{
 			try
 			{
-				var color = Color.FromArgb(Hex);
+				var color = ColorConverters.FromHex(Hex);
 				RegularColor = color;
-				AlphaColor = color.WithAlpha(Alpha / 255f);
-				SaturationColor = color.WithSaturation(Saturation / 255f);
-				HueColor = color.WithHue(Hue / 255f);
-				LuminosityColor = color.WithLuminosity(Luminosity / 255f);
+				AlphaColor = color.WithAlpha(Alpha);
+				SaturationColor = color.WithSaturation(Saturation);
+				HueColor = color.WithHue(Hue);
+				LuminosityColor = color.WithLuminosity(Luminosity);
 				ComplementColor = color.GetComplementary();
 				OnPropertyChanged(nameof(RegularColor));
 				OnPropertyChanged(nameof(AlphaColor));

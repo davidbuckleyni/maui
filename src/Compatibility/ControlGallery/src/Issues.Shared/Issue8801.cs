@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 
 #if UITEST
@@ -91,7 +90,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			public PopupStackLayout()
 			{
 				this.viewPositionService = DependencyService.Get<IViewPositionService>();
-				this.BackgroundColor = Colors.Red;
+				this.BackgroundColor = Color.Red;
 
 				showButton = new Button()
 				{
@@ -104,7 +103,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				{
 					BindingContext = this.BindingContext,
 					AutomationId = Guid.NewGuid().ToString(),
-					BackgroundColor = Colors.Blue,
+					BackgroundColor = Color.Blue,
 					IsVisible = false,
 					Margin = this.Margin,
 					HorizontalOptions = LayoutOptions.Start,

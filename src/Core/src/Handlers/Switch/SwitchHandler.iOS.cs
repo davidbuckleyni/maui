@@ -4,7 +4,7 @@ using RectangleF = CoreGraphics.CGRect;
 
 namespace Microsoft.Maui.Handlers
 {
-	public partial class SwitchHandler : ViewHandler<ISwitch, UISwitch>
+	public partial class SwitchHandler : AbstractViewHandler<ISwitch, UISwitch>
 	{
 		static UIColor? DefaultOnTrackColor;
 		static UIColor? DefaultOffTrackColor;
@@ -32,19 +32,19 @@ namespace Microsoft.Maui.Handlers
 			DefaultThumbColor = UISwitch.Appearance.ThumbTintColor;
 		}
 
-		public static void MapIsOn(SwitchHandler handler, ISwitch view)
+		public static void MapIsToggled(SwitchHandler handler, ISwitch view)
 		{
-			handler.NativeView?.UpdateIsOn(view);
+			handler.TypedNativeView?.UpdateIsToggled(view);
 		}
 
 		public static void MapTrackColor(SwitchHandler handler, ISwitch view)
 		{
-			handler.NativeView?.UpdateTrackColor(view, DefaultOnTrackColor, DefaultOffTrackColor);
+			handler.TypedNativeView?.UpdateTrackColor(view, DefaultOnTrackColor, DefaultOffTrackColor);
 		}
 
 		public static void MapThumbColor(SwitchHandler handler, ISwitch view)
 		{
-			handler.NativeView?.UpdateThumbColor(view, DefaultThumbColor);
+			handler.TypedNativeView?.UpdateThumbColor(view, DefaultThumbColor);
 		}
 
 		void OnControlValueChanged(object? sender, EventArgs e)
@@ -52,8 +52,8 @@ namespace Microsoft.Maui.Handlers
 			if (VirtualView == null)
 				return;
 
-			if (NativeView != null)
-				VirtualView.IsOn = NativeView.On;
+			if (TypedNativeView != null)
+				VirtualView.IsToggled = TypedNativeView.On;
 		}
 	}
 }

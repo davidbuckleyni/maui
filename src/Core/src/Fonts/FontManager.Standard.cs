@@ -1,11 +1,8 @@
-﻿#nullable enable
-using Microsoft.Extensions.Logging;
-
-namespace Microsoft.Maui
+﻿namespace Microsoft.Maui
 {
 	public class FontManager : IFontManager
 	{
-		public FontManager(IFontRegistrar fontRegistrar, ILogger<FontManager>? logger = null)
+		public FontManager(IFontRegistrar fontRegistrar)
 		{
 		}
 	}

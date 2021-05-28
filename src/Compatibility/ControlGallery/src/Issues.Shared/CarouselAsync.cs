@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using NUnit.Framework;
@@ -24,7 +23,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		{
 			Children.Add(new ContentPage
 			{
-				BackgroundColor = Colors.Red,
+				BackgroundColor = Color.Red,
 				Content = new Label
 				{
 					Text = "Page One"
@@ -32,7 +31,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			});
 			Children.Add(new ContentPage
 			{
-				BackgroundColor = Colors.Green,
+				BackgroundColor = Color.Green,
 				Content = new Label
 				{
 					Text = "Page Two"
@@ -50,7 +49,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				{
 					page.Children.Add(new ContentPage
 					{
-						BackgroundColor = Colors.Blue,
+						BackgroundColor = Color.Blue,
 						Content = new Label
 						{
 							Text = "Page Two - Added"
@@ -58,7 +57,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					});
 					page.Children.Add(new ContentPage
 					{
-						BackgroundColor = Colors.Gray,
+						BackgroundColor = Color.Gray,
 						Content = new Label
 						{
 							Text = "Page Three - Added"

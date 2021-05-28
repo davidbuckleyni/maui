@@ -73,7 +73,7 @@ namespace Microsoft.Maui.Controls.Compatibility.UITests
 		{
 			foreach (var page in rootPages)
 			{
-#if WINDOWS
+#if __WINDOWS__
 				App.ScrollDownTo(page.ButtonId, "ChoosePageScrollView");
 #else
 				var scrollViewArea = App.Query(q => q.Marked("ChoosePageScrollView")).First().Rect;

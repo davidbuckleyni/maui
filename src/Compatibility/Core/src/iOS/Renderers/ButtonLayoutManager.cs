@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 using CoreGraphics;
 using Foundation;
-using Microsoft.Maui.Platform.iOS;
 using UIKit;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
@@ -108,8 +107,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 			if (_disposed || _renderer == null || _element == null || control == null)
 				return;
 
-			control.TitleLabel.LineBreakMode = _element.LineBreakMode switch
-			{
+			control.TitleLabel.LineBreakMode = _element.LineBreakMode switch {
 				LineBreakMode.NoWrap => UILineBreakMode.Clip,
 				LineBreakMode.WordWrap => UILineBreakMode.WordWrap,
 				LineBreakMode.CharacterWrap => UILineBreakMode.CharacterWrap,
@@ -211,17 +209,17 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 			var normal =
 				control
 					.GetAttributedTitle(UIControlState.Normal)
-					.WithCharacterSpacing(_element.CharacterSpacing);
+					.AddCharacterSpacing(text, _element.CharacterSpacing);
 
 			var highlighted =
 				control
 					.GetAttributedTitle(UIControlState.Highlighted)
-					.WithCharacterSpacing(_element.CharacterSpacing);
+					.AddCharacterSpacing(text, _element.CharacterSpacing);
 
 			var disabled =
 				control
 					.GetAttributedTitle(UIControlState.Disabled)
-					.WithCharacterSpacing(_element.CharacterSpacing);
+					.AddCharacterSpacing(text, _element.CharacterSpacing);
 
 			normal.AddAttribute(
 				UIStringAttributeKey.ForegroundColor,

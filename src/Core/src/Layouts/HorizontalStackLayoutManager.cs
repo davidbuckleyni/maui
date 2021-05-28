@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Layouts
 {
@@ -12,7 +11,9 @@ namespace Microsoft.Maui.Layouts
 
 		public override Size Measure(double widthConstraint, double heightConstraint)
 		{
-			var measure = Measure(heightConstraint, Stack.Spacing, Stack.Children);
+			var heightMeasureConstraint = ResolveConstraints(heightConstraint, Stack.Height);
+
+			var measure = Measure(heightMeasureConstraint, Stack.Spacing, Stack.Children);
 
 			var finalWidth = ResolveConstraints(widthConstraint, Stack.Width, measure.Width);
 
@@ -41,13 +42,7 @@ namespace Microsoft.Maui.Layouts
 			for (int n = 0; n < views.Count; n++)
 			{
 				var child = views[n];
-
-				if (child.Visibility == Visibility.Collapsed)
-				{
-					continue;
-				}
-
-				var measure = child.Measure(double.PositiveInfinity, heightConstraint);
+				var measure = child.IsMeasureValid ? child.DesiredSize : child.Measure(double.PositiveInfinity, heightConstraint);
 				totalRequestedWidth += measure.Width;
 				requestedHeight = Math.Max(requestedHeight, measure.Height);
 			}
@@ -65,12 +60,6 @@ namespace Microsoft.Maui.Layouts
 			for (int n = 0; n < views.Count; n++)
 			{
 				var child = views[n];
-
-				if (child.Visibility == Visibility.Collapsed)
-				{
-					continue;
-				}
-
 				xPosition += ArrangeChild(child, height, spacing, xPosition);
 			}
 		}
@@ -82,12 +71,6 @@ namespace Microsoft.Maui.Layouts
 			for (int n = views.Count - 1; n >= 0; n--)
 			{
 				var child = views[n];
-
-				if (child.Visibility == Visibility.Collapsed)
-				{
-					continue;
-				}
-
 				xPostition += ArrangeChild(child, height, spacing, xPostition);
 			}
 		}

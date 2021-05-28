@@ -3,7 +3,7 @@ using UIKit;
 
 namespace Microsoft.Maui.Handlers
 {
-	public partial class SliderHandler : ViewHandler<ISlider, UISlider>
+	public partial class SliderHandler : AbstractViewHandler<ISlider, UISlider>
 	{
 		static UIColor? DefaultMinTrackColor;
 		static UIColor? DefaultMaxTrackColor;
@@ -34,40 +34,40 @@ namespace Microsoft.Maui.Handlers
 
 		public static void MapMinimum(SliderHandler handler, ISlider slider)
 		{
-			handler.NativeView?.UpdateMinimum(slider);
+			handler.TypedNativeView?.UpdateMinimum(slider);
 		}
 
 		public static void MapMaximum(SliderHandler handler, ISlider slider)
 		{
-			handler.NativeView?.UpdateMaximum(slider);
+			handler.TypedNativeView?.UpdateMaximum(slider);
 		}
 
 		public static void MapValue(SliderHandler handler, ISlider slider)
 		{
-			handler.NativeView?.UpdateValue(slider);
+			handler.TypedNativeView?.UpdateValue(slider);
 		}
 
 		public static void MapMinimumTrackColor(SliderHandler handler, ISlider slider)
 		{
-			handler.NativeView?.UpdateMinimumTrackColor(slider, DefaultMinTrackColor);
+			handler.TypedNativeView?.UpdateMinimumTrackColor(slider, DefaultMinTrackColor);
 		}
 
 		public static void MapMaximumTrackColor(SliderHandler handler, ISlider slider)
 		{
-			handler.NativeView?.UpdateMaximumTrackColor(slider, DefaultMaxTrackColor);
+			handler.TypedNativeView?.UpdateMaximumTrackColor(slider, DefaultMaxTrackColor);
 		}
 
 		public static void MapThumbColor(SliderHandler handler, ISlider slider)
 		{
-			handler.NativeView?.UpdateThumbColor(slider, DefaultThumbColor);
+			handler.TypedNativeView?.UpdateThumbColor(slider, DefaultThumbColor);
 		}
 
 		void OnControlValueChanged(object? sender, EventArgs eventArgs)
 		{
-			if (NativeView == null || VirtualView == null)
+			if (TypedNativeView == null || VirtualView == null)
 				return;
 
-			VirtualView.Value = NativeView.Value;
+			VirtualView.Value = TypedNativeView.Value;
 		}
 
 		void OnTouchDownControlEvent(object? sender, EventArgs e)

@@ -6,7 +6,6 @@ using Microsoft.Maui.Controls.Compatibility.ControlGallery.iOS;
 using Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues;
 using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
-using Microsoft.Maui.Graphics;
 
 [assembly: ExportRenderer(typeof(Issue11132Control), typeof(_11132CustomRenderer))]
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.iOS
@@ -22,8 +21,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.iOS
             if (layer != null)
             {
                 layer.BorderWidth = 10;
-                layer.BorderColor = Colors.Red.ToCGColor();
-                layer.BackgroundColor = Colors.Orange.ToCGColor();
+                layer.BorderColor = Color.Red.ToCGColor();
+                layer.BackgroundColor = Color.Orange.ToCGColor();
 
                 var width = 100;
                 var height = 25;

@@ -6,7 +6,6 @@ using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Microsoft.Maui.Controls.Compatibility.UITests;
@@ -23,8 +22,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 	[Issue(IssueTracker.None, 618, "Transparent Overlays", PlatformAffected.All)]
 	public class TransparentOverlayTests : TestNavigationPage
 	{
-		readonly Color _transparentColor = Colors.Transparent;
-		readonly Color _nontransparentColor = Colors.Blue;
+		readonly Color _transparentColor = Color.Transparent;
+		readonly Color _nontransparentColor = Color.Blue;
 
 		double _transparentOpacity = 0;
 		double _nonTransparentOpacity = 0.2;

@@ -156,7 +156,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			base.OnDisappearing();
 		}
 
-#if UITEST && WINDOWS
+#if UITEST && __WINDOWS__
 		[Test]
 		public void LabelsInListViewTemplatesShouldBeCollected()
 		{

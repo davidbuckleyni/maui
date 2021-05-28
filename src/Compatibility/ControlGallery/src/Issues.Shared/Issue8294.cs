@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -50,20 +49,20 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 		void LoadDark()
 		{
-			BarTextColor = Colors.White;
-			BarBackgroundColor = Colors.Black;
+			BarTextColor = Color.White;
+			BarBackgroundColor = Color.Black;
 			CurrentPage.Title = "Dark NavBar";
 
-			System.Diagnostics.Debug.WriteLine($"BarTextColor.Luminosity: {BarTextColor.GetLuminosity()}");
+			System.Diagnostics.Debug.WriteLine($"BarTextColor.Luminosity: {BarTextColor.Luminosity}");
 		}
 
 		void LoadLight()
 		{
-			BarTextColor = Colors.Black;
-			BarBackgroundColor = Colors.White;
+			BarTextColor = Color.Black;
+			BarBackgroundColor = Color.White;
 			CurrentPage.Title = "Light NavBar";
 
-			System.Diagnostics.Debug.WriteLine($"BarTextColor.Luminosity: {BarTextColor.GetLuminosity()}");
+			System.Diagnostics.Debug.WriteLine($"BarTextColor.Luminosity: {BarTextColor.Luminosity}");
 		}
 	}
 }

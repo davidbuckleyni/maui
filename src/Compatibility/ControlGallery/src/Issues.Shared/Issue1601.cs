@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -27,7 +26,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star });
 			grid.RowDefinitions.Add(new RowDefinition { Height = 40 });
 
-			var boxView = new BoxView { BackgroundColor = Colors.Red };
+			var boxView = new BoxView { BackgroundColor = Color.Red };
 			var backgroundContainer = new Grid();
 			Microsoft.Maui.Controls.CompressedLayout.SetIsHeadless(backgroundContainer, true);
 			backgroundContainer.Children.Add(boxView);

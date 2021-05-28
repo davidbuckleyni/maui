@@ -1,5 +1,4 @@
 ﻿using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -15,8 +14,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 		{
 			var scenarioLabel = new Label
 			{
-				BackgroundColor = Colors.Blue,
-				TextColor = Colors.White,
+				BackgroundColor = Color.Blue,
+				TextColor = Color.White,
 				HorizontalTextAlignment = TextAlignment.Center,
 				HeightRequest = 25,
 				AutomationId = ScenarioId
@@ -26,8 +25,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 
 			var renderTimeLabel = new Label
 			{
-				BackgroundColor = Colors.Black,
-				TextColor = Colors.White,
+				BackgroundColor = Color.Black,
+				TextColor = Color.White,
 				HorizontalTextAlignment = TextAlignment.Center,
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				HeightRequest = 25,
@@ -37,8 +36,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 
 			var expectedLabel = new Label
 			{
-				BackgroundColor = Colors.Black,
-				TextColor = Colors.White,
+				BackgroundColor = Color.Black,
+				TextColor = Color.White,
 				HorizontalTextAlignment = TextAlignment.Center,
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				HeightRequest = 25,
@@ -48,8 +47,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 
 			var outcomeLabel = new Label
 			{
-				BackgroundColor = Colors.Black,
-				TextColor = Colors.White,
+				BackgroundColor = Color.Black,
+				TextColor = Color.White,
 				HorizontalTextAlignment = TextAlignment.Center,
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				HeightRequest = 25,

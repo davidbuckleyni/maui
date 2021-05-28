@@ -2,7 +2,6 @@
 using System.Collections.ObjectModel;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Microsoft.Maui.Controls.Compatibility.UITests;
@@ -29,8 +28,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				var btn = new Button
 				{
 					Text = "Close",
-					TextColor = Colors.White,
-					BackgroundColor = Colors.Red,
+					TextColor = Color.White,
+					BackgroundColor = Color.Red,
 					VerticalOptions = LayoutOptions.End
 				};
 				btn.Clicked += OnCloseClicked;
@@ -48,15 +47,15 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		{
 			Items = new ObservableCollection<ModelIssue10300>(new[]
 															{
-																new ModelIssue10300("1", Colors.Aqua),
-																new ModelIssue10300("2", Colors.BlueViolet),
-																new ModelIssue10300("3", Colors.Coral),
-																new ModelIssue10300("4", Colors.DarkGoldenrod),
-																new ModelIssue10300("5", Colors.Fuchsia),
-																new ModelIssue10300("6", Colors.Gold),
-																new ModelIssue10300("7", Colors.HotPink),
-																new ModelIssue10300("8", Colors.IndianRed),
-																new ModelIssue10300("9", Colors.Khaki),
+																new ModelIssue10300("1", Color.Aqua),
+																new ModelIssue10300("2", Color.BlueViolet),
+																new ModelIssue10300("3", Color.Coral),
+																new ModelIssue10300("4", Color.DarkGoldenrod),
+																new ModelIssue10300("5", Color.Fuchsia),
+																new ModelIssue10300("6", Color.Gold),
+																new ModelIssue10300("7", Color.HotPink),
+																new ModelIssue10300("8", Color.IndianRed),
+																new ModelIssue10300("9", Color.Khaki),
 															});
 			carousel = new CarouselView();
 			carousel.ItemTemplate = new DataTemplate(() =>
@@ -91,14 +90,14 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var btn = new Button
 			{
 				Text = "Delete",
-				BackgroundColor = Colors.Red,
-				TextColor = Colors.White
+				BackgroundColor = Color.Red,
+				TextColor = Color.White
 			};
 			var btnAdd = new Button
 			{
 				Text = "Add",
-				BackgroundColor = Colors.Red,
-				TextColor = Colors.White
+				BackgroundColor = Color.Red,
+				TextColor = Color.White
 			};
 			btn.Clicked += OnDeleteClicked;
 			Grid.SetRow(btn, 1);
@@ -143,7 +142,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 		void OnAddClicked(object sender, EventArgs e)
 		{
-			Items.Insert(0, new ModelIssue10300("0", Colors.PaleGreen));
+			Items.Insert(0, new ModelIssue10300("0", Color.PaleGreen));
 		}
 
 #if UITEST

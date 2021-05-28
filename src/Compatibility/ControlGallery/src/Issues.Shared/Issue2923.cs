@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -22,13 +21,13 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var tabOne = new ContentPage
 			{
 				Title = "Page One",
-				BackgroundColor = Colors.Blue,
+				BackgroundColor = Color.Blue,
 			};
 
 			var tabTwo = new ContentPage
 			{
 				Title = "Page Two",
-				BackgroundColor = Colors.Red,
+				BackgroundColor = Color.Red,
 				Content = new Label
 				{
 					AutomationId = "SecondPageLabel",
@@ -49,7 +48,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					Children.Add(new ContentPage
 					{
 						Title = "Reset page",
-						BackgroundColor = Colors.Green,
+						BackgroundColor = Color.Green,
 						Content = new Label
 						{
 							AutomationId = "ResetPageLabel",

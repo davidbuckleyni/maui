@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -15,7 +14,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		{
 			var grid = new Grid
 			{
-				BackgroundColor = Colors.BurlyWood
+				BackgroundColor = Color.BurlyWood
 			};
 
 			var defaultEditor = new Editor
@@ -26,7 +25,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var transparentEditor = new Editor
 			{
 				Text = "I'm a transparent Editor!",
-				BackgroundColor = Colors.Transparent
+				BackgroundColor = Color.Transparent
 			};
 			Grid.SetRow(transparentEditor, 1);
 

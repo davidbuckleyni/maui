@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Maui.Controls.Core.UnitTests;
-using Microsoft.Maui.Graphics;
 using NUnit.Framework;
 
 namespace Microsoft.Maui.Controls.Xaml.UnitTests
@@ -34,7 +33,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 		public void ContentPageWithMissingClass()
 		{
 			var xaml = @"
-				<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+				<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms""
 					xmlns:x=""http://schemas.microsoft.com/winfx/2006/xaml""
 					x:Class=""Microsoft.Maui.Controls.Xaml.UnitTests.CustomView""
 				/>";
@@ -46,7 +45,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 		public void ViewWithMissingClass()
 		{
 			var xaml = @"
-				<ContentView xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+				<ContentView xmlns=""http://xamarin.com/schemas/2014/forms""
 					xmlns:x=""http://schemas.microsoft.com/winfx/2006/xaml""
 					x:Class=""Microsoft.Maui.Controls.Xaml.UnitTests.CustomView""
 				/>";
@@ -60,7 +59,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 			XamlLoader.FallbackTypeResolver = (p, type) => type ?? typeof(MockView);
 
 			var xaml = @"
-				<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+				<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms""
 					xmlns:local=""clr-namespace:MissingNamespace;assembly=MissingAssembly""
 					xmlns:x=""http://schemas.microsoft.com/winfx/2006/xaml"">
 					<ContentPage.Content>
@@ -78,7 +77,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 			XamlLoader.FallbackTypeResolver = (p, type) => type;
 
 			var xaml = @"
-					<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+					<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms""
 						xmlns:local=""clr-namespace:MissingNamespace;assembly=MissingAssembly""
 						xmlns:x=""http://schemas.microsoft.com/winfx/2006/xaml"">
 						<ContentPage.Content>
@@ -107,7 +106,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 			};
 
 			var xaml = @"
-				<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+				<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms""
 					xmlns:local=""clr-namespace:MissingNamespace;assembly=MissingAssembly""
 					xmlns:x=""http://schemas.microsoft.com/winfx/2006/xaml"">
 					<ContentPage.Content>
@@ -133,7 +132,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 			};
 
 			var xaml = @"
-				<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+				<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms""
 					xmlns:local=""clr-namespace:MissingNamespace;assembly=MissingAssembly""
 					xmlns:x=""http://schemas.microsoft.com/winfx/2006/xaml"">
 					<ContentPage.Content>
@@ -158,7 +157,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 			};
 
 			var xaml = @"
-				<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+				<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms""
 					xmlns:local=""clr-namespace:MissingNamespace;assembly=MissingAssembly""
 					xmlns:x=""http://schemas.microsoft.com/winfx/2009/xaml"">
 					<ContentPage.Resources>
@@ -171,7 +170,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 
 			var page = (ContentPage)XamlLoader.Create(xaml, true);
 			Assert.That(page.Content, Is.TypeOf<Button>());
-			Assert.That(page.Content.BackgroundColor, Is.EqualTo(Colors.Red));
+			Assert.That(page.Content.BackgroundColor, Is.EqualTo(Color.Red));
 		}
 
 		[Test]
@@ -188,7 +187,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 			};
 
 			var xaml = @"
-				<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+				<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms""
 					xmlns:local=""clr-namespace:MissingNamespace;assembly=MissingAssembly"">
 					<ContentPage.Resources>
 						<Style TargetType=""local:MyCustomButton"">
@@ -202,7 +201,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 
 			var myButton = (Button)page.Content;
 
-			Assert.That(myButton.BackgroundColor, Is.EqualTo(Colors.Red));
+			Assert.That(myButton.BackgroundColor, Is.EqualTo(Color.Red));
 		}
 
 		[Test]
@@ -218,7 +217,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 			};
 
 			var xaml = @"
-				<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+				<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms""
 					xmlns:local=""clr-namespace:MissingNamespace;assembly=MissingAssembly"">
 					<ContentPage.Resources>
 						<Style TargetType=""Button"">
@@ -233,7 +232,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 			var myButton = (Button)page.Content;
 
 			//Button Style shouldn't apply to MyCustomButton
-			Assert.That(myButton.BackgroundColor, Is.Not.EqualTo(Colors.Red));
+			Assert.That(myButton.BackgroundColor, Is.Not.EqualTo(Color.Red));
 		}
 
 		[Test]
@@ -250,7 +249,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 			};
 
 			var xaml = @"
-				<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+				<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms""
 					xmlns:local=""clr-namespace:MissingNamespace;assembly=MissingAssembly"">
 					<ContentPage.Resources>
 						<Style TargetType=""local:MyCustomButton"">
@@ -265,7 +264,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 			var myButton = (Button)page.Content;
 
 			//MyCustomButton Style should not be applied
-			Assert.That(myButton.BackgroundColor, Is.Not.EqualTo(Colors.Red));
+			Assert.That(myButton.BackgroundColor, Is.Not.EqualTo(Color.Red));
 		}
 
 		[Test]
@@ -281,7 +280,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 			};
 
 			var xaml = @"
-				<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+				<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms""
 					xmlns:local=""clr-namespace:MissingNamespace;assembly=MissingAssembly"">
 					<ContentPage.Resources>
 						<Style TargetType=""Button"" ApplyToDerivedTypes=""True"">
@@ -296,7 +295,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 			var myButton = (Button)page.Content;
 
 			//Button Style should apply to MyCustomButton
-			Assert.That(myButton.BackgroundColor, Is.EqualTo(Colors.Red));
+			Assert.That(myButton.BackgroundColor, Is.EqualTo(Color.Red));
 		}
 
 		[Test]
@@ -306,7 +305,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 				(p.Any(i => i.TypeName == "MyCustomButton`1") ? typeof(ProxyGenericButton<>) : typeof(MockView));
 
 			var xaml = @"
-				<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+				<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms""
 					xmlns:local=""clr-namespace:MissingNamespace;assembly=MissingAssembly""
 					xmlns:x=""http://schemas.microsoft.com/winfx/2009/xaml"">
 					<local:MyCustomButton x:TypeArguments=""local:MyCustomType"" />
@@ -326,7 +325,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 #pragma warning restore 0618 // Type or member is obsolete
 
 			var xaml = @"
-				<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+				<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms""
 					xmlns:local=""clr-namespace:MissingNamespace;assembly=MissingAssembly""
 					xmlns:x=""http://schemas.microsoft.com/winfx/2009/xaml"">
 					<local:MyCustomButton x:TypeArguments=""local:MyCustomType"" />
@@ -343,7 +342,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 			XamlLoader.FallbackTypeResolver = (p, type) => type ?? typeof(MockView);
 
 			var xaml = @"
-				<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+				<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms""
 					xmlns:local=""clr-namespace:MissingNamespace;assembly=MissingAssembly"">
 					<local:MyCustomButton Bar=""{local:Foo}"" />
 				</ContentPage>";
@@ -358,7 +357,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 			XamlLoader.FallbackTypeResolver = (p, type) => type ?? typeof(MockView);
 
 			var xaml = @"
-				<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+				<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms""
 					xmlns:x=""http://schemas.microsoft.com/winfx/2009/xaml""
 					xmlns:local=""clr-namespace:MissingNamespace;assembly=MissingAssembly"">
 					<Button Text=""{local:Foo}"" />
@@ -372,7 +371,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 		public void StaticResourceKeyInApp()
 		{
 			var app = @"
-				<Application xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+				<Application xmlns=""http://xamarin.com/schemas/2014/forms""
 					xmlns:x=""http://schemas.microsoft.com/winfx/2009/xaml"">
 					<Application.Resources>
 						<ResourceDictionary>
@@ -386,20 +385,20 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 			Application.Current = (Application)XamlLoader.Create(app, true);
 
 			var xaml = @"
-				<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui"">
+				<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms"">
 					<Button Style=""{StaticResource StyleInApp}"" />
 				</ContentPage>";
 
 			var page = (ContentPage)XamlLoader.Create(xaml, true);
 			Assert.That(page.Content, Is.TypeOf<Button>());
-			Assert.That(page.Content.BackgroundColor, Is.EqualTo(Colors.HotPink));
+			Assert.That(page.Content.BackgroundColor, Is.EqualTo(Color.HotPink));
 		}
 
 		[Test]
 		public void StaticResourceKeyNotFound()
 		{
 			var xaml = @"
-				<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui"">
+				<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms"">
 					<Button Style=""{StaticResource MissingStyle}"" />
 				</ContentPage>";
 
@@ -430,7 +429,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 			};
 
 			var xaml = @"
-				<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+				<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms""
 					xmlns:local=""clr-namespace:MissingNamespace;assembly=MissingAssembly"">
 					<ContentPage.Resources>
 						<StyleSheet>
@@ -448,7 +447,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 
 			var myButton = (Button)page.Content;
 
-			Assert.That(myButton.BackgroundColor, Is.EqualTo(Colors.Blue));
+			Assert.That(myButton.BackgroundColor, Is.EqualTo(Color.Blue));
 		}
 
 		[Test]
@@ -468,7 +467,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 			};
 
 			var xaml = @"
-				<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+				<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms""
 					xmlns:local=""clr-namespace:MissingNamespace;assembly=MissingAssembly"">
 					<ContentPage.Resources>
 						<StyleSheet>
@@ -490,8 +489,8 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 			var button = ((StackLayout)page.Content).Children[0];
 			var myButton = ((StackLayout)page.Content).Children[1];
 
-			Assert.That(button.BackgroundColor, Is.EqualTo(Colors.Red));
-			Assert.That(myButton.BackgroundColor, Is.Not.EqualTo(Colors.Red));
+			Assert.That(button.BackgroundColor, Is.EqualTo(Color.Red));
+			Assert.That(myButton.BackgroundColor, Is.Not.EqualTo(Color.Red));
 		}
 
 		[Test]
@@ -506,7 +505,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 				}
 			};
 			var xaml = @"
-				<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui"">
+				<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms"">
 					<ContentPage.Resources>
 						<StyleSheet>
 							<![CDATA[
@@ -523,14 +522,14 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 
 			var myButton = (Button)page.Content;
 
-			Assert.That(myButton.BackgroundColor, Is.Not.EqualTo(Colors.Blue));
+			Assert.That(myButton.BackgroundColor, Is.Not.EqualTo(Color.Blue));
 		}
 
 		[Test]
 		public void CanProvideInstanceWhenInstantiationThrows()
 		{
 			var xaml = @"
-					<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+					<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms""
 						xmlns:x=""http://schemas.microsoft.com/winfx/2009/xaml""
 						xmlns:local=""clr-namespace:Microsoft.Maui.Controls.Xaml.UnitTests;assembly=Microsoft.Maui.Controls.Xaml.UnitTests""
 						xmlns:missing=""clr-namespace:MissingNamespace;assembly=MissingAssembly"">
@@ -559,7 +558,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 		public void CanProvideInstanceWhenReplacedTypeConstructorInvalid()
 		{
 			var xaml = @"
-						<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+						<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms""
 							xmlns:x=""http://schemas.microsoft.com/winfx/2009/xaml""
 							xmlns:local=""clr-namespace:Microsoft.Maui.Controls.Xaml.UnitTests;assembly=Microsoft.Maui.Controls.Xaml.UnitTests"">
 							<StackLayout>
@@ -575,7 +574,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 		public void CanIgnoreSettingPropertyThatThrows()
 		{
 			var xaml = @"
-					<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+					<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms""
 						xmlns:x=""http://schemas.microsoft.com/winfx/2009/xaml""
 						xmlns:local=""clr-namespace:Microsoft.Maui.Controls.Xaml.UnitTests;assembly=Microsoft.Maui.Controls.Xaml.UnitTests"">
 						<local:SettingPropertyThrows TestValue=""Test"" TestBP=""bar""/>
@@ -593,7 +592,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 		public void IgnoreConverterException()
 		{
 			var xaml = @"
-					<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+					<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms""
 						xmlns:x=""http://schemas.microsoft.com/winfx/2009/xaml""
 						xmlns:local=""clr-namespace:Microsoft.Maui.Controls.Xaml.UnitTests;assembly=Microsoft.Maui.Controls.Xaml.UnitTests"">
 						<Label BackgroundColor=""AlmostPink"" />
@@ -611,7 +610,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 		public void IgnoreMarkupExtensionException()
 		{
 			var xaml = @"
-						<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+						<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms""
 							xmlns:x=""http://schemas.microsoft.com/winfx/2009/xaml""
 								xmlns:local=""clr-namespace:Microsoft.Maui.Controls.Xaml.UnitTests;assembly=Microsoft.Maui.Controls.Xaml.UnitTests"">
 								<StackLayout>
@@ -644,7 +643,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 			};
 
 			var xaml = @"
-						<local:MissingType xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+						<local:MissingType xmlns=""http://xamarin.com/schemas/2014/forms""
 							xmlns:x=""http://schemas.microsoft.com/winfx/2009/xaml""
 							xmlns:local=""clr-namespace:my.namespace;assembly=my.assembly"">
 						</local:MissingType>";
@@ -671,7 +670,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 			};
 
 			var xaml = @"
-						<local:MissingType xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+						<local:MissingType xmlns=""http://xamarin.com/schemas/2014/forms""
 							xmlns:x=""http://schemas.microsoft.com/winfx/2009/xaml""
 							xmlns:local=""using:my.namespace"">
 						</local:MissingType>";
@@ -686,7 +685,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 		public void IgnoreNamedMissingTypeException()
 		{
 			var xaml = @"
-					<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+					<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms""
 						xmlns:x=""http://schemas.microsoft.com/winfx/2009/xaml""
 						xmlns:local=""clr-namespace:Microsoft.Maui.Controls.Xaml.UnitTests;assembly=Microsoft.Maui.Controls.Xaml.UnitTests"">
 						<StackLayout>
@@ -707,7 +706,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 		public void IgnoreFindByNameInvalidCastException()
 		{
 			var xaml = @"
-						<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+						<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms""
 							xmlns:x=""http://schemas.microsoft.com/winfx/2009/xaml"">
 							<Label x:Name=""MyName"" />
 						</ContentPage>";
@@ -725,7 +724,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 		public void TextAsRandomContent()
 		{
 			var xaml = @"
-						<ContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+						<ContentPage xmlns=""http://xamarin.com/schemas/2014/forms""
 							xmlns:x=""http://schemas.microsoft.com/winfx/2009/xaml""
 								xmlns:local=""clr-namespace:Microsoft.Maui.Controls.Xaml.UnitTests;assembly=Microsoft.Maui.Controls.Xaml.UnitTests"">
 								<StackLayout>
@@ -747,7 +746,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 		public void MissingGenericRootTypeProvidesCorrectTypeName()
 		{
 			var xaml = @"
-					<local:GenericContentPage xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+					<local:GenericContentPage xmlns=""http://xamarin.com/schemas/2014/forms""
 						xmlns:x=""http://schemas.microsoft.com/winfx/2009/xaml""
 						xmlns:local=""clr-namespace:MissingNamespace""
 						x:TypeArguments=""x:Object"" />";

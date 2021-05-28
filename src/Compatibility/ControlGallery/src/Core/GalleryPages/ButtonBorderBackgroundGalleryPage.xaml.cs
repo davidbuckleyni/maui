@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.Maui.Controls.Xaml;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -27,7 +26,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 					void SetBackground(View view)
 					{
 						if (view is Button button && !button.IsSet(Button.BackgroundColorProperty))
-							view.BackgroundColor = Colors.LightGray;
+							view.BackgroundColor = Color.LightGray;
 
 						if (view is Layout layout)
 						{

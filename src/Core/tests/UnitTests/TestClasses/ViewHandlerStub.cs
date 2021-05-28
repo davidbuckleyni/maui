@@ -1,7 +1,7 @@
 using Microsoft.Maui.Handlers;
-namespace Microsoft.Maui.UnitTests
+namespace Microsoft.Maui.Tests
 {
-	class ViewHandlerStub : ViewHandler<IViewStub, NativeViewStub>
+	class ViewHandlerStub : AbstractViewHandler<IViewStub, NativeViewStub>
 	{
 		public static PropertyMapper<IViewStub, ViewHandlerStub> MockViewMapper = new PropertyMapper<IViewStub, ViewHandlerStub>(ViewHandler.ViewMapper)
 		{

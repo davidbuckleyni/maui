@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -33,8 +32,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var instructions = new Label
 			{
 				Padding = 12,
-				BackgroundColor = Colors.Black,
-				TextColor = Colors.White,
+				BackgroundColor = Color.Black,
+				TextColor = Color.White,
 				Text = "Without exception, this test has passed."
 			};
 
@@ -62,7 +61,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					{
 						new Span()
 						{
-							TextColor = Colors.Red,
+							TextColor = Color.Red,
 							Text = "🔔🌀 Issue 11272 (Using TextColor)",
 						}
 					}

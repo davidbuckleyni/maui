@@ -47,8 +47,11 @@ namespace Microsoft.Maui.Controls
 			else
 			{
 				bindable.SetValue(FontFamilyProperty, font.FontFamily);
-				bindable.SetValue(FontSizeProperty, font.FontSize);
-				bindable.SetValue(FontAttributesProperty, font.GetFontAttributes());
+				if (font.UseNamedSize)
+					bindable.SetValue(FontSizeProperty, Device.GetNamedSize(font.NamedSize, bindable.GetType(), true));
+				else
+					bindable.SetValue(FontSizeProperty, font.FontSize);
+				bindable.SetValue(FontAttributesProperty, font.FontAttributes);
 			}
 			SetCancelEvents(bindable, false);
 		}
@@ -67,7 +70,7 @@ namespace Microsoft.Maui.Controls
 			if (fontFamily != null)
 				bindable.SetValue(FontProperty, Font.OfSize(fontFamily, fontSize).WithAttributes(fontAttributes));
 			else
-				bindable.SetValue(FontProperty, Font.SystemFontOfSize(fontSize).WithAttributes(fontAttributes));
+				bindable.SetValue(FontProperty, Font.SystemFontOfSize(fontSize, fontAttributes));
 
 			SetCancelEvents(bindable, false);
 			((IFontElement)bindable).OnFontFamilyChanged((string)oldValue, (string)newValue);
@@ -87,7 +90,7 @@ namespace Microsoft.Maui.Controls
 			if (fontFamily != null)
 				bindable.SetValue(FontProperty, Font.OfSize(fontFamily, fontSize).WithAttributes(fontAttributes));
 			else
-				bindable.SetValue(FontProperty, Font.SystemFontOfSize(fontSize).WithAttributes(fontAttributes));
+				bindable.SetValue(FontProperty, Font.SystemFontOfSize(fontSize, fontAttributes));
 
 			SetCancelEvents(bindable, false);
 			((IFontElement)bindable).OnFontSizeChanged((double)oldValue, (double)newValue);
@@ -112,7 +115,7 @@ namespace Microsoft.Maui.Controls
 			if (fontFamily != null)
 				bindable.SetValue(FontProperty, Font.OfSize(fontFamily, fontSize).WithAttributes(fontAttributes));
 			else
-				bindable.SetValue(FontProperty, Font.SystemFontOfSize(fontSize).WithAttributes(fontAttributes));
+				bindable.SetValue(FontProperty, Font.SystemFontOfSize(fontSize, fontAttributes));
 
 			SetCancelEvents(bindable, false);
 			((IFontElement)bindable).OnFontAttributesChanged((FontAttributes)oldValue, (FontAttributes)newValue);

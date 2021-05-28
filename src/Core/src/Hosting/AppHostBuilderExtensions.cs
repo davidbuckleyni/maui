@@ -1,79 +1,70 @@
-#nullable enable
 using System;
 using System.Collections.Generic;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Maui.Handlers;
 using Microsoft.Maui.Hosting.Internal;
 
 namespace Microsoft.Maui.Hosting
 {
-	public static partial class AppHostBuilderExtensions
+	public static class AppHostBuilderExtensions
 	{
-		static readonly Dictionary<Type, Type> DefaultMauiHandlers = new Dictionary<Type, Type>
+		public static IAppHostBuilder RegisterHandlers(this IAppHostBuilder builder, Dictionary<Type, Type> handlers)
 		{
-			{ typeof(IActivityIndicator), typeof(ActivityIndicatorHandler) },
-			{ typeof(IButton), typeof(ButtonHandler) },
-			{ typeof(ICheckBox), typeof(CheckBoxHandler) },
-			{ typeof(IDatePicker), typeof(DatePickerHandler) },
-			{ typeof(IEditor), typeof(EditorHandler) },
-			{ typeof(IEntry), typeof(EntryHandler) },
-			{ typeof(IImage), typeof(ImageHandler) },
-			{ typeof(ILabel), typeof(LabelHandler) },
-			{ typeof(ILayout), typeof(LayoutHandler) },
-			{ typeof(IPicker), typeof(PickerHandler) },
-			{ typeof(IProgress), typeof(ProgressBarHandler) },
-			{ typeof(ISearchBar), typeof(SearchBarHandler) },
-			{ typeof(ISlider), typeof(SliderHandler) },
-			{ typeof(IStepper), typeof(StepperHandler) },
-			{ typeof(ISwitch), typeof(SwitchHandler) },
-			{ typeof(ITimePicker), typeof(TimePickerHandler) },
-			{ typeof(IPage), typeof(PageHandler) },
-		};
+			foreach (var handler in handlers)
+			{
+				builder.ConfigureHandlers((context, handlersCollection) => handlersCollection.AddTransient(handler.Key, handler.Value));
+			}
 
-		public static IAppHostBuilder ConfigureMauiHandlers(this IAppHostBuilder builder, Action<IMauiHandlersCollection> configureDelegate)
-		{
-			builder.ConfigureServices<HandlerCollectionBuilder>((_, handlers) => configureDelegate(handlers));
 			return builder;
 		}
 
-		public static IAppHostBuilder ConfigureMauiHandlers(this IAppHostBuilder builder, Action<HostBuilderContext, IMauiHandlersCollection> configureDelegate)
+		public static IAppHostBuilder RegisterHandler(this IAppHostBuilder builder, Type viewType, Type handlerType)
 		{
-			builder.ConfigureServices<HandlerCollectionBuilder>(configureDelegate);
+			builder.ConfigureHandlers((context, handlersCollection) => handlersCollection.AddTransient(viewType, handlerType));
+			return builder;
+		}
+
+		public static IAppHostBuilder RegisterHandler<TType, TTypeRender>(this IAppHostBuilder builder)
+			where TType : IFrameworkElement
+			where TTypeRender : IViewHandler
+		{
+			builder.ConfigureHandlers((context, handlersCollection) => handlersCollection.AddTransient(typeof(TType), typeof(TTypeRender)));
+
 			return builder;
 		}
 
 		public static IAppHostBuilder UseMauiHandlers(this IAppHostBuilder builder)
 		{
-			builder.ConfigureMauiHandlers((_, handlersCollection) => handlersCollection.AddHandlers(DefaultMauiHandlers));
+			builder.RegisterHandlers(new Dictionary<Type, Type>
+			{
+				{ typeof(IActivityIndicator), typeof(ActivityIndicatorHandler) },
+				{ typeof(IButton), typeof(ButtonHandler) },
+				{ typeof(ICheckBox), typeof(CheckBoxHandler) },
+		{ typeof(IDatePicker), typeof(DatePickerHandler) },
+				{ typeof(IEditor), typeof(EditorHandler) },
+				{ typeof(IEntry), typeof(EntryHandler) },
+				{ typeof(ILabel), typeof(LabelHandler) },
+				{ typeof(ILayout), typeof(LayoutHandler) },
+				{ typeof(IPicker), typeof(PickerHandler) },
+				{ typeof(IProgress), typeof(ProgressBarHandler) },
+				{ typeof(ISearchBar), typeof(SearchBarHandler) },
+				{ typeof(ISlider), typeof(SliderHandler) },
+				{ typeof(IStepper), typeof(StepperHandler) },
+				{ typeof(ISwitch), typeof(SwitchHandler) },
+				{ typeof(ITimePicker), typeof(TimePickerHandler) },
+			});
+
 			return builder;
 		}
 
-		public static IAppHostBuilder ConfigureServices(this IAppHostBuilder builder, Action<IServiceCollection> configureDelegate)
+		public static IAppHostBuilder UseFonts(this IAppHostBuilder builder)
 		{
-			builder.ConfigureServices((_, services) => configureDelegate(services));
-			return builder;
-		}
-
-		public static IAppHostBuilder ConfigureServices<TBuilder>(this IAppHostBuilder builder, Action<TBuilder> configureDelegate)
-			where TBuilder : IMauiServiceBuilder, new()
-		{
-			builder.ConfigureServices<TBuilder>((_, services) => configureDelegate(services));
-			return builder;
-		}
-
-		public static IAppHostBuilder ConfigureServices<TBuilder>(this IAppHostBuilder builder)
-			where TBuilder : IMauiServiceBuilder, new()
-		{
-			builder.ConfigureServices<TBuilder>((_, services) => { });
-			return builder;
-		}
-
-		public static IAppHostBuilder ConfigureAppConfiguration(this IAppHostBuilder builder, Action<IConfigurationBuilder> configureDelegate)
-		{
-			builder.ConfigureAppConfiguration((_, config) => configureDelegate(config));
+			builder.ConfigureServices((context, collection) =>
+			{
+				collection.AddSingleton<IEmbeddedFontLoader, EmbeddedFontLoader>();
+				collection.AddSingleton<IFontRegistrar>(provider => new FontRegistrar(provider.GetRequiredService<IEmbeddedFontLoader>()));
+				collection.AddSingleton<IFontManager>(provider => new FontManager(provider.GetRequiredService<IFontRegistrar>()));
+			});
 			return builder;
 		}
 
@@ -101,36 +92,6 @@ namespace Microsoft.Maui.Hosting
 		{
 			builder.UseServiceProviderFactory(new MauiServiceProviderFactory(constructorInjection));
 			return builder;
-		}
-
-		public static IAppHostBuilder UseMicrosoftExtensionsServiceProviderFactory(this IAppHostBuilder builder)
-		{
-			builder.UseServiceProviderFactory(new DIExtensionsServiceProviderFactory());
-			return builder;
-		}
-
-		// To use the Microsoft.Extensions.DependencyInjection ServiceCollection and not the MAUI one
-		class DIExtensionsServiceProviderFactory : IServiceProviderFactory<ServiceCollection>
-		{
-			public ServiceCollection CreateBuilder(IServiceCollection services)
-				=> new ServiceCollection { services };
-
-			public IServiceProvider CreateServiceProvider(ServiceCollection containerBuilder)
-				=> containerBuilder.BuildServiceProvider();
-		}
-
-		class HandlerCollectionBuilder : MauiHandlersCollection, IMauiServiceBuilder
-		{
-			public void ConfigureServices(HostBuilderContext context, IServiceCollection services)
-			{
-				var provider = new MauiHandlersServiceProvider(this);
-
-				services.AddSingleton<IMauiHandlersServiceProvider>(provider);
-			}
-
-			public void Configure(HostBuilderContext context, IServiceProvider services)
-			{
-			}
 		}
 	}
 }

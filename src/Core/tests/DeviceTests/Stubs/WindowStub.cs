@@ -1,7 +1,8 @@
 ﻿namespace Microsoft.Maui.DeviceTests.Stubs
 {
-	public class WindowStub : StubBase, IWindow
+	public class WindowStub : IWindow
 	{
-		public IView View { get; set; }
+		public IMauiContext MauiContext { get; set; }
+		public IPage Page { get; set; }
 	}
 }

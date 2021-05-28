@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -33,8 +32,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			var instructions = new Label
 			{
-				BackgroundColor = Colors.Black,
-				TextColor = Colors.White,
+				BackgroundColor = Color.Black,
+				TextColor = Color.White,
 				Text = "Toggle the Switch. If the text below is underline, the test has passed."
 			};
 

@@ -1,8 +1,8 @@
+using Foundation;
 using System;
 using System.Collections.Specialized;
-using Foundation;
-using Microsoft.Maui.Controls.Internals;
 using UIKit;
+using Microsoft.Maui.Controls.Internals;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 {

@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Maui.Controls.Build.Tasks;
-using Microsoft.Maui.Graphics;
 using Mono.Cecil;
 using NUnit.Framework;
 
@@ -92,7 +91,6 @@ namespace Microsoft.Maui.Controls.XamlcUnitTests
 			resolver.AddAssembly(Uri.UnescapeDataString((new UriBuilder(typeof(IList<>).Assembly.CodeBase)).Path));
 			resolver.AddAssembly(Uri.UnescapeDataString((new UriBuilder(typeof(Queue<>).Assembly.CodeBase)).Path));
 			resolver.AddAssembly(Uri.UnescapeDataString((new UriBuilder(typeof(IViewHandler).Assembly.CodeBase)).Path));
-			resolver.AddAssembly(Uri.UnescapeDataString((new UriBuilder(typeof(Color).Assembly.CodeBase)).Path));
 
 			module = ModuleDefinition.CreateModule("foo", new ModuleParameters
 			{

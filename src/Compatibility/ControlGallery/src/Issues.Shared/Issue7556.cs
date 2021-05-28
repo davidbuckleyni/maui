@@ -2,7 +2,6 @@
 using System.Linq;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 
 #if UITEST
@@ -31,11 +30,11 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				{
 					Children =
 					{
-						new Label() { Margin = 20, Text = "Flyout Visible", TextColor = Colors.White }
+						new Label() { Margin = 20, Text = "Flyout Visible", TextColor = Color.White }
 					}
 				},
 				Title = "Flyout",
-				BackgroundColor = Colors.Blue
+				BackgroundColor = Color.Blue
 			};
 
 			Detail = new NavigationPage(new DetailsPage(this) { Title = "Details" });

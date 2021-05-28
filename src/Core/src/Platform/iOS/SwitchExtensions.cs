@@ -1,13 +1,13 @@
-﻿using System.Linq;
+using System.Linq;
 using UIKit;
 
 namespace Microsoft.Maui
 {
 	public static class SwitchExtensions
 	{
-		public static void UpdateIsOn(this UISwitch uiSwitch, ISwitch view)
+		public static void UpdateIsToggled(this UISwitch uiSwitch, ISwitch view)
 		{
-			uiSwitch.SetState(view.IsOn, true);
+			uiSwitch.SetState(view.IsToggled, true);
 		}
 
 		public static void UpdateTrackColor(this UISwitch uiSwitch, ISwitch view, UIColor? defaultOnTrackColor, UIColor? defaultOffTrackColor)
@@ -15,7 +15,7 @@ namespace Microsoft.Maui
 			if (view == null)
 				return;
 
-			if (view.TrackColor == null)
+			if (view.TrackColor == Maui.Color.Default)
 				uiSwitch.OnTintColor = defaultOnTrackColor;
 			else
 				uiSwitch.OnTintColor = view.TrackColor.ToNative();
@@ -26,7 +26,7 @@ namespace Microsoft.Maui
 			else
 				uIView = uiSwitch.Subviews[0].Subviews[0].Subviews[0];
 
-			if (view.TrackColor == null)
+			if (view.TrackColor == Maui.Color.Default)
 				uIView.BackgroundColor = defaultOffTrackColor;
 			else
 				uIView.BackgroundColor = uiSwitch.OnTintColor;
@@ -37,8 +37,8 @@ namespace Microsoft.Maui
 			if (view == null)
 				return;
 
-			Graphics.Color thumbColor = view.ThumbColor;
-			uiSwitch.ThumbTintColor = thumbColor?.ToNative() ?? defaultThumbColor;
+			Maui.Color thumbColor = view.ThumbColor;
+			uiSwitch.ThumbTintColor = thumbColor.IsDefault ? defaultThumbColor : thumbColor.ToNative();
 		}
 
 		internal static UIView GetTrackSubview(this UISwitch uISwitch)

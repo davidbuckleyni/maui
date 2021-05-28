@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using Android.Content;
 using Android.Content.Res;
@@ -7,8 +7,6 @@ using Android.Text;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
-using Color = Microsoft.Maui.Graphics.Color;
-using Size = Microsoft.Maui.Graphics.Size;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 {
@@ -24,7 +22,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 		float _lastTextSize = -1f;
 		Typeface _lastTypeface;
 
-		Color _lastUpdateColor = null;
+		Color _lastUpdateColor = Color.Default;
 		FormsTextView _view;
 		bool _wasFormatted;
 
@@ -183,7 +181,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 				return;
 			_lastUpdateColor = c;
 
-			if (c == null)
+			if (c.IsDefault)
 				_view.SetTextColor(_labelTextColorDefault);
 			else
 				_view.SetTextColor(c.ToAndroid());
@@ -201,7 +199,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 				_lastTypeface = newTypeface;
 			}
 
-			float newTextSize = (float)f.FontSize;
+			float newTextSize = f.ToScaledPixel();
 			if (newTextSize != _lastTextSize)
 			{
 				_view.SetTextSize(ComplexUnitType.Sp, newTextSize);
@@ -281,7 +279,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 				if (_wasFormatted)
 				{
 					_view.SetTextColor(_labelTextColorDefault);
-					_lastUpdateColor = null;
+					_lastUpdateColor = Color.Default;
 				}
 
 				switch (Element.TextType)

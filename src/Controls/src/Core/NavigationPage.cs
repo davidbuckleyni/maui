@@ -1,14 +1,13 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls
 {
-	public partial class NavigationPage : Page, IPageContainer<Page>, IBarElement, INavigationPageController, IElementConfiguration<NavigationPage>
+	public class NavigationPage : Page, IPageContainer<Page>, IBarElement, INavigationPageController, IElementConfiguration<NavigationPage>
 	{
 		public static readonly BindableProperty BackButtonTitleProperty = BindableProperty.CreateAttached("BackButtonTitle", typeof(string), typeof(Page), null);
 
@@ -25,7 +24,7 @@ namespace Microsoft.Maui.Controls
 
 		public static readonly BindableProperty TitleIconImageSourceProperty = BindableProperty.CreateAttached("TitleIconImageSource", typeof(ImageSource), typeof(NavigationPage), default(ImageSource));
 
-		public static readonly BindableProperty IconColorProperty = BindableProperty.CreateAttached("IconColor", typeof(Color), typeof(NavigationPage), null);
+		public static readonly BindableProperty IconColorProperty = BindableProperty.CreateAttached("IconColor", typeof(Color), typeof(NavigationPage), Color.Default);
 
 		public static readonly BindableProperty TitleViewProperty = BindableProperty.CreateAttached("TitleView", typeof(View), typeof(NavigationPage), null, propertyChanging: TitleViewPropertyChanging);
 
@@ -34,8 +33,6 @@ namespace Microsoft.Maui.Controls
 
 		static readonly BindablePropertyKey RootPagePropertyKey = BindableProperty.CreateReadOnly(nameof(RootPage), typeof(Page), typeof(NavigationPage), null);
 		public static readonly BindableProperty RootPageProperty = RootPagePropertyKey.BindableProperty;
-
-		INavigationPageController NavigationPageController => this;
 
 		public NavigationPage()
 		{
@@ -88,7 +85,8 @@ namespace Microsoft.Maui.Controls
 		[EditorBrowsable(EditorBrowsableState.Never)]
 		public IEnumerable<Page> Pages => InternalChildren.Cast<Page>();
 
-		int INavigationPageController.StackDepth
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public int StackDepth
 		{
 			get { return InternalChildren.Count; }
 		}
@@ -152,7 +150,7 @@ namespace Microsoft.Maui.Controls
 		{
 			if (bindable == null)
 			{
-				return null;
+				return Color.Default;
 			}
 
 			return (Color)bindable.GetValue(IconColorProperty);
@@ -177,7 +175,7 @@ namespace Microsoft.Maui.Controls
 				else
 					CurrentNavigationTask = tcs.Task;
 
-				var result = await (this as INavigationPageController).PopAsyncInner(animated, false);
+				var result = await PopAsyncInner(animated, false);
 				tcs.SetResult(true);
 				return result;
 			}
@@ -280,7 +278,7 @@ namespace Microsoft.Maui.Controls
 			if (CurrentPage.SendBackButtonPressed())
 				return true;
 
-			if (NavigationPageController.StackDepth > 1)
+			if (StackDepth > 1)
 			{
 				SafePop();
 				return true;
@@ -289,50 +287,35 @@ namespace Microsoft.Maui.Controls
 			return base.OnBackButtonPressed();
 		}
 
-		EventHandler<NavigationRequestedEventArgs> _insertPageBeforeRequested;
-		event EventHandler<NavigationRequestedEventArgs> INavigationPageController.InsertPageBeforeRequested
-		{
-			add => _insertPageBeforeRequested += value;
-			remove => _insertPageBeforeRequested -= value;
-		}
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public event EventHandler<NavigationRequestedEventArgs> InsertPageBeforeRequested;
 
-
-		internal async Task<Page> PopAsyncInner(
-			bool animated,
-			bool fast,
-			bool requestedFromHandler)
+		[EditorBrowsable(EditorBrowsableState.Never)]
+		public async Task<Page> PopAsyncInner(bool animated, bool fast)
 		{
-			if (NavigationPageController.StackDepth == 1)
+			if (StackDepth == 1)
 			{
 				return null;
 			}
 
 			var page = (Page)InternalChildren.Last();
-			return await RemoveAsyncInner(page, animated, fast, requestedFromHandler);
+
+			return await (this as INavigationPageController).RemoveAsyncInner(page, animated, fast);
 		}
 
-		internal async Task<Page> RemoveAsyncInner(
-			Page page,
-			bool animated,
-			bool fast,
-			bool requestedFromHandler)
+		async Task<Page> INavigationPageController.RemoveAsyncInner(Page page, bool animated, bool fast)
 		{
-			if (NavigationPageController.StackDepth == 1)
+			if (StackDepth == 1)
 			{
 				return null;
 			}
-
-			FireDisappearing(page);
-
-			if (InternalChildren.Last() == page)
-				FireAppearing((Page)InternalChildren[NavigationPageController.StackDepth - 2]);
 
 			var args = new NavigationRequestedEventArgs(page, animated);
 
 			var removed = true;
 
 			EventHandler<NavigationRequestedEventArgs> requestPop = PopRequested;
-			if (requestPop != null && !requestedFromHandler)
+			if (requestPop != null)
 			{
 				requestPop(this, args);
 
@@ -351,16 +334,6 @@ namespace Microsoft.Maui.Controls
 				Popped(this, args);
 
 			return page;
-		}
-
-		Task<Page> INavigationPageController.PopAsyncInner(bool animated, bool fast)
-		{
-			return PopAsyncInner(animated, fast, false);
-		}
-
-		Task<Page> INavigationPageController.RemoveAsyncInner(Page page, bool animated, bool fast)
-		{
-			return RemoveAsyncInner(page, animated, fast, false);
 		}
 
 		[EditorBrowsable(EditorBrowsableState.Never)]
@@ -389,7 +362,8 @@ namespace Microsoft.Maui.Controls
 			if (InternalChildren.Contains(page))
 				throw new ArgumentException("Cannot insert page which is already in the navigation stack");
 
-			_insertPageBeforeRequested?.Invoke(this, new NavigationRequestedEventArgs(page, before, false));
+			EventHandler<NavigationRequestedEventArgs> handler = InsertPageBeforeRequested;
+			handler?.Invoke(this, new NavigationRequestedEventArgs(page, before, false));
 
 			int index = InternalChildren.IndexOf(before);
 			InternalChildren.Insert(index, page);
@@ -404,11 +378,8 @@ namespace Microsoft.Maui.Controls
 
 		async Task PopToRootAsyncInner(bool animated)
 		{
-			if (NavigationPageController.StackDepth == 1)
+			if (StackDepth == 1)
 				return;
-
-			FireDisappearing(CurrentPage);
-			FireAppearing((Page)InternalChildren[0]);
 
 			Element[] childrenToRemove = InternalChildren.Skip(1).ToArray();
 			foreach (Element child in childrenToRemove)
@@ -430,25 +401,10 @@ namespace Microsoft.Maui.Controls
 			PoppedToRoot?.Invoke(this, new PoppedToRootEventArgs(RootPage, childrenToRemove.OfType<Page>().ToList()));
 		}
 
-		void FireDisappearing(Page page)
-		{
-			if (HasAppeared)
-				page?.SendDisappearing();
-		}
-
-		void FireAppearing(Page page)
-		{
-			if (HasAppeared)
-				page?.SendAppearing();
-		}
-
 		async Task PushAsyncInner(Page page, bool animated)
 		{
 			if (InternalChildren.Contains(page))
 				return;
-
-			FireDisappearing(CurrentPage);
-			FireAppearing(page);
 
 			PushPage(page);
 

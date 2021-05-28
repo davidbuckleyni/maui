@@ -1,15 +1,13 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls
 {
-	[ContentProperty(nameof(Text))]
+	[ContentProperty("Text")]
 	public partial class Label : View, IFontElement, ITextElement, ITextAlignmentElement, ILineHeightElement, IElementConfiguration<Label>, IDecorableTextElement, IPaddingElement
 	{
 		public static readonly BindableProperty HorizontalTextAlignmentProperty = TextAlignmentElement.HorizontalTextAlignmentProperty;
@@ -236,7 +234,7 @@ namespace Microsoft.Maui.Controls
 			InvalidateMeasureInternal(InvalidationTrigger.MeasureChanged);
 		}
 
-		void SetupSpans(IEnumerable spans)
+		void SetupSpans(System.Collections.IEnumerable spans)
 		{
 			foreach (Span span in spans)
 			{
@@ -245,14 +243,14 @@ namespace Microsoft.Maui.Controls
 			}
 		}
 
-		void SetupSpanGestureRecognizers(IEnumerable gestureRecognizers)
+		void SetupSpanGestureRecognizers(System.Collections.IEnumerable gestureRecognizers)
 		{
 			foreach (GestureRecognizer gestureRecognizer in gestureRecognizers)
 				GestureController.CompositeGestureRecognizers.Add(new ChildGestureRecognizer() { GestureRecognizer = gestureRecognizer });
 		}
 
 
-		void RemoveSpans(IEnumerable spans)
+		void RemoveSpans(System.Collections.IEnumerable spans)
 		{
 			foreach (Span span in spans)
 			{
@@ -261,7 +259,7 @@ namespace Microsoft.Maui.Controls
 			}
 		}
 
-		void RemoveSpanGestureRecognizers(IEnumerable gestureRecognizers)
+		void RemoveSpanGestureRecognizers(System.Collections.IEnumerable gestureRecognizers)
 		{
 			foreach (GestureRecognizer gestureRecognizer in gestureRecognizers)
 				foreach (var spanRecognizer in GestureController.CompositeGestureRecognizers.ToList())

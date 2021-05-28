@@ -1,11 +1,10 @@
 using System;
-using System.ComponentModel;
 using System.Linq;
-using System.Threading.Tasks;
-using Foundation;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Microsoft.Maui.Graphics;
 using UIKit;
+using Foundation;
+using System.Threading.Tasks;
+using System.ComponentModel;
+using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 {
@@ -32,7 +31,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 				{
 					Color modalBkgndColor = ((Page)_modal.Element).BackgroundColor;
 
-					if (modalBkgndColor?.Alpha > 0)
+					if (modalBkgndColor.A > 0)
 						result = UIKit.UIModalPresentationStyle.OverFullScreen;
 				}
 
@@ -174,7 +173,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 			if (ModalPresentationStyle == UIKit.UIModalPresentationStyle.FullScreen)
 			{
 				Color modalBkgndColor = ((Page)_modal.Element).BackgroundColor;
-				View.BackgroundColor = modalBkgndColor?.ToUIColor() ?? ColorExtensions.BackgroundColor;
+				View.BackgroundColor = modalBkgndColor.IsDefault ? ColorExtensions.BackgroundColor : modalBkgndColor.ToUIColor();
 			}
 			else
 			{

@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.PlatformSpecificsGalleries
 {
@@ -28,7 +27,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Plat
 					minimal,
 					new StackLayout()
 					{
-						BackgroundColor = Colors.Red,
+						BackgroundColor = Color.Red,
 						Children =
 						{
 							prominentBackground,

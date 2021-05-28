@@ -6,7 +6,6 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls
 {
@@ -82,26 +81,19 @@ namespace Microsoft.Maui.Controls
 			=> TextTransformUtilites.GetTransformedText(source, textTransform);
 
 		void IFontElement.OnFontFamilyChanged(string oldValue, string newValue) =>
-			HandleFontChanged();
+			InvalidateMeasureInternal(InvalidationTrigger.MeasureChanged);
 
 		void IFontElement.OnFontSizeChanged(double oldValue, double newValue) =>
-			HandleFontChanged();
+			InvalidateMeasureInternal(InvalidationTrigger.MeasureChanged);
 
 		void IFontElement.OnFontChanged(Font oldValue, Font newValue) =>
-			HandleFontChanged();
+			InvalidateMeasureInternal(InvalidationTrigger.MeasureChanged);
 
 		double IFontElement.FontSizeDefaultValueCreator() =>
 			Device.GetNamedSize(NamedSize.Default, (Picker)this);
 
 		void IFontElement.OnFontAttributesChanged(FontAttributes oldValue, FontAttributes newValue) =>
-			HandleFontChanged();
-
-		void HandleFontChanged()
-		{
-			// Null out the Maui font value so it will be recreated next time it's accessed
-			_font = null;
 			InvalidateMeasureInternal(InvalidationTrigger.MeasureChanged);
-		}
 
 		void ITextElement.OnTextTransformChanged(TextTransform oldValue, TextTransform newValue) =>
 			InvalidateMeasureInternal(InvalidationTrigger.MeasureChanged);
@@ -212,8 +204,6 @@ namespace Microsoft.Maui.Controls
 			// If the index has not changed, still need to change the selected item
 			if (newIndex == oldIndex)
 				UpdateSelectedItem(newIndex);
-			//This sends the notification to the Maui Handler to reload
-			OnPropertyChanged("Reload");
 		}
 
 		static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)

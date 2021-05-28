@@ -2,7 +2,6 @@ using System;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.Xaml;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -44,16 +43,16 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				myframe.CornerRadius = 10;
 		}
 
-		Color initialColor = null;
+		Color? initialColor = null;
 		void BackgroundButton_Clicked(object sender, EventArgs e)
 		{
-			if (initialColor != null)
+			if (!initialColor.HasValue)
 				initialColor = myframe.BackgroundColor;
 
-			if (myframe.BackgroundColor == initialColor)
-				myframe.BackgroundColor = Colors.HotPink;
+			if (myframe.BackgroundColor == initialColor.Value)
+				myframe.BackgroundColor = Color.HotPink;
 			else
-				myframe.BackgroundColor = initialColor;
+				myframe.BackgroundColor = initialColor.Value;
 		}
 #endif
 

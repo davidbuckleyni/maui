@@ -6,7 +6,6 @@ using Microsoft.Maui.Controls.Compatibility.ControlGallery.Android;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat;
 using Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues;
 using Microsoft.Maui.Controls.Compatibility;
-using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 
 [assembly: ExportRenderer(typeof(Issue1909.FlatButton), typeof(FlatButtonRenderer))]
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Android
@@ -31,7 +30,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Android
 					var nativeButton = (global::Android.Widget.Button)Control;
 					nativeButton.SetShadowLayer(0, 0, 0, global::Android.Graphics.Color.Transparent);
 
-					ElevationHelper.SetElevation(nativeButton, 0);
+					Microsoft.Maui.Controls.Compatibility.Platform.Android.ViewExtensions.SetElevation(nativeButton, 0);
 				}
 			}
 		}

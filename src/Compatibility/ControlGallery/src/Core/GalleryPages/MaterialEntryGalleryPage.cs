@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages
 {
@@ -26,22 +25,22 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages
 					new Entry()
 					{
 						Placeholder = "Green Placeholder",
-						PlaceholderColor = Colors.Green,
+						PlaceholderColor = Color.Green,
 					},
 					new Entry()
 					{
 						Placeholder = "Purple Placeholder",
-						PlaceholderColor = Colors.Purple,
+						PlaceholderColor = Color.Purple,
 					},
 					new Entry()
 					{
 						Text = "Green TextColor",
-						TextColor = Colors.Green
+						TextColor = Color.Green
 					},
 					new Entry()
 					{
 						Text = "Purple TextColor",
-						TextColor = Colors.Purple
+						TextColor = Color.Purple
 					},
 					new Entry()
 					{
@@ -52,12 +51,12 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages
 					new Entry()
 					{
 						Text = "Yellow BackgroundColor",
-						BackgroundColor = Colors.Yellow
+						BackgroundColor = Color.Yellow
 					},
 					new Entry()
 					{
 						Text = "Cyan BackgroundColor",
-						BackgroundColor = Colors.Cyan
+						BackgroundColor = Color.Cyan
 					},
 					new Button()
 					{

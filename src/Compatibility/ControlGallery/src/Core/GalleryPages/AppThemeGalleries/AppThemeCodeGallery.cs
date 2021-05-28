@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.AppThemeGalleries
 {
@@ -31,11 +30,11 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.AppT
 				Text = "TextColor through SetAppThemeColor"
 			};
 
-			onThemeLabel.SetBinding(Label.TextColorProperty, new AppThemeBinding() { Light = Colors.Green, Dark = Colors.Red });
+			onThemeLabel.SetBinding(Label.TextColorProperty, new AppThemeBinding() { Light = Color.Green, Dark = Color.Red });
 
-			onThemeLabel1.SetOnAppTheme(Label.TextColorProperty, Colors.Green, Colors.Red);
+			onThemeLabel1.SetOnAppTheme(Label.TextColorProperty, Color.Green, Color.Red);
 
-			onThemeLabel2.SetAppThemeColor(Label.TextColorProperty, Colors.Green, Colors.Red);
+			onThemeLabel2.SetAppThemeColor(Label.TextColorProperty, Color.Green, Color.Red);
 
 			var stackLayout = new StackLayout
 			{

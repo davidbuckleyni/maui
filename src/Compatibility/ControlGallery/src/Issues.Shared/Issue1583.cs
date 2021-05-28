@@ -2,7 +2,6 @@
 
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using NUnit.Framework;
@@ -21,7 +20,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		protected override void Init()
 		{
 			Title = "Test";
-			BackgroundColor = Colors.Pink;
+			BackgroundColor = Color.Pink;
 			Content = new Label { Text = "Hello", AutomationId = "lblHello" };
 			NavigationPage.SetTitleIconImageSource(this, "bank.png");
 		}

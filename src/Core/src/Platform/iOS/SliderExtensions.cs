@@ -28,7 +28,7 @@ namespace Microsoft.Maui
 
 		public static void UpdateMinimumTrackColor(this UISlider uiSlider, ISlider slider, UIColor? defaultMinTrackColor)
 		{
-			if (slider.MinimumTrackColor == null)
+			if (slider.MinimumTrackColor == Color.Default)
 			{
 				if (defaultMinTrackColor != null)
 					uiSlider.MinimumTrackTintColor = defaultMinTrackColor;
@@ -44,7 +44,7 @@ namespace Microsoft.Maui
 
 		public static void UpdateMaximumTrackColor(this UISlider uiSlider, ISlider slider, UIColor? defaultMaxTrackColor)
 		{
-			if (slider.MaximumTrackColor == null)
+			if (slider.MaximumTrackColor == Color.Default)
 				uiSlider.MaximumTrackTintColor = defaultMaxTrackColor;
 			else
 				uiSlider.MaximumTrackTintColor = slider.MaximumTrackColor.ToNative();
@@ -57,7 +57,7 @@ namespace Microsoft.Maui
 
 		public static void UpdateThumbColor(this UISlider uiSlider, ISlider slider, UIColor? defaultThumbColor)
 		{
-			if (slider.ThumbColor == null)
+			if (slider.ThumbColor == Color.Default)
 				uiSlider.ThumbTintColor = defaultThumbColor;
 			else
 				uiSlider.ThumbTintColor = slider.ThumbColor.ToNative();

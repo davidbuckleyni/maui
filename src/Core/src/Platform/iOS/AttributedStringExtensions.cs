@@ -39,9 +39,6 @@ namespace Microsoft.Maui
 				return null;
 
 			var mutableParagraphStyle = new NSMutableParagraphStyle();
-			if (attribute != null)
-				mutableParagraphStyle.SetParagraphStyle(attribute);
-
 			mutableParagraphStyle.LineHeightMultiple = new nfloat(lineHeight >= 0 ? lineHeight : -1);
 
 			var mutableAttributedString = new NSMutableAttributedString(attributedString);
@@ -72,11 +69,6 @@ namespace Microsoft.Maui
 
 			return mutable;
 		}
-
-		public static NSAttributedString? TrimToMaxLength(this NSAttributedString? attributedString, int maxLength) =>
-			maxLength >= 0 && attributedString?.Length > maxLength
-				? attributedString.Substring(0, maxLength)
-				: attributedString;
 
 		static void UpdateDecoration(NSMutableAttributedString attributedString, NSString key,
 			NSRange range, TextDecorations decorations)

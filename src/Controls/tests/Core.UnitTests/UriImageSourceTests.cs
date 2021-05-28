@@ -52,7 +52,7 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 		[Ignore("LoadImageFromStream")]
 		public void LoadImageFromStream()
 		{
-			IStreamImageSource loader = new UriImageSource
+			var loader = new UriImageSource
 			{
 				Uri = new Uri("http://foo.com/Images/crimson.jpg"),
 			};
@@ -65,7 +65,7 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 		[Ignore("SecondCallLoadFromCache")]
 		public void SecondCallLoadFromCache()
 		{
-			IStreamImageSource loader = new UriImageSource
+			var loader = new UriImageSource
 			{
 				Uri = new Uri("http://foo.com/Images/crimson.jpg"),
 			};
@@ -88,7 +88,7 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 		[Ignore("DoNotKeepFailedRetrieveInCache")]
 		public void DoNotKeepFailedRetrieveInCache()
 		{
-			IStreamImageSource loader = new UriImageSource
+			var loader = new UriImageSource
 			{
 				Uri = new Uri("http://foo.com/missing.png"),
 			};
@@ -107,7 +107,7 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 		[Ignore("ConcurrentCallsOnSameUriAreQueued")]
 		public void ConcurrentCallsOnSameUriAreQueued()
 		{
-			IStreamImageSource loader = new UriImageSource
+			var loader = new UriImageSource
 			{
 				Uri = new Uri("http://foo.com/Images/crimson.jpg"),
 			};

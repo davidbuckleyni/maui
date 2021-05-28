@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 #if UITEST
 using Xamarin.UITest;
 using NUnit.Framework;
@@ -125,7 +124,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			var menuList = new ListView
 			{
-				BackgroundColor = Colors.Transparent,
+				BackgroundColor = Color.Transparent,
 				ItemsSource = _pages,
 				ItemTemplate = new DataTemplate(typeof(TextCell))
 			};
@@ -133,7 +132,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			Flyout = new ContentPage
 			{
-				BackgroundColor = Color.FromArgb("363636"),
+				BackgroundColor = Color.FromHex("363636"),
 				Title = "Menu",
 				Content = menuList
 			};

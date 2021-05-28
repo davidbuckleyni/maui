@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.Maui.DeviceTests.Stubs;
-using Microsoft.Maui.Graphics;
+using Microsoft.Maui.Essentials;
 using Microsoft.Maui.Hosting;
 using Xunit;
 
@@ -17,19 +17,11 @@ namespace Microsoft.Maui.DeviceTests
 
 		public HandlerTestBase()
 		{
-			var appBuilder = AppHost
-				.CreateDefaultBuilder()
-				.ConfigureImageSources((ctx, services) =>
-				{
-					services.AddService<ICountedImageSourceStub, CountedImageSourceServiceStub>();
-				})
+			var appBuilder = AppHostBuilder
+				.CreateDefaultAppBuilder()
 				.ConfigureFonts((ctx, fonts) =>
 				{
 					fonts.AddFont("dokdo_regular.ttf", "Dokdo");
-					fonts.AddFont("LobsterTwo-Regular.ttf", "Lobster Two");
-					fonts.AddFont("LobsterTwo-Bold.ttf", "Lobster Two Bold");
-					fonts.AddFont("LobsterTwo-Italic.ttf", "Lobster Two Italic");
-					fonts.AddFont("LobsterTwo-BoldItalic.ttf", "Lobster Two BoldItalic");
 				});
 
 			_host = appBuilder.Build();
@@ -51,23 +43,17 @@ namespace Microsoft.Maui.DeviceTests
 
 		public IMauiContext MauiContext => _context;
 
-		protected THandler CreateHandler(IView view) =>
-			CreateHandler<THandler>(view);
+		public Task<T> InvokeOnMainThreadAsync<T>(Func<T> func) =>
+			MainThread.InvokeOnMainThreadAsync(func);
 
-		protected TCustomHandler CreateHandler<TCustomHandler>(IView view)
-			where TCustomHandler : THandler
-		{
-			var handler = Activator.CreateInstance<TCustomHandler>();
-			handler.SetMauiContext(MauiContext);
+		protected Task InvokeOnMainThreadAsync(Action action) =>
+			MainThread.InvokeOnMainThreadAsync(action);
 
-			handler.SetVirtualView(view);
-			view.Handler = handler;
+		protected Task InvokeOnMainThreadAsync(Func<Task> func) =>
+			MainThread.InvokeOnMainThreadAsync(func);
 
-			view.Arrange(new Rectangle(0, 0, view.Width, view.Height));
-			handler.NativeArrange(view.Frame);
-
-			return handler;
-		}
+		public Task<T> InvokeOnMainThreadAsync<T>(Func<Task<T>> func) =>
+			MainThread.InvokeOnMainThreadAsync(func);
 
 		protected async Task<THandler> CreateHandlerAsync(IView view)
 		{

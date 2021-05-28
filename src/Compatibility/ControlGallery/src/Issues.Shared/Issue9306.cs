@@ -2,7 +2,6 @@
 using System.Linq;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Microsoft.Maui.Controls.Compatibility.UITests;
@@ -93,11 +92,11 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				Content = new Label
 				{
 					Text = "Right",
-					TextColor = Colors.White,
+					TextColor = Color.White,
 					HorizontalOptions = LayoutOptions.Center,
 					VerticalOptions = LayoutOptions.Center
 				},
-				BackgroundColor = Colors.Green,
+				BackgroundColor = Color.Green,
 				WidthRequest = 80,
 				Command = new Command(() =>
 				{
@@ -116,7 +115,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				Content = new StackLayout
 				{
 					AutomationId = SwipeViewId,
-					BackgroundColor = Colors.LightSkyBlue,
+					BackgroundColor = Color.LightSkyBlue,
 					Children =
 					{
 						new Label

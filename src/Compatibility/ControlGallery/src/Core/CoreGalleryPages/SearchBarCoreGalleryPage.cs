@@ -1,5 +1,4 @@
 using Microsoft.Maui.Controls.CustomAttributes;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -36,7 +35,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 				new SearchBar
 				{
 					Placeholder = "Should have a red cancel button",
-					CancelButtonColor = Colors.Red
+					CancelButtonColor = Color.Red
 				}
 			);
 
@@ -77,10 +76,10 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 				new SearchBar { Placeholder = "I should be at the end", VerticalTextAlignment = TextAlignment.End });
 
 			var textColorContainer = new ViewContainer<SearchBar>(Test.SearchBar.TextColor,
-				new SearchBar { Text = "I should be red", TextColor = Colors.Red });
+				new SearchBar { Text = "I should be red", TextColor = Color.Red });
 
 			var placeholderColorContainer = new ViewContainer<SearchBar>(Test.SearchBar.PlaceholderColor,
-				new SearchBar { Placeholder = "I should be red", PlaceholderColor = Colors.Red });
+				new SearchBar { Placeholder = "I should be red", PlaceholderColor = Color.Red });
 
 			var keyboardContainer = new ViewContainer<SearchBar>(Test.InputView.Keyboard,
 				new SearchBar { Keyboard = Keyboard.Numeric });

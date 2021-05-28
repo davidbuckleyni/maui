@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Microsoft.Maui.Controls.Compatibility.UITests;
@@ -24,17 +23,17 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			var instructions = new Label
 			{
-				BackgroundColor = Colors.Black,
-				TextColor = Colors.White,
+				BackgroundColor = Color.Black,
+				TextColor = Color.White,
 				Text = "Check/uncheck the CheckBox to enable or disable the SwipeView."
 			};
 
-			var swipeItem = new SwipeItem { BackgroundColor = Colors.Red, Text = "Test", IconImageSource = "coffee.png" };
+			var swipeItem = new SwipeItem { BackgroundColor = Color.Red, Text = "Test", IconImageSource = "coffee.png" };
 
 			var swipeView = new SwipeView
 			{
 				HeightRequest = 60,
-				BackgroundColor = Colors.LightGray,
+				BackgroundColor = Color.LightGray,
 				LeftItems = new SwipeItems(new List<SwipeItem> { swipeItem })
 				{
 					Mode = SwipeMode.Execute
@@ -44,7 +43,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			var content = new Grid
 			{
-				BackgroundColor = Colors.LightGoldenrodYellow
+				BackgroundColor = Color.LightGoldenrodYellow
 			};
 
 			var info = new Label

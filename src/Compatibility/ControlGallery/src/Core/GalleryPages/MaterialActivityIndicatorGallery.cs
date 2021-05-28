@@ -1,5 +1,3 @@
-using Microsoft.Maui.Graphics;
-
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
 	public class MaterialActivityIndicatorGallery : ContentPage
@@ -11,7 +9,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			var activityIndicator = new ActivityIndicator()
 			{
 				IsRunning = false,
-				BackgroundColor = Colors.Red,
+				BackgroundColor = Color.Red,
 				HeightRequest = 50
 			};
 
@@ -50,7 +48,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			var content = new StackLayout
 			{
 				Children = { activityIndicator },
-				BackgroundColor = Colors.Blue
+				BackgroundColor = Color.Blue
 			};
 
 			var backgroundPanelPicker = new ColorPicker { Title = "Back panel Color", Color = content.BackgroundColor };
@@ -84,7 +82,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 					{
 						HeightRequest = 1,
 						Margin = new Thickness(-10, 0),
-						Color = Colors.Black
+						Color = Color.Black
 					},
 
 					content

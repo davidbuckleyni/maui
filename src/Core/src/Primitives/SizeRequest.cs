@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui
 {

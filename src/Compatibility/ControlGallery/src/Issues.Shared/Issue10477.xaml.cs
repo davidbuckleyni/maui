@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Microsoft.Maui.Controls.CustomAttributes;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Microsoft.Maui.Controls.Compatibility.UITests;
@@ -33,10 +32,10 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 		void Click()
 		{
-			if (BackgroundColor == Colors.DarkOrange)
-				BackgroundColor = Colors.Red;
+			if (BackgroundColor == Color.DarkOrange)
+				BackgroundColor = Color.Red;
 			else
-				BackgroundColor = Colors.DarkOrange;
+				BackgroundColor = Color.DarkOrange;
 		}
 	}
 }

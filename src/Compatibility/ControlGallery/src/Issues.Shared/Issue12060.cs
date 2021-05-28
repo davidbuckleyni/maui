@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.Text;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 
 #if UITEST
@@ -44,7 +43,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			{
 				HeightRequest = 200,
 				WidthRequest = 1000,
-				BackgroundColor = Colors.Purple,
+				BackgroundColor = Color.Purple,
 				GestureRecognizers =
 				{
 					drag
@@ -68,7 +67,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			{
 				HeightRequest = 200,
 				WidthRequest = 1000,
-				BackgroundColor = Colors.Pink,
+				BackgroundColor = Color.Pink,
 				AutomationId = "DropBox"
 			};
 

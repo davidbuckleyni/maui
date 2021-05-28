@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Microsoft.Maui.Controls.Compatibility.UITests;
@@ -42,7 +41,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				Visual = VisualMarker.Material,
 				Keyboard = Keyboard.Email,
 				Placeholder = "Email",
-				TextColor = Colors.Purple,
+				TextColor = Color.Purple,
 				AutomationId = Entry
 			};
 
@@ -51,7 +50,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				Visual = VisualMarker.Material,
 				IsPassword = true,
 				Placeholder = "Password",
-				TextColor = Colors.Purple,
+				TextColor = Color.Purple,
 				AutomationId = Password
 			};
 
@@ -60,7 +59,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				Visual = VisualMarker.Material,
 				IsPassword = true,
 				Placeholder = "Confirm Password",
-				TextColor = Colors.Purple
+				TextColor = Color.Purple
 			};
 
 			password.Unfocused += (sender, args) =>

@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 using static Microsoft.Maui.Controls.DependencyService;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
@@ -18,7 +17,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		{
 			var infoLabel = new Label
 			{
-				TextColor = Colors.Black,
+				TextColor = Color.Black,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				IsVisible = false
@@ -30,8 +29,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					infoLabel,
 					new Button
 					{
-						BackgroundColor = Colors.Black,
-						TextColor = Colors.White,
+						BackgroundColor = Color.Black,
+						TextColor = Color.White,
 						Text = "START TEST",
 						Command = new Command(async () => {
 							var parentChildren = (infoLabel.Parent as StackLayout).Children;

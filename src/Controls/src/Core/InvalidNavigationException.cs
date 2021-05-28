@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.Serialization;
 
 namespace Microsoft.Maui.Controls
 {
@@ -22,9 +21,11 @@ namespace Microsoft.Maui.Controls
 		{
 		}
 
-		protected InvalidNavigationException(SerializationInfo info, StreamingContext context)
+#if !NETSTANDARD1_0
+		protected InvalidNavigationException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
 			: base(info, context)
 		{
 		}
+#endif
 	}
 }

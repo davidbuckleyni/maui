@@ -1,11 +1,16 @@
 ﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
 using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
 
 namespace Microsoft.Maui.Resizetizer
 {
-	public class CreatePartialInfoPlistTask : Task
+	public class CreatePartialInfoPlistTask : AsyncTask
 	{
 		public ITaskItem[] CustomFonts { get; set; }
 
@@ -13,8 +18,6 @@ namespace Microsoft.Maui.Resizetizer
 		public string IntermediateOutputPath { get; set; }
 
 		public string PlistName { get; set; }
-
-		public string Storyboard { get; set; }
 
 		[Output]
 		public ITaskItem[] PlistFiles { get; set; }
@@ -30,16 +33,16 @@ namespace Microsoft.Maui.Resizetizer
 
 		public override bool Execute()
 		{
-			try
+			System.Threading.Tasks.Task.Run(() =>
 			{
-				var plistFilename = Path.Combine(IntermediateOutputPath, PlistName ?? "PartialInfo.plist");
-
-				using (var f = File.CreateText(plistFilename))
+				try
 				{
-					f.WriteLine(plistHeader);
+					var plistFilename = Path.Combine(IntermediateOutputPath, PlistName ?? "PartialInfo.plist");
 
-					if (CustomFonts != null && CustomFonts.Length > 0)
+					using (var f = File.CreateText(plistFilename))
 					{
+						f.WriteLine(plistHeader);
+
 						f.WriteLine("  <key>UIAppFonts</key>");
 						f.WriteLine("  <array>");
 
@@ -51,25 +54,22 @@ namespace Microsoft.Maui.Resizetizer
 						}
 
 						f.WriteLine("  </array>");
+						f.WriteLine(plistFooter);
 					}
 
-					if (!string.IsNullOrEmpty(Storyboard))
-					{
-						f.WriteLine("  <key>UILaunchStoryboardName</key>");
-						f.WriteLine($"  <string>{Path.GetFileNameWithoutExtension(Storyboard)}</string>");
-					}
-
-					f.WriteLine(plistFooter);
+					PlistFiles = new[] { new TaskItem(plistFilename) };
 				}
+				catch (Exception ex)
+				{
+					Log.LogErrorFromException(ex);
+				}
+				finally
+				{
+					Complete();
+				}
+			});
 
-				PlistFiles = new[] { new TaskItem(plistFilename) };
-			}
-			catch (Exception ex)
-			{
-				Log.LogErrorFromException(ex);
-			}
-
-			return !Log.HasLoggedErrors;
+			return base.Execute();
 		}
 	}
 }

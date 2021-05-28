@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -17,7 +16,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			var layout = new StackLayout();
 
-			var picker = new Picker { BackgroundColor = Colors.Pink };
+			var picker = new Picker { BackgroundColor = Color.Pink };
 			picker.Items.Add("A");
 			picker.Items.Add("B");
 			picker.Items.Add("C");
@@ -25,33 +24,33 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			picker.Items.Add("E");
 			layout.Children.Add(picker);
 
-			layout.Children.Add(new Editor { BackgroundColor = Colors.Red, VerticalOptions = LayoutOptions.End });
-			layout.Children.Add(new Editor { BackgroundColor = Colors.Red, VerticalOptions = LayoutOptions.End });
-			layout.Children.Add(new Editor { BackgroundColor = Colors.Red, VerticalOptions = LayoutOptions.End });
-			layout.Children.Add(new Editor { BackgroundColor = Colors.Red, VerticalOptions = LayoutOptions.End });
-			layout.Children.Add(new Editor { BackgroundColor = Colors.Red, VerticalOptions = LayoutOptions.End });
-			layout.Children.Add(new Editor { BackgroundColor = Colors.Red, VerticalOptions = LayoutOptions.End });
+			layout.Children.Add(new Editor { BackgroundColor = Color.Red, VerticalOptions = LayoutOptions.End });
+			layout.Children.Add(new Editor { BackgroundColor = Color.Red, VerticalOptions = LayoutOptions.End });
+			layout.Children.Add(new Editor { BackgroundColor = Color.Red, VerticalOptions = LayoutOptions.End });
+			layout.Children.Add(new Editor { BackgroundColor = Color.Red, VerticalOptions = LayoutOptions.End });
+			layout.Children.Add(new Editor { BackgroundColor = Color.Red, VerticalOptions = LayoutOptions.End });
+			layout.Children.Add(new Editor { BackgroundColor = Color.Red, VerticalOptions = LayoutOptions.End });
 
 			layout.Children.Add(new SearchBar
 			{
-				BackgroundColor = Colors.Gray,
-				CancelButtonColor = Colors.Red
+				BackgroundColor = Color.Gray,
+				CancelButtonColor = Color.Red
 			});
 
-			layout.Children.Add(new Editor { BackgroundColor = Colors.Red, VerticalOptions = LayoutOptions.End });
-			layout.Children.Add(new Editor { BackgroundColor = Colors.Red, VerticalOptions = LayoutOptions.End });
-			layout.Children.Add(new Editor { BackgroundColor = Colors.Red, VerticalOptions = LayoutOptions.End });
-			layout.Children.Add(new Editor { BackgroundColor = Colors.Red, VerticalOptions = LayoutOptions.End });
-			layout.Children.Add(new Editor { BackgroundColor = Colors.Red, VerticalOptions = LayoutOptions.End });
-			layout.Children.Add(new Editor { BackgroundColor = Colors.Red, VerticalOptions = LayoutOptions.End });
-			layout.Children.Add(new Editor { BackgroundColor = Colors.Red, VerticalOptions = LayoutOptions.End });
-			layout.Children.Add(new Editor { BackgroundColor = Colors.Red, VerticalOptions = LayoutOptions.End });
+			layout.Children.Add(new Editor { BackgroundColor = Color.Red, VerticalOptions = LayoutOptions.End });
+			layout.Children.Add(new Editor { BackgroundColor = Color.Red, VerticalOptions = LayoutOptions.End });
+			layout.Children.Add(new Editor { BackgroundColor = Color.Red, VerticalOptions = LayoutOptions.End });
+			layout.Children.Add(new Editor { BackgroundColor = Color.Red, VerticalOptions = LayoutOptions.End });
+			layout.Children.Add(new Editor { BackgroundColor = Color.Red, VerticalOptions = LayoutOptions.End });
+			layout.Children.Add(new Editor { BackgroundColor = Color.Red, VerticalOptions = LayoutOptions.End });
+			layout.Children.Add(new Editor { BackgroundColor = Color.Red, VerticalOptions = LayoutOptions.End });
+			layout.Children.Add(new Editor { BackgroundColor = Color.Red, VerticalOptions = LayoutOptions.End });
 
-			layout.Children.Add(new Entry { BackgroundColor = Colors.Blue });
+			layout.Children.Add(new Entry { BackgroundColor = Color.Blue });
 			layout.Children.Add(new SearchBar
 			{
-				BackgroundColor = Colors.Gray,
-				CancelButtonColor = Colors.Red
+				BackgroundColor = Color.Gray,
+				CancelButtonColor = Color.Red
 			});
 			grd.Children.Add(layout);
 
@@ -66,7 +65,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					HeightRequest = 400,
 					VerticalOptions = LayoutOptions.Start
 				},
-				BackgroundColor = Colors.Lime,
+				BackgroundColor = Color.Lime,
 				HeightRequest = 400
 
 			};

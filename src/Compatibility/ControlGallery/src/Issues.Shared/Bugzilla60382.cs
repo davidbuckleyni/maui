@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -28,7 +27,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			var listView = new ListView(ListViewCachingStrategy.RecycleElement)
 			{
-				BackgroundColor = Colors.Yellow,
+				BackgroundColor = Color.Yellow,
 				AutomationId = "ListView"
 			};
 

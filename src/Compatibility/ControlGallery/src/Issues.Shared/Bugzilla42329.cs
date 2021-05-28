@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Microsoft.Maui.Controls.Compatibility.UITests;
@@ -182,7 +181,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				{
 					Text = LabelPage3,
 					HorizontalTextAlignment = TextAlignment.Center,
-					TextColor = Colors.Red
+					TextColor = Color.Red
 				};
 
 				otherLabel = new Label

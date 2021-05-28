@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using Android.Content;
 using Android.Views;
@@ -82,9 +82,9 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 			View.MainText = cell.Text;
 
 			if (!cell.GetIsGroupHeader<ItemsView<Cell>, Cell>())
-				View.SetDefaultMainTextColor(Application.AccentColor);
+				View.SetDefaultMainTextColor(Color.Accent);
 			else
-				View.SetDefaultMainTextColor(null);
+				View.SetDefaultMainTextColor(Color.Default);
 
 			View.SetMainTextColor(cell.TextColor);
 		}

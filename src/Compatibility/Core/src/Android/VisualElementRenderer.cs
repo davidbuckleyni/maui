@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Android.Content;
@@ -9,10 +9,7 @@ using Android.Views;
 using AndroidX.Core.View;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android.FastRenderers;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Controls.Platform;
-using Microsoft.Maui.Graphics;
 using AView = Android.Views.View;
-using Color = Microsoft.Maui.Graphics.Color;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 {
@@ -216,7 +213,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 				oldElement.PropertyChanged -= _propertyChangeHandler;
 			}
 
-			Color currentColor = oldElement?.BackgroundColor ?? null;
+			Color currentColor = oldElement?.BackgroundColor ?? Color.Default;
 
 			if (element.BackgroundColor != currentColor)
 				UpdateBackgroundColor();

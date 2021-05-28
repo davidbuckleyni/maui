@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using NUnit.Framework;
@@ -31,7 +30,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var statusLabel = new Label
 			{
 				Text = "Current TextTransform is None",
-				BackgroundColor = Colors.Aqua,
+				BackgroundColor = Color.Aqua,
 				TextTransform = transform
 			};
 			var but = new Button

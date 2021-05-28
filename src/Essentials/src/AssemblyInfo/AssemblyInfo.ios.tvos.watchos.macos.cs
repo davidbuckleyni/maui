@@ -1,3 +1,3 @@
-using System.Reflection;
+using Foundation;
 
-[assembly: AssemblyMetadata("IsTrimmable", "True")]
+[assembly: LinkerSafe]

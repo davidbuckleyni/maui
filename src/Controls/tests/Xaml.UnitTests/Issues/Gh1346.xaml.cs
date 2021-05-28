@@ -1,6 +1,5 @@
 using System;
 using Microsoft.Maui.Controls.Core.UnitTests;
-using Microsoft.Maui.Graphics;
 using NUnit.Framework;
 
 namespace Microsoft.Maui.Controls.Xaml.UnitTests
@@ -89,7 +88,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 	{
 		public IGh1346FontIcon FontIcon { get; set; }
 
-		public Color Color { get; set; } = Colors.White;
+		public Color Color { get; set; } = Color.White;
 
 		public Gh1346FontIconOptions() { }
 

@@ -1,5 +1,4 @@
 using System;
-using Android.Graphics.Drawables;
 using Android.Views;
 using AndroidX.AppCompat.Widget;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,11 +6,8 @@ using AView = Android.Views.View;
 
 namespace Microsoft.Maui.Handlers
 {
-	public partial class ButtonHandler : ViewHandler<IButton, AppCompatButton>
+	public partial class ButtonHandler : AbstractViewHandler<IButton, AppCompatButton>
 	{
-		static Thickness? DefaultPadding;
-		static Drawable? DefaultBackground;
-
 		ButtonClickListener ClickListener { get; } = new ButtonClickListener();
 		ButtonTouchListener TouchListener { get; } = new ButtonTouchListener();
 
@@ -23,19 +19,6 @@ namespace Microsoft.Maui.Handlers
 			};
 
 			return nativeButton;
-		}
-
-		protected override void SetupDefaults(AppCompatButton nativeView)
-		{
-			DefaultPadding = new Thickness(
-				nativeView.PaddingLeft,
-				nativeView.PaddingTop,
-				nativeView.PaddingRight,
-				nativeView.PaddingBottom);
-
-			DefaultBackground = nativeView.Background;
-
-			base.SetupDefaults(nativeView);
 		}
 
 		protected override void ConnectHandler(AppCompatButton nativeView)
@@ -60,40 +43,31 @@ namespace Microsoft.Maui.Handlers
 			base.DisconnectHandler(nativeView);
 		}
 
-		// This is a Android-specific mapping
-		public static void MapBackground(ButtonHandler handler, IButton button)
-		{
-			handler.NativeView?.UpdateBackground(button, DefaultBackground);
-		}
-
 		public static void MapText(ButtonHandler handler, IButton button)
 		{
-			handler.NativeView?.UpdateText(button);
+			handler.TypedNativeView?.UpdateText(button);
 		}
 
 		public static void MapTextColor(ButtonHandler handler, IButton button)
 		{
-			handler.NativeView?.UpdateTextColor(button);
-		}
-
-		public static void MapCharacterSpacing(ButtonHandler handler, IButton button)
-		{
-			handler.NativeView?.UpdateCharacterSpacing(button);
+			handler.TypedNativeView?.UpdateTextColor(button);
 		}
 
 		public static void MapFont(ButtonHandler handler, IButton button)
 		{
-			var fontManager = handler.GetRequiredService<IFontManager>();
+			_ = handler.Services ?? throw new InvalidOperationException($"{nameof(Services)} should have been set by base class.");
 
-			handler.NativeView?.UpdateFont(button, fontManager);
+			var fontManager = handler.Services.GetRequiredService<IFontManager>();
+
+			handler.TypedNativeView?.UpdateFont(button, fontManager);
 		}
 
 		public static void MapPadding(ButtonHandler handler, IButton button)
 		{
-			handler.NativeView?.UpdatePadding(button, DefaultPadding);
+			handler.TypedNativeView?.UpdatePadding(button);
 		}
 
-		bool OnTouch(IButton? button, AView? v, MotionEvent? e)
+		public bool OnTouch(IButton? button, AView? v, MotionEvent? e)
 		{
 			switch (e?.ActionMasked)
 			{
@@ -108,12 +82,12 @@ namespace Microsoft.Maui.Handlers
 			return false;
 		}
 
-		void OnClick(IButton? button, AView? v)
+		public void OnClick(IButton? button, AView? v)
 		{
 			button?.Clicked();
 		}
 
-		class ButtonClickListener : Java.Lang.Object, AView.IOnClickListener
+		public class ButtonClickListener : Java.Lang.Object, AView.IOnClickListener
 		{
 			public ButtonHandler? Handler { get; set; }
 
@@ -123,7 +97,7 @@ namespace Microsoft.Maui.Handlers
 			}
 		}
 
-		class ButtonTouchListener : Java.Lang.Object, AView.IOnTouchListener
+		public class ButtonTouchListener : Java.Lang.Object, AView.IOnTouchListener
 		{
 			public ButtonHandler? Handler { get; set; }
 

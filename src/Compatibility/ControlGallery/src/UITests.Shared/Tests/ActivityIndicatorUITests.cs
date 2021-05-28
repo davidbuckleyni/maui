@@ -1,5 +1,5 @@
-using Microsoft.Maui.Controls.CustomAttributes;
 using NUnit.Framework;
+using Microsoft.Maui.Controls.CustomAttributes;
 
 namespace Microsoft.Maui.Controls.Compatibility.UITests
 {
@@ -55,7 +55,7 @@ namespace Microsoft.Maui.Controls.Compatibility.UITests
 			remote.GoTo();
 #if __MACOS__
 			Assert.Inconclusive("Not tested yet");
-#elif WINDOWS
+#elif __WINDOWS__
 			Assert.Inconclusive(PleaseInspect);
 #else
 			var isRunning = remote.GetProperty<bool>(ActivityIndicator.IsRunningProperty);

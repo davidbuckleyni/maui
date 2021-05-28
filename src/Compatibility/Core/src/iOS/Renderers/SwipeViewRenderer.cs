@@ -1,14 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using CoreGraphics;
 using Foundation;
-using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Controls.Platform;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Microsoft.Maui.Graphics;
 using UIKit;
+using Microsoft.Maui.Controls.Internals;
+using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Specifics = Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific.SwipeView;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
@@ -162,7 +160,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 
 		protected override void SetBackgroundColor(Color color)
 		{
-			if (Element.BackgroundColor != null)
+			if (Element.BackgroundColor != Color.Default)
 				BackgroundColor = Element.BackgroundColor.ToUIColor();
 			else
 				BackgroundColor = ColorExtensions.BackgroundColor;
@@ -410,7 +408,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 		{
 			var emptyContentView = new UIView
 			{
-				BackgroundColor = Colors.Transparent.ToUIColor()
+				BackgroundColor = Color.Default.ToUIColor()
 			};
 
 			return emptyContentView;
@@ -666,9 +664,9 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 
 		Color GetSwipeItemColor(Color backgroundColor)
 		{
-			var luminosity = 0.2126 * backgroundColor.Red + 0.7152 * backgroundColor.Green + 0.0722 * backgroundColor.Blue;
+			var luminosity = 0.2126 * backgroundColor.R + 0.7152 * backgroundColor.G + 0.0722 * backgroundColor.B;
 
-			return luminosity < 0.75 ? Colors.White : Colors.Black;
+			return luminosity < 0.75 ? Color.White : Color.Black;
 		}
 
 		async void UpdateSwipeItemIconImage(UIButton swipeButton, SwipeItem swipeItem)

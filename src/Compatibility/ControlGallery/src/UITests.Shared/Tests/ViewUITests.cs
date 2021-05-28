@@ -1,7 +1,7 @@
 ﻿
+using NUnit.Framework;
 using Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues;
 using Microsoft.Maui.Controls.CustomAttributes;
-using NUnit.Framework;
 
 namespace Microsoft.Maui.Controls.Compatibility.UITests
 {
@@ -127,7 +127,7 @@ namespace Microsoft.Maui.Controls.Compatibility.UITests
 			remote.GoTo();
 #if __MACOS__
 			Assert.Inconclusive("needs testing");
-#elif WINDOWS
+#elif __WINDOWS__
 			Assert.Inconclusive(PleaseInspect);
 #else
 			float opacity = -1f;
@@ -154,7 +154,7 @@ namespace Microsoft.Maui.Controls.Compatibility.UITests
 			Matrix generatedMatrix = NumericExtensions.CalculateRotationMatrixForDegrees(10, Axis.Z);
 			Assert.AreEqual(generatedMatrix, rotationMatrix);
 #endif
-#if WINDOWS
+#if __WINDOWS__
 			Assert.Inconclusive(PleaseInspect);
 #endif
 		}
@@ -176,7 +176,7 @@ namespace Microsoft.Maui.Controls.Compatibility.UITests
 			Matrix matrix = NumericExtensions.CalculateRotationMatrixForDegrees(33.0f, Axis.X);
 			Assert.AreEqual(matrix, rotationXMatrix);
 #endif
-#if WINDOWS
+#if __WINDOWS__
 			Assert.Inconclusive(PleaseInspect);
 #endif
 		}
@@ -198,7 +198,7 @@ namespace Microsoft.Maui.Controls.Compatibility.UITests
 			Matrix matrix = NumericExtensions.CalculateRotationMatrixForDegrees(10.0f, Axis.Y);
 			Assert.AreEqual(matrix, rotationYMatrix);
 #endif
-#if WINDOWS
+#if __WINDOWS__
 			Assert.Inconclusive(PleaseInspect);
 #endif
 		}
@@ -213,7 +213,7 @@ namespace Microsoft.Maui.Controls.Compatibility.UITests
 #if __MACOS__
 			Assert.Inconclusive("needs testing");
 #else
-#if WINDOWS
+#if __WINDOWS__
 			Assert.Inconclusive(PleaseInspect);
 #endif
 			var scaleMatrix = remote.GetProperty<Matrix>(View.ScaleProperty);
@@ -230,7 +230,7 @@ namespace Microsoft.Maui.Controls.Compatibility.UITests
 		{
 			var remote = new ViewContainerRemote(App, Test.VisualElement.TranslationX, PlatformViewType);
 			remote.GoTo();
-#if WINDOWS
+#if __WINDOWS__
 			Assert.Inconclusive(PleaseInspect);
 #endif
 		}
@@ -243,7 +243,7 @@ namespace Microsoft.Maui.Controls.Compatibility.UITests
 		{
 			var remote = new ViewContainerRemote(App, Test.VisualElement.TranslationY, PlatformViewType);
 			remote.GoTo();
-#if WINDOWS
+#if __WINDOWS__
 			Assert.Inconclusive(PleaseInspect);
 #endif
 		}

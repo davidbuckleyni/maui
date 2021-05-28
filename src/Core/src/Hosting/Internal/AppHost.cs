@@ -1,4 +1,3 @@
-#nullable enable
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -7,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Microsoft.Maui.Hosting.Internal
 {
-	class AppHost : IAppHost, IAsyncDisposable
+	internal class AppHost : IAppHost, IAsyncDisposable
 	{
 		readonly ILogger<AppHost>? _logger;
 

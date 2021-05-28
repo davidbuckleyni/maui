@@ -6,7 +6,7 @@ namespace Microsoft.Maui.DeviceTests
 	public partial class ProgressBarHandlerTests
 	{
 		AProgressBar GetNativeProgressBar(ProgressBarHandler progressBarHandler) =>
-			(AProgressBar)progressBarHandler.NativeView;
+			(AProgressBar)progressBarHandler.View;
 
 		double GetNativeProgress(ProgressBarHandler progressBarHandler) =>
 			(double)GetNativeProgressBar(progressBarHandler).Progress / ProgressBarExtensions.Maximum;

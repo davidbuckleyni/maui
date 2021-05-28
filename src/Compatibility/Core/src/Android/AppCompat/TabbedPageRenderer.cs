@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -14,14 +14,11 @@ using Google.Android.Material.BottomNavigation;
 using Google.Android.Material.BottomSheet;
 using Google.Android.Material.Tabs;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Controls.Platform;
 using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
-using Microsoft.Maui.Graphics;
 using AColor = Android.Graphics.Color;
 using ADrawableCompat = AndroidX.Core.Graphics.Drawable.DrawableCompat;
 using AView = Android.Views.View;
 using AWidget = Android.Widget;
-using Color = Microsoft.Maui.Graphics.Color;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
 {
@@ -49,8 +46,8 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
 		int[] _checkedStateSet = null;
 		int[] _selectedStateSet = null;
 		int[] _emptyStateSet = null;
-		int _defaultARGBColor = Colors.Transparent.ToAndroid().ToArgb();
-		AColor _defaultAndroidColor = Colors.Transparent.ToAndroid();
+		int _defaultARGBColor = Color.Default.ToAndroid().ToArgb();
+		AColor _defaultAndroidColor = Color.Default.ToAndroid();
 		Platform _platform;
 
 		public TabbedPageRenderer(Context context) : base(context)
@@ -87,7 +84,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
 						return Element.UnselectedTabColor;
 				}
 
-				return null;
+				return Color.Default;
 			}
 		}
 
@@ -101,7 +98,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
 						return Element.SelectedTabColor;
 				}
 
-				return null;
+				return Color.Default;
 			}
 		}
 
@@ -243,7 +240,8 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
 			base.OnElementChanged(e);
 
 			var activity = Context.GetActivity();
-			var themeContext = activity;
+			var isDesigner = Context.IsDesignerContext();
+			var themeContext = isDesigner ? Context : activity;
 
 			if (e.OldElement != null)
 				((IPageController)e.OldElement).InternalChildren.CollectionChanged -= OnChildrenCollectionChanged;
@@ -297,7 +295,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
 					{
 						TabLayout tabs;
 
-						if (FormsAppCompatActivity.TabLayoutResource > 0)
+						if (FormsAppCompatActivity.TabLayoutResource > 0 && !isDesigner)
 							tabs = _tabLayout = activity.LayoutInflater.Inflate(FormsAppCompatActivity.TabLayoutResource, null).JavaCast<TabLayout>();
 						else
 							tabs = _tabLayout = new TabLayout(themeContext) { TabMode = TabLayout.ModeFixed, TabGravity = TabLayout.GravityFill };
@@ -325,8 +323,11 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
 				UpdateBarBackground();
 				UpdateBarTextColor();
 				UpdateItemIconColor();
-				UpdateSwipePaging();
-				UpdateOffscreenPageLimit();
+				if (!isDesigner)
+				{
+					UpdateSwipePaging();
+					UpdateOffscreenPageLimit();
+				}
 			}
 		}
 
@@ -718,9 +719,9 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
 			{
 				Color tintColor = Element.BarBackgroundColor;
 
-				if (tintColor == null)
+				if (tintColor.IsDefault)
 					_bottomNavigationView.SetBackground(null);
-				else if (tintColor != null)
+				else if (!tintColor.IsDefault)
 					_bottomNavigationView.SetBackgroundColor(tintColor.ToAndroid());
 			}
 			else
@@ -729,7 +730,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
 
 				if (Forms.IsLollipopOrNewer)
 				{
-					if (tintColor == null)
+					if (tintColor.IsDefault)
 						_tabLayout.BackgroundTintMode = null;
 					else
 					{
@@ -739,9 +740,9 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
 				}
 				else
 				{
-					if (tintColor == null && _backgroundDrawable != null)
+					if (tintColor.IsDefault && _backgroundDrawable != null)
 						_tabLayout.SetBackground(_backgroundDrawable);
-					else if (tintColor != null)
+					else if (!tintColor.IsDefault)
 					{
 						// if you don't create a new drawable then SetBackgroundColor
 						// just sets the color on the background drawable that's saved
@@ -786,7 +787,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
 			Color barTextColor = Element.BarTextColor;
 			Color barSelectedItemColor = BarSelectedItemColor;
 
-			if (barItemColor == null && barTextColor == null && barSelectedItemColor == null)
+			if (barItemColor.IsDefault && barTextColor.IsDefault && barSelectedItemColor.IsDefault)
 				return _originalTabTextColors;
 
 			if (_newTabTextColors != null)
@@ -795,7 +796,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
 			int checkedColor;
 			int defaultColor;
 
-			if (barTextColor != null)
+			if (!barTextColor.IsDefault)
 			{
 				checkedColor = barTextColor.ToAndroid().ToArgb();
 				defaultColor = checkedColor;
@@ -804,12 +805,12 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
 			{
 				defaultColor = barItemColor.ToAndroid().ToArgb();
 
-				if (barItemColor == null && _originalTabTextColors != null)
+				if (barItemColor.IsDefault && _originalTabTextColors != null)
 					defaultColor = _originalTabTextColors.DefaultColor;
 
 				checkedColor = defaultColor;
 
-				if (barSelectedItemColor != null)
+				if (!barSelectedItemColor.IsDefault)
 					checkedColor = barSelectedItemColor.ToAndroid().ToArgb();
 			}
 
@@ -828,13 +829,13 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
 					_orignalTabIconColors = _bottomNavigationView.ItemIconTintList;
 			}
 			// this ensures that existing behavior doesn't change
-			else if (!IsBottomTabPlacement && BarSelectedItemColor != null && BarItemColor == null)
+			else if (!IsBottomTabPlacement && BarSelectedItemColor.IsDefault && BarItemColor.IsDefault)
 				return null;
 
 			Color barItemColor = BarItemColor;
 			Color barSelectedItemColor = BarSelectedItemColor;
 
-			if (barItemColor == null && barSelectedItemColor == null)
+			if (barItemColor.IsDefault && barSelectedItemColor.IsDefault)
 				return _orignalTabIconColors;
 
 			if (_newTabIconColors != null)
@@ -842,12 +843,12 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
 
 			int defaultColor = barItemColor.ToAndroid().ToArgb();
 
-			if (barItemColor == null && _orignalTabIconColors != null)
+			if (barItemColor.IsDefault && _orignalTabIconColors != null)
 				defaultColor = _orignalTabIconColors.DefaultColor;
 
 			int checkedColor = defaultColor;
 
-			if (barSelectedItemColor != null)
+			if (!barSelectedItemColor.IsDefault)
 				checkedColor = barSelectedItemColor.ToAndroid().ToArgb();
 
 			_newTabIconColors = GetColorStateList(defaultColor, checkedColor);

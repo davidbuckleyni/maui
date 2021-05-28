@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.PlatformSpecificsGalleries
 {
@@ -9,7 +8,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Plat
 		public ModalFormSheetPageiOS()
 		{
 			Title = "Modal FormSheet";
-			BackgroundColor = Colors.Azure;
+			BackgroundColor = Color.Azure;
 
 			On<iOS>().SetModalPresentationStyle(UIModalPresentationStyle.FormSheet);
 

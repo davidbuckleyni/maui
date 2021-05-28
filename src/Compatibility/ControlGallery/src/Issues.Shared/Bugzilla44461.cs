@@ -2,7 +2,6 @@
 using System.Linq;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -40,7 +39,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			{
 				Orientation = ScrollOrientation.Horizontal,
 				VerticalOptions = LayoutOptions.Center,
-				BackgroundColor = Colors.Yellow,
+				BackgroundColor = Color.Yellow,
 				HeightRequest = 50
 			};
 			grid.Children.Add(scrollView);

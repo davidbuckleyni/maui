@@ -1,6 +1,5 @@
 using System;
 using Microsoft.Maui;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.DeviceTests.Stubs
 {

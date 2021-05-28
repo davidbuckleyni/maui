@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.DeviceTests.Stubs
 {
@@ -18,7 +17,5 @@ namespace Microsoft.Maui.DeviceTests.Stubs
 		public double CharacterSpacing { get; set; }
 
 		public Font Font { get; set; }
-
-		public Color TextColor { get; set; }
 	}
 }

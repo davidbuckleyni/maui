@@ -2,7 +2,6 @@
 
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -22,9 +21,9 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				base.HeightRequest = 2 * radius;
 				HorizontalOptions = LayoutOptions.Center;
 				VerticalOptions = LayoutOptions.Center;
-				BackgroundColor = Colors.Aqua;
-				BorderColor = Colors.White;
-				TextColor = Colors.Purple;
+				BackgroundColor = Color.Aqua;
+				BorderColor = Color.White;
+				TextColor = Color.Purple;
 				Text = "YAY";
 				//Image = new FileImageSource { File = "crimson.jpg" };
 			}

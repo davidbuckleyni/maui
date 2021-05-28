@@ -1,12 +1,11 @@
-﻿
+
 namespace Microsoft.Maui.Controls.PlatformConfiguration.TizenSpecific
 {
-	using Microsoft.Maui.Graphics;
 	using FormsElement = Maui.Controls.Switch;
 
 	public static class Switch
 	{
-		public static readonly BindableProperty ColorProperty = BindableProperty.Create(nameof(Color), typeof(Color), typeof(FormsElement), null);
+		public static readonly BindableProperty ColorProperty = BindableProperty.Create(nameof(Color), typeof(Color), typeof(FormsElement), Color.Default);
 
 		public static Color GetColor(BindableObject element)
 		{

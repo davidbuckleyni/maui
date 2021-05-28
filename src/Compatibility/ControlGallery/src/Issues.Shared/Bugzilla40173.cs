@@ -2,7 +2,6 @@
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using NUnit.Framework;
@@ -58,7 +57,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var boxView = new BoxView
 			{
 				AutomationId = "nontransparentBoxView",
-				Color = Colors.Pink.MultiplyAlpha(0.5f)
+				Color = Color.Pink.MultiplyAlpha(0.5)
 			};
 
 			// Bump up the elevation on Android so the Button is covered (FastRenderers)
@@ -95,7 +94,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					new BoxView
 					{
 						AutomationId = "transparentBoxView",
-						Color = Colors.Pink.MultiplyAlpha(0.5f),
+						Color = Color.Pink.MultiplyAlpha(0.5),
 						InputTransparent = true
 					}
 				}
@@ -115,7 +114,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 							new BoxView
 							{
 								AutomationId = ListTapTarget,
-								Color = Colors.Pink.MultiplyAlpha(0.5f)
+								Color = Color.Pink.MultiplyAlpha(0.5)
 							}
 						}
 					}

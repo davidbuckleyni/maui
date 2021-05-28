@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -18,7 +17,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 	{
 		protected override void Init()
 		{
-			BackgroundColor = Colors.Maroon;
+			BackgroundColor = Color.Maroon;
 			PushAsync(new FlyoutPage
 			{
 				Title = "Bugzilla Issue 44476",

@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Microsoft.Maui.Controls.Compatibility.UITests;
@@ -41,8 +40,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 									{
 										Text = "Learn More",
 										Margin = new Thickness(0,10,0,0),
-										BackgroundColor = Colors.Purple,
-										TextColor = Colors.White,
+										BackgroundColor = Color.Purple,
+										TextColor = Color.White,
 										AutomationId = "LearnMoreButton"
 									}
 								}

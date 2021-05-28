@@ -1,6 +1,6 @@
 using System.Threading;
-using Microsoft.Maui.Controls.CustomAttributes;
 using NUnit.Framework;
+using Microsoft.Maui.Controls.CustomAttributes;
 
 namespace Microsoft.Maui.Controls.Compatibility.UITests
 {
@@ -53,12 +53,12 @@ namespace Microsoft.Maui.Controls.Compatibility.UITests
 		public override void _Opacity() { }
 #endif
 
-#if __ANDROID__ || __IOS__ || WINDOWS
+#if __ANDROID__ || __IOS__ || __WINDOWS__
 		[Ignore("This is covered by the platform tests")]
 		public override void _IsEnabled() { }
 #endif
 
-#if __ANDROID__ || __IOS__ || WINDOWS
+#if __ANDROID__ || __IOS__ || __WINDOWS__
 		[Ignore("This is covered by the platform tests")]
 		public override void _Rotation() { }
 
@@ -77,7 +77,7 @@ namespace Microsoft.Maui.Controls.Compatibility.UITests
 		public override void _TranslationY() { }
 #endif
 
-#if __IOS__ || WINDOWS
+#if __IOS__ || __WINDOWS__
 		[Ignore("This is covered by the platform tests")]
 		public override void _Scale() { }
 #endif

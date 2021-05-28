@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 using NUnit.Framework;
 
 namespace Microsoft.Maui.Controls.Core.UnitTests
@@ -427,7 +426,6 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 			app.MainPage = page;
 			app.PageAppearing += (sender, args) => actual = args;
 
-			((IPageController)page).SendDisappearing();
 			((IPageController)page).SendAppearing();
 
 			Assert.AreSame(page, actual);

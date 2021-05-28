@@ -1,5 +1,4 @@
 using Microsoft.Maui.Controls.CustomAttributes;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -21,7 +20,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 
 			var colorContainer = new ViewContainer<ActivityIndicator>(Test.ActivityIndicator.Color, new ActivityIndicator
 			{
-				Color = Colors.Lime,
+				Color = Color.Lime,
 				IsRunning = true
 
 			});

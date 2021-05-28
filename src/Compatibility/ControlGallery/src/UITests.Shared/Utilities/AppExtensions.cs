@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
+
+using Xamarin.UITest;
+using Xamarin.UITest.Queries;
 using System.Text.RegularExpressions;
 using System.Threading;
 using Microsoft.Maui.Controls.Compatibility.ControlGallery;
 using Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues;
-using Xamarin.UITest;
-using Xamarin.UITest.Queries;
 
 #if __IOS__
 using Xamarin.UITest.iOS;
@@ -16,7 +17,7 @@ namespace Microsoft.Maui.Controls.Compatibility.UITests
 	using IApp = global::Xamarin.UITest.IApp;
 	internal static class AppExtensions
 	{
-#if WINDOWS
+#if __WINDOWS__
 		public static void Restart(this IApp app)
 		{
 			((ScreenshotConditionalApp)app).Restart();
@@ -24,7 +25,7 @@ namespace Microsoft.Maui.Controls.Compatibility.UITests
 #endif
 		public static bool RestartIfAppIsClosed(this IApp app)
 		{
-#if WINDOWS
+#if __WINDOWS__
 			return ((ScreenshotConditionalApp)app).RestartIfAppIsClosed();
 #else
 			return false;
@@ -164,7 +165,7 @@ namespace Microsoft.Maui.Controls.Compatibility.UITests
 
 		public static string ReadDatePicker(this IApp app, string marked)
 		{
-#if WINDOWS
+#if __WINDOWS__
 			return ((ScreenshotConditionalApp)app).ReadDatePicker(marked).ToString();
 #else
 			return app.WaitForElement(marked)[0].ReadText();
@@ -173,7 +174,7 @@ namespace Microsoft.Maui.Controls.Compatibility.UITests
 
 		public static string ReadTimePicker(this IApp app, string marked)
 		{
-#if WINDOWS
+#if __WINDOWS__
 			return ((ScreenshotConditionalApp)app).ReadTimePicker(marked).ToString();
 #else
 			return app.WaitForElement(marked)[0].ReadText();

@@ -1,6 +1,5 @@
 using System;
 using System.ComponentModel;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -24,7 +23,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 				HeightRequest = 200,
 			};
 
-			var indicator = new ActivityIndicator { Color = new Color(.5f), };
+			var indicator = new ActivityIndicator { Color = new Color(.5), };
 			indicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsLoading");
 			indicator.BindingContext = image;
 

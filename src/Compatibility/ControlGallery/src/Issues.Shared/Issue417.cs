@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using NUnit.Framework;
@@ -37,7 +36,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			public FirstPage()
 			{
 				Title = "First Page";
-				BackgroundColor = Colors.Black;
+				BackgroundColor = Color.Black;
 
 				var nextPageBtn = new Button
 				{
@@ -63,7 +62,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				};
 
 				nextPage2Btn.Clicked += (s, e) => NavRoot.Navigation.PushAsync(new NextPage2());
-				BackgroundColor = Colors.Black;
+				BackgroundColor = Color.Black;
 				Content = nextPage2Btn;
 
 			}
@@ -81,7 +80,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				};
 
 				popToRootButton.Clicked += (s, e) => NavRoot.PopToRootAsync();
-				BackgroundColor = Colors.Black;
+				BackgroundColor = Color.Black;
 				Content = popToRootButton;
 			}
 		}

@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -32,8 +31,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				EndPoint = new Point(1, 0),
 				GradientStops = new GradientStopCollection
 				{
-					new GradientStop { Color = Colors.Red, Offset = 0.1f },
-					new GradientStop { Color = Colors.Yellow, Offset = 0.9f }
+					new GradientStop { Color = Color.Red, Offset = 0.1f },
+					new GradientStop { Color = Color.Yellow, Offset = 0.9f }
 				}
 			};
 
@@ -44,8 +43,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var instructions = new Label
 			{
 				Padding = 12,
-				BackgroundColor = Colors.Black,
-				TextColor = Colors.White,
+				BackgroundColor = Color.Black,
+				TextColor = Color.White,
 				Text = "Rotate the emulator or device. If the gradient takes all the available space, the test has passed."
 			};
 

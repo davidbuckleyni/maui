@@ -7,7 +7,6 @@ using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Microsoft.Maui.Graphics;
 
 
 #if UITEST
@@ -39,7 +38,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 		protected override void Init()
 		{
-			layout = new Grid { BackgroundColor = Colors.Red, VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.FillAndExpand };
+			layout = new Grid { BackgroundColor = Color.Red, VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.FillAndExpand };
 
 			layout.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Star });
 			layout.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Star });
@@ -51,7 +50,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					{
 						Margin = 10,
 						Text = FailureText,
-						BackgroundColor = Colors.White
+						BackgroundColor = Color.White
 					}
 				}
 			});
@@ -59,9 +58,9 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			layout.Children.Add(new Button()
 			{
 				Text = ButtonText,
-				BackgroundColor = Colors.Green,
+				BackgroundColor = Color.Green,
 				Margin = 10,
-				TextColor = Colors.White,
+				TextColor = Color.White,
 				Command = new Command(() =>
 				{
 					if (!AddBoxView())
@@ -123,7 +122,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 									{
 										Margin = 10,
 										Text = "If you can't see me test has failed",
-										BackgroundColor = Colors.White
+										BackgroundColor = Color.White
 									}
 								}
 							});
@@ -141,7 +140,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			bv = new BoxView
 			{
-				Color = Colors.Purple,
+				Color = Color.Purple,
 				WidthRequest = 3000,
 				HeightRequest = 3000,
 				HorizontalOptions = LayoutOptions.Center,

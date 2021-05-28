@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.Xaml;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -64,7 +63,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					var model = new Model7357 { Text = "Item " + i };
 
 					if (i == 99)
-						model.BackgroundColor = Colors.Pink;
+						model.BackgroundColor = Color.Pink;
 
 					itemsSource.Add(model);
 				}
@@ -95,7 +94,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				var model = new Model7357 { Text = "Item " + i };
 
 				if (i == 49)
-					model.BackgroundColor = Colors.Pink;
+					model.BackgroundColor = Color.Pink;
 
 				ItemsSource.Add(model);
 			}
@@ -107,7 +106,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 	{
 		public string Text { get; set; }
 
-		public Color BackgroundColor { get; set; } = Colors.Beige;
+		public Color BackgroundColor { get; set; } = Color.Beige;
 
 		public Model7357()
 		{

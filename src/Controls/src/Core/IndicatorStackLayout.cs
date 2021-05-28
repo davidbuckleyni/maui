@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Specialized;
-using System.ComponentModel;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls
 {
@@ -16,7 +14,7 @@ namespace Microsoft.Maui.Controls
 			_indicatorView.PropertyChanged += _indicatorViewPropertyChanged;
 		}
 
-		void _indicatorViewPropertyChanged(object sender, PropertyChangedEventArgs e)
+		void _indicatorViewPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
 			if (e.PropertyName == IndicatorView.IndicatorsShapeProperty.PropertyName
 				|| e.PropertyName == IndicatorView.IndicatorTemplateProperty.PropertyName)
@@ -99,8 +97,8 @@ namespace Microsoft.Maui.Controls
 				var selectedIndex = position >= maxVisible ? maxVisible - 1 : position;
 				bool isSelected = index == selectedIndex;
 				Children[index].BackgroundColor = isSelected
-					? GetColorOrDefault(_indicatorView.SelectedIndicatorColor, Colors.Gray)
-					: GetColorOrDefault(_indicatorView.IndicatorColor, Colors.Silver);
+					? GetColorOrDefault(_indicatorView.SelectedIndicatorColor, Color.Gray)
+					: GetColorOrDefault(_indicatorView.IndicatorColor, Color.Silver);
 
 				VisualStateManager.GoToState(Children[index], isSelected
 					? VisualStateManager.CommonStates.Selected
@@ -111,7 +109,7 @@ namespace Microsoft.Maui.Controls
 			IsVisible = indicatorCount > 1 || !_indicatorView.HideSingle;
 		}
 
-		Color GetColorOrDefault(Color color, Color defaultColor) => color ?? defaultColor;
+		Color GetColorOrDefault(Color color, Color defaultColor) => color.IsDefault ? defaultColor : color;
 
 		void AddExtraIndicatorItems()
 		{
@@ -128,7 +126,7 @@ namespace Microsoft.Maui.Controls
 				{
 					Padding = 0,
 					HasShadow = false,
-					BorderColor = Colors.Transparent,
+					BorderColor = Color.Transparent,
 					VerticalOptions = LayoutOptions.Center,
 					HorizontalOptions = LayoutOptions.Center,
 					WidthRequest = size,

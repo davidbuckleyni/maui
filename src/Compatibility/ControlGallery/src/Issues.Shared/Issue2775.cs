@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Microsoft.Maui.Controls.Compatibility.UITests;
@@ -25,42 +24,42 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var list = new ListView
 			{
 				ItemsSource = GetList("Normal BG Blue"),
-				BackgroundColor = Colors.Blue,
+				BackgroundColor = Color.Blue,
 				ItemTemplate = new DataTemplate(typeof(NormalCell))
 			};
 
 			var listTransparent = new ListView
 			{
 				ItemsSource = GetList("Normal BG Transparent"),
-				BackgroundColor = Colors.Transparent,
+				BackgroundColor = Color.Transparent,
 				ItemTemplate = new DataTemplate(typeof(NormalCell))
 			};
 
 			var listSemiTransparent = new ListView
 			{
 				ItemsSource = GetList("Normal BG SEMI Transparent"),
-				BackgroundColor = Color.FromArgb("#801B2A39"),
+				BackgroundColor = Color.FromHex("#801B2A39"),
 				ItemTemplate = new DataTemplate(typeof(NormalCell))
 			};
 
 			var listContextActions = new ListView
 			{
 				ItemsSource = GetList("ContextActions BG PINK"),
-				BackgroundColor = Colors.Pink,
+				BackgroundColor = Color.Pink,
 				ItemTemplate = new DataTemplate(typeof(ContextActionsCell))
 			};
 
 			var listContextActionsTransparent = new ListView
 			{
 				ItemsSource = GetList("ContextActions BG Transparent"),
-				BackgroundColor = Colors.Transparent,
+				BackgroundColor = Color.Transparent,
 				ItemTemplate = new DataTemplate(typeof(ContextActionsCell))
 			};
 
 			var listContextActionsSemiTransparent = new ListView
 			{
 				ItemsSource = GetList("ContextActions BG Semi Transparent"),
-				BackgroundColor = Color.FromArgb("#801B2A39"),
+				BackgroundColor = Color.FromHex("#801B2A39"),
 				ItemTemplate = new DataTemplate(typeof(ContextActionsCell))
 			};
 
@@ -75,7 +74,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					listContextActionsTransparent,
 					listContextActionsSemiTransparent
 				},
-				BackgroundColor = Colors.Red
+				BackgroundColor = Color.Red
 			};
 		}
 

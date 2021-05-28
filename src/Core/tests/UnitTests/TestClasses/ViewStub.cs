@@ -1,21 +1,27 @@
-using Microsoft.Maui.Graphics;
+using System;
 using Microsoft.Maui.Primitives;
 
-namespace Microsoft.Maui.UnitTests
+namespace Microsoft.Maui.Tests
 {
 	class ViewStub : IViewStub
 	{
-		public Color BackgroundColor { get; set; }
-
-		public Shadow Shadow { get; set; }
+		public Thickness Margin { get; set; }
 
 		public bool IsEnabled { get; set; }
 
-		public Visibility Visibility { get; set; }
-
-		public double Opacity { get; set; }
+		public Color BackgroundColor { get; set; }
 
 		public Rectangle Frame { get; set; }
+
+		public string AutomationId { get; set; }
+
+		public FlowDirection FlowDirection { get; set; }
+
+		public Shadow Shadow { get; set; }
+
+		public double Width { get; set; }
+
+		public double Height { get; set; }
 
 		public IViewHandler Handler { get; set; }
 
@@ -27,29 +33,19 @@ namespace Microsoft.Maui.UnitTests
 
 		public bool IsArrangeValid { get; set; }
 
-		public double Width { get; set; }
-
-		public double Height { get; set; }
-		public Thickness Margin { get; set; }
-		public string AutomationId { get; set; }
-
-		public FlowDirection FlowDirection { get; set; }
-
-		public LayoutAlignment HorizontalLayoutAlignment { get; set; }
-
+    public LayoutAlignment HorizontalLayoutAlignment { get; set; }
+    
 		public LayoutAlignment VerticalLayoutAlignment { get; set; }
 
-		public Semantics Semantics { get; set; }
-
-		public Paint Background { get; set; }
-
-		public Size Arrange(Rectangle bounds) => Size.Zero;
+		public void Arrange(Rectangle bounds) { }
 
 		public void InvalidateArrange() { }
 
 		public void InvalidateMeasure() { }
 
-		public Size Measure(double widthConstraint, double heightConstraint) =>
-			Size.Zero;
+		public Size Measure(double widthConstraint, double heightConstraint)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

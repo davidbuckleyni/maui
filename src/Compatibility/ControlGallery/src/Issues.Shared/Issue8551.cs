@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -17,8 +16,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var instructions = new Label
 			{
 				Text = "Press the button below to navigate to a new page. The new page background must have transparency.",
-				BackgroundColor = Colors.Black,
-				TextColor = Colors.White
+				BackgroundColor = Color.Black,
+				TextColor = Color.White
 			};
 
 			var navigateButton = new Button
@@ -42,7 +41,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 	{
 		public Issue8551ModalPage()
 		{
-			BackgroundColor = Color.FromArgb("700000FF");
+			BackgroundColor = Color.FromHex("700000FF");
 
 			var layout = new Grid();
 
@@ -52,7 +51,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				WidthRequest = 200,
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.Center,
-				BackgroundColor = Colors.White,
+				BackgroundColor = Color.White,
 				CornerRadius = 12
 			};
 

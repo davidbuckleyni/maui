@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -11,7 +10,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 
 		public Bugzilla44596SplashPage(Action finishedLoading)
 		{
-			BackgroundColor = Colors.Blue;
+			BackgroundColor = Color.Blue;
 			FinishedLoading = finishedLoading;
 		}
 

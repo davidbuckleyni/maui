@@ -3,7 +3,6 @@ using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Microsoft.Maui.Controls.Compatibility.UITests;
@@ -29,7 +28,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			{
 				Text = "Button",
 				HorizontalOptions = LayoutOptions.End,
-				BorderColor = Colors.AliceBlue,
+				BorderColor = Color.AliceBlue,
 				BorderWidth = 5,
 				AutomationId = "TestReady"
 			}, 0, 0);
@@ -38,7 +37,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			{
 				Text = "Button",
 				HorizontalOptions = LayoutOptions.Start,
-				BackgroundColor = Colors.Gray
+				BackgroundColor = Color.Gray
 			}, 1, 1);
 
 			grid.Children.Add(new Button
@@ -64,26 +63,26 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					new Button {
 						Text = "BorderWidth = 1, CornerRadius = [default],",
 						HorizontalOptions = LayoutOptions.Center,
-						BorderColor = Colors.Red,
+						BorderColor = Color.Red,
 						BorderWidth = 1,
 					},
 					new Button {
 						Text = "BorderWidth = 1, CornerRadius = 0",
 						HorizontalOptions = LayoutOptions.Center,
-						BackgroundColor = Colors.Blue,
-						BorderColor = Colors.Red,
+						BackgroundColor = Color.Blue,
+						BorderColor = Color.Red,
 						BorderWidth = 1,
 						CornerRadius = 0,
-						TextColor = Colors.White
+						TextColor = Color.White
 					},
 					new Button {
 						Text = "BorderWidth = 1, CornerRadius = 1",
 						HorizontalOptions = LayoutOptions.Center,
-						BackgroundColor = Colors.Black,
-						BorderColor = Colors.Red,
+						BackgroundColor = Color.Black,
+						BorderColor = Color.Red,
 						BorderWidth = 1,
 						CornerRadius = 1,
-						TextColor = Colors.White
+						TextColor = Color.White
 					}
 				},
 			};

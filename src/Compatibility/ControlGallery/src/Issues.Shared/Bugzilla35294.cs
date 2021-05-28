@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -16,7 +15,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			FontSize = 16,
 			Text = "This is an example.... what is wrong with this? ",
 			HorizontalOptions = LayoutOptions.Center,
-			TextColor = Colors.Black,
+			TextColor = Color.Black,
 		};
 
 		protected override void Init()
@@ -27,12 +26,12 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				FontSize = 40,
 				FontAttributes = FontAttributes.Bold,
 				HorizontalOptions = LayoutOptions.Center,
-				TextColor = Colors.Black
+				TextColor = Color.Black
 			};
 
 			StackLayout stack = new StackLayout
 			{
-				BackgroundColor = Colors.White,
+				BackgroundColor = Color.White,
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				Spacing = 10,
 
@@ -41,7 +40,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			Content = new ScrollView
 			{
-				BackgroundColor = Colors.Blue,
+				BackgroundColor = Color.Blue,
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				Orientation = ScrollOrientation.Vertical,
 				Content = stack

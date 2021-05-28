@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 
 #if UITEST
@@ -21,7 +20,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 	{
 		protected override void Init()
 		{
-			AddContentPage(GetContentPage(Colors.Red));
+			AddContentPage(GetContentPage(Color.Red));
 		}
 
 		ContentPage GetContentPage(Color color)
@@ -36,7 +35,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 						Text = "Push Purple Page",
 						Command = new Command(() =>
 						{
-							var contentPage = GetContentPage(Colors.Purple);
+							var contentPage = GetContentPage(Color.Purple);
 							Navigation.PushAsync(contentPage);
 						}),
 					},
@@ -50,7 +49,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					Text = "Insert Orange Page Before Current Page",
 					Command = new Command(() =>
 					{
-						var contentPage = GetContentPage(Colors.Orange);
+						var contentPage = GetContentPage(Color.Orange);
 						Navigation.InsertPageBefore(contentPage, Navigation.NavigationStack.Last());
 					}),
 				});

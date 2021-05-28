@@ -1,18 +1,12 @@
 using System;
-using Android.Content;
-using Android.Runtime;
-using Android.Util;
-using Android.Views;
 using Android.Widget;
-using Java.Lang;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Handlers
 {
-	public partial class LabelHandler : ViewHandler<ILabel, TextView>
+	public partial class LabelHandler : AbstractViewHandler<ILabel, TextView>
 	{
-		static Color? DefaultTextColor { get; set; }
+		static Color DefaultTextColor { get; set; }
 		static float LineSpacingAddDefault { get; set; }
 		static float LineSpacingMultDefault { get; set; }
 
@@ -22,67 +16,67 @@ namespace Microsoft.Maui.Handlers
 		{
 			if (nativeView.TextColors == null)
 			{
-				DefaultTextColor = null;
+				DefaultTextColor = Color.Default;
 			}
 			else
 			{
 				DefaultTextColor = Color.FromUint((uint)nativeView.TextColors.DefaultColor);
 			}
-
 			LineSpacingAddDefault = nativeView.LineSpacingExtra;
 			LineSpacingMultDefault = nativeView.LineSpacingMultiplier;
 		}
 
 		public static void MapText(LabelHandler handler, ILabel label)
 		{
-			handler.NativeView?.UpdateText(label);
+			handler.TypedNativeView?.UpdateText(label);
 		}
 
 		public static void MapTextColor(LabelHandler handler, ILabel label)
 		{
-			handler.NativeView?.UpdateTextColor(label, DefaultTextColor!);
+			handler.TypedNativeView?.UpdateTextColor(label, DefaultTextColor);
 		}
 
 		public static void MapCharacterSpacing(LabelHandler handler, ILabel label)
 		{
-			handler.NativeView?.UpdateCharacterSpacing(label);
+			handler.TypedNativeView?.UpdateCharacterSpacing(label);
 		}
 
 		public static void MapHorizontalTextAlignment(LabelHandler handler, ILabel label)
 		{
-			handler.NativeView?.UpdateHorizontalTextAlignment(label);
+			handler.TypedNativeView?.UpdateHorizontalTextAlignment(label);
 		}
 
 		public static void MapLineBreakMode(LabelHandler handler, ILabel label)
 		{
-			handler.NativeView?.UpdateLineBreakMode(label);
+			handler.TypedNativeView?.UpdateLineBreakMode(label);
 		}
 
 		public static void MapMaxLines(LabelHandler handler, ILabel label)
 		{
-			handler.NativeView?.UpdateMaxLines(label);
+			handler.TypedNativeView?.UpdateMaxLines(label);
 		}
 
 		public static void MapPadding(LabelHandler handler, ILabel label)
 		{
-			handler.NativeView?.UpdatePadding(label);
+			handler.TypedNativeView?.UpdatePadding(label);
 		}
 
 		public static void MapTextDecorations(LabelHandler handler, ILabel label)
 		{
-			handler.NativeView?.UpdateTextDecorations(label);
+			handler.TypedNativeView?.UpdateTextDecorations(label);
 		}
 
 		public static void MapFont(LabelHandler handler, ILabel label)
 		{
-			var fontManager = handler.GetRequiredService<IFontManager>();
+			_ = handler.Services ?? throw new InvalidOperationException($"{nameof(Services)} should have been set by base class.");
 
-			handler.NativeView?.UpdateFont(label, fontManager);
+			var fontManager = handler.Services.GetRequiredService<IFontManager>();
+
+			handler.TypedNativeView?.UpdateFont(label, fontManager);
 		}
-
 		public static void MapLineHeight(LabelHandler handler, ILabel label)
 		{
-			handler.NativeView?.UpdateLineHeight(label, LineSpacingAddDefault, LineSpacingMultDefault);
+			handler.TypedNativeView?.UpdateLineHeight(label, LineSpacingAddDefault, LineSpacingMultDefault);
 		}
 	}
 }

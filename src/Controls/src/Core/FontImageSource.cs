@@ -1,8 +1,6 @@
-using Microsoft.Maui.Graphics;
-
 namespace Microsoft.Maui.Controls
 {
-	public partial class FontImageSource : ImageSource
+	public class FontImageSource : ImageSource
 	{
 		public override bool IsEmpty => string.IsNullOrEmpty(Glyph);
 

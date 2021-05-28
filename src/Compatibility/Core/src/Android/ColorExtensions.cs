@@ -1,9 +1,8 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using Android.Content;
 using Android.Content.Res;
 using AndroidX.Core.Content;
-using Microsoft.Maui.Graphics;
 using AColor = Android.Graphics.Color;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
@@ -14,12 +13,12 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 
 		public static AColor ToAndroid(this Color self)
 		{
-			return new AColor((byte)(byte.MaxValue * self.Red), (byte)(byte.MaxValue * self.Green), (byte)(byte.MaxValue * self.Blue), (byte)(byte.MaxValue * self.Alpha));
+			return new AColor((byte)(byte.MaxValue * self.R), (byte)(byte.MaxValue * self.G), (byte)(byte.MaxValue * self.B), (byte)(byte.MaxValue * self.A));
 		}
 
 		public static AColor ToAndroid(this Color self, int defaultColorResourceId, Context context)
 		{
-			if (self == null)
+			if (self == Color.Default)
 			{
 				return new AColor(ContextCompat.GetColor(context, defaultColorResourceId));
 			}
@@ -29,7 +28,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 
 		public static AColor ToAndroid(this Color self, Color defaultColor)
 		{
-			if (self == null)
+			if (self == Color.Default)
 				return defaultColor.ToAndroid();
 
 			return ToAndroid(self);

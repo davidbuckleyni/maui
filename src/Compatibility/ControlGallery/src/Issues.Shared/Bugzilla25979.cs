@@ -2,7 +2,6 @@
 
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 #if UITEST
 using Xamarin.UITest;
 using NUnit.Framework;
@@ -37,7 +36,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 				Content = new StackLayout
 				{
-					BackgroundColor = Colors.Red,
+					BackgroundColor = Color.Red,
 					Children = {
 						new Label { Text = "Page 1", FontSize=Device.GetNamedSize(NamedSize.Large, typeof(Label)) },
 						b
@@ -68,7 +67,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 				Content = new StackLayout
 				{
-					BackgroundColor = Colors.Red,
+					BackgroundColor = Color.Red,
 					Children = {
 						new Label { Text = "Page 2", FontSize=Device.GetNamedSize(NamedSize.Large, typeof(Label)) },
 						b

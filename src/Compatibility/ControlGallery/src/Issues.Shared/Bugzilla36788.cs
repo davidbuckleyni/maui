@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -35,10 +34,10 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var contentView = new ContentView
 			{
 				Padding = 16,
-				BackgroundColor = Colors.Gray,
+				BackgroundColor = Color.Gray,
 				Content = new Label
 				{
-					BackgroundColor = Colors.Aqua,
+					BackgroundColor = Color.Aqua,
 					Text = longString,
 					LineBreakMode = LineBreakMode.TailTruncation
 				}
@@ -49,23 +48,23 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			contentView = new ContentView
 			{
 				Padding = 16,
-				BackgroundColor = Colors.Gray,
+				BackgroundColor = Color.Gray,
 				Content = new RelativeLayout
 				{
-					BackgroundColor = Colors.Navy,
+					BackgroundColor = Color.Navy,
 					Children = {
 						{new Label {
-							BackgroundColor = Colors.Blue,
+							BackgroundColor = Color.Blue,
 							Text = longString,
 							LineBreakMode = LineBreakMode.TailTruncation
 						}, Microsoft.Maui.Controls.Constraint.Constant (0)},
 						{new Label {
-							BackgroundColor = Colors.Fuchsia,
+							BackgroundColor = Color.Fuchsia,
 							Text = longString,
 							LineBreakMode = LineBreakMode.TailTruncation
 						}, Microsoft.Maui.Controls.Constraint.Constant (0), Microsoft.Maui.Controls.Constraint.Constant (40)},
 						{new Label {
-							BackgroundColor = Colors.Fuchsia,
+							BackgroundColor = Color.Fuchsia,
 							Text = longString,
 							LineBreakMode = LineBreakMode.TailTruncation
 						}, Microsoft.Maui.Controls.Constraint.Constant (10), Microsoft.Maui.Controls.Constraint.Constant (80)},
@@ -78,25 +77,25 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			contentView = new ContentView
 			{
 				Padding = 16,
-				BackgroundColor = Colors.Gray,
+				BackgroundColor = Color.Gray,
 				IsClippedToBounds = true,
 				Content = _container = new RelativeLayout
 				{
 					IsClippedToBounds = true,
-					BackgroundColor = Colors.Navy,
+					BackgroundColor = Color.Navy,
 					Children = {
 						{_testLabel = new Label {
-							BackgroundColor = Colors.Blue,
+							BackgroundColor = Color.Blue,
 							Text = longString,
 							LineBreakMode = LineBreakMode.TailTruncation
 						}, Microsoft.Maui.Controls.Constraint.Constant (0)},
 						{new Label {
-							BackgroundColor = Colors.Fuchsia,
+							BackgroundColor = Color.Fuchsia,
 							Text = longString,
 							LineBreakMode = LineBreakMode.TailTruncation
 						}, Microsoft.Maui.Controls.Constraint.Constant (0), Microsoft.Maui.Controls.Constraint.Constant (40)},
 						{new Label {
-							BackgroundColor = Colors.Fuchsia,
+							BackgroundColor = Color.Fuchsia,
 							Text = longString,
 							LineBreakMode = LineBreakMode.TailTruncation
 						}, Microsoft.Maui.Controls.Constraint.Constant (10), Microsoft.Maui.Controls.Constraint.Constant (80)},

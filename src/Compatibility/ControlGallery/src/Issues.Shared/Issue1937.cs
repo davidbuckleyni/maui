@@ -92,7 +92,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			};
 		}
 
-#if UITEST && WINDOWS
+#if UITEST && __WINDOWS__
 		[Test]
 		public void Issue1937Test ()
 		{

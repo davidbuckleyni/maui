@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -44,7 +43,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				ItemTemplate = new DataTemplate(typeof(ListCell))
 			};
 
-			BackgroundColor = Colors.Maroon;
+			BackgroundColor = Color.Maroon;
 
 			Content = new StackLayout
 			{
@@ -75,7 +74,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				new StackLayout
 				{
 					HorizontalOptions = LayoutOptions.Fill,
-					BackgroundColor = Colors.Gray,
+					BackgroundColor = Color.Gray,
 					Children = {
 						label,
 						progress

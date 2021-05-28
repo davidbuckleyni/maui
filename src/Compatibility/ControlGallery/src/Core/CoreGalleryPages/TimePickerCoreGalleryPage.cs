@@ -1,6 +1,5 @@
 using System;
 using Microsoft.Maui.Controls.CustomAttributes;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -15,7 +14,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			var timeContainer = new ViewContainer<TimePicker>(Test.TimePicker.Time,
 				new TimePicker { Time = new TimeSpan(14, 45, 50) });
 			var textColorContainer = new ViewContainer<TimePicker>(Test.TimePicker.TextColor,
-				new TimePicker { Time = new TimeSpan(14, 45, 50), TextColor = Colors.Lime });
+				new TimePicker { Time = new TimeSpan(14, 45, 50), TextColor = Color.Lime });
 			var fontAttributesContainer = new ViewContainer<TimePicker>(Test.TimePicker.FontAttributes,
 				new TimePicker { FontAttributes = FontAttributes.Bold });
 

@@ -5,14 +5,13 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
-using Microsoft.Maui.Hosting;
-using Microsoft.Maui.HotReload;
 using Microsoft.Maui.Layouts;
+
+
 
 namespace Microsoft.Maui.Controls
 {
-	public class View : VisualElement, IView, IViewController, IGestureController, IGestureRecognizers, IPropertyMapperView, IHotReloadableView
+	public class View : VisualElement, IView, IViewController, IGestureController, IGestureRecognizers, IPropertyMapperView
 	{
 		protected internal IGestureController GestureController => this;
 
@@ -178,51 +177,27 @@ namespace Microsoft.Maui.Controls
 
 		#region IView
 
-		protected PropertyMapper propertyMapper;
-
-		protected PropertyMapper<T> GetRendererOverrides<T>() where T : IView => (PropertyMapper<T>)(propertyMapper as PropertyMapper<T> ?? (propertyMapper = new PropertyMapper<T>()));
-		PropertyMapper IPropertyMapperView.GetPropertyMapperOverrides() => propertyMapper;
-
-		Primitives.LayoutAlignment IFrameworkElement.HorizontalLayoutAlignment => HorizontalOptions.ToCore();
-		Primitives.LayoutAlignment IFrameworkElement.VerticalLayoutAlignment => VerticalOptions.ToCore();
-
 		protected override void OnSizeAllocated(double width, double height)
 		{
 			base.OnSizeAllocated(width, height);
 
-			if (width >= 0 && height >= 0)
+			if (IsArrangeValid)
 			{
-				// This is a temporary measure to keep the old layouts working 
-				Handler?.NativeArrange(Bounds);
+				Handler?.SetFrame(Bounds);
 			}
 		}
 
-		#endregion
+		protected PropertyMapper propertyMapper;
 
-		#region HotReload
+		protected PropertyMapper<T> GetRendererOverides<T>() where T : IView => (PropertyMapper<T>)(propertyMapper as PropertyMapper<T> ?? (propertyMapper = new PropertyMapper<T>()));
+		PropertyMapper IPropertyMapperView.GetPropertyMapperOverrides() => propertyMapper;
 
-		IView IReplaceableView.ReplacedView => MauiHotReloadHelper.GetReplacedView(this) ?? this;
+		double IFrameworkElement.Width { get => WidthRequest; }
+		double IFrameworkElement.Height { get => HeightRequest; }
 
-		IReloadHandler IHotReloadableView.ReloadHandler { get; set; }
+		Primitives.LayoutAlignment IFrameworkElement.HorizontalLayoutAlignment => HorizontalOptions.ToCore();
+		Primitives.LayoutAlignment IFrameworkElement.VerticalLayoutAlignment => VerticalOptions.ToCore();
 
-		void IHotReloadableView.TransferState(IView newView)
-		{
-			//TODO: LEt you hot reload the the ViewModel
-			if (newView is View v)
-				v.BindingContext = BindingContext;
-		}
-
-		void IHotReloadableView.Reload()
-		{
-			Device.BeginInvokeOnMainThread(() =>
-			{
-				this.CheckHandlers();
-				//Handler = null;
-				var reloadHandler = ((IHotReloadableView)this).ReloadHandler;
-				reloadHandler?.Reload();
-				//TODO: if reload handler is null, Do a manual reload?
-			});
-		}
 		#endregion
 	}
 }

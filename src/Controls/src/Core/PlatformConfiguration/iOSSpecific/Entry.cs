@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.Maui.Graphics;
+using System;
 
 namespace Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific
 {
@@ -10,7 +9,7 @@ namespace Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific
 		public static readonly BindableProperty AdjustsFontSizeToFitWidthProperty =
 			BindableProperty.Create("AdjustsFontSizeToFitWidth", typeof(bool),
 				typeof(Entry), false);
-		public static readonly BindableProperty CursorColorProperty = BindableProperty.Create("CursorColor", typeof(Color), typeof(Entry), null);
+		public static readonly BindableProperty CursorColorProperty = BindableProperty.Create("CursorColor", typeof(Color), typeof(Entry), Color.Default);
 
 		public static bool GetAdjustsFontSizeToFitWidth(BindableObject element)
 		{

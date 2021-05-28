@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Microsoft.Maui.Controls.Compatibility.UITests;
@@ -32,7 +31,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			var swipeViewContent = new Grid
 			{
-				BackgroundColor = Colors.LightGray,
+				BackgroundColor = Color.LightGray,
 				HeightRequest = 60
 			};
 
@@ -53,7 +52,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			var swipeItemContent = new Grid
 			{
-				BackgroundColor = Colors.Orange,
+				BackgroundColor = Color.Orange,
 				WidthRequest = 100
 			};
 
@@ -62,7 +61,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.Center,
 				Text = "Retry",
-				TextColor = Colors.White
+				TextColor = Color.White
 			};
 
 			swipeItemContent.Children.Add(swipeItemLabel);

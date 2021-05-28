@@ -1,5 +1,4 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -14,12 +13,12 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			var instructions = new Label { Text = "The text visible in the Grid should end with 'finding a good way to spend it'. If that text is cut off, this test has failed." };
 
-			BackgroundColor = Colors.BlanchedAlmond;
+			BackgroundColor = Color.BlanchedAlmond;
 
 			var grid = new Grid
 			{
 				VerticalOptions = LayoutOptions.Start,
-				BackgroundColor = Colors.Bisque,
+				BackgroundColor = Color.Bisque,
 				Margin = new Thickness(0, 40, 0, 0),
 				ColumnSpacing = 6
 			};
@@ -34,7 +33,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			{
 				VerticalOptions = LayoutOptions.Start,
 				LineBreakMode = LineBreakMode.WordWrap,
-				BackgroundColor = Colors.CornflowerBlue,
+				BackgroundColor = Color.CornflowerBlue,
 				FontSize = 10,
 				Text = "There's a 104 days of summer vacation 'til school comes along just to end it. So the annual problem for our generation is finding a good way to spend it."
 			};

@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -32,7 +31,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				{
 					new Label
 					{
-						BackgroundColor = Colors.CadetBlue,
+						BackgroundColor = Color.CadetBlue,
 						HorizontalOptions = LayoutOptions.Start,
 						VerticalOptions = LayoutOptions.CenterAndExpand,
 						VerticalTextAlignment = TextAlignment.Center,
@@ -40,7 +39,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					},
 					new Slider
 					{
-						BackgroundColor = Colors.Green,
+						BackgroundColor = Color.Green,
 						HorizontalOptions = LayoutOptions.FillAndExpand,
 						VerticalOptions = LayoutOptions.CenterAndExpand,
 						Minimum = 0,

@@ -1,6 +1,5 @@
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -19,7 +18,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			_testButton = new Button()
 			{
 				Text = "Enabled",
-				TextColor = Colors.Yellow,
+				TextColor = Color.Yellow,
 				IsEnabled = true
 			};
 

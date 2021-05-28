@@ -5,7 +5,6 @@ using System.Reflection;
 using System.Text;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Core.UnitTests;
-using Microsoft.Maui.Graphics;
 using NUnit.Framework;
 
 namespace Microsoft.Maui.Controls.Xaml.UnitTests
@@ -21,14 +20,14 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 		{
 			set
 			{
-				if (color.GetHue() != value)
+				if (color.Hue != value)
 				{
-					Color = Color.FromHsla(value, color.GetSaturation(), color.GetLuminosity());
+					Color = Color.FromHsla(value, color.Saturation, color.Luminosity);
 				}
 			}
 			get
 			{
-				return color.GetHue();
+				return color.Hue;
 			}
 		}
 
@@ -36,14 +35,14 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 		{
 			set
 			{
-				if (color.GetSaturation() != value)
+				if (color.Saturation != value)
 				{
-					Color = Color.FromHsla(color.GetHue(), value, color.GetLuminosity());
+					Color = Color.FromHsla(color.Hue, value, color.Luminosity);
 				}
 			}
 			get
 			{
-				return color.GetSaturation();
+				return color.Saturation;
 			}
 		}
 
@@ -51,14 +50,14 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 		{
 			set
 			{
-				if (color.GetLuminosity() != value)
+				if (color.Luminosity != value)
 				{
-					Color = Color.FromHsla(color.GetHue(), color.GetSaturation(), value);
+					Color = Color.FromHsla(color.Hue, color.Saturation, value);
 				}
 			}
 			get
 			{
-				return color.GetLuminosity();
+				return color.Luminosity;
 			}
 		}
 
@@ -132,7 +131,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 			StringBuilder stringBuilder = new StringBuilder();
 
 			// Loop through the public static fields of the Color structure.
-			foreach (FieldInfo fieldInfo in typeof(Colors).GetRuntimeFields())
+			foreach (FieldInfo fieldInfo in typeof(Color).GetRuntimeFields())
 			{
 				if (fieldInfo.IsPublic &&
 					fieldInfo.IsStatic &&
@@ -162,9 +161,9 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 						FriendlyName = stringBuilder.ToString(),
 						Color = color,
 						RgbDisplay = String.Format("{0:X2}-{1:X2}-{2:X2}",
-												   (int)(255 * color.Red),
-												   (int)(255 * color.Green),
-												   (int)(255 * color.Blue))
+												   (int)(255 * color.R),
+												   (int)(255 * color.G),
+												   (int)(255 * color.B))
 					};
 
 					// Add it to the collection.
@@ -190,9 +189,9 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 
 			foreach (Gh3539NamedColor namedColor in Gh3539NamedColor.All)
 			{
-				double distance = Math.Sqrt(Math.Pow(color.Red - namedColor.Color.Red, 2) +
-											Math.Pow(color.Green - namedColor.Color.Green, 2) +
-											Math.Pow(color.Blue - namedColor.Color.Blue, 2));
+				double distance = Math.Sqrt(Math.Pow(color.R - namedColor.Color.R, 2) +
+											Math.Pow(color.G - namedColor.Color.G, 2) +
+											Math.Pow(color.B - namedColor.Color.B, 2));
 
 				if (distance < shortestDistance)
 				{

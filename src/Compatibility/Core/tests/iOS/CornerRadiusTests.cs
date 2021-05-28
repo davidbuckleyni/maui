@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
 using NUnit.Framework;
 using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS.UnitTests
 {
@@ -16,7 +15,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS.UnitTests
 				HeightRequest = 100,
 				WidthRequest = 200,
 				CornerRadius = 15,
-				BackgroundColor = Colors.CadetBlue
+				BackgroundColor = Color.CadetBlue
 			};
 
 			await CheckCornerRadius(boxView);
@@ -25,7 +24,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS.UnitTests
 		[Test, Category("CornerRadius"), Category("Button")]
 		public async Task ButtonCornerRadius()
 		{
-			var backgroundColor = Colors.CadetBlue;
+			var backgroundColor = Color.CadetBlue;
 
 			var button = new Button
 			{
@@ -41,7 +40,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS.UnitTests
 		[Test, Category("CornerRadius"), Category("Frame")]
 		public async Task FrameCornerRadius()
 		{
-			var backgroundColor = Colors.CadetBlue;
+			var backgroundColor = Color.CadetBlue;
 
 			var frame = new Frame
 			{
@@ -49,7 +48,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS.UnitTests
 				WidthRequest = 200,
 				CornerRadius = 40,
 				BackgroundColor = backgroundColor,
-				BorderColor = Colors.Brown,
+				BorderColor = Color.Brown,
 				Content = new Label { Text = "Hey" }
 			};
 
@@ -59,7 +58,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS.UnitTests
 		[Test, Category("CornerRadius"), Category("ImageButton")]
 		public async Task ImageButtonCornerRadius()
 		{
-			var backgroundColor = Colors.CadetBlue;
+			var backgroundColor = Color.CadetBlue;
 
 			var button = new ImageButton
 			{

@@ -12,7 +12,6 @@ using Android.Widget;
 using AndroidX.Core.Content;
 using Java.Lang;
 using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 {
@@ -76,7 +75,6 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 			AutoPackage = false;
 		}
 
-		[PortHandler("Still pending the code related to Keyboard.")]
 		bool TextView.IOnEditorActionListener.OnEditorAction(TextView v, ImeAction actionId, KeyEvent e)
 		{
 			// Fire Completed and dismiss keyboard for hardware / physical keyboards
@@ -321,8 +319,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 			EditText.SetTextSize(ComplexUnitType.Sp, (float)Element.FontSize);
 		}
 
-		[PortHandler("IsSpellCheckEnabled is missing.")]
-		[PortHandler("No override for GetDigitsKeyListener")]
+		[PortHandler("Partially ported")]
 		void UpdateInputType()
 		{
 			Entry model = Element;

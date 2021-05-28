@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Input;
-using Microsoft.Maui;
-using Microsoft.Maui.Controls;
 using Microsoft.Maui.Essentials;
 using Samples.Helpers;
+using Xamarin.Forms;
 
 namespace Samples.ViewModel
 {
@@ -33,9 +32,9 @@ namespace Samples.ViewModel
 
 		public ShareViewModel()
 		{
-			RequestCommand = new Command<Microsoft.Maui.Controls.View>(OnRequest);
-			RequestFileCommand = new Command<Microsoft.Maui.Controls.View>(OnFileRequest);
-			RequestFilesCommand = new Command<Microsoft.Maui.Controls.View>(OnFilesRequest);
+			RequestCommand = new Command<Xamarin.Forms.View>(OnRequest);
+			RequestFileCommand = new Command<Xamarin.Forms.View>(OnFileRequest);
+			RequestFilesCommand = new Command<Xamarin.Forms.View>(OnFilesRequest);
 		}
 
 		public bool ShareText
@@ -122,17 +121,17 @@ namespace Samples.ViewModel
 			set => SetProperty(ref shareFile2AttachmentName, value);
 		}
 
-		async void OnRequest(Microsoft.Maui.Controls.View element)
+		async void OnRequest(Xamarin.Forms.View element)
 			=> await Share.RequestAsync(new ShareTextRequest
 			{
 				Subject = Subject,
 				Text = ShareText ? Text : null,
 				Uri = ShareUri ? Uri : null,
 				Title = Title,
-				PresentationSourceBounds = element.GetAbsoluteBounds()
+				PresentationSourceBounds = GetRectangle(element)
 			});
 
-		async void OnFileRequest(Microsoft.Maui.Controls.View element)
+		async void OnFileRequest(Xamarin.Forms.View element)
 		{
 			if (string.IsNullOrWhiteSpace(ShareFileAttachmentContents))
 				return;
@@ -143,11 +142,11 @@ namespace Samples.ViewModel
 			{
 				Title = ShareFileTitle,
 				File = new ShareFile(file),
-				PresentationSourceBounds = element.GetAbsoluteBounds()
+				PresentationSourceBounds = GetRectangle(element)
 			});
 		}
 
-		async void OnFilesRequest(Microsoft.Maui.Controls.View element)
+		async void OnFilesRequest(Xamarin.Forms.View element)
 		{
 			if (string.IsNullOrWhiteSpace(ShareFile1AttachmentContents) ||
 				string.IsNullOrWhiteSpace(ShareFile2AttachmentContents))
@@ -160,7 +159,7 @@ namespace Samples.ViewModel
 			{
 				Title = ShareFilesTitle,
 				Files = new List<ShareFile> { new ShareFile(file1), new ShareFile(file2) },
-				PresentationSourceBounds = element.GetAbsoluteBounds()
+				PresentationSourceBounds = GetRectangle(element)
 			});
 		}
 
@@ -171,5 +170,7 @@ namespace Samples.ViewModel
 			File.WriteAllText(file, fileContents);
 			return file;
 		}
+
+		System.Drawing.Rectangle GetRectangle(Xamarin.Forms.View element) => element.GetAbsoluteBounds().ToSystemRectangle();
 	}
 }

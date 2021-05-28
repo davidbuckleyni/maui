@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -29,7 +28,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var label = new Label
 			{
 				Text = "Click the button below to animate the BoxView using individual ScaleXTo and ScaleYTo extension methods.",
-				TextColor = Colors.Black,
+				TextColor = Color.Black,
 				AutomationId = "TestReady"
 			};
 
@@ -37,8 +36,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			{
 				AutomationId = AnimateBoxViewButton,
 				Text = "Animate BoxView",
-				BackgroundColor = Colors.Black,
-				TextColor = Colors.White,
+				BackgroundColor = Color.Black,
+				TextColor = Color.White,
 				VerticalOptions = LayoutOptions.EndAndExpand
 			};
 
@@ -47,7 +46,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			_boxView = new BoxView
 			{
 				AutomationId = BoxToScale,
-				BackgroundColor = Colors.Blue,
+				BackgroundColor = Color.Blue,
 				WidthRequest = 200,
 				HeightRequest = 100,
 				HorizontalOptions = LayoutOptions.Center

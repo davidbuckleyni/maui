@@ -61,7 +61,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			// Windows App Driver and the Search Bar are a bit buggy
 			// It randomly doesn't enter the first letter
-#if !WINDOWS
+#if !__WINDOWS__
 			Assert.AreEqual("Hello", label.ReadText());
 #endif
 

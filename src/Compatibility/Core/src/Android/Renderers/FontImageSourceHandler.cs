@@ -1,12 +1,9 @@
-﻿using System.Collections.Concurrent;
+using System.Collections.Concurrent;
 using System.Threading;
 using System.Threading.Tasks;
 using Android.Content;
 using Android.Graphics;
 using Android.Util;
-using Microsoft.Maui.Graphics;
-using Color = Microsoft.Maui.Graphics.Color;
-using Paint = Android.Graphics.Paint;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 {
@@ -24,7 +21,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 				using var paint = new Paint
 				{
 					TextSize = TypedValue.ApplyDimension(ComplexUnitType.Dip, (float)fontsource.Size, context.Resources.DisplayMetrics),
-					Color = (fontsource.Color != null ? fontsource.Color : Colors.White).ToAndroid(),
+					Color = (fontsource.Color != Color.Default ? fontsource.Color : Color.White).ToAndroid(),
 					TextAlign = Paint.Align.Left,
 					AntiAlias = true,
 				};

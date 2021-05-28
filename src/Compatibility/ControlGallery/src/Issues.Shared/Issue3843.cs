@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 
 #if UITEST
@@ -26,7 +25,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		protected override void Init()
 		{
 			ListView list = new ListView();
-			list.BackgroundColor = Colors.Yellow;
+			list.BackgroundColor = Color.Yellow;
 			list.ItemsSource =
 				Enumerable
 				.Range(0, 1000)

@@ -7,7 +7,6 @@ using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -25,9 +24,9 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			int sizes = 200;
 			var radius = new ImageButton()
 			{
-				BorderColor = Colors.Brown,
+				BorderColor = Color.Brown,
 				BorderWidth = 5,
-				BackgroundColor = Colors.Yellow,
+				BackgroundColor = Color.Yellow,
 				Aspect = Aspect.Fill,
 				CornerRadius = 10,
 				Source = "coffee.png",
@@ -37,23 +36,23 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			};
 
-			radius.On<Android>().SetShadowColor(Colors.Green);
+			radius.On<Android>().SetShadowColor(Color.Green);
 			radius.On<Android>().SetIsShadowEnabled(true);
 			radius.On<Android>().SetShadowOffset(new Size(25, 25));
 
 			var radiusBackground = new ImageButton()
 			{
-				BorderColor = Colors.Brown,
+				BorderColor = Color.Brown,
 				BorderWidth = 5,
 				Source = "coffee.png",
 				CornerRadius = 10,
 				HorizontalOptions = LayoutOptions.Center,
-				BackgroundColor = Colors.Pink,
+				BackgroundColor = Color.Pink,
 				HeightRequest = sizes,
 				WidthRequest = sizes
 			};
 
-			radiusBackground.On<Android>().SetShadowColor(Colors.Green);
+			radiusBackground.On<Android>().SetShadowColor(Color.Green);
 			radiusBackground.On<Android>().SetIsShadowEnabled(true);
 			radiusBackground.On<Android>().SetShadowOffset(new Size(5, 5));
 
@@ -66,47 +65,47 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					new ImageButton()
 					{
 						Source = "coffee.png",
-						BackgroundColor = Colors.GreenYellow
+						BackgroundColor = Color.GreenYellow
 					},
 					new Label(){ Text = "Do I have left padding? I should have left padding." },
 					new ImageButton()
 					{
 						Source = "coffee.png",
-						BackgroundColor = Colors.Green,
+						BackgroundColor = Color.Green,
 						Padding = new Thickness(100, 0, 0, 0)
 					},
 					new Label(){ Text = "Do I have top padding? I should have top padding." },
 					new ImageButton()
 					{
 						Source = "coffee.png",
-						BackgroundColor = Colors.LawnGreen,
+						BackgroundColor = Color.LawnGreen,
 						Padding = new Thickness(0, 30, 0, 0)
 					},
 					new Label(){ Text = "Do I have right padding? I should have right padding."},
 					new ImageButton()
 					{
 						Source = "coffee.png",
-						BackgroundColor = Colors.LightGreen,
+						BackgroundColor = Color.LightGreen,
 						Padding = new Thickness(0, 0, 100, 0)
 					},
 					new Label(){ Text = "Do I have bottom padding? I should have bottom padding." },
 					new ImageButton()
 					{
 						Source = "coffee.png",
-						BackgroundColor = Colors.ForestGreen,
+						BackgroundColor = Color.ForestGreen,
 						Padding = new Thickness(0, 0, 0, 30)
 					},
 					new Label(){ Text = "Do you see image from a Uri?" },
 					new ImageButton()
 					{
 						Source = "https://raw.githubusercontent.com/xamarin/Xamarin.Forms/main/Microsoft.Maui.Controls.ControlGallery/coffee.png",
-						BackgroundColor = Colors.ForestGreen
+						BackgroundColor = Color.ForestGreen
 					},
 					new Label(){ Text = "Invalid Image Uri just to test it doesn't crash" },
 					new ImageButton()
 					{
 						Source = "http://xamarin.com/imginvalidf@#$R(P&fb.png",
-						BackgroundColor = Colors.ForestGreen
+						BackgroundColor = Color.ForestGreen
 					},
 					new Label(){ Text = "Aspect: Aspect.Fill with shadows" },
 					radius,
@@ -119,7 +118,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 						HorizontalOptions = LayoutOptions.Center,
 						HeightRequest = sizes,
 						WidthRequest = sizes,
-						BorderColor = Colors.Green,
+						BorderColor = Color.Green,
 						BorderWidth = 10
 					},
 					new Label(){ Text = "BorderColor:Color.Green, BorderWidth:10, Aspect:Aspect.Fill" },
@@ -129,7 +128,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 						HorizontalOptions = LayoutOptions.Center,
 						HeightRequest = sizes,
 						WidthRequest = sizes,
-						BorderColor = Colors.Green,
+						BorderColor = Color.Green,
 						BorderWidth = 10,
 						Aspect = Aspect.Fill
 					},
@@ -140,12 +139,12 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 						HorizontalOptions = LayoutOptions.Center,
 						HeightRequest = sizes,
 						WidthRequest = sizes,
-						BackgroundColor = Colors.Green
+						BackgroundColor = Color.Green
 					},
 					new Label(){ Text = "BorderWidth: 5, CornerRadius:10, BorderColor:Brown" },
 					new ImageButton()
 					{
-						BorderColor = Colors.Brown,
+						BorderColor = Color.Brown,
 						BorderWidth = 5,
 						Source = "coffee.png",
 						CornerRadius = 10,
@@ -158,7 +157,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					{
 						Source = "coffee.png",
 						HorizontalOptions = LayoutOptions.Center,
-						BorderColor = Colors.Red,
+						BorderColor = Color.Red,
 						BorderWidth = 5,
 						CornerRadius = sizes / 2,
 						HeightRequest = sizes,

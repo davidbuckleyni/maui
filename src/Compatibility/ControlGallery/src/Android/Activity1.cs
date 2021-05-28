@@ -13,7 +13,6 @@ using Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues;
 using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android.AppLinks;
-using Microsoft.Maui.Graphics;
 using Android.Content;
 using Android.Content.Res;
 using Android.Views;
@@ -101,7 +100,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Android
 			viewGroup.AddView(textView);
 
 			var buttonColor = new global::Android.Widget.Button(this) { Text = "Change label Color" };
-			buttonColor.Click += (sender, e) => textView.SetTextColor(Colors.Blue.ToAndroid());
+			buttonColor.Click += (sender, e) => textView.SetTextColor(Color.Blue.ToAndroid());
 
 			var colorPicker = new ColorPickerView(this, 200, 200);
 

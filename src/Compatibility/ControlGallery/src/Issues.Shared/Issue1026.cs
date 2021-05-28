@@ -1,6 +1,5 @@
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -19,7 +18,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var scrollView =
 				new ScrollView
 				{
-					BackgroundColor = Color.FromArgb("#dae1eb"),
+					BackgroundColor = Color.FromHex("#dae1eb"),
 					Content =
 					new StackLayout
 					{
@@ -28,8 +27,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 						Orientation = StackOrientation.Vertical,
 						Children = {
 						new Button {
-							BackgroundColor = Color.FromArgb ("#006599"),
-							TextColor = Colors.White,
+							BackgroundColor = Color.FromHex ("#006599"),
+							TextColor = Color.White,
 							Text = "Subscribe with LinkedIn",
 							WidthRequest = 262,
 							HorizontalOptions = LayoutOptions.Center,
@@ -69,8 +68,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 							HorizontalOptions = LayoutOptions.Center,
 						},
 						new Button {
-							BackgroundColor = Color.FromArgb ("#05addc"),
-							TextColor = Colors.White,
+							BackgroundColor = Color.FromHex ("#05addc"),
+							TextColor = Color.White,
 							Text = "Create an account",
 							WidthRequest = 262,
 							HorizontalOptions = LayoutOptions.Center,
@@ -78,7 +77,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 						},
 						new Label {
 							Text = "by subscribing, you accept the general conditions.",
-							TextColor = Colors.White,
+							TextColor = Color.White,
 							HorizontalTextAlignment = TextAlignment.Center,
 							FontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Label)),
 							WidthRequest = 262,

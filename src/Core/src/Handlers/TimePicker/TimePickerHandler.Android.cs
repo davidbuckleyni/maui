@@ -1,15 +1,12 @@
 ﻿using System;
 using Android.App;
-using Android.Graphics.Drawables;
 using Android.Text.Format;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Microsoft.Maui.Handlers
 {
-	public partial class TimePickerHandler : ViewHandler<ITimePicker, MauiTimePicker>
+	public partial class TimePickerHandler : AbstractViewHandler<ITimePicker, MauiTimePicker>
 	{
-		static Drawable? DefaultBackground;
-
 		MauiTimePicker? _timePicker;
 		AlertDialog? _dialog;
 
@@ -22,13 +19,6 @@ namespace Microsoft.Maui.Handlers
 			};
 
 			return _timePicker;
-		}
-
-		protected override void SetupDefaults(MauiTimePicker nativeView)
-		{
-			DefaultBackground = nativeView.Background;
-
-			base.SetupDefaults(nativeView);
 		}
 
 		protected override void DisconnectHandler(MauiTimePicker nativeView)
@@ -44,7 +34,7 @@ namespace Microsoft.Maui.Handlers
 		{
 			void onTimeSetCallback(object? obj, TimePickerDialog.TimeSetEventArgs args)
 			{
-				if (VirtualView == null || NativeView == null)
+				if (VirtualView == null || TypedNativeView == null)
 					return;
 
 				VirtualView.Time = new TimeSpan(args.HourOfDay, args.Minute, 0);
@@ -55,36 +45,29 @@ namespace Microsoft.Maui.Handlers
 			return dialog;
 		}
 
-		// This is a Android-specific mapping
-		public static void MapBackground(TimePickerHandler handler, ITimePicker timePicker)
-		{
-			handler.NativeView?.UpdateBackground(timePicker, DefaultBackground);
-		}
-
 		public static void MapFormat(TimePickerHandler handler, ITimePicker timePicker)
 		{
-			handler.NativeView?.UpdateFormat(timePicker);
+			handler.TypedNativeView?.UpdateFormat(timePicker);
 		}
 
 		public static void MapTime(TimePickerHandler handler, ITimePicker timePicker)
 		{
-			handler.NativeView?.UpdateTime(timePicker);
+			handler.TypedNativeView?.UpdateTime(timePicker);
 		}
 
 		public static void MapCharacterSpacing(TimePickerHandler handler, ITimePicker timePicker)
 		{
-			handler.NativeView?.UpdateCharacterSpacing(timePicker);
+			handler.TypedNativeView?.UpdateCharacterSpacing(timePicker);
 		}
 
 		public static void MapFont(TimePickerHandler handler, ITimePicker timePicker)
 		{
-			var fontManager = handler.GetRequiredService<IFontManager>();
+			_ = handler.Services ?? throw new InvalidOperationException($"{nameof(Services)} should have been set by base class.");
 
-			handler.NativeView?.UpdateFont(timePicker, fontManager);
+			var fontManager = handler.Services.GetRequiredService<IFontManager>();
+
+			handler.TypedNativeView?.UpdateFont(timePicker, fontManager);
 		}
-
-		[MissingMapper]
-		public static void MapTextColor(TimePickerHandler handler, ITimePicker timePicker) { }
 
 		void ShowPickerDialog()
 		{
@@ -110,7 +93,7 @@ namespace Microsoft.Maui.Handlers
 			_dialog = null;
 		}
 
-		bool Use24HourView => VirtualView != null && (DateFormat.Is24HourFormat(NativeView?.Context)
+		bool Use24HourView => VirtualView != null && (DateFormat.Is24HourFormat(TypedNativeView?.Context)
 			&& VirtualView.Format == "t" || VirtualView.Format == "HH:mm");
 	}
 }

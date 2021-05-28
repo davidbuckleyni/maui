@@ -1,11 +1,10 @@
-﻿using System;
+using System;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls
 {
-	[ContentProperty(nameof(Content))]
+	[ContentProperty("Content")]
 	public class RefreshView : ContentView, IElementConfiguration<RefreshView>
 	{
 		readonly Lazy<PlatformConfigurationRegistry<RefreshView>> _platformConfigurationRegistry;
@@ -106,7 +105,7 @@ namespace Microsoft.Maui.Controls
 		}
 
 		public static readonly BindableProperty RefreshColorProperty =
-			BindableProperty.Create(nameof(RefreshColor), typeof(Color), typeof(RefreshView), null);
+			BindableProperty.Create(nameof(RefreshColor), typeof(Color), typeof(RefreshView), Color.Default);
 
 		public Color RefreshColor
 		{

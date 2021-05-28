@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Graphics;
-
-namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.GradientGalleries
+﻿namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.GradientGalleries
 {
 	public partial class GradientViewsGallery : ContentPage
 	{
@@ -17,7 +15,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Grad
 
 		void OnBackgroundSelectedIndexChanged(object sender, System.EventArgs e)
 		{
-			Color backgroundColor = null;
+			Color? backgroundColor = null;
 			Brush background = null;
 
 			var selectedIndex = ((Picker)sender).SelectedIndex;
@@ -29,7 +27,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Grad
 					background = null;
 					break;
 				case 1:
-					backgroundColor = Colors.Red;
+					backgroundColor = Color.Red;
 					background = null;
 					break;
 				case 2:
@@ -50,9 +48,9 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Grad
 			UpdateBackground(background);
 		}
 
-		void UpdateBackgroundColor(Color color)
+		void UpdateBackgroundColor(Color? color)
 		{
-			var backgroundColor = color ?? null;
+			var backgroundColor = color ?? Color.Default;
 
 			Button.BackgroundColor = backgroundColor;
 			BoxView.BackgroundColor = backgroundColor;

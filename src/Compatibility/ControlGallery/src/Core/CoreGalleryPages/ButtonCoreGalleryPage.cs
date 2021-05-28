@@ -1,5 +1,4 @@
 using Microsoft.Maui.Controls.CustomAttributes;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -30,8 +29,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 				new Button
 				{
 					Text = "BorderColor",
-					BackgroundColor = Colors.Transparent,
-					BorderColor = Colors.Red,
+					BackgroundColor = Color.Transparent,
+					BorderColor = Color.Red,
 					BorderWidth = 1,
 				}
 			);
@@ -40,8 +39,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 				new Button
 				{
 					Text = "BorderRadius",
-					BackgroundColor = Colors.Transparent,
-					BorderColor = Colors.Red,
+					BackgroundColor = Color.Transparent,
+					BorderColor = Color.Red,
 					CornerRadius = 20,
 					BorderWidth = 1,
 				}
@@ -51,8 +50,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 				new Button
 				{
 					Text = "BorderWidth",
-					BackgroundColor = Colors.Transparent,
-					BorderColor = Colors.Red,
+					BackgroundColor = Color.Transparent,
+					BorderColor = Color.Red,
 					BorderWidth = 15,
 				}
 			);
@@ -85,7 +84,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 				new Button
 				{
 					Text = "Font",
-					Font = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Micro, typeof(Button), false), FontWeight.Bold)
+					Font = Font.SystemFontOfSize(NamedSize.Large, FontAttributes.Bold)
 				}
 			);
 
@@ -108,7 +107,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 				new Button
 				{
 					Text = "TextColor",
-					TextColor = Colors.Pink
+					TextColor = Color.Pink
 				}
 			);
 
@@ -116,7 +115,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 				new Button
 				{
 					Text = "Padding",
-					BackgroundColor = Colors.Red,
+					BackgroundColor = Color.Red,
 					Padding = new Thickness(20, 30, 60, 15)
 				}
 			);

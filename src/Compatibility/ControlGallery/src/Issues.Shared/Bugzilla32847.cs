@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -38,7 +37,7 @@ In the DatePicker below, change the date to May 25, 1977. If the selection immed
 			var datePicker = new DatePicker();
 			var timePicker = new TimePicker();
 
-			var tableView = new TableView() { BackgroundColor = Colors.Green };
+			var tableView = new TableView() { BackgroundColor = Color.Green };
 
 			var tableSection = new TableSection();
 
@@ -61,7 +60,7 @@ In the DatePicker below, change the date to May 25, 1977. If the selection immed
 			var listView = new ListView
 			{
 				Header = instructions,
-				BackgroundColor = Colors.Pink,
+				BackgroundColor = Color.Pink,
 				ItemTemplate = new DataTemplate(typeof(CustomCell)),
 				ItemsSource = listItems
 			};
@@ -111,7 +110,7 @@ In the DatePicker below, change the date to May 25, 1977. If the selection immed
 				picker.Items.Add(item);
 			}
 
-			cellWrapper.BackgroundColor = Color.FromArgb("#eee");
+			cellWrapper.BackgroundColor = Color.FromHex("#eee");
 			stack.Orientation = StackOrientation.Vertical;
 
 			stack.Children.Add(picker);

@@ -1,13 +1,11 @@
 namespace Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific
 {
-	using Microsoft.Extensions.DependencyInjection;
 	using FormsElement = Maui.Controls.Application;
 
 	public static class Application
 	{
 		public static readonly BindableProperty ImageDirectoryProperty =
-			BindableProperty.Create("ImageDirectory", typeof(string), typeof(FormsElement), string.Empty,
-				propertyChanged: OnImageDirectoryChanged);
+			BindableProperty.Create("ImageDirectory", typeof(string), typeof(FormsElement), string.Empty);
 
 		public static void SetImageDirectory(BindableObject element, string value)
 		{
@@ -29,14 +27,6 @@ namespace Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific
 		{
 			config.Element.SetValue(ImageDirectoryProperty, value);
 			return config;
-		}
-
-		static void OnImageDirectoryChanged(BindableObject bindable, object oldValue, object newValue)
-		{
-#if WINDOWS
-			var config = MauiWinUIApplication.Current.Services.GetService<IImageSourceServiceConfiguration>();
-			config?.SetImageDirectory(newValue?.ToString());
-#endif
 		}
 	}
 }

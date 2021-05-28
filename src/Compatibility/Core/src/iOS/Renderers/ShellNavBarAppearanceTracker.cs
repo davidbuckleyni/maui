@@ -42,11 +42,11 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 				_defaultTitleAttributes = navBar.TitleTextAttributes;
 			}
 
-			if (background != null)
+			if (!background.IsDefault)
 				navBar.BarTintColor = background.ToUIColor();
-			if (foreground != null)
+			if (!foreground.IsDefault)
 				navBar.TintColor = foreground.ToUIColor();
-			if (titleColor != null)
+			if (!titleColor.IsDefault)
 			{
 				navBar.TitleTextAttributes = new UIStringAttributes
 				{

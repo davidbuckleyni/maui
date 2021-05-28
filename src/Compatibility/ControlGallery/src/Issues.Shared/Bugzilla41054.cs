@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -70,7 +69,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		{
 			double result;
 			bool isValid = double.TryParse(args.NewTextValue, out result);
-			((Entry)sender).TextColor = isValid ? null : Colors.Red;
+			((Entry)sender).TextColor = isValid ? Color.Default : Color.Red;
 		}
 	}
 #if UITEST
@@ -85,12 +84,12 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var entry = new Entry
 			{
 				Placeholder = "Enter a System.Double; text will be red when invalid",
-				PlaceholderColor = Colors.Green,
+				PlaceholderColor = Color.Green,
 			};
 			var entry2 = new Entry
 			{
 				Placeholder = "This entry starts with blue text when typing",
-				TextColor = Colors.Blue
+				TextColor = Color.Blue
 			};
 
 			Bugzilla41054NumericValidationBehavior.SetAttachBehavior(entry, true);
@@ -107,12 +106,12 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					new Button
 					{
 						Text = "Change first entry placeholder color to purple",
-						Command = new Command(() => entry.PlaceholderColor = Colors.Purple)
+						Command = new Command(() => entry.PlaceholderColor = Color.Purple)
 					},
 					new Button
 					{
 						Text = "Change second entry text color to orange",
-						Command = new Command(() => entry2.TextColor = Colors.Orange)
+						Command = new Command(() => entry2.TextColor = Color.Orange)
 					}
 				}
 			};

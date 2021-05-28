@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -19,7 +18,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		protected override void Init()
 		{
 			var relativeLayout = new RelativeLayout() { WidthRequest = 400, HeightRequest = 400 };
-			StackLayout = new StackLayout() { BackgroundColor = Colors.Red };
+			StackLayout = new StackLayout() { BackgroundColor = Color.Red };
 
 			TriggerButton = new Button() { Text = "Set View Width To Zero" };
 

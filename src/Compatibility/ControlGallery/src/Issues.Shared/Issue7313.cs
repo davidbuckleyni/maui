@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -28,9 +27,9 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		{
 			_listView = new ListView
 			{
-				BackgroundColor = Colors.Transparent,
+				BackgroundColor = Color.Transparent,
 				IsPullToRefreshEnabled = true,
-				RefreshControlColor = Colors.Cyan,
+				RefreshControlColor = Color.Cyan,
 				ItemsSource = new[] { "ListLoaded" }
 			};
 

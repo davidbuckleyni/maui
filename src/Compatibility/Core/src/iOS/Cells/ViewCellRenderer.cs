@@ -1,9 +1,10 @@
 using System;
 using System.ComponentModel;
-using Microsoft.Maui.Controls.Internals;
 using UIKit;
+using Microsoft.Maui.Controls.Compatibility.Internals;
 using RectangleF = CoreGraphics.CGRect;
 using SizeF = CoreGraphics.CGSize;
+using Microsoft.Maui.Controls.Internals;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 {
@@ -218,7 +219,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 				SetNeedsLayout();
 			}
 
-
+			
 		}
 	}
 }

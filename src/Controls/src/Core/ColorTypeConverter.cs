@@ -1,8 +1,7 @@
-﻿using System;
+using System;
 using System.Globalization;
 using System.Linq;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls
 {
@@ -25,7 +24,7 @@ namespace Microsoft.Maui.Controls
 			{
 				value = value.Trim();
 				if (value.StartsWith("#", StringComparison.Ordinal))
-					return Color.FromArgb(value);
+					return Color.FromHex(value);
 
 				if (value.StartsWith("rgba", StringComparison.OrdinalIgnoreCase))
 				{
@@ -40,7 +39,7 @@ namespace Microsoft.Maui.Controls
 					var g = ParseColorValue(quad[1], 255, acceptPercent: true);
 					var b = ParseColorValue(quad[2], 255, acceptPercent: true);
 					var a = ParseOpacity(quad[3]);
-					return new Color((float)r, (float)g, (float)b, (float)a);
+					return new Color(r, g, b, a);
 				}
 
 				if (value.StartsWith("rgb", StringComparison.OrdinalIgnoreCase))
@@ -55,7 +54,7 @@ namespace Microsoft.Maui.Controls
 					var r = ParseColorValue(triplet[0], 255, acceptPercent: true);
 					var g = ParseColorValue(triplet[1], 255, acceptPercent: true);
 					var b = ParseColorValue(triplet[2], 255, acceptPercent: true);
-					return new Color((float)r, (float)g, (float)b);
+					return new Color(r, g, b);
 				}
 
 				if (value.StartsWith("hsla", StringComparison.OrdinalIgnoreCase))
@@ -102,7 +101,7 @@ namespace Microsoft.Maui.Controls
 					var s = ParseColorValue(quad[1], 100, acceptPercent: true);
 					var v = ParseColorValue(quad[2], 100, acceptPercent: true);
 					var a = ParseOpacity(quad[3]);
-					return Color.FromHsva((float)h, (float)s, (float)v, (float)a);
+					return Color.FromHsva(h, s, v, a);
 				}
 
 				if (value.StartsWith("hsv", StringComparison.OrdinalIgnoreCase))
@@ -117,7 +116,7 @@ namespace Microsoft.Maui.Controls
 					var h = ParseColorValue(triplet[0], 360, acceptPercent: false);
 					var s = ParseColorValue(triplet[1], 100, acceptPercent: true);
 					var v = ParseColorValue(triplet[2], 100, acceptPercent: true);
-					return Color.FromHsv((float)h, (float)s, (float)v);
+					return Color.FromHsv(h, s, v);
 				}
 
 				string[] parts = value.Split('.');
@@ -127,298 +126,297 @@ namespace Microsoft.Maui.Controls
 					switch (color.ToLowerInvariant())
 					{
 						case "default":
-							return null;
-						//TODO: Remove this hack. Colors.Accent bad!
-						//case "accent":
-						//	return Colors.Accent;
+							return Color.Default;
+						case "accent":
+							return Color.Accent;
 						case "aliceblue":
-							return Colors.AliceBlue;
+							return Color.AliceBlue;
 						case "antiquewhite":
-							return Colors.AntiqueWhite;
+							return Color.AntiqueWhite;
 						case "aqua":
-							return Colors.Aqua;
+							return Color.Aqua;
 						case "aquamarine":
-							return Colors.Aquamarine;
+							return Color.Aquamarine;
 						case "azure":
-							return Colors.Azure;
+							return Color.Azure;
 						case "beige":
-							return Colors.Beige;
+							return Color.Beige;
 						case "bisque":
-							return Colors.Bisque;
+							return Color.Bisque;
 						case "black":
-							return Colors.Black;
+							return Color.Black;
 						case "blanchedalmond":
-							return Colors.BlanchedAlmond;
+							return Color.BlanchedAlmond;
 						case "blue":
-							return Colors.Blue;
+							return Color.Blue;
 						case "blueViolet":
-							return Colors.BlueViolet;
+							return Color.BlueViolet;
 						case "brown":
-							return Colors.Brown;
+							return Color.Brown;
 						case "burlywood":
-							return Colors.BurlyWood;
+							return Color.BurlyWood;
 						case "cadetblue":
-							return Colors.CadetBlue;
+							return Color.CadetBlue;
 						case "chartreuse":
-							return Colors.Chartreuse;
+							return Color.Chartreuse;
 						case "chocolate":
-							return Colors.Chocolate;
+							return Color.Chocolate;
 						case "coral":
-							return Colors.Coral;
+							return Color.Coral;
 						case "cornflowerblue":
-							return Colors.CornflowerBlue;
+							return Color.CornflowerBlue;
 						case "cornsilk":
-							return Colors.Cornsilk;
+							return Color.Cornsilk;
 						case "crimson":
-							return Colors.Crimson;
+							return Color.Crimson;
 						case "cyan":
-							return Colors.Cyan;
+							return Color.Cyan;
 						case "darkblue":
-							return Colors.DarkBlue;
+							return Color.DarkBlue;
 						case "darkcyan":
-							return Colors.DarkCyan;
+							return Color.DarkCyan;
 						case "darkgoldenrod":
-							return Colors.DarkGoldenrod;
+							return Color.DarkGoldenrod;
 						case "darkgray":
-							return Colors.DarkGray;
+							return Color.DarkGray;
 						case "darkgreen":
-							return Colors.DarkGreen;
+							return Color.DarkGreen;
 						case "darkkhaki":
-							return Colors.DarkKhaki;
+							return Color.DarkKhaki;
 						case "darkmagenta":
-							return Colors.DarkMagenta;
+							return Color.DarkMagenta;
 						case "darkolivegreen":
-							return Colors.DarkOliveGreen;
+							return Color.DarkOliveGreen;
 						case "darkorange":
-							return Colors.DarkOrange;
+							return Color.DarkOrange;
 						case "darkorchid":
-							return Colors.DarkOrchid;
+							return Color.DarkOrchid;
 						case "darkred":
-							return Colors.DarkRed;
+							return Color.DarkRed;
 						case "darksalmon":
-							return Colors.DarkSalmon;
+							return Color.DarkSalmon;
 						case "darkseagreen":
-							return Colors.DarkSeaGreen;
+							return Color.DarkSeaGreen;
 						case "darkslateblue":
-							return Colors.DarkSlateBlue;
+							return Color.DarkSlateBlue;
 						case "darkslategray":
-							return Colors.DarkSlateGray;
+							return Color.DarkSlateGray;
 						case "darkturquoise":
-							return Colors.DarkTurquoise;
+							return Color.DarkTurquoise;
 						case "darkviolet":
-							return Colors.DarkViolet;
+							return Color.DarkViolet;
 						case "deeppink":
-							return Colors.DeepPink;
+							return Color.DeepPink;
 						case "deepskyblue":
-							return Colors.DeepSkyBlue;
+							return Color.DeepSkyBlue;
 						case "dimgray":
-							return Colors.DimGray;
+							return Color.DimGray;
 						case "dodgerblue":
-							return Colors.DodgerBlue;
+							return Color.DodgerBlue;
 						case "firebrick":
-							return Colors.Firebrick;
+							return Color.Firebrick;
 						case "floralwhite":
-							return Colors.FloralWhite;
+							return Color.FloralWhite;
 						case "forestgreen":
-							return Colors.ForestGreen;
+							return Color.ForestGreen;
 						case "fuchsia":
-							return Colors.Fuchsia;
+							return Color.Fuchsia;
 						case "gainsboro":
-							return Colors.Gainsboro;
+							return Color.Gainsboro;
 						case "ghostwhite":
-							return Colors.GhostWhite;
+							return Color.GhostWhite;
 						case "gold":
-							return Colors.Gold;
+							return Color.Gold;
 						case "goldenrod":
-							return Colors.Goldenrod;
+							return Color.Goldenrod;
 						case "gray":
-							return Colors.Gray;
+							return Color.Gray;
 						case "green":
-							return Colors.Green;
+							return Color.Green;
 						case "greenyellow":
-							return Colors.GreenYellow;
+							return Color.GreenYellow;
 						case "honeydew":
-							return Colors.Honeydew;
+							return Color.Honeydew;
 						case "hotpink":
-							return Colors.HotPink;
+							return Color.HotPink;
 						case "indianred":
-							return Colors.IndianRed;
+							return Color.IndianRed;
 						case "indigo":
-							return Colors.Indigo;
+							return Color.Indigo;
 						case "ivory":
-							return Colors.Ivory;
+							return Color.Ivory;
 						case "khaki":
-							return Colors.Khaki;
+							return Color.Khaki;
 						case "lavender":
-							return Colors.Lavender;
+							return Color.Lavender;
 						case "lavenderblush":
-							return Colors.LavenderBlush;
+							return Color.LavenderBlush;
 						case "lawngreen":
-							return Colors.LawnGreen;
+							return Color.LawnGreen;
 						case "lemonchiffon":
-							return Colors.LemonChiffon;
+							return Color.LemonChiffon;
 						case "lightblue":
-							return Colors.LightBlue;
+							return Color.LightBlue;
 						case "lightcoral":
-							return Colors.LightCoral;
+							return Color.LightCoral;
 						case "lightcyan":
-							return Colors.LightCyan;
+							return Color.LightCyan;
 						case "lightgoldenrodyellow":
-							return Colors.LightGoldenrodYellow;
+							return Color.LightGoldenrodYellow;
 						case "lightgrey":
 						case "lightgray":
-							return Colors.LightGray;
+							return Color.LightGray;
 						case "lightgreen":
-							return Colors.LightGreen;
+							return Color.LightGreen;
 						case "lightpink":
-							return Colors.LightPink;
+							return Color.LightPink;
 						case "lightsalmon":
-							return Colors.LightSalmon;
+							return Color.LightSalmon;
 						case "lightseagreen":
-							return Colors.LightSeaGreen;
+							return Color.LightSeaGreen;
 						case "lightskyblue":
-							return Colors.LightSkyBlue;
+							return Color.LightSkyBlue;
 						case "lightslategray":
-							return Colors.LightSlateGray;
+							return Color.LightSlateGray;
 						case "lightsteelblue":
-							return Colors.LightSteelBlue;
+							return Color.LightSteelBlue;
 						case "lightyellow":
-							return Colors.LightYellow;
+							return Color.LightYellow;
 						case "lime":
-							return Colors.Lime;
+							return Color.Lime;
 						case "limegreen":
-							return Colors.LimeGreen;
+							return Color.LimeGreen;
 						case "linen":
-							return Colors.Linen;
+							return Color.Linen;
 						case "magenta":
-							return Colors.Magenta;
+							return Color.Magenta;
 						case "maroon":
-							return Colors.Maroon;
+							return Color.Maroon;
 						case "mediumaquamarine":
-							return Colors.MediumAquamarine;
+							return Color.MediumAquamarine;
 						case "mediumblue":
-							return Colors.MediumBlue;
+							return Color.MediumBlue;
 						case "mediumorchid":
-							return Colors.MediumOrchid;
+							return Color.MediumOrchid;
 						case "mediumpurple":
-							return Colors.MediumPurple;
+							return Color.MediumPurple;
 						case "mediumseagreen":
-							return Colors.MediumSeaGreen;
+							return Color.MediumSeaGreen;
 						case "mediumslateblue":
-							return Colors.MediumSlateBlue;
+							return Color.MediumSlateBlue;
 						case "mediumspringgreen":
-							return Colors.MediumSpringGreen;
+							return Color.MediumSpringGreen;
 						case "mediumturquoise":
-							return Colors.MediumTurquoise;
+							return Color.MediumTurquoise;
 						case "mediumvioletred":
-							return Colors.MediumVioletRed;
+							return Color.MediumVioletRed;
 						case "midnightblue":
-							return Colors.MidnightBlue;
+							return Color.MidnightBlue;
 						case "mintcream":
-							return Colors.MintCream;
+							return Color.MintCream;
 						case "mistyrose":
-							return Colors.MistyRose;
+							return Color.MistyRose;
 						case "moccasin":
-							return Colors.Moccasin;
+							return Color.Moccasin;
 						case "navajowhite":
-							return Colors.NavajoWhite;
+							return Color.NavajoWhite;
 						case "navy":
-							return Colors.Navy;
+							return Color.Navy;
 						case "oldlace":
-							return Colors.OldLace;
+							return Color.OldLace;
 						case "olive":
-							return Colors.Olive;
+							return Color.Olive;
 						case "olivedrab":
-							return Colors.OliveDrab;
+							return Color.OliveDrab;
 						case "orange":
-							return Colors.Orange;
+							return Color.Orange;
 						case "orangered":
-							return Colors.OrangeRed;
+							return Color.OrangeRed;
 						case "orchid":
-							return Colors.Orchid;
+							return Color.Orchid;
 						case "palegoldenrod":
-							return Colors.PaleGoldenrod;
+							return Color.PaleGoldenrod;
 						case "palegreen":
-							return Colors.PaleGreen;
+							return Color.PaleGreen;
 						case "paleturquoise":
-							return Colors.PaleTurquoise;
+							return Color.PaleTurquoise;
 						case "palevioletred":
-							return Colors.PaleVioletRed;
+							return Color.PaleVioletRed;
 						case "papayawhip":
-							return Colors.PapayaWhip;
+							return Color.PapayaWhip;
 						case "peachpuff":
-							return Colors.PeachPuff;
+							return Color.PeachPuff;
 						case "peru":
-							return Colors.Peru;
+							return Color.Peru;
 						case "pink":
-							return Colors.Pink;
+							return Color.Pink;
 						case "plum":
-							return Colors.Plum;
+							return Color.Plum;
 						case "powderblue":
-							return Colors.PowderBlue;
+							return Color.PowderBlue;
 						case "purple":
-							return Colors.Purple;
+							return Color.Purple;
 						case "red":
-							return Colors.Red;
+							return Color.Red;
 						case "rosybrown":
-							return Colors.RosyBrown;
+							return Color.RosyBrown;
 						case "royalblue":
-							return Colors.RoyalBlue;
+							return Color.RoyalBlue;
 						case "saddlebrown":
-							return Colors.SaddleBrown;
+							return Color.SaddleBrown;
 						case "salmon":
-							return Colors.Salmon;
+							return Color.Salmon;
 						case "sandybrown":
-							return Colors.SandyBrown;
+							return Color.SandyBrown;
 						case "seagreen":
-							return Colors.SeaGreen;
+							return Color.SeaGreen;
 						case "seashell":
-							return Colors.SeaShell;
+							return Color.SeaShell;
 						case "sienna":
-							return Colors.Sienna;
+							return Color.Sienna;
 						case "silver":
-							return Colors.Silver;
+							return Color.Silver;
 						case "skyblue":
-							return Colors.SkyBlue;
+							return Color.SkyBlue;
 						case "slateblue":
-							return Colors.SlateBlue;
+							return Color.SlateBlue;
 						case "slategray":
-							return Colors.SlateGray;
+							return Color.SlateGray;
 						case "snow":
-							return Colors.Snow;
+							return Color.Snow;
 						case "springgreen":
-							return Colors.SpringGreen;
+							return Color.SpringGreen;
 						case "steelblue":
-							return Colors.SteelBlue;
+							return Color.SteelBlue;
 						case "tan":
-							return Colors.Tan;
+							return Color.Tan;
 						case "teal":
-							return Colors.Teal;
+							return Color.Teal;
 						case "thistle":
-							return Colors.Thistle;
+							return Color.Thistle;
 						case "tomato":
-							return Colors.Tomato;
+							return Color.Tomato;
 						case "transparent":
-							return Colors.Transparent;
+							return Color.Transparent;
 						case "turquoise":
-							return Colors.Turquoise;
+							return Color.Turquoise;
 						case "violet":
-							return Colors.Violet;
+							return Color.Violet;
 						case "wheat":
-							return Colors.Wheat;
+							return Color.Wheat;
 						case "white":
-							return Colors.White;
+							return Color.White;
 						case "whitesmoke":
-							return Colors.WhiteSmoke;
+							return Color.WhiteSmoke;
 						case "yellow":
-							return Colors.Yellow;
+							return Color.Yellow;
 						case "yellowgreen":
-							return Colors.YellowGreen;
+							return Color.YellowGreen;
 					}
-					var field = typeof(Colors).GetFields().FirstOrDefault(fi => fi.IsStatic && string.Equals(fi.Name, color, StringComparison.OrdinalIgnoreCase));
+					var field = typeof(Color).GetFields().FirstOrDefault(fi => fi.IsStatic && string.Equals(fi.Name, color, StringComparison.OrdinalIgnoreCase));
 					if (field != null)
 						return (Color)field.GetValue(null);
-					var property = typeof(Colors).GetProperties().FirstOrDefault(pi => string.Equals(pi.Name, color, StringComparison.OrdinalIgnoreCase) && pi.CanRead && pi.GetMethod.IsStatic);
+					var property = typeof(Color).GetProperties().FirstOrDefault(pi => string.Equals(pi.Name, color, StringComparison.OrdinalIgnoreCase) && pi.CanRead && pi.GetMethod.IsStatic);
 					if (property != null)
 						return (Color)property.GetValue(null, null);
 				}

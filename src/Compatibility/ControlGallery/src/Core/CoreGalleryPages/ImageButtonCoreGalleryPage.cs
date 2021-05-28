@@ -1,7 +1,6 @@
 using System;
 
 using Microsoft.Maui.Controls.CustomAttributes;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -36,8 +35,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			var borderButtonContainer = new ViewContainer<ImageButton>(Test.ImageButton.BorderColor,
 				new ImageButton
 				{
-					BackgroundColor = Colors.Transparent,
-					BorderColor = Colors.Red,
+					BackgroundColor = Color.Transparent,
+					BorderColor = Color.Red,
 					BorderWidth = 1,
 					Source = "oasissmall.jpg"
 				}
@@ -47,8 +46,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 				new ImageButton
 				{
 					Source = "oasissmall.jpg",
-					BackgroundColor = Colors.Transparent,
-					BorderColor = Colors.Red,
+					BackgroundColor = Color.Transparent,
+					BorderColor = Color.Red,
 					CornerRadius = 20,
 					BorderWidth = 1,
 				}
@@ -58,8 +57,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 				new ImageButton
 				{
 					Source = "oasissmall.jpg",
-					BackgroundColor = Colors.Transparent,
-					BorderColor = Colors.Red,
+					BackgroundColor = Color.Transparent,
+					BorderColor = Color.Red,
 					BorderWidth = 15,
 				}
 			);
@@ -99,7 +98,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 				new ImageButton
 				{
 					Source = "oasissmall.jpg",
-					BackgroundColor = Colors.Red,
+					BackgroundColor = Color.Red,
 					Padding = new Thickness(20, 30, 60, 15)
 				}
 			);

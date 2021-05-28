@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Graphics;
-namespace Microsoft.Maui
+﻿namespace Microsoft.Maui
 {
 	/// <summary>
 	/// Represents a View that displays an animation to show that the application is engaged

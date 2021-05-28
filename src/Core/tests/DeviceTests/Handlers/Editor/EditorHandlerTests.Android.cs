@@ -3,10 +3,8 @@ using Android.Text;
 using AndroidX.AppCompat.Widget;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui.DeviceTests.Stubs;
-using Microsoft.Maui.Graphics;
 using Microsoft.Maui.Handlers;
 using Xunit;
-using AColor = Android.Graphics.Color;
 
 namespace Microsoft.Maui.DeviceTests
 {
@@ -66,7 +64,7 @@ namespace Microsoft.Maui.DeviceTests
 		}
 
 		AppCompatEditText GetNativeEditor(EditorHandler editorHandler) =>
-			(AppCompatEditText)editorHandler.NativeView;
+			(AppCompatEditText)editorHandler.View;
 
 		string GetNativeText(EditorHandler editorHandler) =>
 			GetNativeEditor(editorHandler).Text;
@@ -100,13 +98,6 @@ namespace Microsoft.Maui.DeviceTests
 		{
 			var textView = GetNativeEditor(editorHandler);
 			return textView.TextSize / textView.Resources.DisplayMetrics.Density;
-		}
-
-		Color GetNativeTextColor(EditorHandler editorHandler)
-		{
-			int currentTextColorInt = GetNativeEditor(editorHandler).CurrentTextColor;
-			AColor currentTextColor = new AColor(currentTextColorInt);
-			return currentTextColor.ToColor();
 		}
 	}
 }

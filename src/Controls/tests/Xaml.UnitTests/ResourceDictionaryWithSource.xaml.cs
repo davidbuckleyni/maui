@@ -1,6 +1,5 @@
 using System;
 using Microsoft.Maui.Controls.Core.UnitTests;
-using Microsoft.Maui.Graphics;
 using NUnit.Framework;
 
 namespace Microsoft.Maui.Controls.Xaml.UnitTests
@@ -27,7 +26,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 			public void RDWithSourceAreFound(bool useCompiledXaml)
 			{
 				var layout = new ResourceDictionaryWithSource(useCompiledXaml);
-				Assert.That(layout.label.TextColor, Is.EqualTo(Colors.Pink));
+				Assert.That(layout.label.TextColor, Is.EqualTo(Color.Pink));
 			}
 
 			[TestCase(false), TestCase(true)]

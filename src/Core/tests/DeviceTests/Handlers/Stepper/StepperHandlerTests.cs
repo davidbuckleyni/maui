@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.Maui.DeviceTests.Stubs;
-using Microsoft.Maui.Graphics;
 using Microsoft.Maui.Handlers;
 using Xunit;
 
@@ -46,15 +45,15 @@ namespace Microsoft.Maui.DeviceTests
 			await ValidatePropertyInitValue(stepper, () => stepper.Minimum, GetNativeMinimum, stepper.Minimum);
 		}
 
-		[Fact(DisplayName = "Background Initializes Correctly")]
-		public async Task BackgroundInitializesCorrectly()
+		[Fact(DisplayName = "Background Color Initializes Correctly")]
+		public async Task BackgroundColorInitializesCorrectly()
 		{
 			var stepper = new StepperStub()
 			{
-				Background = new SolidPaintStub(Colors.Red)
+				BackgroundColor = Color.Red
 			};
 
-			await ValidateHasColor(stepper, Colors.Red);
+			await ValidateNativeBackgroundColor(stepper, Color.Red);
 		}
 	}
 }

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -110,7 +109,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 		{
 			var box = new Image
 			{
-				BackgroundColor = Colors.Gray,
+				BackgroundColor = Color.Gray,
 				WidthRequest = 2000,
 				HeightRequest = 2000,
 				VerticalOptions = LayoutOptions.Center,

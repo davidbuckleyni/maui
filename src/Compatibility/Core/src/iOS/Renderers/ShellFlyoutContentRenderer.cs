@@ -1,8 +1,6 @@
+using CoreGraphics;
 using System;
 using System.ComponentModel;
-using CoreGraphics;
-using Microsoft.Maui.Controls.Platform;
-using Microsoft.Maui.Graphics;
 using UIKit;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
@@ -87,7 +85,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 				return;
 
 			int previousIndex = GetPreviousIndex(_headerView);
-			if (_headerView != null)
+			if(_headerView != null)
 			{
 				_tableViewController.HeaderView = null;
 				_headerView.RemoveFromSuperview();

@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using NUnit.Framework;
@@ -21,7 +20,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var statusLabel = new Label()
 			{
 				FontSize = 40,
-				TextColor = Colors.White
+				TextColor = Color.White
 			};
 			Content = new StackLayout()
 			{
@@ -29,7 +28,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					statusLabel,
 					new Label {
 						Text = "Pop-ups should appear on top of the dialog. And it's got any button pressed.",
-						TextColor = Colors.Yellow
+						TextColor = Color.Yellow
 					}
 				}
 			};
@@ -40,11 +39,11 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var result2 = await Application.Current.MainPage.DisplayActionSheet("Main page ActionSheet", "Again Yes", "Click Yes", "Yes", "Yes Yes") ?? string.Empty;
 			var testPassed = result1.Contains("Yes") && result2.Contains("Yes") && !alertTask.IsCompleted;
 			statusLabel.Text = "Test " + (testPassed ? "passed" : "failed");
-			BackgroundColor = !testPassed ? Colors.DarkRed : Colors.DarkGreen;
+			BackgroundColor = !testPassed ? Color.DarkRed : Color.DarkGreen;
 			await alertTask;
 		}
 
-#if UITEST && WINDOWS
+#if UITEST && __WINDOWS__
 		[Test]
 		public void Issue3139Test ()
 		{

@@ -83,7 +83,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			_pickerNormal.Items.Add("test " + _pickerNormal.Items.Count);
 		}
 
-#if UITEST && WINDOWS
+#if UITEST && __WINDOWS__
 		[Test]
 		public void Issue1777Test()
 		{

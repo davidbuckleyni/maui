@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Microsoft.Maui.Hosting.Internal
 {
-	class MauiServiceProviderFactory : IServiceProviderFactory<IServiceCollection>
+	internal class MauiServiceProviderFactory : IServiceProviderFactory<IServiceCollection>
 	{
 		readonly bool _constructorInjection;
 
@@ -28,9 +28,9 @@ namespace Microsoft.Maui.Hosting.Internal
 		public IServiceProvider CreateServiceProvider(IServiceCollection containerBuilder)
 		{
 			if (containerBuilder is IMauiServiceCollection mauiServiceCollection)
-				return new MauiServiceProvider(mauiServiceCollection, _constructorInjection);
-
-			throw new InvalidCastException($"{nameof(containerBuilder)} is not {nameof(IMauiServiceCollection)}");
+				return mauiServiceCollection.BuildServiceProvider(_constructorInjection);
+			else
+				throw new InvalidCastException($"{nameof(containerBuilder)} is not {nameof(IMauiServiceCollection)}");
 		}
 	}
 }

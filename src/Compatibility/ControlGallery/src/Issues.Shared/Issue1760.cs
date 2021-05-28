@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using NUnit.Framework;
@@ -66,11 +65,11 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			public async Task DisplayPage()
 			{
 				IsBusy = true;
-				HeaderPageContent = new Label { Text = Before, TextColor = Colors.Black };
+				HeaderPageContent = new Label { Text = Before, TextColor = Color.Black };
 
 				await Task.Delay(Wait * 1000);
 
-				HeaderPageContent = new Label { Text = After, TextColor = Colors.Black };
+				HeaderPageContent = new Label { Text = After, TextColor = Color.Black };
 				IsBusy = false;
 			}
 
@@ -96,7 +95,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				_headerPageContent = new ContentView
 				{
 					Content = new Label { Text = "_1760 Test Page Content" },
-					BackgroundColor = Colors.White,
+					BackgroundColor = Color.White,
 					Margin = 40
 				};
 
@@ -114,13 +113,13 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					var _headerLabel = new Label
 					{
 						Text = Title,
-						TextColor = Color.FromArgb("333333"),
+						TextColor = Color.FromHex("333333"),
 						HeightRequest = 25,
 					};
 
 					var headerLayout = new RelativeLayout
 					{
-						BackgroundColor = Colors.White,
+						BackgroundColor = Color.White,
 						HorizontalOptions = LayoutOptions.Start,
 						VerticalOptions = LayoutOptions.Start,
 					};

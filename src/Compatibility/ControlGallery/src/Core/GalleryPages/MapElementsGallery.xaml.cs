@@ -2,7 +2,6 @@
 using System.Linq;
 using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Controls.Xaml;
-using Microsoft.Maui.Graphics;
 using Map = Microsoft.Maui.Controls.Maps;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages
@@ -46,8 +45,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages
 
 			_polygon = new Maps.Polygon
 			{
-				StrokeColor = Color.FromArgb("#002868"),
-				FillColor = Color.FromArgb("#88BF0A30"),
+				StrokeColor = Color.FromHex("#002868"),
+				FillColor = Color.FromHex("#88BF0A30"),
 				Geopath =
 				{
 					new Position(37, -102.05),
@@ -149,7 +148,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages
 
 		void ChangeColorClicked(object sender, EventArgs e)
 		{
-			var newColor = new Color((float)_random.NextDouble(), (float)_random.NextDouble(), (float)_random.NextDouble());
+			var newColor = new Color(_random.NextDouble(), _random.NextDouble(), _random.NextDouble());
 			switch (_selectedType)
 			{
 				case SelectedElementType.Polyline:
@@ -183,7 +182,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages
 
 		void ChangeFillClicked(object sender, EventArgs e)
 		{
-			var newColor = new Color((float)_random.NextDouble(), (float)_random.NextDouble(), (float)_random.NextDouble(), (float)_random.NextDouble());
+			var newColor = new Color(_random.NextDouble(), _random.NextDouble(), _random.NextDouble(), _random.NextDouble());
 			switch (_selectedType)
 			{
 				case SelectedElementType.Polygon:

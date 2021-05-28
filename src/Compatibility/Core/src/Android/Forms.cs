@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -19,10 +19,8 @@ using AndroidX.Core.Content;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 using Microsoft.Maui.Controls.DualScreen.Android;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 using AColor = Android.Graphics.Color;
 using AndroidResource = Android.Resource;
-using Size = Microsoft.Maui.Graphics.Size;
 using Trace = System.Diagnostics.Trace;
 
 namespace Microsoft.Maui.Controls.Compatibility
@@ -62,6 +60,7 @@ namespace Microsoft.Maui.Controls.Compatibility
 		static bool? s_isNougatOrNewer;
 		static bool? s_isOreoOrNewer;
 		static bool? s_isPieOrNewer;
+		static FontManager s_fontManager;
 
 		// One per process; does not change, suitable for loading resources (e.g., ResourceProvider)
 		internal static Context ApplicationContext { get; private set; } = global::Android.App.Application.Context;
@@ -71,7 +70,7 @@ namespace Microsoft.Maui.Controls.Compatibility
 		static bool FlagsSet { get; set; }
 
 		static bool _ColorButtonNormalSet;
-		static Color _ColorButtonNormal = null;
+		static Color _ColorButtonNormal = Color.Default;
 		public static Color ColorButtonNormalOverride { get; set; }
 
 		internal static BuildVersionCodes SdkInt
@@ -153,6 +152,9 @@ namespace Microsoft.Maui.Controls.Compatibility
 				return s_isPieOrNewer.Value;
 			}
 		}
+
+		internal static IFontManager FontManager =>
+			s_fontManager ??= new FontManager(Registrar.FontRegistrar);
 
 		public static float GetFontSizeNormal(Context context)
 		{
@@ -343,7 +345,7 @@ namespace Microsoft.Maui.Controls.Compatibility
 			Profile.FramePartition("Color.SetAccent()");
 			// We want this to be updated when we have a new activity (e.g. on a configuration change)
 			// This could change if the UI mode changes (e.g., if night mode is enabled)
-			Application.AccentColor = GetAccentColor(activity);
+			Color.SetAccent(GetAccentColor(activity));
 			_ColorButtonNormalSet = false;
 
 			if (!IsInitialized)
@@ -500,12 +502,12 @@ namespace Microsoft.Maui.Controls.Compatibility
 					if (sdkVersion <= 10)
 					{
 						// legacy theme button pressed color
-						rc = Color.FromArgb("#fffeaa0c");
+						rc = Color.FromHex("#fffeaa0c");
 					}
 					else
 					{
 						// Holo dark light blue
-						rc = Color.FromArgb("#ff33b5e5");
+						rc = Color.FromHex("#ff33b5e5");
 					}
 				}
 			}
@@ -516,7 +518,7 @@ namespace Microsoft.Maui.Controls.Compatibility
 		{
 			Color rc = ColorButtonNormalOverride;
 
-			if (ColorButtonNormalOverride == null)
+			if (ColorButtonNormalOverride == Color.Default)
 			{
 				using (var value = new TypedValue())
 				{
@@ -679,6 +681,12 @@ namespace Microsoft.Maui.Controls.Compatibility
 
 			public void BeginInvokeOnMainThread(Action action)
 			{
+				if (_context.IsDesignerContext())
+				{
+					action();
+					return;
+				}
+
 				if (s_handler == null || s_handler.Looper != Looper.MainLooper)
 				{
 					s_handler = new Handler(Looper.MainLooper);
@@ -842,13 +850,13 @@ namespace Microsoft.Maui.Controls.Compatibility
 						color = ContextCompat.GetColor(_context, AndroidResource.Color.WidgetEditTextDark);
 						break;
 					default:
-						return null;
+						return Color.Default;
 				}
 
 				if (color != 0)
 					return new AColor(color).ToColor();
 
-				return null;
+				return Color.Default;
 			}
 
 			public async Task<Stream> GetStreamAsync(Uri uri, CancellationToken cancellationToken)
@@ -865,8 +873,7 @@ namespace Microsoft.Maui.Controls.Compatibility
 
 			public IIsolatedStorageFile GetUserStoreForApplication()
 			{
-				throw new NotImplementedException("GetUserStoreForApplication currently not available https://github.com/dotnet/runtime/issues/52332");
-				//return new _IsolatedStorageFile(IsolatedStorageFile.GetUserStoreForApplication());
+				return new _IsolatedStorageFile(IsolatedStorageFile.GetUserStoreForApplication());
 			}
 
 			public bool IsInvokeRequired

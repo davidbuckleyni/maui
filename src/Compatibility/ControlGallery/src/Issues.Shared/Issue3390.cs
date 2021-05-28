@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -26,7 +25,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				WidthRequest = 50,
 				HeightRequest = 50,
 				CornerRadius = 25,
-				//BackgroundColor = Colors.Accent
+				BackgroundColor = Color.Accent
 			};
 
 			btn.Command = new Command(async () =>

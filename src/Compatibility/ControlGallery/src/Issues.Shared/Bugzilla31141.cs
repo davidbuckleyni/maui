@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -37,7 +36,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			{
 				WidthRequest = 250,
 				HeightRequest = 50,
-				BackgroundColor = Colors.DarkGoldenrod
+				BackgroundColor = Color.DarkGoldenrod
 			};
 			entry.TextChanged += InputViewOnTextChanged;
 			stackLayout.Children.Add(entry);
@@ -46,7 +45,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			{
 				WidthRequest = 250,
 				HeightRequest = 50,
-				BackgroundColor = Colors.AntiqueWhite
+				BackgroundColor = Color.AntiqueWhite
 			};
 			editor.TextChanged += InputViewOnTextChanged;
 			stackLayout.Children.Add(editor);

@@ -1,7 +1,6 @@
 using System.ComponentModel;
 using Android.Content;
 using Android.Views;
-using Microsoft.Maui.Graphics;
 using AProgressBar = Android.Widget.ProgressBar;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
@@ -52,7 +51,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 
 			Color color = Element.Color;
 
-			if (color != null)
+			if (!color.IsDefault)
 				Control.IndeterminateDrawable?.SetColorFilter(color.ToAndroid(), FilterMode.SrcIn);
 			else
 				Control.IndeterminateDrawable?.ClearColorFilter();

@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -78,7 +77,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var button = new Button
 			{
 				Text = "X",
-				BackgroundColor = Colors.Gray,
+				BackgroundColor = Color.Gray,
 				HorizontalOptions = LayoutOptions.EndAndExpand
 			};
 			button.SetBinding(Button.CommandParameterProperty, new Binding("."));

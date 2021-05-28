@@ -125,7 +125,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			DisplayAlert("Popped", Message, Cancel);
 		}
 
-#if UITEST && WINDOWS
+#if UITEST && __WINDOWS__
 		[Test]
 		public void ModalNavigation()
 		{

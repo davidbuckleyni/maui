@@ -1,7 +1,6 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.Xaml;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -157,7 +156,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			"LabelTextColor",
 			typeof(Color),
 			typeof(LabledEntry),
-			null,
+			Color.Default,
 			BindingMode.TwoWay,
 			propertyChanged: (bindable, oldvalue, newvalue) =>
 			{
@@ -176,7 +175,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			"EntryTextColor",
 			typeof(Color),
 			typeof(LabledEntry),
-			null,
+			Color.Default,
 			BindingMode.TwoWay,
 			propertyChanged: (bindable, oldvalue, newvalue) =>
 			{
@@ -195,7 +194,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			"PlaceholderColor",
 			typeof(Color),
 			typeof(LabledEntry),
-			null,
+			Color.Default,
 			BindingMode.TwoWay,
 			propertyChanged: (bindable, oldvalue, newvalue) =>
 			{
@@ -286,7 +285,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			"Color",
 			typeof(Color),
 			typeof(Divider),
-			Colors.Black,
+			Color.Black,
 			BindingMode.TwoWay,
 			propertyChanged: (bindable, oldvalue, newvalue) =>
 			{

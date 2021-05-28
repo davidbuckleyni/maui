@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using Android.Content;
@@ -8,8 +8,6 @@ using Android.Text.Method;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
-using Color = Microsoft.Maui.Graphics.Color;
-using Size = Microsoft.Maui.Graphics.Size;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 {
@@ -80,12 +78,17 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 			base.OnElementChanged(e);
 
 			SearchView searchView = Control;
+			var isDesigner = Context.IsDesignerContext();
 
 			if (searchView == null)
 			{
 				searchView = CreateNativeControl();
 				searchView.SetIconifiedByDefault(false);
-				searchView.Iconified = false;
+				// set Iconified calls onSearchClicked 
+				// https://github.com/aosp-mirror/platform_frameworks_base/blob/6d891937a38220b0c712a1927f969e74bea3a0f3/core/java/android/widget/SearchView.java#L674-L680
+				// which causes requestFocus. The designer does not support focuses.
+				if (!isDesigner)
+					searchView.Iconified = false;
 				SetNativeControl(searchView);
 				_editText = _editText ?? Control.GetChildrenOfType<EditText>().FirstOrDefault();
 
@@ -98,7 +101,8 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 
 			}
 
-			ClearFocus(searchView);
+			if (!isDesigner)
+				ClearFocus(searchView);
 			UpdateInputType();
 			UpdatePlaceholder();
 			UpdateText();
@@ -197,7 +201,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 				var image = FindViewById<ImageView>(searchViewCloseButtonId);
 				if (image != null && image.Drawable != null)
 				{
-					if (Element.CancelButtonColor != null)
+					if (Element.CancelButtonColor != Color.Default)
 						image.Drawable.SetColorFilter(Element.CancelButtonColor, FilterMode.SrcIn);
 					else
 						image.Drawable.ClearColorFilter();

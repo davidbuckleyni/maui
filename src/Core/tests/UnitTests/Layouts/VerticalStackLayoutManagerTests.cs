@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Microsoft.Maui.Graphics;
 using Microsoft.Maui.Layouts;
 using NSubstitute;
 using Xunit;

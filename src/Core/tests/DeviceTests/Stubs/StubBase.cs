@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Microsoft.Maui.Graphics;
 using Microsoft.Maui.Primitives;
 
 namespace Microsoft.Maui.DeviceTests.Stubs
@@ -10,23 +9,23 @@ namespace Microsoft.Maui.DeviceTests.Stubs
 	{
 		public bool IsEnabled { get; set; } = true;
 
-		public Visibility Visibility { get; set; } = Visibility.Visible;
+		public Color BackgroundColor { get; set; }
 
-		public double Opacity { get; set; } = 1.0d;
-
-		public Paint Background { get; set; }
-
-		public Rectangle Frame { get; set; }
+		public Rectangle Frame { get; set; } = new Rectangle(0, 0, 20, 20);
 
 		public IViewHandler Handler { get; set; }
 
 		public IFrameworkElement Parent { get; set; }
 
-		public Size DesiredSize { get; set; } = new Size(50, 50);
+		public Size DesiredSize { get; set; } = new Size(20, 20);
 
-		public double Width { get; set; } = 50;
+		public bool IsMeasureValid { get; set; }
 
-		public double Height { get; set; } = 50;
+		public bool IsArrangeValid { get; set; }
+
+		public double Width { get; set; }
+
+		public double Height { get; set; }
 
 		public Thickness Margin { get; set; }
 
@@ -40,13 +39,10 @@ namespace Microsoft.Maui.DeviceTests.Stubs
 
 		public LayoutAlignment VerticalLayoutAlignment { get; set; }
 
-		public Semantics Semantics { get; set; } = new Semantics();
-
-		public Size Arrange(Rectangle bounds)
+		public void Arrange(Rectangle bounds)
 		{
 			Frame = bounds;
 			DesiredSize = bounds.Size;
-			return DesiredSize;
 		}
 
 		protected bool SetProperty<T>(ref T backingStore, T value,

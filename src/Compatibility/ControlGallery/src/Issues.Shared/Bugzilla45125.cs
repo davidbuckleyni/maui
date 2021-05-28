@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -32,26 +31,26 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 		static Label _status = new Label
 		{
-			TextColor = Colors.White,
+			TextColor = Color.White,
 			//TODO: NoWrap causes the Label to be missing from the Horizontal StackLayout
 			//LineBreakMode = LineBreakMode.NoWrap
 		};
 
 		static Label _groupsAppearing = new Label
 		{
-			TextColor = Colors.Green,
+			TextColor = Color.Green,
 			AutomationId = AppearingLabelId
 		};
 
 		static Label _groupsDisappearing = new Label
 		{
-			TextColor = Colors.Blue,
+			TextColor = Color.Blue,
 			AutomationId = DisappearingLabelId
 		};
 
 		static ScrollView _scroll = new ScrollView
 		{
-			BackgroundColor = Colors.Black,
+			BackgroundColor = Color.Black,
 			Content = _status,
 			MinimumWidthRequest = 200
 		};

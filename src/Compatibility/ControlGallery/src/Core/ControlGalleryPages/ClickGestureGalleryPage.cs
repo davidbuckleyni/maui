@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -30,12 +29,12 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			var singleClickLabel = new Label
 			{
 				Text = "Click me!",
-				BackgroundColor = Colors.PaleGreen
+				BackgroundColor = Color.PaleGreen
 			};
 			var singleClickGesture = new ClickGestureRecognizer
 			{
 				Command = clickCommand,
-				CommandParameter = Colors.PaleGreen,
+				CommandParameter = Color.PaleGreen,
 				NumberOfClicksRequired = 1,
 				Buttons = ButtonsMask.Primary
 			};
@@ -45,12 +44,12 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			var doubleClickLabel = new Label
 			{
 				Text = "Double click me!!",
-				BackgroundColor = Colors.Aqua
+				BackgroundColor = Color.Aqua
 			};
 			var doubleClickGesture = new ClickGestureRecognizer
 			{
 				Command = clickCommand,
-				CommandParameter = Colors.Aqua,
+				CommandParameter = Color.Aqua,
 				NumberOfClicksRequired = 2,
 				Buttons = ButtonsMask.Primary
 			};
@@ -60,12 +59,12 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			var tripleClicklabel = new Label
 			{
 				Text = "Triple click me!!!",
-				BackgroundColor = Colors.Olive
+				BackgroundColor = Color.Olive
 			};
 			var tripleClickGesture = new ClickGestureRecognizer
 			{
 				Command = clickCommand,
-				CommandParameter = Colors.Olive,
+				CommandParameter = Color.Olive,
 				NumberOfClicksRequired = 3,
 				Buttons = ButtonsMask.Primary
 			};
@@ -75,12 +74,12 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			var rightClickLabel = new Label
 			{
 				Text = "Right click me¡",
-				BackgroundColor = Colors.Coral
+				BackgroundColor = Color.Coral
 			};
 			var rigthClickGesture = new ClickGestureRecognizer
 			{
 				Command = clickCommand,
-				CommandParameter = Colors.Coral,
+				CommandParameter = Color.Coral,
 				NumberOfClicksRequired = 1,
 				Buttons = ButtonsMask.Secondary
 			};
@@ -90,12 +89,12 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			var doubleRightClickLabel = new Label
 			{
 				Text = "Double right click me¡¡",
-				BackgroundColor = Colors.Gold
+				BackgroundColor = Color.Gold
 			};
 			var doubleRigthClickGesture = new ClickGestureRecognizer
 			{
 				Command = clickCommand,
-				CommandParameter = Colors.Gold,
+				CommandParameter = Color.Gold,
 				NumberOfClicksRequired = 2,
 				Buttons = ButtonsMask.Secondary
 			};

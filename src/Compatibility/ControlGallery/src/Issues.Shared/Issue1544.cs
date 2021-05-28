@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -14,8 +13,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		protected override void Init()
 		{
 			var colors = new[] {
-				Color.FromArgb("#433DBA"),
-				Color.FromArgb("#6461B7")
+				Color.FromHex("#433DBA"),
+				Color.FromHex("#6461B7")
 			};
 			var layout = new StackLayout()
 			{

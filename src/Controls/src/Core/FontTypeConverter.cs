@@ -69,12 +69,12 @@ namespace Microsoft.Maui.Controls
 				if (name != null)
 				{
 					if (size == -1)
-						size = Device.GetNamedSize(namedSize, null, false);
+						return Font.OfSize(name, namedSize).WithAttributes(attributes);
 					return Font.OfSize(name, size).WithAttributes(attributes);
 				}
 				if (size == -1)
-					return Font.SystemFontOfSize(Device.GetNamedSize(namedSize, null, false)).WithAttributes(attributes);
-				return Font.SystemFontOfSize(size).WithAttributes(attributes);
+					return Font.SystemFontOfSize(namedSize, attributes);
+				return Font.SystemFontOfSize(size, attributes);
 			}
 
 			throw new InvalidOperationException(string.Format("Cannot convert \"{0}\" into {1}", value, typeof(Font)));
@@ -87,9 +87,9 @@ namespace Microsoft.Maui.Controls
 			var parts = new List<string>();
 			if (!string.IsNullOrEmpty(font.FontFamily))
 				parts.Add(font.FontFamily);
-			if (font.Weight == FontWeight.Bold)
+			if ((font.FontAttributes & FontAttributes.Bold) == FontAttributes.Bold)
 				parts.Add("Bold");
-			if (font.FontSlant != FontSlant.Default)
+			if ((font.FontAttributes & FontAttributes.Italic) == FontAttributes.Italic)
 				parts.Add("Italic");
 			parts.Add($"{font.FontSize}");
 			return string.Join(", ", parts);

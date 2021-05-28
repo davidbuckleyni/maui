@@ -4,7 +4,6 @@ using System.Text;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -21,7 +20,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			{
 				Text = "Select League",
 				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
-				TextColor = Colors.White
+				TextColor = Color.White
 			};
 
 			#region Season Filter
@@ -30,7 +29,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			{
 				Text = "Season",
 				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-				TextColor = Colors.White
+				TextColor = Color.White
 			};
 
 			var seasonPicker = new Picker
@@ -56,7 +55,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			{
 				Text = "Sport",
 				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-				TextColor = Colors.White
+				TextColor = Color.White
 			};
 
 			var sportPicker = new Picker
@@ -107,14 +106,14 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					"Test 14",
 					"Test 15",
 				},
-				BackgroundColor = Colors.Gray,
+				BackgroundColor = Color.Gray,
 				ItemTemplate = new DataTemplate(() =>
 				{
 					var leagueName = new Label
 					{
 						FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
-						BackgroundColor = Colors.Transparent,
-						TextColor = Colors.White,
+						BackgroundColor = Color.Transparent,
+						TextColor = Color.White,
 						VerticalOptions = LayoutOptions.CenterAndExpand,
 						LineBreakMode = LineBreakMode.WordWrap
 					};
@@ -123,7 +122,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					var row = new StackLayout
 					{
 						Padding = new Thickness(5, 0, 5, 0),
-						BackgroundColor = Colors.Transparent,
+						BackgroundColor = Color.Transparent,
 						Orientation = StackOrientation.Horizontal,
 						VerticalOptions = LayoutOptions.CenterAndExpand,
 						Children = {

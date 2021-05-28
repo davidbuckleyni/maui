@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace Microsoft.Maui.Controls.Design
+namespace Microsoft.Maui.Controls.Core.Design
 {
 	internal class NonExclusiveEnumConverter<T> : EnumConverter<T>
 	{

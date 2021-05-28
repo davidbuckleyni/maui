@@ -2,7 +2,6 @@
 
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -24,17 +23,17 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			grid.AddRowDef(count: 2);
 			grid.AddColumnDef(count: 2);
 
-			grid.Children.Add(new BoxView() { Color = Colors.Red });
+			grid.Children.Add(new BoxView() { Color = Color.Red });
 
-			var v2 = new BoxView { Color = Colors.Blue };
+			var v2 = new BoxView { Color = Color.Blue };
 			Grid.SetColumn(v2, 1);
 			grid.Children.Add(v2);
 
-			var v3 = new BoxView { Color = Colors.Green };
+			var v3 = new BoxView { Color = Color.Green };
 			Grid.SetRow(v3, 1);
 			grid.Children.Add(v3);
 
-			var v4 = new BoxView { Color = Colors.Purple };
+			var v4 = new BoxView { Color = Color.Purple };
 			Grid.SetRow(v4, 1);
 			Grid.SetColumn(v4, 1);
 			grid.Children.Add(v4);

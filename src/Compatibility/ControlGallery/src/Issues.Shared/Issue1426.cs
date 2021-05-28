@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -19,7 +18,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 	{
 		protected override void Init()
 		{
-			Children.Add(new NavigationPage(new HomePage()) { Title = "Home", BarBackgroundColor = Colors.Red });
+			Children.Add(new NavigationPage(new HomePage()) { Title = "Home", BarBackgroundColor = Color.Red });
 		}
 
 		class HomePage : ContentPage
@@ -27,16 +26,16 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			public HomePage()
 			{
 				Title = "Home";
-				var grd = new Grid { BackgroundColor = Colors.Brown };
+				var grd = new Grid { BackgroundColor = Color.Brown };
 				grd.RowDefinitions.Add(new RowDefinition());
 				grd.RowDefinitions.Add(new RowDefinition());
 				grd.RowDefinitions.Add(new RowDefinition());
 
-				var boxView = new BoxView { BackgroundColor = Colors.Blue };
+				var boxView = new BoxView { BackgroundColor = Color.Blue };
 				grd.Children.Add(boxView, 0, 0);
 				var btn = new Button()
 				{
-					BackgroundColor = Colors.Pink,
+					BackgroundColor = Color.Pink,
 					Text = "NextButtonID",
 					AutomationId = "NextButtonID",
 					Command = new Command(async () =>
@@ -46,7 +45,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 						{
 							Title = "Detail",
 							Content = btnPop,
-							BackgroundColor = Colors.Yellow
+							BackgroundColor = Color.Yellow
 						};
 						//This breaks layout when you pop!
 						NavigationPage.SetHasNavigationBar(page, false);
@@ -55,7 +54,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				};
 
 				grd.Children.Add(btn, 0, 1);
-				var image = new Image() { Source = "coffee.png", AutomationId = "CoffeeImageId", BackgroundColor = Colors.Yellow };
+				var image = new Image() { Source = "coffee.png", AutomationId = "CoffeeImageId", BackgroundColor = Color.Yellow };
 				image.VerticalOptions = LayoutOptions.End;
 				grd.Children.Add(image, 0, 2);
 				Content = grd;

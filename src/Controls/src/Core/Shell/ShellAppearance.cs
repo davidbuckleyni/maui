@@ -1,7 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls
 {
@@ -33,48 +32,48 @@ namespace Microsoft.Maui.Controls
 			Shell.FlyoutHeightProperty
 		};
 
-		Color[] _colorArray = new Color[s_ingestArray.Length];
+		Color?[] _colorArray = new Color?[s_ingestArray.Length];
 		Brush[] _brushArray = new Brush[s_ingestBrushArray.Length];
 		double[] _doubleArray = new double[s_ingestDoubleArray.Length];
 
-		public Color BackgroundColor => _colorArray[0];
+		public Color BackgroundColor => _colorArray[0].Value;
 
-		public Color DisabledColor => _colorArray[1];
+		public Color DisabledColor => _colorArray[1].Value;
 
-		public Color ForegroundColor => _colorArray[2];
+		public Color ForegroundColor => _colorArray[2].Value;
 
-		public Color TabBarBackgroundColor => _colorArray[3];
+		public Color TabBarBackgroundColor => _colorArray[3].Value;
 
-		public Color TabBarDisabledColor => _colorArray[4];
+		public Color TabBarDisabledColor => _colorArray[4].Value;
 
-		public Color TabBarForegroundColor => _colorArray[5];
+		public Color TabBarForegroundColor => _colorArray[5].Value;
 
-		public Color TabBarTitleColor => _colorArray[6];
+		public Color TabBarTitleColor => _colorArray[6].Value;
 
-		public Color TabBarUnselectedColor => _colorArray[7];
+		public Color TabBarUnselectedColor => _colorArray[7].Value;
 
-		public Color TitleColor => _colorArray[8];
+		public Color TitleColor => _colorArray[8].Value;
 
-		public Color UnselectedColor => _colorArray[9];
+		public Color UnselectedColor => _colorArray[9].Value;
 
 		public Brush FlyoutBackdrop => _brushArray[0];
 		public double FlyoutWidth => _doubleArray[0];
 		public double FlyoutHeight => _doubleArray[1];
 
 		Color IShellAppearanceElement.EffectiveTabBarBackgroundColor =>
-			TabBarBackgroundColor ?? BackgroundColor;
+			!TabBarBackgroundColor.IsDefault ? TabBarBackgroundColor : BackgroundColor;
 
 		Color IShellAppearanceElement.EffectiveTabBarDisabledColor =>
-			TabBarDisabledColor ?? DisabledColor;
+			!TabBarDisabledColor.IsDefault ? TabBarDisabledColor : DisabledColor;
 
 		Color IShellAppearanceElement.EffectiveTabBarForegroundColor =>
-			TabBarForegroundColor ?? ForegroundColor;
+			!TabBarForegroundColor.IsDefault ? TabBarForegroundColor : ForegroundColor;
 
 		Color IShellAppearanceElement.EffectiveTabBarTitleColor =>
-			TabBarTitleColor ?? TitleColor;
+			!TabBarTitleColor.IsDefault ? TabBarTitleColor : TitleColor;
 
 		Color IShellAppearanceElement.EffectiveTabBarUnselectedColor =>
-			TabBarUnselectedColor ?? UnselectedColor;
+			!TabBarUnselectedColor.IsDefault ? TabBarUnselectedColor : UnselectedColor;
 
 		internal ShellAppearance()
 		{
@@ -92,7 +91,7 @@ namespace Microsoft.Maui.Controls
 
 			for (int i = 0; i < _colorArray.Length; i++)
 			{
-				if (!EqualityComparer<Color>.Default.Equals(_colorArray[i], appearance._colorArray[i]))
+				if (!EqualityComparer<Color>.Default.Equals(_colorArray[i].Value, appearance._colorArray[i].Value))
 					return false;
 			}
 
@@ -115,7 +114,7 @@ namespace Microsoft.Maui.Controls
 		{
 			var hashCode = -1988429770;
 			for (int i = 0; i < _colorArray.Length; i++)
-				hashCode = hashCode * -1521134295 + EqualityComparer<Color>.Default.GetHashCode(_colorArray[i]);
+				hashCode = hashCode * -1521134295 + EqualityComparer<Color>.Default.GetHashCode(_colorArray[i].Value);
 
 			for (int i = 0; i < _brushArray.Length; i++)
 				hashCode = hashCode * -1521134295 + EqualityComparer<Brush>.Default.GetHashCode(_brushArray[i]);
@@ -133,7 +132,7 @@ namespace Microsoft.Maui.Controls
 			var dataSet = pivot.GetValues<Color>(s_ingestArray);
 			for (int i = 0; i < s_ingestArray.Length; i++)
 			{
-				if (_colorArray[i] != null && dataSet[i].IsSet)
+				if (!_colorArray[i].HasValue && dataSet[i].IsSet)
 				{
 					anySet = true;
 					_colorArray[i] = dataSet[i].Value;
@@ -168,7 +167,7 @@ namespace Microsoft.Maui.Controls
 			for (int i = 0; i < s_ingestArray.Length; i++)
 			{
 				if (_colorArray[i] == null)
-					_colorArray[i] = null;
+					_colorArray[i] = Color.Default;
 			}
 		}
 

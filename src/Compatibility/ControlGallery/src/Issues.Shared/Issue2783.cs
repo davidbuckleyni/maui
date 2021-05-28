@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -18,15 +17,15 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		{
 			Frame frPatientInfo = new Frame
 			{
-				BorderColor = Colors.Black,
-				BackgroundColor = Colors.White,
+				BorderColor = Color.Black,
+				BackgroundColor = Color.White,
 				HasShadow = true,
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.Center,
 				Padding = 5,
 				Content = new AbsoluteLayout
 				{
-					BackgroundColor = Colors.Red,
+					BackgroundColor = Color.Red,
 					HeightRequest = 1000,
 					WidthRequest = 2000,
 				}

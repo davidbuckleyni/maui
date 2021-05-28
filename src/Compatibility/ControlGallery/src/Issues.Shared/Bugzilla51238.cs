@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using NUnit.Framework;
@@ -35,7 +34,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			var transparentLayer = new Grid();
 			transparentLayer.IsVisible = false;
-			transparentLayer.BackgroundColor = Colors.Lime;
+			transparentLayer.BackgroundColor = Color.Lime;
 			transparentLayer.Opacity = 0.5;
 
 			var label = new Label

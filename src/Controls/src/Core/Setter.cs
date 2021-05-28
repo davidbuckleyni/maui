@@ -7,7 +7,7 @@ using Microsoft.Maui.Controls.Xaml;
 
 namespace Microsoft.Maui.Controls
 {
-	[ContentProperty(nameof(Value))]
+	[ContentProperty("Value")]
 	[ProvideCompiled("Microsoft.Maui.Controls.XamlC.SetterValueProvider")]
 	public sealed class Setter : IValueProvider
 	{

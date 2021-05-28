@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 using NUnit.Framework;
 using NUnit.Framework.Constraints;
 
@@ -407,7 +406,7 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 			sl.Children.Add(label1);
 			sl.Children.Add(label2);
 
-			var bv = new BoxView { WidthRequest = 50, BackgroundColor = Colors.Blue, IsPlatformEnabled = true };
+			var bv = new BoxView { WidthRequest = 50, BackgroundColor = Color.Blue, IsPlatformEnabled = true };
 
 			outerGrid.Children.Add(sl);
 			outerGrid.Children.Add(bv);
@@ -1940,7 +1939,7 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 			var grid = new Grid
 			{
 				IsPlatformEnabled = true,
-				BackgroundColor = Colors.Red,
+				BackgroundColor = Color.Red,
 				VerticalOptions = LayoutOptions.Start,
 				Children = {
 					content
@@ -1976,7 +1975,7 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 			var grid = new Grid
 			{
 				IsPlatformEnabled = true,
-				BackgroundColor = Colors.Red,
+				BackgroundColor = Color.Red,
 				VerticalOptions = LayoutOptions.Start,
 				Children = {
 					content
@@ -2010,7 +2009,7 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 					new ColumnDefinition {Width = GridLength.Auto},
 				}
 			};
-			grid.Children.Add(new Label { BackgroundColor = Colors.Lime, Text = "Foo", IsPlatformEnabled = true });
+			grid.Children.Add(new Label { BackgroundColor = Color.Lime, Text = "Foo", IsPlatformEnabled = true });
 			grid.Children.Add(new Label { Text = "Bar", IsPlatformEnabled = true }, 0, 1);
 			grid.Children.Add(new Label { Text = "Baz", HorizontalTextAlignment = TextAlignment.End, IsPlatformEnabled = true }, 1, 0);
 			grid.Children.Add(new Label { Text = "Qux", HorizontalTextAlignment = TextAlignment.End, IsPlatformEnabled = true }, 1, 1);
@@ -2311,7 +2310,7 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 			var grid = new Grid
 			{
 				IsPlatformEnabled = true,
-				BackgroundColor = Colors.Red
+				BackgroundColor = Color.Red
 			};
 
 			grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
@@ -2365,7 +2364,7 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 			var grid = new Grid
 			{
 				IsPlatformEnabled = true,
-				BackgroundColor = Colors.Red
+				BackgroundColor = Color.Red
 			};
 
 			grid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });

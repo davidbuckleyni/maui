@@ -1,5 +1,5 @@
 <view:BasePage x:Class="Samples.View.ContactDetailsPage"
-               xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns="http://xamarin.com/schemas/2014/forms"
                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                xmlns:view="clr-namespace:Samples.View"
                Title="Contact Details">

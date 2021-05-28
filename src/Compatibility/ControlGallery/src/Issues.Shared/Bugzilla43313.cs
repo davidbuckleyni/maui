@@ -5,7 +5,6 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -49,7 +48,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			_listView = new ListView
 			{
 				HasUnevenRows = true,
-				BackgroundColor = Colors.Transparent,
+				BackgroundColor = Color.Transparent,
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				ItemTemplate = CellTemplate()
 			};
@@ -144,7 +143,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					View = new StackLayout
 					{
 						Padding = new Thickness(0, 5, 0, 5),
-						BackgroundColor = Colors.Transparent,
+						BackgroundColor = Color.Transparent,
 						Children =
 							{
 								label
@@ -172,7 +171,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					View = new StackLayout
 					{
 						Padding = new Thickness(0, 5, 0, 5),
-						BackgroundColor = Colors.Transparent,
+						BackgroundColor = Color.Transparent,
 						Children =
 							{
 								label

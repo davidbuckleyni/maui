@@ -13,16 +13,6 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 			}
 
 			var elevation = GetElevation(element, view.Context);
-			SetElevation(view, elevation);
-		}
-
-		public static void SetElevation(global::Android.Views.View view, float? elevation)
-		{
-			if (view == null || !Forms.IsLollipopOrNewer)
-			{
-				return;
-			}
-
 			if (!elevation.HasValue)
 			{
 				return;

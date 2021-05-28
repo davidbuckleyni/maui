@@ -3,7 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -26,14 +25,14 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				Margin = 100,
 				WidthRequest = 500,
 				HeightRequest = 800,
-				BackgroundColor = Colors.Red
+				BackgroundColor = Color.Red
 			};
 			var description = "The red rectangle with margins is nested in the yellow rectangle. " +
 				$"This margins should be visible as yellow Indents and will change in separate thread until the test is closed.{Environment.NewLine}" +
 				"Margins = ";
 			var desc = new Label
 			{
-				BackgroundColor = Colors.Azure,
+				BackgroundColor = Color.Azure,
 				Text = $"{description}{box.Margin.Top}"
 			};
 			Content = new StackLayout
@@ -42,7 +41,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					desc,
 					new ScrollView
 					{
-						BackgroundColor = Colors.Yellow,
+						BackgroundColor = Color.Yellow,
 						Content = box
 					}
 				}

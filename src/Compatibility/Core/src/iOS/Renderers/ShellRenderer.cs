@@ -1,7 +1,6 @@
 using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
-using Microsoft.Maui.Graphics;
 using UIKit;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
@@ -113,7 +112,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 		public override void ViewDidLayoutSubviews()
 		{
 			base.ViewDidLayoutSubviews();
-			if (_currentShellItemRenderer != null)
+			if(_currentShellItemRenderer != null)
 				_currentShellItemRenderer.ViewController.View.Frame = View.Bounds;
 
 			SetElementSize(new Size(View.Bounds.Width, View.Bounds.Height));
@@ -129,7 +128,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 		protected virtual IShellFlyoutRenderer CreateFlyoutRenderer()
 		{
 			// HACK
-			if (UIApplication.SharedApplication?.Delegate?.GetType()?.FullName == "XamarinFormsPreviewer.iOS.AppDelegate")
+			if(UIApplication.SharedApplication?.Delegate?.GetType()?.FullName == "XamarinFormsPreviewer.iOS.AppDelegate")
 			{
 				return new DesignerFlyoutRenderer(this);
 			}
@@ -202,7 +201,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 			{
 				await OnCurrentItemChangedAsync();
 			}
-			catch (Exception exc)
+			catch(Exception exc)
 			{
 				Controls.Internals.Log.Warning(nameof(Shell), $"Failed on changing current item: {exc}");
 			}
@@ -234,7 +233,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 			{
 				OnCurrentItemChanged();
 			}
-			else if (e.PropertyName == VisualElement.FlowDirectionProperty.PropertyName)
+			else if(e.PropertyName == VisualElement.FlowDirectionProperty.PropertyName)
 			{
 				UpdateFlowDirection(true);
 			}
@@ -283,7 +282,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 
 			// This means the selected item changed while the active transition
 			// was finishing up
-			if (_incomingRenderer != value ||
+			if(_incomingRenderer != value ||
 				value.ShellItem != this.Shell.CurrentItem)
 			{
 				(value as IDisconnectable)?.Disconnect();
@@ -302,7 +301,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 			View.SendSubviewToBack(newRenderer.ViewController.View);
 
 			newRenderer.ViewController.View.Frame = View.Bounds;
-
+			
 			if (oldRenderer != null)
 			{
 				var transition = CreateShellItemTransition();
@@ -320,7 +319,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 			}
 
 			// current renderer is still valid
-			if (_currentShellItemRenderer == value)
+			if(_currentShellItemRenderer == value)
 			{
 				UpdateBackgroundColor();
 				UpdateFlowDirection();
@@ -330,7 +329,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 		protected virtual void UpdateBackgroundColor()
 		{
 			var color = Shell.BackgroundColor;
-			if (color == null)
+			if (color.IsDefault)
 				color = ColorExtensions.BackgroundColor.ToColor();
 
 			FlyoutRenderer.View.BackgroundColor = color.ToUIColor();

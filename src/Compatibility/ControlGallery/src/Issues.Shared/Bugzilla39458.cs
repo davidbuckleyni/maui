@@ -2,7 +2,6 @@
 
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -28,14 +27,14 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					VerticalOptions = LayoutOptions.Center,
 					HorizontalOptions = LayoutOptions.Center,
 					FontSize = 21,
-					TextColor = Colors.White,
+					TextColor = Color.White,
 					Text = $"This is page {pageNumber}"
 				};
 				var TestBtn = new Button
 				{
 					Text = "Go to Page 2",
 					IsEnabled = false,
-					BackgroundColor = Colors.White
+					BackgroundColor = Color.White
 				};
 
 				if (pageNumber != 2)
@@ -66,15 +65,15 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		protected override void Init()
 		{
 			var firstPage = new ChildPage(1);
-			firstPage.BackgroundColor = Colors.Blue;
+			firstPage.BackgroundColor = Color.Blue;
 			Children.Add(firstPage);
 
 			var secondPage = new DesiredPage(2);
-			secondPage.BackgroundColor = Colors.Red;
+			secondPage.BackgroundColor = Color.Red;
 			Children.Add(secondPage);
 
 			var thirdPage = new ChildPage(3);
-			thirdPage.BackgroundColor = Colors.Green;
+			thirdPage.BackgroundColor = Color.Green;
 			Children.Add(thirdPage);
 
 			CurrentPage = secondPage;

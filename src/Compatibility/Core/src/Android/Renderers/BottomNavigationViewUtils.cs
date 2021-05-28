@@ -7,8 +7,6 @@ using Android.Views;
 using Android.Widget;
 using Google.Android.Material.BottomNavigation;
 using Google.Android.Material.BottomSheet;
-using Microsoft.Maui.Controls.Platform;
-using Microsoft.Maui.Graphics;
 using AColor = Android.Graphics.Color;
 using ALabelVisibilityMode = Google.Android.Material.BottomNavigation.LabelVisibilityMode;
 using ColorStateList = Android.Content.Res.ColorStateList;
@@ -26,7 +24,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 
 		public static Drawable CreateItemBackgroundDrawable()
 		{
-			var stateList = ColorStateList.ValueOf(Colors.Black.MultiplyAlpha(0.2f).ToAndroid());
+			var stateList = ColorStateList.ValueOf(Color.Black.MultiplyAlpha(0.2).ToAndroid());
 			var colorDrawable = new ColorDrawable(AColor.White);
 
 			if (Forms.IsLollipopOrNewer)
@@ -166,7 +164,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 
 					if (Forms.IsLollipopOrNewer)
 					{
-						image.ImageTintList = ColorStateList.ValueOf(Colors.Black.MultiplyAlpha(0.6f).ToAndroid());
+						image.ImageTintList = ColorStateList.ValueOf(Color.Black.MultiplyAlpha(0.6).ToAndroid());
 					}
 
 					image.SetImage(shellContent.icon, context);

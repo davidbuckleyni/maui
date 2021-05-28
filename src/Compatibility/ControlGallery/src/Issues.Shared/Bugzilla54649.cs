@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -31,7 +30,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				Children =
 				{
 					new Label { Text = $"This is page {number}" },
-					new BoxView { Color = Colors.Red }
+					new BoxView { Color = Color.Red }
 				}
 			};
 

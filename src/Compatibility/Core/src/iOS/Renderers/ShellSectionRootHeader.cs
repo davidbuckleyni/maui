@@ -1,9 +1,8 @@
+using CoreGraphics;
+using Foundation;
 using System;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using CoreGraphics;
-using Foundation;
-using Microsoft.Maui.Graphics;
 using UIKit;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
@@ -12,9 +11,9 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 	{
 		#region IAppearanceObserver
 
-		Color _defaultBackgroundColor = new Color(0.964f);
-		Color _defaultForegroundColor = Colors.Black;
-		Color _defaultUnselectedColor = Colors.Black.MultiplyAlpha(0.7f);
+		Color _defaultBackgroundColor = new Color(0.964);
+		Color _defaultForegroundColor = Color.Black;
+		Color _defaultUnselectedColor = Color.Black.MultiplyAlpha(0.7);
 
 		void IAppearanceObserver.OnAppearanceChanged(ShellAppearance appearance)
 		{
@@ -31,14 +30,14 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 
 		protected virtual void SetAppearance(ShellAppearance appearance)
 		{
-			SetValues(appearance.BackgroundColor == null ? _defaultBackgroundColor : appearance.BackgroundColor,
-				appearance.ForegroundColor == null ? _defaultForegroundColor : appearance.ForegroundColor,
-				appearance.UnselectedColor == null ? _defaultUnselectedColor : appearance.UnselectedColor);
+			SetValues(appearance.BackgroundColor.IsDefault ? _defaultBackgroundColor : appearance.BackgroundColor,
+				appearance.ForegroundColor.IsDefault ? _defaultForegroundColor : appearance.ForegroundColor,
+				appearance.UnselectedColor.IsDefault ? _defaultUnselectedColor : appearance.UnselectedColor);
 		}
 
 		void SetValues(Color backgroundColor, Color foregroundColor, Color unselectedColor)
 		{
-			CollectionView.BackgroundColor = new Color(backgroundColor.Red, backgroundColor.Green, backgroundColor.Blue, .863f).ToUIColor();
+			CollectionView.BackgroundColor = new Color(backgroundColor.R, backgroundColor.G, backgroundColor.B, .863).ToUIColor();
 
 			bool reloadData = _selectedColor != foregroundColor || _unselectedColor != unselectedColor;
 
@@ -116,7 +115,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 
 		public override void ItemDeselected(UICollectionView collectionView, NSIndexPath indexPath)
 		{
-			if (CollectionView.CellForItem(indexPath) is ShellSectionHeaderCell cell)
+			if(CollectionView.CellForItem(indexPath) is ShellSectionHeaderCell cell)
 				cell.Label.TextColor = _unselectedColor.ToUIColor();
 		}
 
@@ -180,7 +179,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 			CollectionView.AddSubview(_bar);
 
 			_bottomShadow = new UIView(new CGRect(0, 0, 10, 1));
-			_bottomShadow.BackgroundColor = Colors.Black.MultiplyAlpha(0.3f).ToUIColor();
+			_bottomShadow.BackgroundColor = Color.Black.MultiplyAlpha(0.3).ToUIColor();
 			_bottomShadow.Layer.ZPosition = 9002;
 			CollectionView.AddSubview(_bottomShadow);
 

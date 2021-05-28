@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -12,7 +11,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		{
 			Navigation.PushAsync(new ContentPage
 			{
-				BackgroundColor = Colors.Yellow,
+				BackgroundColor = Color.Yellow,
 				Content = new StackLayout()
 				{
 					Children = {
@@ -36,7 +35,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		{
 			public PageWithTransparency()
 			{
-				this.BackgroundColor = Colors.Red.MultiplyAlpha(0.2f);
+				this.BackgroundColor = Color.Red.MultiplyAlpha(0.2);
 				Content = new Label
 				{
 					HorizontalOptions = LayoutOptions.Center,

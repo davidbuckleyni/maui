@@ -1,5 +1,5 @@
-using Microsoft.Maui.Controls.CustomAttributes;
 using NUnit.Framework;
+using Microsoft.Maui.Controls.CustomAttributes;
 
 namespace Microsoft.Maui.Controls.Compatibility.UITests
 {

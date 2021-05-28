@@ -8,8 +8,6 @@ using Android.OS;
 using Android.Views;
 using Android.Views.Animations;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Controls.Platform;
-using Microsoft.Maui.Graphics;
 using AView = Android.Views.View;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
@@ -258,7 +256,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
 			{
 				returnValue = new SizeRequest(Size.Zero, Size.Zero);
 			}
-			else if ((visualElementRenderer == null || visualElementRenderer is HandlerToRendererShim) && view is IView iView)
+			else if (visualElementRenderer == null && view is IView iView)
 			{
 				returnValue = iView.Handler.GetDesiredSize(widthConstraint, heightConstraint);
 			}
@@ -342,7 +340,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
 				}
 				else if (handler is IVisualElementRenderer ver)
 					renderer = ver;
-				else if (handler is INativeViewHandler vh)
+				else if (handler is IAndroidViewHandler vh)
 					renderer = new HandlerToRendererShim(vh);
 			}
 
@@ -673,7 +671,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
 			void UpdateBackgroundColor()
 			{
 				Color modalBkgndColor = _modal.BackgroundColor;
-				if (modalBkgndColor == null)
+				if (modalBkgndColor.IsDefault)
 					_backgroundView.SetWindowBackground();
 				else
 					_backgroundView.SetBackgroundColor(modalBkgndColor.ToAndroid());

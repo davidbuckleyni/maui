@@ -1,7 +1,6 @@
-using System.ComponentModel;
-
 namespace Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific
 {
+	using System.ComponentModel;
 	using FormsElement = Maui.Controls.Page;
 
 	public static class Page

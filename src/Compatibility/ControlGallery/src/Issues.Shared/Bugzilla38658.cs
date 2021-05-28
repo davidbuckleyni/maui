@@ -2,7 +2,6 @@
 
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 #if UITEST
 using Xamarin.UITest;
 using NUnit.Framework;
@@ -27,7 +26,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					{
 						Children = {
 							new Label { Text = "Rotate the device to Landscape and back to Portrait. If the app hangs, this test has failed." },
-							new BoxView {  Color = Colors.Red, HeightRequest = 200, WidthRequest = 200 }
+							new BoxView {  Color = Color.Red, HeightRequest = 200, WidthRequest = 200 }
 						}
 					}
 				});
@@ -37,7 +36,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					{
 						Children = {
 							new Label { Text = "Rotate the device to Landscape and back to Portrait. If the app hangs, this test has failed." },
-							new BoxView {  Color = Colors.Green, HeightRequest = 200, WidthRequest = 200 }
+							new BoxView {  Color = Color.Green, HeightRequest = 200, WidthRequest = 200 }
 						}
 					}
 				});

@@ -1,10 +1,9 @@
 using System;
 using System.IO;
 using System.Windows.Input;
-using Microsoft.Maui;
-using Microsoft.Maui.Controls;
 using Microsoft.Maui.Essentials;
 using Samples.Helpers;
+using Xamarin.Forms;
 
 namespace Samples.ViewModel
 {
@@ -31,7 +30,7 @@ namespace Samples.ViewModel
 			LaunchMailCommand = new Command(OnLaunchMail);
 			LaunchBrowserCommand = new Command(OnLaunchBrowser);
 			CanLaunchCommand = new Command(CanLaunch);
-			LaunchFileCommand = new Command<Microsoft.Maui.Controls.View>(OnFileRequest);
+			LaunchFileCommand = new Command<Xamarin.Forms.View>(OnFileRequest);
 		}
 
 		public string FileAttachmentContents
@@ -81,7 +80,7 @@ namespace Samples.ViewModel
 			}
 		}
 
-		async void OnFileRequest(Microsoft.Maui.Controls.View element)
+		async void OnFileRequest(Xamarin.Forms.View element)
 		{
 			if (!string.IsNullOrWhiteSpace(FileAttachmentContents))
 			{
@@ -90,7 +89,7 @@ namespace Samples.ViewModel
 				var file = Path.Combine(FileSystem.CacheDirectory, fn);
 				File.WriteAllText(file, FileAttachmentContents);
 
-				var rect = element.GetAbsoluteBounds();
+				var rect = element.GetAbsoluteBounds().ToSystemRectangle();
 				rect.Y += 40;
 				await Launcher.OpenAsync(new OpenFileRequest
 				{

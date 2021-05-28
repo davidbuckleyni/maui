@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -37,7 +36,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			public Page1()
 			{
 				Title = "Page 1";
-				BackgroundColor = Colors.Gray;
+				BackgroundColor = Color.Gray;
 
 				var relativeLayout = new RelativeLayout { };
 
@@ -48,18 +47,18 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 						new Label {
 							HorizontalTextAlignment = TextAlignment.Center,
 							Text = "Page 1",
-							TextColor = Colors.White
+							TextColor = Color.White
 						},
 						new Button {
 							Text = "Go to page 2",
 							Command = new Command(async () => await Navigation.PushAsync(new Page2())),
 							AutomationId = Button1,
-							TextColor = Colors.White
+							TextColor = Color.White
 						},
 						new Button {
 							Text = "Toggle Nav Bar",
 							Command = new Command(() => NavigationPage.SetHasNavigationBar(this, !NavigationPage.GetHasNavigationBar(this))),
-							TextColor = Colors.White
+							TextColor = Color.White
 						}
 					}
 				}, yConstraint: Microsoft.Maui.Controls.Constraint.RelativeToParent(parent => { return parent.Y; }));
@@ -67,7 +66,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				relativeLayout.Children.Add(new Label
 				{
 					Text = BottomLabel,
-					TextColor = Colors.White
+					TextColor = Color.White
 				}, yConstraint: Microsoft.Maui.Controls.Constraint.RelativeToParent(parent => { return parent.Height - 30; }));
 
 				Content = relativeLayout;
@@ -82,7 +81,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			public Page2()
 			{
 				Title = "Page 2";
-				BackgroundColor = Colors.Gray;
+				BackgroundColor = Color.Gray;
 				var relativeLayout = new RelativeLayout { };
 				relativeLayout.Children.Add(new StackLayout
 				{
@@ -91,18 +90,18 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 							new Label {
 								HorizontalTextAlignment = TextAlignment.Center,
 								Text = "Page 2",
-									TextColor = Colors.White
+									TextColor = Color.White
 							},
 							new Button {
 								Text = "Go to tabs",
 								AutomationId = Button2,
 								Command = new Command(async () => await Navigation.PushAsync(new MyTabs())),
-								TextColor = Colors.White
+								TextColor = Color.White
 							},
 							new Button {
 								Text = "Toggle Nav Bar",
 								Command = new Command(() => NavigationPage.SetHasNavigationBar(this, !NavigationPage.GetHasNavigationBar(this))),
-								TextColor = Colors.White
+								TextColor = Color.White
 							}
 						}
 				}, yConstraint: Microsoft.Maui.Controls.Constraint.RelativeToParent(parent => { return parent.Y; }));
@@ -110,7 +109,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				relativeLayout.Children.Add(new Label
 				{
 					Text = BottomLabel,
-					TextColor = Colors.White
+					TextColor = Color.White
 				}, yConstraint: Microsoft.Maui.Controls.Constraint.RelativeToParent(parent => { return parent.Height - 30; }));
 
 				Content = relativeLayout;

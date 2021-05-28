@@ -3,7 +3,6 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -136,14 +135,14 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		{
 			public GroupHeaderTemplate()
 			{
-				var title = new Label { TextColor = Colors.White, FontSize = 16 };
+				var title = new Label { TextColor = Color.White, FontSize = 16 };
 				title.SetBinding(Label.TextProperty, new Binding("GroupName", BindingMode.OneWay));
 
 				View = new StackLayout
 				{
 					Padding = new Thickness(8, 0),
 					VerticalOptions = LayoutOptions.StartAndExpand,
-					BackgroundColor = Color.FromArgb("#6D91BA"),
+					BackgroundColor = Color.FromHex("#6D91BA"),
 					Orientation = StackOrientation.Horizontal,
 					Children = { title },
 				};
@@ -157,7 +156,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			{
 				View = new StackLayout
 				{
-					BackgroundColor = Colors.White,
+					BackgroundColor = Color.White,
 				};
 			}
 		}

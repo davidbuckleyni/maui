@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -22,7 +21,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			var frame = new Frame
 			{
 				Content = _stack,
-				BackgroundColor = new[] { Device.Android, Device.UWP }.Contains(Device.RuntimePlatform) ? new Color(0.2f) : new Color(1)
+				BackgroundColor = new[] { Device.Android, Device.UWP }.Contains(Device.RuntimePlatform) ? new Color(0.2) : new Color(1)
 			};
 			_timeLabel = new Label
 			{

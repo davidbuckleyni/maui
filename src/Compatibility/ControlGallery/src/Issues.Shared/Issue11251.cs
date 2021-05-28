@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Windows.Input;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -42,8 +41,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var instructions = new Label
 			{
 				Padding = 12,
-				BackgroundColor = Colors.Black,
-				TextColor = Colors.White,
+				BackgroundColor = Color.Black,
+				TextColor = Color.White,
 				Text = "Swipe to the right and tap the SwipeItem. Verify that the command has only been executed once."
 			};
 
@@ -51,7 +50,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			var swipeContent = new Grid
 			{
-				BackgroundColor = Colors.LightGray,
+				BackgroundColor = Color.LightGray,
 				HeightRequest = 80
 			};
 
@@ -68,7 +67,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			var swipeItem = new SwipeItem
 			{
-				BackgroundColor = Colors.Red,
+				BackgroundColor = Color.Red,
 				Text = "Execute Command",
 				Command = ExecuteMe
 			};

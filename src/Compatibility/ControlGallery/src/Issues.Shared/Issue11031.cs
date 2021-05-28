@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -31,8 +30,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			var frame = new Frame
 			{
-				BackgroundColor = Colors.Red,
-				BorderColor = Colors.Black,
+				BackgroundColor = Color.Red,
+				BorderColor = Color.Black,
 				CornerRadius = 24,
 				Margin = 12
 			};
@@ -40,7 +39,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var label = new Label
 			{
 				HorizontalTextAlignment = TextAlignment.Center,
-				TextColor = Colors.White,
+				TextColor = Color.White,
 				Text = "Issue 11031"
 			};
 

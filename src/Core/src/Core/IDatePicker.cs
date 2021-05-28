@@ -5,7 +5,7 @@ namespace Microsoft.Maui
 	/// <summary>
 	/// Represents a View that allows the user to select a date.
 	/// </summary>
-	public interface IDatePicker : IView, ITextStyle
+	public interface IDatePicker : IView
 	{
 		/// <summary>
 		/// Gets the format of the date to display to the user. 

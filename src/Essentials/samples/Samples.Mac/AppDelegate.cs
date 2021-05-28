@@ -1,8 +1,7 @@
 using AppKit;
 using CoreGraphics;
 using Foundation;
-using Microsoft.Maui;
-using Microsoft.Maui.Controls;
+using Xamarin.Forms;
 using Xamarin.Forms.Platform.MacOS;
 
 namespace Samples.Mac

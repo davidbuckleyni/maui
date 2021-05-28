@@ -1,20 +1,19 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using CoreGraphics;
-using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Controls.Platform;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Microsoft.Maui.Graphics;
 using UIKit;
+using Microsoft.Maui.Controls.Compatibility.Internals;
+using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using static Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific.NavigationPage;
 using static Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific.Page;
 using PageUIStatusBarAnimation = Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific.UIStatusBarAnimation;
 using PointF = CoreGraphics.CGPoint;
 using RectangleF = CoreGraphics.CGRect;
 using SizeF = CoreGraphics.CGSize;
+using Microsoft.Maui.Controls.Internals;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 {
@@ -215,18 +214,18 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 			FindParentFlyoutPage();
 
 			var navPage = NavPage;
-			INavigationPageController navPageController = NavPage;
+
 			if (navPage.CurrentPage == null)
 			{
 				throw new InvalidOperationException(
 					"NavigationPage must have a root Page before being used. Either call PushAsync with a valid Page, or pass a Page to the constructor before usage.");
 			}
 
-			navPageController.PushRequested += OnPushRequested;
-			navPageController.PopRequested += OnPopRequested;
-			navPageController.PopToRootRequested += OnPopToRootRequested;
-			navPageController.RemovePageRequested += OnRemovedPageRequested;
-			navPageController.InsertPageBeforeRequested += OnInsertPageBeforeRequested;
+			navPage.PushRequested += OnPushRequested;
+			navPage.PopRequested += OnPopRequested;
+			navPage.PopToRootRequested += OnPopToRootRequested;
+			navPage.RemovePageRequested += OnRemovedPageRequested;
+			navPage.InsertPageBeforeRequested += OnInsertPageBeforeRequested;
 
 			UpdateBarBackground();
 			UpdateBarTextColor();
@@ -275,14 +274,13 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 				Current = null; // unhooks events
 
 				var navPage = NavPage;
-				INavigationPageController navPageController = NavPage;
 				navPage.PropertyChanged -= HandlePropertyChanged;
 
-				navPageController.PushRequested -= OnPushRequested;
-				navPageController.PopRequested -= OnPopRequested;
-				navPageController.PopToRootRequested -= OnPopToRootRequested;
-				navPageController.RemovePageRequested -= OnRemovedPageRequested;
-				navPageController.InsertPageBeforeRequested -= OnInsertPageBeforeRequested;
+				navPage.PushRequested -= OnPushRequested;
+				navPage.PopRequested -= OnPopRequested;
+				navPage.PopToRootRequested -= OnPopToRootRequested;
+				navPage.RemovePageRequested -= OnRemovedPageRequested;
+				navPage.InsertPageBeforeRequested -= OnInsertPageBeforeRequested;
 			}
 
 			base.Dispose(disposing);
@@ -653,7 +651,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 
 		void UpdateBackgroundColor()
 		{
-			var color = Element.BackgroundColor == null ? ColorExtensions.BackgroundColor.ToColor() : Element.BackgroundColor;
+			var color = Element.BackgroundColor == Color.Default ? ColorExtensions.BackgroundColor.ToColor() : Element.BackgroundColor;
 			View.BackgroundColor = color.ToUIColor();
 		}
 
@@ -667,7 +665,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 
 				navigationBarAppearance.ConfigureWithOpaqueBackground();
 
-				if (barBackgroundColor == null)
+				if (barBackgroundColor == Color.Default)
 				{
 					navigationBarAppearance.BackgroundColor = ColorExtensions.BackgroundColor;
 
@@ -688,7 +686,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 			else
 			{
 				// Set navigation bar background color
-				NavigationBar.BarTintColor = barBackgroundColor == null
+				NavigationBar.BarTintColor = barBackgroundColor == Color.Default
 					? UINavigationBar.Appearance.BarTintColor
 					: barBackgroundColor.ToUIColor();
 
@@ -706,7 +704,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 			var globalTitleTextAttributes = UINavigationBar.Appearance.TitleTextAttributes;
 			var titleTextAttributes = new UIStringAttributes
 			{
-				ForegroundColor = barTextColor == null ? globalTitleTextAttributes?.ForegroundColor : barTextColor.ToUIColor(),
+				ForegroundColor = barTextColor == Color.Default ? globalTitleTextAttributes?.ForegroundColor : barTextColor.ToUIColor(),
 				Font = globalTitleTextAttributes?.Font
 			};
 
@@ -718,7 +716,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 
 				largeTitleTextAttributes = new UIStringAttributes
 				{
-					ForegroundColor = barTextColor == null ? globalLargeTitleTextAttributes?.ForegroundColor : barTextColor.ToUIColor(),
+					ForegroundColor = barTextColor == Color.Default ? globalLargeTitleTextAttributes?.ForegroundColor : barTextColor.ToUIColor(),
 					Font = globalLargeTitleTextAttributes?.Font
 				};
 			}
@@ -743,11 +741,11 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 			}
 
 			// set Tint color (i. e. Back Button arrow and Text)
-			var iconColor = Current != null ? NavigationPage.GetIconColor(Current) : null;
-			if (iconColor == null)
+			var iconColor = Current != null ? NavigationPage.GetIconColor(Current) : Color.Default;
+			if (iconColor.IsDefault)
 				iconColor = barTextColor;
 
-			NavigationBar.TintColor = iconColor == null || NavPage.OnThisPlatform().GetStatusBarTextColorMode() == StatusBarTextColorMode.DoNotAdjust
+			NavigationBar.TintColor = iconColor == Color.Default || NavPage.OnThisPlatform().GetStatusBarTextColorMode() == StatusBarTextColorMode.DoNotAdjust
 				? UINavigationBar.Appearance.TintColor
 				: iconColor.ToUIColor();
 		}
@@ -757,7 +755,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 			var barTextColor = NavPage.BarTextColor;
 			var statusBarColorMode = NavPage.OnThisPlatform().GetStatusBarTextColorMode();
 
-			if (statusBarColorMode == StatusBarTextColorMode.DoNotAdjust || barTextColor?.GetLuminosity() <= 0.5)
+			if (statusBarColorMode == StatusBarTextColorMode.DoNotAdjust || barTextColor.Luminosity <= 0.5)
 			{
 				// Use dark text color for status bar
 				if (Forms.IsiOS13OrNewer)

@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.Maui.DeviceTests.Stubs;
-using Microsoft.Maui.Graphics;
 using Microsoft.Maui.Handlers;
 using Xunit;
 
@@ -15,10 +14,10 @@ namespace Microsoft.Maui.DeviceTests
 		{
 			var switchStub = new SwitchStub()
 			{
-				IsOn = true
+				IsToggled = true
 			};
 
-			await ValidatePropertyInitValue(switchStub, () => switchStub.IsOn, GetNativeIsOn, switchStub.IsOn);
+			await ValidatePropertyInitValue(switchStub, () => switchStub.IsToggled, GetNativeIsChecked, switchStub.IsToggled);
 		}
 
 		[Theory(DisplayName = "Track Color Initializes Correctly")]
@@ -28,11 +27,11 @@ namespace Microsoft.Maui.DeviceTests
 		{
 			var switchStub = new SwitchStub()
 			{
-				IsOn = isToggled,
-				TrackColor = Colors.Red
+				IsToggled = isToggled,
+				TrackColor = Color.Red
 			};
 
-			await ValidateTrackColor(switchStub, Colors.Red);
+			await ValidateTrackColor(switchStub, Color.Red);
 		}
 
 		[Fact(DisplayName = "Track Color Updates Correctly")]
@@ -40,10 +39,10 @@ namespace Microsoft.Maui.DeviceTests
 		{
 			var switchStub = new SwitchStub()
 			{
-				IsOn = true
+				IsToggled = true
 			};
 
-			await ValidateTrackColor(switchStub, Colors.Red, () => switchStub.TrackColor = Colors.Red);
+			await ValidateTrackColor(switchStub, Color.Red, () => switchStub.TrackColor = Color.Red);
 		}
 
 		[Fact(DisplayName = "ThumbColor Initializes Correctly")]
@@ -51,11 +50,11 @@ namespace Microsoft.Maui.DeviceTests
 		{
 			var switchStub = new SwitchStub()
 			{
-				IsOn = true,
-				ThumbColor = Colors.Blue
+				IsToggled = true,
+				ThumbColor = Color.Blue
 			};
 
-			await ValidateThumbColor(switchStub, Colors.Blue);
+			await ValidateThumbColor(switchStub, Color.Blue);
 		}
 
 		[Fact(DisplayName = "Track Color Updates Correctly")]
@@ -63,33 +62,10 @@ namespace Microsoft.Maui.DeviceTests
 		{
 			var switchStub = new SwitchStub()
 			{
-				IsOn = true
+				IsToggled = true
 			};
 
-			await ValidateThumbColor(switchStub, Colors.Red, () => switchStub.ThumbColor = Colors.Red);
-		}
-
-		[Fact(DisplayName = "Updating Native Is On property updates Virtual View"
-#if __IOS__
-			  ,Skip = "iOS doesn't throw ValueChanged events when changing property via code."
-#endif
-			)]
-		public async Task NativeIsOnPropagatesToVirtual()
-		{
-			var switchStub = new SwitchStub()
-			{
-				IsOn = false
-			};
-
-			bool isOn = false;
-			switchStub.IsOnDelegate += () =>
-			{
-				isOn = switchStub.IsOn;
-			};
-
-			await SetValueAsync(switchStub, true, SetIsOn);
-
-			Assert.True(isOn);
+			await ValidateThumbColor(switchStub, Color.Red, () => switchStub.ThumbColor = Color.Red);
 		}
 	}
 }

@@ -6,7 +6,6 @@ using System.Linq;
 using Android.Content;
 using Android.Views;
 using AndroidX.Core.View;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 {

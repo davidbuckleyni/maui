@@ -4,7 +4,6 @@ using System.Windows.Input;
 
 namespace Microsoft.Maui.Controls
 {
-	[ContentProperty(nameof(Content))]
 	public class SwipeItemView : ContentView, ISwipeItem
 	{
 		public static readonly BindableProperty CommandProperty = BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(SwipeItemView), null,

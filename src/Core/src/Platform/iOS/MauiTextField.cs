@@ -1,6 +1,5 @@
 ﻿using System;
 using CoreGraphics;
-using Foundation;
 using UIKit;
 
 namespace Microsoft.Maui.Platform.iOS
@@ -21,26 +20,8 @@ namespace Microsoft.Maui.Platform.iOS
 			get => base.Text;
 			set
 			{
-				var old = base.Text;
-
 				base.Text = value;
-
-				if (old != value)
-					TextPropertySet?.Invoke(this, EventArgs.Empty);
-			}
-		}
-
-		public override NSAttributedString? AttributedText
-		{
-			get => base.AttributedText;
-			set
-			{
-				var old = base.AttributedText;
-
-				base.AttributedText = value;
-
-				if (old?.Value != value?.Value)
-					TextPropertySet?.Invoke(this, EventArgs.Empty);
+				TextPropertySet?.Invoke(this, EventArgs.Empty);
 			}
 		}
 

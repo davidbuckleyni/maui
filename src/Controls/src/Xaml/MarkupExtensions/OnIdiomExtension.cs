@@ -2,7 +2,6 @@ using System;
 using System.Globalization;
 using System.Reflection;
 using System.Xml;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Microsoft.Maui.Controls.Xaml
 {

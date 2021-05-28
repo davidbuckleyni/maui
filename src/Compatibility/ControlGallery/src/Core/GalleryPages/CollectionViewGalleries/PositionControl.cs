@@ -1,6 +1,4 @@
 ﻿using System;
-using Microsoft.Maui.Graphics;
-
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.CollectionViewGalleries
 {
 	internal class PositionControl : ContentView
@@ -23,8 +21,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Coll
 
 			_slider = new Slider
 			{
-				BackgroundColor = Colors.Pink,
-				ThumbColor = Colors.Red,
+				BackgroundColor = Color.Pink,
+				ThumbColor = Color.Red,
 				WidthRequest = 100,
 				BindingContext = carousel
 			};
@@ -32,7 +30,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Coll
 			UpdatePositionCount(itemsCount);
 
 			var indexLabel = new Label { Text = "Go To Position: ", VerticalTextAlignment = TextAlignment.Center };
-			var label = new Label { WidthRequest = 20, BackgroundColor = Colors.LightCyan, AutomationId = "CurrentPositionLabel" };
+			var label = new Label { WidthRequest = 20, BackgroundColor = Color.LightCyan, AutomationId = "CurrentPositionLabel" };
 			label.SetBinding(Label.TextProperty, nameof(carousel.Position), stringFormat: "pos:{0}");
 			label.BindingContext = carousel;
 			var indexButton = new Button { Text = "Go" };

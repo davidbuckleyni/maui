@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -21,8 +20,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			Label longLabelWithHorizontalTextAlignmentOfEndAndHeadTruncation = new Label
 			{
 				AutomationId = "lblLong",
-				TextColor = Colors.Black,
-				BackgroundColor = Colors.Pink,
+				TextColor = Color.Black,
+				BackgroundColor = Color.Pink,
 				Text = "This is a long string that should hopefully truncate. It has HeadTruncation enabled and HorizontalTextAlignment = End",
 				LineBreakMode = LineBreakMode.HeadTruncation,
 				HorizontalTextAlignment = TextAlignment.End
@@ -30,7 +29,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			StackLayout vslOuterPage = new StackLayout
 			{
-				BackgroundColor = Colors.White, // viewModel.PageBackgroundColor,
+				BackgroundColor = Color.White, // viewModel.PageBackgroundColor,
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				Margin = new Thickness(0, 0, 0, 0), // gets rid of the white

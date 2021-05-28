@@ -1,5 +1,3 @@
-using Microsoft.Maui.Graphics;
-
 namespace Microsoft.Maui.Controls
 {
 	static class PlaceholderElement

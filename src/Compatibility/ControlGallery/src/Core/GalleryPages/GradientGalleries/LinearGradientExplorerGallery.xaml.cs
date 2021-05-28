@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.GradientGalleries
 {
@@ -42,7 +41,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Grad
 		{
 			var backgroundColor = GetColorFromString(e.NewTextValue);
 
-			if (backgroundColor != null)
+			if (backgroundColor != Color.Default)
 			{
 				GradientView.BackgroundColor = backgroundColor;
 				BackgroundColorEntry.BackgroundColor = backgroundColor;
@@ -54,7 +53,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Grad
 		{
 			var borderColor = GetColorFromString(e.NewTextValue);
 
-			if (borderColor != null)
+			if (borderColor != Color.Default)
 			{
 				GradientView.BorderColor = borderColor;
 				BorderColorEntry.BackgroundColor = borderColor;
@@ -123,9 +122,9 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Grad
 			if (!(_layout.Children.FirstOrDefault() is Entry entry))
 				return;
 
-			var red = (int)(selectedColor.Color.Red * 255);
-			var green = (int)(selectedColor.Color.Green * 255);
-			var blue = (int)(selectedColor.Color.Blue * 255);
+			var red = (int)(selectedColor.Color.R * 255);
+			var green = (int)(selectedColor.Color.G * 255);
+			var blue = (int)(selectedColor.Color.B * 255);
 
 			entry.Text = $"#{red:X2}{green:X2}{blue:X2}";
 		}
@@ -203,15 +202,15 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Grad
 		Color GetColorFromString(string value)
 		{
 			if (string.IsNullOrEmpty(value))
-				return null;
+				return Color.Default;
 
 			try
 			{
-				return Color.FromArgb(value[0].Equals('#') ? value : $"#{value}");
+				return Color.FromHex(value[0].Equals('#') ? value : $"#{value}");
 			}
 			catch (Exception)
 			{
-				return null;
+				return Color.Default;
 			}
 		}
 	}

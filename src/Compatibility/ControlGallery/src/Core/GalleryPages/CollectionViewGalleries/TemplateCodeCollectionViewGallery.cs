@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Graphics;
-
-namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.CollectionViewGalleries
+﻿namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.CollectionViewGalleries
 {
 	internal class TemplateCodeCollectionViewGallery : ContentPage
 	{
@@ -22,7 +20,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Coll
 				ItemsLayout = itemsLayout,
 				ItemTemplate = itemTemplate,
 				AutomationId = "collectionview",
-				BackgroundColor = Colors.Red
+				BackgroundColor = Color.Red
 			};
 
 			var generator = new ItemsSourceGenerator(collectionView, initialItems: 20);

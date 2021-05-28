@@ -2,7 +2,6 @@
 using System.Linq;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -56,7 +55,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				var text = new Label
 				{
 					VerticalOptions = LayoutOptions.Fill,
-					TextColor = Colors.White,
+					TextColor = Color.White,
 				};
 
 				text.SetBinding(Label.TextProperty, ".");
@@ -64,14 +63,14 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				{
 					HeightRequest = 80,
 					Margin = new Thickness(0, 10, 0, 0),
-					BackgroundColor = Color.FromArgb("#F1F1F1")
+					BackgroundColor = Color.FromHex("#F1F1F1")
 				};
 				view.AddChild(new Frame
 				{
 					Padding = new Thickness(5),
 					Margin = new Thickness(0, 0, 10, 0),
-					BorderColor = Colors.Blue,
-					BackgroundColor = Colors.Gray,
+					BorderColor = Color.Blue,
+					BackgroundColor = Color.Gray,
 					VerticalOptions = LayoutOptions.Center,
 					HorizontalOptions = LayoutOptions.End,
 					CornerRadius = 3,

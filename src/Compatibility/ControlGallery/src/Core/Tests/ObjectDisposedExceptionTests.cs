@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using Microsoft.Maui.Graphics;
 using NUnit.Framework;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Tests
@@ -41,8 +40,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Tests
 		[Description("[Bug] ObjectDisposedException (BoxView inside CollectionView)")]
 		public void GitHub9431(Func<VisualElement> createVisualElement)
 		{
-			var color1 = Colors.Linen;
-			var color2 = Colors.HotPink;
+			var color1 = Color.Linen;
+			var color2 = Color.HotPink;
 			var model = new _9431Model() { BGColor = color1 };
 
 			for (int m = 0; m < 3; m++)

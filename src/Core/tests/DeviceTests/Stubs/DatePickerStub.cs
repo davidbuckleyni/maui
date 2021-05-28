@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.DeviceTests.Stubs
 {
@@ -12,11 +11,5 @@ namespace Microsoft.Maui.DeviceTests.Stubs
 		public DateTime MinimumDate { get; set; }
 
 		public DateTime MaximumDate { get; set; }
-
-		public double CharacterSpacing { get; set; }
-
-		public Font Font { get; set; }
-
-		public Color TextColor { get; set; }
 	}
 }

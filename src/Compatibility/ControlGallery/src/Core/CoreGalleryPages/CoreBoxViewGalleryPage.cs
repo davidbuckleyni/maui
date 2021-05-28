@@ -2,7 +2,6 @@ using System;
 using System.Threading;
 
 using Microsoft.Maui.Controls.CustomAttributes;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -23,7 +22,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 				var red = Rand.NextDouble();
 				var green = Rand.NextDouble();
 				var blue = Rand.NextDouble();
-				element.Color = new Color((float)red, (float)green, (float)blue);
+				element.Color = new Color(red, green, blue);
 			}
 		}
 
@@ -31,11 +30,11 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 		{
 			base.Build(stackLayout);
 
-			var colorContainer = new ViewContainer<BoxView>(Test.BoxView.Color, new BoxView { Color = Colors.Pink });
+			var colorContainer = new ViewContainer<BoxView>(Test.BoxView.Color, new BoxView { Color = Color.Pink });
 
 			Add(colorContainer);
 
-			var cornerRadiusContainer = new ViewContainer<BoxView>(Test.BoxView.CornerRadius, new BoxView { Color = Colors.Red, CornerRadius = new CornerRadius(0, 12, 12, 0) });
+			var cornerRadiusContainer = new ViewContainer<BoxView>(Test.BoxView.CornerRadius, new BoxView { Color = Color.Red, CornerRadius = new CornerRadius(0, 12, 12, 0) });
 
 			Add(cornerRadiusContainer);
 		}

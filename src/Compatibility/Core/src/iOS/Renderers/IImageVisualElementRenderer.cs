@@ -1,10 +1,10 @@
 #if __MOBILE__
-using NativeImage = UIKit.UIImage;
 using NativeImageView = UIKit.UIImageView;
+using NativeImage = UIKit.UIImage;
 namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 #else
-using NativeImage = AppKit.NSImage;
 using NativeImageView = AppKit.NSImageView;
+using NativeImage = AppKit.NSImage;
 namespace Microsoft.Maui.Controls.Compatibility.Platform.MacOS
 #endif
 {

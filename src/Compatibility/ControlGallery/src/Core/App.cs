@@ -10,7 +10,6 @@ using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -52,10 +51,10 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			SetMainPage(new Bugzilla44596SplashPage(async () =>
 			{
 				var newTabbedPage = new TabbedPage();
-				newTabbedPage.Children.Add(new ContentPage { BackgroundColor = Colors.Red, Content = new Label { Text = "Success" } });
+				newTabbedPage.Children.Add(new ContentPage { BackgroundColor = Color.Red, Content = new Label { Text = "Success" } });
 				MainPage = new FlyoutPage
 				{
-					Flyout = new ContentPage { Title = "Flyout", BackgroundColor = Colors.Red },
+					Flyout = new ContentPage { Title = "Flyout", BackgroundColor = Color.Red },
 					Detail = newTabbedPage
 				};
 
@@ -85,10 +84,10 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			//SetMainPage(new Bugzilla44596SplashPage(() =>
 			//{
 			//	var newTabbedPage = new TabbedPage();
-			//	newTabbedPage.Children.Add(new ContentPage { BackgroundColor = Colors.Red, Content = new Label { Text = "yay" } });
+			//	newTabbedPage.Children.Add(new ContentPage { BackgroundColor = Color.Red, Content = new Label { Text = "yay" } });
 			//	MainPage = new FlyoutPage
 			//	{
-			//		Flyout = new ContentPage { Title = "Flyout", BackgroundColor = Colors.Red },
+			//		Flyout = new ContentPage { Title = "Flyout", BackgroundColor = Color.Red },
 			//		Detail = newTabbedPage
 			//	};
 			//}));
@@ -109,9 +108,9 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 
 		public Page CreateDefaultMainPage()
 		{
-			var layout = new StackLayout { BackgroundColor = Colors.Red };
+			var layout = new StackLayout { BackgroundColor = Color.Red };
 			layout.Children.Add(new Label { Text = "This is master Page" });
-			var master = new ContentPage { Title = "Flyout", Content = layout, BackgroundColor = Colors.SkyBlue, IconImageSource = "menuIcon" };
+			var master = new ContentPage { Title = "Flyout", Content = layout, BackgroundColor = Color.SkyBlue, IconImageSource = "menuIcon" };
 			master.On<iOS>().SetUseSafeArea(true);
 			var mdp = new FlyoutPage
 			{

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -13,7 +12,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 
 		public EntryReturnTypeGalleryPage()
 		{
-			BackgroundColor = Colors.LightBlue;
+			BackgroundColor = Color.LightBlue;
 			var layout = new StackLayout
 			{
 				VerticalOptions = LayoutOptions.StartAndExpand

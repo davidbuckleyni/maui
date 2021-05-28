@@ -7,7 +7,7 @@ namespace Microsoft.Maui.Resizetizer
 {
 	internal class SkiaSharpAppIconTools
 	{
-		public SkiaSharpAppIconTools(ResizeImageInfo info, ILogger logger)
+		public SkiaSharpAppIconTools(SharedImageInfo info, ILogger logger)
 		{
 			Info = info;
 			Logger = logger;
@@ -35,7 +35,7 @@ namespace Microsoft.Maui.Resizetizer
 		SKSize foregroundOriginalSize;
 		SKSize backgroundOriginalSize;
 
-		public ResizeImageInfo Info { get; }
+		public SharedImageInfo Info { get; }
 		public ILogger Logger { get; }
 
 		public string AppIconName { get; }

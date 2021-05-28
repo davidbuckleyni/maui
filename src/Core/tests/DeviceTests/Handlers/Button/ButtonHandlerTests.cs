@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.Maui.DeviceTests.Stubs;
-using Microsoft.Maui.Graphics;
 using Microsoft.Maui.Handlers;
 using Xunit;
 
@@ -27,7 +26,7 @@ namespace Microsoft.Maui.DeviceTests
 			var button = new ButtonStub()
 			{
 				Text = "Test",
-				TextColor = Colors.Orange
+				TextColor = Color.Orange
 			};
 
 			await ValidatePropertyInitValue(button, () => button.TextColor, GetNativeTextColor, button.TextColor);
@@ -66,20 +65,20 @@ namespace Microsoft.Maui.DeviceTests
 		}
 
 		[Theory(DisplayName = "Font Attributes Initialize Correctly")]
-		[InlineData(FontWeight.Regular, false, false)]
-		[InlineData(FontWeight.Bold, true, false)]
-		[InlineData(FontWeight.Regular, false, true)]
-		[InlineData(FontWeight.Bold, true, true)]
-		public async Task FontAttributesInitializeCorrectly(FontWeight weight, bool isBold, bool isItalic)
+		[InlineData(FontAttributes.None, false, false)]
+		[InlineData(FontAttributes.Bold, true, false)]
+		[InlineData(FontAttributes.Italic, false, true)]
+		[InlineData(FontAttributes.Bold | FontAttributes.Italic, true, true)]
+		public async Task FontAttributesInitializeCorrectly(FontAttributes attributes, bool isBold, bool isItalic)
 		{
 			var button = new ButtonStub()
 			{
 				Text = "Test",
-				Font = Font.OfSize("Arial", 10, weight, isItalic ? FontSlant.Italic : FontSlant.Default)
+				Font = Font.OfSize("Arial", 10).WithAttributes(attributes)
 			};
 
-			await ValidatePropertyInitValue(button, () => button.Font.Weight == FontWeight.Bold, GetNativeIsBold, isBold);
-			await ValidatePropertyInitValue(button, () => button.Font.FontSlant == FontSlant.Italic, GetNativeIsItalic, isItalic);
+			await ValidatePropertyInitValue(button, () => button.Font.FontAttributes.HasFlag(FontAttributes.Bold), GetNativeIsBold, isBold);
+			await ValidatePropertyInitValue(button, () => button.Font.FontAttributes.HasFlag(FontAttributes.Italic), GetNativeIsItalic, isItalic);
 		}
 	}
 }

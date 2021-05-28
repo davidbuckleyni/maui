@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -36,13 +35,13 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			{
 				grid.AddChild(new Label { Text = $"Cell {sectionIndex}-{cellIndex}" }, 0, 0);
 				grid.AddChild(new Label { Text = $"Label" }, 1, 0);
-				grid.BackgroundColor = Colors.Fuchsia;
+				grid.BackgroundColor = Color.Fuchsia;
 			}
 			else
 			{
 				grid.AddChild(new Label { Text = $"Cell {sectionIndex}-{cellIndex}" }, 0, 0);
 				grid.AddChild(new Entry { Text = $"Entry" }, 1, 0);
-				grid.BackgroundColor = Colors.Yellow;
+				grid.BackgroundColor = Color.Yellow;
 			}
 
 			return new ViewCell

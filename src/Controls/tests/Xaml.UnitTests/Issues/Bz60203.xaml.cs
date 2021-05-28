@@ -1,6 +1,5 @@
 using System;
 using Microsoft.Maui.Controls.Core.UnitTests;
-using Microsoft.Maui.Graphics;
 using NUnit.Framework;
 
 namespace Microsoft.Maui.Controls.Xaml.UnitTests
@@ -39,8 +38,8 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 				var layout = new Bz60203(useCompiledXaml);
 				Assert.That(layout.label.BackgroundColor, Is.EqualTo(BackgroundColorProperty.DefaultValue));
 				layout.BindingContext = new { Text = "Foo" };
-				layout.label.TextColor = Colors.Blue;
-				Assert.That(layout.label.BackgroundColor, Is.EqualTo(Colors.Pink));
+				layout.label.TextColor = Color.Blue;
+				Assert.That(layout.label.BackgroundColor, Is.EqualTo(Color.Pink));
 			}
 
 		}

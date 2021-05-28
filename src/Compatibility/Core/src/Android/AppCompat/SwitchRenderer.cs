@@ -1,10 +1,9 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using Android.Content;
 using Android.Graphics.Drawables;
 using Android.Widget;
 using AndroidX.AppCompat.Widget;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
 {
@@ -119,7 +118,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
 
 			if (Control.Checked)
 			{
-				if (Element.OnColor == null)
+				if (Element.OnColor == Color.Default)
 				{
 					Control.TrackDrawable = _defaultTrackDrawable;
 				}
@@ -140,7 +139,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat
 			if (Element == null)
 				return;
 
-			if (Element.ThumbColor != null)
+			if (Element.ThumbColor != Color.Default)
 			{
 				Control.ThumbDrawable?.SetColorFilter(Element.ThumbColor, FilterMode.SrcAtop);
 				_changedThumbColor = true;

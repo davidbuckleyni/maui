@@ -1,10 +1,9 @@
-using System;
-using System.ComponentModel;
 using CoreAnimation;
 using CoreGraphics;
 using Foundation;
 using MediaPlayer;
-using Microsoft.Maui.Controls.Platform;
+using System;
+using System.ComponentModel;
 using UIKit;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
@@ -26,7 +25,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 				if (SlideFlyoutTransition?.UpdateFlyoutSize(appearance.FlyoutHeight, appearance.FlyoutWidth) ==
 					true)
 				{
-					if (_layoutOccured)
+					if(_layoutOccured)
 						LayoutSidebar(false, true);
 				}
 			}

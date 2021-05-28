@@ -6,7 +6,6 @@ using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Microsoft.Maui.Graphics;
 using static Microsoft.Maui.Controls.Compatibility.ControlGallery.DynamicViewGallery;
 using static Microsoft.Maui.Controls.Compatibility.ControlGallery.XamStore.BasePage;
 
@@ -75,10 +74,10 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.XamStore
 		{
 			var searchHandler = new CustomSearchHandler();
 
-			searchHandler.BackgroundColor = Colors.Orange;
-			searchHandler.CancelButtonColor = Colors.Pink;
-			searchHandler.TextColor = Colors.White;
-			searchHandler.PlaceholderColor = Colors.Yellow;
+			searchHandler.BackgroundColor = Color.Orange;
+			searchHandler.CancelButtonColor = Color.Pink;
+			searchHandler.TextColor = Color.White;
+			searchHandler.PlaceholderColor = Color.Yellow;
 			searchHandler.HorizontalTextAlignment = TextAlignment.Center;
 			searchHandler.ShowsResults = true;
 

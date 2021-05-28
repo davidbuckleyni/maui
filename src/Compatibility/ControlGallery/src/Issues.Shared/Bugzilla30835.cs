@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -107,7 +106,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			{
 				IconImageSource = "bank.png";
 				Title = "Carsousel Memory Bug";
-				BackgroundColor = Color.FromArgb("#000000");
+				BackgroundColor = Color.FromHex("#000000");
 
 				Menu = new MenuListView();
 
@@ -116,7 +115,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					Padding = new Thickness(10, 36, 0, 5),
 					Content = new Label
 					{
-						TextColor = Color.FromArgb("#FFFFFF"),
+						TextColor = Color.FromHex("#FFFFFF"),
 						Text = "Carsousel Memory Bug",
 					}
 				};
@@ -142,7 +141,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 				ItemsSource = data;
 				VerticalOptions = LayoutOptions.FillAndExpand;
-				BackgroundColor = Colors.Black;
+				BackgroundColor = Color.Black;
 
 				var cell = new DataTemplate(typeof(ImageCell));
 				cell.SetBinding(TextCell.TextColorProperty, "TextColor");
@@ -164,7 +163,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					Title = "Carousel",
 					IconSource = "icon.png",
 					TargetType = typeof(HolderCarouselPages),
-					TextColor = Colors.White
+					TextColor = Color.White
 				});
 
 				Add(new MenuItem()
@@ -172,7 +171,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					Title = "Pic 1",
 					IconSource = "icon.png",
 					TargetType = typeof(Pic1),
-					TextColor = Colors.White
+					TextColor = Color.White
 				});
 
 				Add(new MenuItem()
@@ -180,7 +179,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					Title = "Pic 2",
 					IconSource = "icon.png",
 					TargetType = typeof(Pic1),
-					TextColor = Colors.White
+					TextColor = Color.White
 				});
 
 				Add(new MenuItem()
@@ -188,7 +187,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					Title = "Pic 3",
 					IconSource = "icon.png",
 					TargetType = typeof(Pic1),
-					TextColor = Colors.White
+					TextColor = Color.White
 				});
 			}
 		}

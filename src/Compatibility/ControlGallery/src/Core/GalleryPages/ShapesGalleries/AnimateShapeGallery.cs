@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.Maui.Controls.Shapes;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.ShapesGalleries
 {
@@ -16,8 +15,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Shap
 				EndPoint = new Point(1, 0),
 				GradientStops = new GradientStopCollection
 				{
-					new GradientStop { Color = Colors.Orange, Offset = 0.2f },
-					new GradientStop { Color = Colors.OrangeRed, Offset = 0.8f }
+					new GradientStop { Color = Color.Orange, Offset = 0.2f },
+					new GradientStop { Color = Color.OrangeRed, Offset = 0.8f }
 				}
 			};
 

@@ -41,8 +41,12 @@ namespace Microsoft.Maui.Essentials
 			if (uri == null)
 				throw new ArgumentNullException(nameof(uri));
 
-			var idn = new global::System.Globalization.IdnMapping();
-			return new Uri(uri.Scheme + "://" + idn.GetAscii(uri.Authority) + uri.PathAndQuery + uri.Fragment);
+#if NETSTANDARD1_0
+			return uri;
+#else
+            var idn = new System.Globalization.IdnMapping();
+            return new Uri(uri.Scheme + "://" + idn.GetAscii(uri.Authority) + uri.PathAndQuery + uri.Fragment);
+#endif
 		}
 	}
 }

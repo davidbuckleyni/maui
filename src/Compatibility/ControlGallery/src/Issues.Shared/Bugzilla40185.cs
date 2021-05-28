@@ -2,7 +2,6 @@
 
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -38,13 +37,13 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		{
 			Application.Current.MainPage = new ContentPage
 			{
-				BackgroundColor = Colors.White,
+				BackgroundColor = Color.White,
 				Content = new Label
 				{
 					Text = "This text should be in bounds in landscape mode.",
 					HorizontalTextAlignment = TextAlignment.End,
 					VerticalTextAlignment = TextAlignment.Center,
-					TextColor = Colors.Black
+					TextColor = Color.Black
 				}
 			};
 		}

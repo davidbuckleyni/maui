@@ -26,7 +26,7 @@ namespace Microsoft.Maui.Controls.MSBuild.UnitTests
 
 		class Xaml
 		{
-			const string MicrosoftMauiControlsFormsDefaultNamespace = "http://schemas.microsoft.com/dotnet/2021/maui";
+			const string MicrosoftMauiControlsFormsDefaultNamespace = "http://xamarin.com/schemas/2014/forms";
 			const string MicrosoftMauiControlsFormsXNamespace = "http://schemas.microsoft.com/winfx/2006/xaml";
 
 			public static readonly string MainPage = $@"
@@ -157,7 +157,7 @@ namespace Microsoft.Maui.Controls.MSBuild.UnitTests
 			project.Add(AddFile("AssemblyInfo.cs", "Compile", "[assembly: Microsoft.Maui.Controls.Xaml.XamlCompilation (Microsoft.Maui.Controls.Xaml.XamlCompilationOptions.Compile)]"));
 
 			//Add a single CSS file
-			project.Add(AddFile("Foo.css", "MauiCss", Css.Foo));
+			project.Add(AddFile("Foo.css", "EmbeddedResource", Css.Foo));
 
 			return project;
 		}
@@ -257,12 +257,14 @@ namespace Microsoft.Maui.Controls.MSBuild.UnitTests
 		public void BuildAProject()
 		{
 			var project = NewProject();
-			project.Add(AddFile("MainPage.xaml", "MauiXaml", Xaml.MainPage));
+			project.Add(AddFile("MainPage.xaml", "EmbeddedResource", Xaml.MainPage));
 			var projectFile = IOPath.Combine(tempDirectory, "test.csproj");
 			project.Save(projectFile);
 			Build(projectFile);
 
 			AssertExists(IOPath.Combine(intermediateDirectory, "test.dll"), nonEmpty: true);
+			AssertExists(IOPath.Combine(intermediateDirectory, "MainPage.xaml.g.cs"), nonEmpty: true);
+			AssertExists(IOPath.Combine(intermediateDirectory, "Foo.css.g.cs"), nonEmpty: true);
 			AssertExists(IOPath.Combine(intermediateDirectory, "XamlC.stamp"));
 		}
 
@@ -271,7 +273,7 @@ namespace Microsoft.Maui.Controls.MSBuild.UnitTests
 		public void ValidateOnly()
 		{
 			var project = NewProject();
-			project.Add(AddFile("MainPage.xaml", "MauiXaml", Xaml.MainPage));
+			project.Add(AddFile("MainPage.xaml", "EmbeddedResource", Xaml.MainPage));
 			var projectFile = IOPath.Combine(tempDirectory, "test.csproj");
 			project.Save(projectFile);
 			Build(projectFile, additionalArgs: "-p:MauiXamlCValidateOnly=True");
@@ -287,16 +289,15 @@ namespace Microsoft.Maui.Controls.MSBuild.UnitTests
 		}
 
 		[Test]
-		[Ignore("source gen changes")]
 		public void ValidateOnly_WithErrors()
 		{
 			var project = NewProject();
-			project.Add(AddFile("MainPage.xaml", "MauiXaml", Xaml.MainPage.Replace("</ContentPage>", "<NotARealThing/></ContentPage>")));
+			project.Add(AddFile("MainPage.xaml", "EmbeddedResource", Xaml.MainPage.Replace("</ContentPage>", "<NotARealThing/></ContentPage>")));
 			var projectFile = IOPath.Combine(tempDirectory, "test.csproj");
 			project.Save(projectFile);
 
 			string log = Build(projectFile, additionalArgs: "-p:MauiXamlCValidateOnly=True", shouldSucceed: false);
-			StringAssert.Contains("MainPage.xaml(7,6): XamlC error XFC0000: Cannot resolve type \"http://schemas.microsoft.com/dotnet/2021/maui:NotARealThing\".", log);
+			StringAssert.Contains("MainPage.xaml(7,6): XamlC error XFC0000: Cannot resolve type \"http://xamarin.com/schemas/2014/forms:NotARealThing\".", log);
 		}
 
 		/// <summary>
@@ -306,21 +307,32 @@ namespace Microsoft.Maui.Controls.MSBuild.UnitTests
 		public void TargetsShouldSkip()
 		{
 			var project = NewProject();
-			project.Add(AddFile("MainPage.xaml", "MauiXaml", Xaml.MainPage));
+			project.Add(AddFile("MainPage.xaml", "EmbeddedResource", Xaml.MainPage));
 			var projectFile = IOPath.Combine(tempDirectory, "test.csproj");
 			project.Save(projectFile);
 			Build(projectFile);
 
+			var mainPageXamlG = IOPath.Combine(intermediateDirectory, "MainPage.xaml.g.cs");
+			var fooCssG = IOPath.Combine(intermediateDirectory, "Foo.css.g.cs");
 			var xamlCStamp = IOPath.Combine(intermediateDirectory, "XamlC.stamp");
+			AssertExists(mainPageXamlG, nonEmpty: true);
+			AssertExists(fooCssG, nonEmpty: true);
 			AssertExists(xamlCStamp);
 
+			var expectedXamlG = new FileInfo(mainPageXamlG).LastWriteTimeUtc;
+			var expectdCssG = new FileInfo(fooCssG).LastWriteTimeUtc;
 			var expectedXamlC = new FileInfo(xamlCStamp).LastWriteTimeUtc;
 
 			//Build again
 			Build(projectFile);
+			AssertExists(mainPageXamlG, nonEmpty: true);
 			AssertExists(xamlCStamp);
 
+			var actualXamlG = new FileInfo(mainPageXamlG).LastWriteTimeUtc;
+			var actualCssG = new FileInfo(fooCssG).LastWriteTimeUtc;
 			var actualXamlC = new FileInfo(xamlCStamp).LastWriteTimeUtc;
+			Assert.AreEqual(expectedXamlG, actualXamlG, $"Timestamps should match for {mainPageXamlG}.");
+			Assert.AreEqual(expectdCssG, actualCssG, $"Timestamps should match for {fooCssG}.");
 			Assert.AreEqual(expectedXamlC, actualXamlC, $"Timestamps should match for {xamlCStamp}.");
 		}
 
@@ -331,7 +343,7 @@ namespace Microsoft.Maui.Controls.MSBuild.UnitTests
 		public void Clean()
 		{
 			var project = NewProject();
-			project.Add(AddFile("MainPage.xaml", "MauiXaml", Xaml.MainPage));
+			project.Add(AddFile("MainPage.xaml", "EmbeddedResource", Xaml.MainPage));
 			var projectFile = IOPath.Combine(tempDirectory, "test.csproj");
 			project.Save(projectFile);
 			Build(projectFile);
@@ -339,6 +351,8 @@ namespace Microsoft.Maui.Controls.MSBuild.UnitTests
 			var mainPageXamlG = IOPath.Combine(intermediateDirectory, "MainPage.xaml.g.cs");
 			var fooCssG = IOPath.Combine(intermediateDirectory, "Foo.css.g.cs");
 			var xamlCStamp = IOPath.Combine(intermediateDirectory, "XamlC.stamp");
+			AssertExists(mainPageXamlG, nonEmpty: true);
+			AssertExists(fooCssG, nonEmpty: true);
 			AssertExists(xamlCStamp);
 
 			//Clean
@@ -357,7 +371,7 @@ namespace Microsoft.Maui.Controls.MSBuild.UnitTests
 
 			var project = NewProject();
 			var itemGroup = NewElement("ItemGroup");
-			var embeddedResource = NewElement("MauiXaml").WithAttribute("Include", @"A\B\MainPage.xaml");
+			var embeddedResource = NewElement("EmbeddedResource").WithAttribute("Include", @"A\B\MainPage.xaml");
 			embeddedResource.Add(NewElement("Link").WithValue(@"Pages\MainPage.xaml"));
 			itemGroup.Add(embeddedResource);
 			project.Add(itemGroup);
@@ -366,6 +380,7 @@ namespace Microsoft.Maui.Controls.MSBuild.UnitTests
 			Build(projectFile);
 
 			AssertExists(IOPath.Combine(intermediateDirectory, "test.dll"), nonEmpty: true);
+			AssertExists(IOPath.Combine(intermediateDirectory, "Pages", "MainPage.xaml.g.cs"), nonEmpty: true);
 			AssertExists(IOPath.Combine(intermediateDirectory, "XamlC.stamp"));
 		}
 
@@ -375,57 +390,98 @@ namespace Microsoft.Maui.Controls.MSBuild.UnitTests
 		public void DesignTimeBuild()
 		{
 			var project = NewProject();
-			project.Add(AddFile(@"Pages\MainPage.xaml", "MauiXaml", Xaml.MainPage));
+			project.Add(AddFile(@"Pages\MainPage.xaml", "EmbeddedResource", Xaml.MainPage));
 			var projectFile = IOPath.Combine(tempDirectory, "test.csproj");
 			project.Save(projectFile);
 
 			Build(projectFile, "Compile", additionalArgs: "-p:DesignTimeBuild=True -p:BuildingInsideVisualStudio=True -p:SkipCompilerExecution=True -p:ProvideCommandLineArgs=True");
 
 			var assembly = IOPath.Combine(intermediateDirectory, "test.dll");
+			var mainPageXamlG = IOPath.Combine(intermediateDirectory, "Pages", "MainPage.xaml.g.cs");
+			var fooCssG = IOPath.Combine(intermediateDirectory, "Foo.css.g.cs");
 			var xamlCStamp = IOPath.Combine(intermediateDirectory, "XamlC.stamp");
 
 			//The assembly should not be compiled
 			AssertDoesNotExist(assembly);
+			AssertExists(mainPageXamlG, nonEmpty: true);
+			AssertExists(fooCssG, nonEmpty: true);
 			AssertDoesNotExist(xamlCStamp); //XamlC should be skipped
+
+			var expectedXamlG = new FileInfo(mainPageXamlG).LastWriteTimeUtc;
+			var expectedCssG = new FileInfo(fooCssG).LastWriteTimeUtc;
 
 			//Build again, a full build
 			Build(projectFile);
 			AssertExists(assembly, nonEmpty: true);
+			AssertExists(mainPageXamlG, nonEmpty: true);
+			AssertExists(fooCssG, nonEmpty: true);
 			AssertExists(xamlCStamp);
 
+			var actualXamlG = new FileInfo(mainPageXamlG).LastWriteTimeUtc;
+			var actualCssG = new FileInfo(fooCssG).LastWriteTimeUtc;
+			Assert.AreEqual(expectedXamlG, actualXamlG, $"Timestamps should match for {mainPageXamlG}.");
+			Assert.AreEqual(expectedCssG, actualCssG, $"Timestamps should match for {fooCssG}.");
+		}
+
+		//I believe the designer might invoke this target manually
+		[Test]
+		public void UpdateDesignTimeXaml()
+		{
+			var project = NewProject();
+			project.Add(AddFile(@"Pages\MainPage.xaml", "EmbeddedResource", Xaml.MainPage));
+			var projectFile = IOPath.Combine(tempDirectory, "test.csproj");
+			project.Save(projectFile);
+			Build(projectFile, "UpdateDesignTimeXaml");
+
+			AssertExists(IOPath.Combine(intermediateDirectory, "Pages", "MainPage.xaml.g.cs"), nonEmpty: true);
+			AssertDoesNotExist(IOPath.Combine(intermediateDirectory, "Foo.css.g.cs"));
+			AssertDoesNotExist(IOPath.Combine(intermediateDirectory, "XamlC.stamp"));
 		}
 
 		[Test]
 		public void AddNewFile()
 		{
 			var project = NewProject();
-			project.Add(AddFile("MainPage.xaml", "MauiXaml", Xaml.MainPage));
+			project.Add(AddFile("MainPage.xaml", "EmbeddedResource", Xaml.MainPage));
 			var projectFile = IOPath.Combine(tempDirectory, "test.csproj");
 			project.Save(projectFile);
 			Build(projectFile);
 
+			var mainPageXamlG = IOPath.Combine(intermediateDirectory, "MainPage.xaml.g.cs");
+			var customViewXamlG = IOPath.Combine(intermediateDirectory, "CustomView.xaml.g.cs");
+			var fooCssG = IOPath.Combine(intermediateDirectory, "Foo.css.g.cs");
 			var xamlCStamp = IOPath.Combine(intermediateDirectory, "XamlC.stamp");
+			AssertExists(mainPageXamlG, nonEmpty: true);
 			AssertExists(xamlCStamp);
 
+			var expectedXamlG = new FileInfo(mainPageXamlG).LastWriteTimeUtc;
+			var expectedCssG = new FileInfo(fooCssG).LastWriteTimeUtc;
 			var expectedXamlC = new FileInfo(xamlCStamp).LastWriteTimeUtc;
 
 			//Build again, after adding a file, this triggers a full XamlG and XamlC -- *not* CssG
-			project.Add(AddFile("CustomView.xaml", "MauiXaml", Xaml.CustomView));
+			project.Add(AddFile("CustomView.xaml", "EmbeddedResource", Xaml.CustomView));
 			project.Save(projectFile);
 			Build(projectFile);
+			AssertExists(mainPageXamlG, nonEmpty: true);
+			AssertExists(customViewXamlG, nonEmpty: true);
 			AssertExists(xamlCStamp);
 
+			var actualXamlG = new FileInfo(mainPageXamlG).LastWriteTimeUtc;
+			var actualCssG = new FileInfo(fooCssG).LastWriteTimeUtc;
 			var actualXamlC = new FileInfo(xamlCStamp).LastWriteTimeUtc;
+			var actualNewFile = new FileInfo(customViewXamlG).LastAccessTimeUtc;
+			Assert.AreNotEqual(expectedXamlG, actualXamlG, $"Timestamps should *not* match for {mainPageXamlG}.");
+			Assert.AreNotEqual(expectedXamlG, actualNewFile, $"Timestamps should *not* match for {customViewXamlG}.");
+			Assert.AreEqual(expectedCssG, actualCssG, $"Timestamps should match for {fooCssG}.");
 			Assert.AreNotEqual(expectedXamlC, actualXamlC, $"Timestamps should *not* match for {xamlCStamp}.");
 		}
 
 		[Test]
-		[Ignore("source gen changes")]
 		public void TouchXamlFile()
 		{
 			var project = NewProject();
-			project.Add(AddFile("MainPage.xaml", "MauiXaml", Xaml.MainPage));
-			project.Add(AddFile("CustomView.xaml", "MauiXaml", Xaml.CustomView));
+			project.Add(AddFile("MainPage.xaml", "EmbeddedResource", Xaml.MainPage));
+			project.Add(AddFile("CustomView.xaml", "EmbeddedResource", Xaml.CustomView));
 			var projectFile = IOPath.Combine(tempDirectory, "test.csproj");
 			project.Save(projectFile);
 			Build(projectFile);
@@ -433,17 +489,28 @@ namespace Microsoft.Maui.Controls.MSBuild.UnitTests
 			var mainPageXamlG = IOPath.Combine(intermediateDirectory, "MainPage.xaml.g.cs");
 			var customViewXamlG = IOPath.Combine(intermediateDirectory, "CustomView.xaml.g.cs");
 			var xamlCStamp = IOPath.Combine(intermediateDirectory, "XamlC.stamp");
+			AssertExists(mainPageXamlG, nonEmpty: true);
+			AssertExists(customViewXamlG, nonEmpty: true);
 			AssertExists(xamlCStamp);
 
+			var expectedMainPageXamlG = new FileInfo(mainPageXamlG).LastWriteTimeUtc;
 			var expectedCustomViewXamlG = new FileInfo(customViewXamlG).LastWriteTimeUtc;
 			var expectedXamlC = new FileInfo(xamlCStamp).LastWriteTimeUtc;
 
 			//Build again, after modifying the timestamp on a Xaml file, should trigger a partial XamlG and full XamlC
 			//https://github.com/xamarin/xamarin-android/blob/61851599fb1999964bd200ec1c373b6e395933f3/src/Microsoft.Maui.Controls.Android.Build.Tasks/Utilities/MonoAndroidHelper.cs#L342
+			File.SetLastWriteTimeUtc(customViewXamlG, expectedCustomViewXamlG.AddDays(1));
+			File.SetLastAccessTimeUtc(customViewXamlG, expectedCustomViewXamlG.AddDays(1));
 			Build(projectFile);
+			AssertExists(mainPageXamlG, nonEmpty: true);
+			AssertExists(customViewXamlG, nonEmpty: true);
 			AssertExists(xamlCStamp);
 
+			var actualMainPageXamlG = new FileInfo(mainPageXamlG).LastWriteTimeUtc;
+			var actualCustomViewXamlG = new FileInfo(customViewXamlG).LastAccessTimeUtc;
 			var actualXamlC = new FileInfo(xamlCStamp).LastWriteTimeUtc;
+			Assert.AreEqual(expectedMainPageXamlG, actualMainPageXamlG, $"Timestamps should match for {mainPageXamlG}.");
+			Assert.AreNotEqual(expectedMainPageXamlG, actualCustomViewXamlG, $"Timestamps should *not* match for {actualCustomViewXamlG}.");
 			Assert.AreNotEqual(expectedXamlC, actualXamlC, $"Timestamps should *not* match for {xamlCStamp}.");
 		}
 
@@ -451,12 +518,13 @@ namespace Microsoft.Maui.Controls.MSBuild.UnitTests
 		public void RandomXml()
 		{
 			var project = NewProject();
-			project.Add(AddFile("MainPage.xaml", "MauiXaml", "<xml></xml>"));
+			project.Add(AddFile("MainPage.xaml", "EmbeddedResource", "<xml></xml>"));
 			var projectFile = IOPath.Combine(tempDirectory, "test.csproj");
 			project.Save(projectFile);
 			Build(projectFile);
 
 			AssertExists(IOPath.Combine(intermediateDirectory, "test.dll"), nonEmpty: true);
+			AssertExists(IOPath.Combine(intermediateDirectory, "MainPage.xaml.g.cs"));
 			AssertExists(IOPath.Combine(intermediateDirectory, "XamlC.stamp"));
 		}
 
@@ -464,7 +532,7 @@ namespace Microsoft.Maui.Controls.MSBuild.UnitTests
 		public void InvalidXml()
 		{
 			var project = NewProject();
-			project.Add(AddFile("MainPage.xaml", "MauiXaml", "notxmlatall"));
+			project.Add(AddFile("MainPage.xaml", "EmbeddedResource", "notxmlatall"));
 			var projectFile = IOPath.Combine(tempDirectory, "test.csproj");
 			project.Save(projectFile);
 			Assert.Throws<AssertionException>(() => Build(projectFile));
@@ -474,7 +542,7 @@ namespace Microsoft.Maui.Controls.MSBuild.UnitTests
 		public void RandomEmbeddedResource()
 		{
 			var project = NewProject();
-			project.Add(AddFile("MainPage.xaml", "MauiXaml", Xaml.MainPage));
+			project.Add(AddFile("MainPage.xaml", "EmbeddedResource", Xaml.MainPage));
 			project.Add(AddFile("MainPage.txt", "EmbeddedResource", "notxmlatall"));
 			var projectFile = IOPath.Combine(tempDirectory, "test.csproj");
 			project.Save(projectFile);

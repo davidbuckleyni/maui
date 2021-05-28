@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -29,14 +28,14 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			var layout = new StackLayout
 			{
-				BackgroundColor = Colors.LightGreen
+				BackgroundColor = Color.LightGreen
 			};
 
 			var instructions = new Label
 			{
 				Padding = 12,
-				BackgroundColor = Colors.Black,
-				TextColor = Colors.White,
+				BackgroundColor = Color.Black,
+				TextColor = Color.White,
 				Text = "Type something in the SearchBar and tap the search button."
 			};
 
@@ -61,14 +60,14 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		{
 			var layout = new StackLayout
 			{
-				BackgroundColor = Colors.LightCoral
+				BackgroundColor = Color.LightCoral
 			};
 
 			var instructions = new Label
 			{
 				Padding = 12,
-				BackgroundColor = Colors.Black,
-				TextColor = Colors.White,
+				BackgroundColor = Color.Black,
+				TextColor = Color.White,
 				Text = "If you can read this message (after changing the MainPage), the test has passed.",
 				Margin = new Thickness(0, 36, 0, 0)
 			};

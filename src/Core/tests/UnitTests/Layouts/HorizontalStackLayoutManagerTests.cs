@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Microsoft.Maui;
-using Microsoft.Maui.Graphics;
 using Microsoft.Maui.Layouts;
 using Microsoft.Maui.Primitives;
 using NSubstitute;

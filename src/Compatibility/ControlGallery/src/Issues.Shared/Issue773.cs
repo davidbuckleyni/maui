@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using NUnit.Framework;
@@ -53,7 +52,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var layout = new StackLayout
 			{
 				Padding = new Thickness(20),
-				BackgroundColor = Colors.Gray
+				BackgroundColor = Color.Gray
 			};
 
 			var button1 = new Button { Text = "Button 1" };
@@ -107,7 +106,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			layout.Children.Add(new BoxView
 			{
-				BackgroundColor = Colors.Red,
+				BackgroundColor = Color.Red,
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				HorizontalOptions = LayoutOptions.FillAndExpand
 			});
@@ -116,7 +115,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			layout.Children.Add(new ScrollView
 			{
-				BackgroundColor = Colors.Aqua,
+				BackgroundColor = Color.Aqua,
 				Orientation = ScrollOrientation.Horizontal,
 				HeightRequest = Device.RuntimePlatform == Device.UWP ? 80 : 44,
 				Content = buttonStack

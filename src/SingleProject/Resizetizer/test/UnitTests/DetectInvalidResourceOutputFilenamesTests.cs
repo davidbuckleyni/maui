@@ -23,14 +23,14 @@ namespace Microsoft.Maui.Resizetizer.Tests
 					BuildEngine = this,
 				};
 
-			protected string GetInvalidFilename(DetectInvalidResourceOutputFilenamesTask task, string path) =>
-				task.InvalidItems.Single(c => c.Replace("\\", "/").EndsWith(path));
+			protected ITaskItem GetInvalidFilename(DetectInvalidResourceOutputFilenamesTask task, string path) =>
+				task.InvalidItems.Single(c => c.ItemSpec.Replace("\\", "/").EndsWith(path));
 
 			protected void AssertValidFilename(DetectInvalidResourceOutputFilenamesTask task, ITaskItem item)
-				=> Assert.DoesNotContain(task.InvalidItems ?? Enumerable.Empty<string>(), c => c == item.ItemSpec);
+				=> Assert.DoesNotContain(task.InvalidItems, c => c.ItemSpec == item.ItemSpec);
 
 			protected void AssertInvalidFilename(DetectInvalidResourceOutputFilenamesTask task, ITaskItem item)
-				=> Assert.Contains(task.InvalidItems ?? Enumerable.Empty<string>(), c => c == item.ItemSpec);
+				=> Assert.Contains(task.InvalidItems, c => c.ItemSpec == item.ItemSpec);
 
 			[Fact]
 			public void NoItemsSucceed()

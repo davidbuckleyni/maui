@@ -1,9 +1,9 @@
-using Microsoft.VisualStudio.DesignTools.Extensibility.Metadata;
+using Microsoft.Windows.Design.Metadata;
 
-namespace Microsoft.Maui.Controls.Design
+namespace Microsoft.Maui.Controls.Core.Design
 {
 	internal class RegisterMetadata : IProvideAttributeTable
 	{
-		public AttributeTable AttributeTable => new AttributeTableBuilder().CreateTable();
+		public AttributeTable AttributeTable { get { return new AttributeTableBuilder().CreateTable(); } }
 	}
 }

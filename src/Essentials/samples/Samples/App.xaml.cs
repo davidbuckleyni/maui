@@ -7,13 +7,12 @@ using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Distribute;
-using Microsoft.Maui;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui.Controls.Xaml;
 using Microsoft.Maui.Essentials;
 using Samples.Helpers;
 using Samples.View;
-using Device = Microsoft.Maui.Controls.Device;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+using Device = Xamarin.Forms.Device;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 
@@ -21,9 +20,14 @@ namespace Samples
 {
 	public partial class App : Application
 	{
+		public static IVisual PreferredVisual { get; set; } = VisualMarker.Material;
+
 		public App()
 		{
 			InitializeComponent();
+
+			// Enable currently experimental features
+			Device.SetFlags(new string[] { "MediaElement_Experimental" });
 
 			VersionTracking.Track();
 

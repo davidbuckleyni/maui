@@ -2,7 +2,6 @@ using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -37,7 +36,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			Content = new StackLayout
 			{
-				BackgroundColor = Colors.CadetBlue,
+				BackgroundColor = Color.CadetBlue,
 				Spacing = 10,
 				VerticalOptions = LayoutOptions.Fill,
 				Children =
@@ -53,7 +52,7 @@ With Soft Input Mode set to Resize, tapping the Entry at the bottom of the scree
 						FontSize = 12f,
 						HeightRequest = 500,
 						Text = @"Meh",
-						BackgroundColor = Colors.Crimson
+						BackgroundColor = Color.Crimson
 					},
 					new Entry()
 				}

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO.IsolatedStorage;
 using System.Reflection;
@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Core.UnitTests;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 using FileAccess = System.IO.FileAccess;
 using FileMode = System.IO.FileMode;
 using FileShare = System.IO.FileShare;
@@ -83,11 +82,11 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 				case "SystemBlue":
 					return Color.FromRgb(0, 122, 255);
 				case "SystemChromeHighColor":
-					return Color.FromArgb("#FF767676");
+					return Color.FromHex("#FF767676");
 				case "HoloBlueBright":
-					return Color.FromArgb("#ff00ddff");
+					return Color.FromHex("#ff00ddff");
 				default:
-					return null;
+					return Color.Default;
 			}
 		}
 

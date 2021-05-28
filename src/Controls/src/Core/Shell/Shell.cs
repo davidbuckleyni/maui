@@ -1,4 +1,4 @@
-﻿
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,7 +10,6 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.Xaml.Diagnostics;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls
 {
@@ -131,43 +130,43 @@ namespace Microsoft.Maui.Controls
 		}
 
 		public static readonly new BindableProperty BackgroundColorProperty =
-			BindableProperty.CreateAttached("BackgroundColor", typeof(Color), typeof(Shell), null,
+			BindableProperty.CreateAttached("BackgroundColor", typeof(Color), typeof(Shell), Color.Default,
 				propertyChanged: OnShellAppearanceValueChanged);
 
 		public static readonly BindableProperty DisabledColorProperty =
-			BindableProperty.CreateAttached("DisabledColor", typeof(Color), typeof(Shell), null,
+			BindableProperty.CreateAttached("DisabledColor", typeof(Color), typeof(Shell), Color.Default,
 				propertyChanged: OnShellAppearanceValueChanged);
 
 		public static readonly BindableProperty ForegroundColorProperty =
-			BindableProperty.CreateAttached("ForegroundColor", typeof(Color), typeof(Shell), null,
+			BindableProperty.CreateAttached("ForegroundColor", typeof(Color), typeof(Shell), Color.Default,
 				propertyChanged: OnShellAppearanceValueChanged);
 
 		public static readonly BindableProperty TabBarBackgroundColorProperty =
-			BindableProperty.CreateAttached("TabBarBackgroundColor", typeof(Color), typeof(Shell), null,
+			BindableProperty.CreateAttached("TabBarBackgroundColor", typeof(Color), typeof(Shell), Color.Default,
 				propertyChanged: OnShellAppearanceValueChanged);
 
 		public static readonly BindableProperty TabBarDisabledColorProperty =
-			BindableProperty.CreateAttached("TabBarDisabledColor", typeof(Color), typeof(Shell), null,
+			BindableProperty.CreateAttached("TabBarDisabledColor", typeof(Color), typeof(Shell), Color.Default,
 				propertyChanged: OnShellAppearanceValueChanged);
 
 		public static readonly BindableProperty TabBarForegroundColorProperty =
-			BindableProperty.CreateAttached("TabBarForegroundColor", typeof(Color), typeof(Shell), null,
+			BindableProperty.CreateAttached("TabBarForegroundColor", typeof(Color), typeof(Shell), Color.Default,
 				propertyChanged: OnShellAppearanceValueChanged);
 
 		public static readonly BindableProperty TabBarTitleColorProperty =
-			BindableProperty.CreateAttached("TabBarTitleColor", typeof(Color), typeof(Shell), null,
+			BindableProperty.CreateAttached("TabBarTitleColor", typeof(Color), typeof(Shell), Color.Default,
 				propertyChanged: OnShellAppearanceValueChanged);
 
 		public static readonly BindableProperty TabBarUnselectedColorProperty =
-			BindableProperty.CreateAttached("TabBarUnselectedColor", typeof(Color), typeof(Shell), null,
+			BindableProperty.CreateAttached("TabBarUnselectedColor", typeof(Color), typeof(Shell), Color.Default,
 				propertyChanged: OnShellAppearanceValueChanged);
 
 		public static readonly BindableProperty TitleColorProperty =
-			BindableProperty.CreateAttached("TitleColor", typeof(Color), typeof(Shell), null,
+			BindableProperty.CreateAttached("TitleColor", typeof(Color), typeof(Shell), Color.Default,
 				propertyChanged: OnShellAppearanceValueChanged);
 
 		public static readonly BindableProperty UnselectedColorProperty =
-			BindableProperty.CreateAttached("UnselectedColor", typeof(Color), typeof(Shell), null,
+			BindableProperty.CreateAttached("UnselectedColor", typeof(Color), typeof(Shell), Color.Default,
 				propertyChanged: OnShellAppearanceValueChanged);
 
 		public static readonly BindableProperty FlyoutBackdropProperty =
@@ -543,7 +542,7 @@ namespace Microsoft.Maui.Controls
 			BindableProperty.Create(nameof(FlyoutBackgroundImageAspect), typeof(Aspect), typeof(Shell), default(Aspect), BindingMode.OneTime);
 
 		public static readonly BindableProperty FlyoutBackgroundColorProperty =
-			BindableProperty.Create(nameof(FlyoutBackgroundColor), typeof(Color), typeof(Shell), null, BindingMode.OneTime);
+			BindableProperty.Create(nameof(FlyoutBackgroundColor), typeof(Color), typeof(Shell), Color.Default, BindingMode.OneTime);
 
 		public static readonly BindableProperty FlyoutBackgroundProperty =
 			BindableProperty.Create(nameof(FlyoutBackground), typeof(Brush), typeof(Shell), Brush.Default, BindingMode.OneTime);
@@ -1281,7 +1280,7 @@ namespace Microsoft.Maui.Controls
 			string constructorHint = null,
 			[CallerMemberName] string memberName = "")
 		{
-			// ExperimentalFlags.VerifyFlagEnabled(nameof(Shell), ExperimentalFlags.ShellUWPExperimental);
+			ExperimentalFlags.VerifyFlagEnabled(nameof(Shell), ExperimentalFlags.ShellUWPExperimental);
 		}
 
 		class NavigationImpl : NavigationProxy

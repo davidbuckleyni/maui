@@ -9,12 +9,20 @@ namespace Microsoft.Maui
 			textField.Text = entry.Text;
 		}
 
-		public static void UpdateTextColor(this UITextField textField, ITextStyle textStyle, UIColor? defaultTextColor = null)
+		public static void UpdateTextColor(this UITextField textField, IEntry entry)
 		{
-			// Default value of color documented to be black in iOS docs
+			textField.UpdateTextColor(entry, null);
+		}
 
-			var textColor = textStyle.TextColor;
-			textField.TextColor = textColor.ToNative(defaultTextColor ?? ColorExtensions.LabelColor);
+		public static void UpdateTextColor(this UITextField textField, IEntry entry, UIColor? defaultTextColor)
+		{
+			if (entry.TextColor == Color.Default)
+			{
+				if (defaultTextColor != null)
+					textField.TextColor = defaultTextColor;
+			}
+			else
+				textField.TextColor = entry.TextColor.ToNative();
 		}
 
 		public static void UpdateIsPassword(this UITextField textField, IEntry entry)
@@ -48,9 +56,10 @@ namespace Microsoft.Maui
 
 		public static void UpdateMaxLength(this UITextField textField, IEntry entry)
 		{
-			var newText = textField.AttributedText.TrimToMaxLength(entry.MaxLength);
-			if (newText != null && textField.AttributedText != newText)
-				textField.AttributedText = newText;
+			var currentControlText = textField.Text;
+
+			if (currentControlText?.Length > entry.MaxLength)
+				textField.Text = currentControlText.Substring(0, entry.MaxLength);
 		}
 
 		public static void UpdatePlaceholder(this UITextField textField, IEntry entry)
@@ -63,9 +72,9 @@ namespace Microsoft.Maui
 			textField.UserInteractionEnabled = !entry.IsReadOnly;
 		}
 
-		public static void UpdateFont(this UITextField textField, ITextStyle textStyle, IFontManager fontManager)
+		public static void UpdateFont(this UITextField textField, IEntry entry, IFontManager fontManager)
 		{
-			var uiFont = fontManager.GetFont(textStyle.Font, UIFont.LabelFontSize);
+			var uiFont = fontManager.GetFont(entry.Font);
 			textField.Font = uiFont;
 		}
 
@@ -74,23 +83,26 @@ namespace Microsoft.Maui
 			textField.ReturnKeyType = entry.ReturnType.ToNative();
 		}
 
-		public static void UpdateCharacterSpacing(this UITextField textField, ITextStyle textStyle)
+		public static void UpdateCharacterSpacing(this UITextField textField, IText textView)
 		{
-			var textAttr = textField.AttributedText?.WithCharacterSpacing(textStyle.CharacterSpacing);
+			var textAttr = textField.AttributedText?.WithCharacterSpacing(textView.CharacterSpacing);
+
 			if (textAttr != null)
 				textField.AttributedText = textAttr;
 		}
 
-		public static void UpdateKeyboard(this UITextField textField, IEntry entry)
+		public static void UpdateCharacterSpacing(this UITextField textField, IEntry textView)
 		{
-			var keyboard = entry.Keyboard;
+			var textAttr = textField.AttributedText?.WithCharacterSpacing(textView.CharacterSpacing);
 
-			textField.ApplyKeyboard(keyboard);
+			if (textAttr != null)
+				textField.AttributedText = textAttr;
+		}
 
-			if (keyboard is not CustomKeyboard)
-				textField.UpdateIsTextPredictionEnabled(entry);
-
-			textField.ReloadInputViews();
+		public static void UpdateFont(this UITextField textField, IText textView, IFontManager fontManager)
+		{
+			var uiFont = fontManager.GetFont(textView.Font);
+			textField.Font = uiFont;
 		}
 
 		public static void UpdateClearButtonVisibility(this UITextField textField, IEntry entry)

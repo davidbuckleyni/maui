@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -18,11 +17,11 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 						Margin = new Thickness(0, 10),
 						FontSize = 20,
 						Text = "Should be seen 2 labels. Above and below the page." ,
-						BackgroundColor = Colors.OrangeRed
+						BackgroundColor = Color.OrangeRed
 					},
 					new BoxView
 					{
-						BackgroundColor = Colors.Teal,
+						BackgroundColor = Color.Teal,
 						WidthRequest = 300,
 						HeightRequest = 300,
 						HorizontalOptions = LayoutOptions.Center,
@@ -30,7 +29,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					},
 					new Label {
 						Text = "Label 2",
-						BackgroundColor = Colors.Aqua,
+						BackgroundColor = Color.Aqua,
 						FontSize = 20
 					}
 				}

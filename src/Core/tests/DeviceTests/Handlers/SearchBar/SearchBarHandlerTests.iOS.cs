@@ -60,7 +60,7 @@ namespace Microsoft.Maui.DeviceTests
 		}
 
 		UISearchBar GetNativeSearchBar(SearchBarHandler searchBarHandler) =>
-			(UISearchBar)searchBarHandler.NativeView;
+			(UISearchBar)searchBarHandler.View;
 
 		string GetNativeText(SearchBarHandler searchBarHandler) =>
 			GetNativeSearchBar(searchBarHandler).Text;

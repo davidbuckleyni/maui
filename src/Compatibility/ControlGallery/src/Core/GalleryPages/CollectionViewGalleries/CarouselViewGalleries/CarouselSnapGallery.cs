@@ -3,7 +3,6 @@ using System.Linq;
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.CollectionViewGalleries.CarouselViewGalleries
 {
@@ -79,7 +78,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Coll
 				ItemsSource = viewModel.Items,
 				ItemsLayout = itemsLayout,
 				ItemTemplate = itemTemplate,
-				BackgroundColor = Colors.LightGray,
+				BackgroundColor = Color.LightGray,
 				PeekAreaInsets = new Thickness(0, 0, 100, 0),
 				Margin = new Thickness(12),
 				AutomationId = "TheCarouselView"

@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Microsoft.Maui.Controls.Compatibility.UITests;
@@ -31,16 +30,16 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var instructions = new Label
 			{
 				Padding = 12,
-				BackgroundColor = Colors.Black,
-				TextColor = Colors.White,
+				BackgroundColor = Color.Black,
+				TextColor = Color.White,
 				Text = "If you can see the background color of the custom Button below, the test has passed."
 			};
 
 			var button = new Issue12372Button
 			{
-				NymblDefaultColor = Colors.Blue,
-				NymblPressedColor = Colors.Red,
-				NymblTextColor = Colors.White,
+				NymblDefaultColor = Color.Blue,
+				NymblPressedColor = Color.Red,
+				NymblTextColor = Color.White,
 				Text = "Issue12372"
 			};
 
@@ -57,7 +56,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			nameof(NymblDefaultColor),
 			typeof(Color),
 			typeof(Issue12372Button),
-			Colors.Blue);
+			Color.Blue);
 
 		public Color NymblDefaultColor
 		{
@@ -69,7 +68,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			nameof(NymblPressedColor),
 			typeof(Color),
 			typeof(Issue12372Button),
-			Colors.Blue);
+			Color.Blue);
 
 		public Color NymblPressedColor
 		{
@@ -81,7 +80,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			nameof(NymblDisabledColor),
 			typeof(Color),
 			typeof(Issue12372Button),
-			Colors.Blue);
+			Color.Blue);
 
 		public Color NymblDisabledColor
 		{
@@ -93,7 +92,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			 nameof(NymblDisabledTextColor),
 			 typeof(Color),
 			 typeof(Issue12372Button),
-			 Colors.LightSlateGray);
+			 Color.LightSlateGray);
 
 		public Color NymblDisabledTextColor
 		{
@@ -105,7 +104,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			nameof(NymblBorderColor),
 			typeof(Color),
 			typeof(Issue12372Button),
-			Colors.White);
+			Color.White);
 
 		public Color NymblBorderColor
 		{
@@ -128,7 +127,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			nameof(NymblTextColor),
 			typeof(Color),
 			typeof(Issue12372Button),
-			Colors.White);
+			Color.White);
 
 		public Color NymblTextColor
 		{

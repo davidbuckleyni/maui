@@ -1,10 +1,9 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -33,7 +32,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			colorToggle.Clicked += (sender, args) =>
 			{
-				vm.Color = vm.Color == null ? Colors.Green : null;
+				vm.Color = vm.Color.IsDefault ? Color.Green : Color.Default;
 			};
 
 			Content = new StackLayout()
@@ -51,7 +50,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			public ModalActivityIndicatorModel()
 			{
-				_color = null;
+				_color = Color.Default;
 			}
 
 			public bool IsBusy
@@ -104,7 +103,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					view: new BoxView
 					{
 						Opacity = .4,
-						BackgroundColor = Color.FromArgb("#ccc")
+						BackgroundColor = Color.FromHex("#ccc")
 					},
 					widthConstraint: Microsoft.Maui.Controls.Constraint.RelativeToParent((parent) =>
 					{
@@ -118,7 +117,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 				var content = new StackLayout
 				{
-					BackgroundColor = Colors.White,
+					BackgroundColor = Color.White,
 					Spacing = 10,
 					Padding = new Thickness(
 						horizontalSize: 10,

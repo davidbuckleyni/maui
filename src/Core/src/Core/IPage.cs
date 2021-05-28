@@ -3,16 +3,11 @@ namespace Microsoft.Maui
 	/// <summary>
 	/// A View that occupies the entire screen.
 	/// </summary>
-	public interface IPage : IView
+	public interface IPage
 	{
 		/// <summary>
-		/// Gets the view that contains the content of the Page.
+		/// Gets or sets the view that contains the content of the Page.
 		/// </summary>
-		public IView Content { get; }
-
-		/// <summary>
-		/// Gets the title of the Page.
-		/// </summary>
-		public string Title { get; }
+		public IView View { get; set; }
 	}
 }

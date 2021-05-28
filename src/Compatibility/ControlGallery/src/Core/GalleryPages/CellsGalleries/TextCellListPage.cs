@@ -1,6 +1,5 @@
 using System.Linq;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -36,9 +35,9 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 				ItemsSource = Enumerable.Range(0, 100).Select(i => new TextCellTest
 				{
 					Text = "Text " + i,
-					TextColor = i % 2 == 0 ? Colors.Red : Colors.Blue,
+					TextColor = i % 2 == 0 ? Color.Red : Color.Blue,
 					Detail = "Detail " + i,
-					DetailColor = i % 2 == 0 ? Colors.Red : Colors.Blue
+					DetailColor = i % 2 == 0 ? Color.Red : Color.Blue
 				}),
 				ItemTemplate = dataTemplate
 			};

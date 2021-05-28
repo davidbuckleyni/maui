@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using System.ComponentModel;
@@ -28,12 +27,12 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			var instructions = new Label
 			{
-				BackgroundColor = Colors.Black,
-				TextColor = Colors.White,
+				BackgroundColor = Color.Black,
+				TextColor = Color.White,
 				Text = "If you can see and open the SwipeView below, the test has passed."
 			};
 
-			var deleteSwipeItem = new SwipeItem { BackgroundColor = Colors.Red, Text = "Delete", IconImageSource = "coffee.png" };
+			var deleteSwipeItem = new SwipeItem { BackgroundColor = Color.Red, Text = "Delete", IconImageSource = "coffee.png" };
 
 			deleteSwipeItem.Invoked += (sender, e) =>
 			{
@@ -43,7 +42,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var swipeView = new SwipeView
 			{
 				HeightRequest = 60,
-				BackgroundColor = Colors.LightGray,
+				BackgroundColor = Color.LightGray,
 				LeftItems = new SwipeItems(new List<SwipeItem> { deleteSwipeItem })
 				{
 					Mode = SwipeMode.Reveal
@@ -56,7 +55,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			var content = new Grid
 			{
-				BackgroundColor = Colors.LightGoldenrodYellow
+				BackgroundColor = Color.LightGoldenrodYellow
 			};
 
 			var info = new Label

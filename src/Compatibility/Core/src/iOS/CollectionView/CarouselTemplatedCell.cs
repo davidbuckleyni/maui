@@ -1,7 +1,6 @@
 using System;
 using CoreGraphics;
 using Foundation;
-using Microsoft.Maui.Graphics;
 using UIKit;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
@@ -14,13 +13,13 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 		[Export("initWithFrame:")]
 		[Microsoft.Maui.Controls.Internals.Preserve(Conditional = true)]
 		protected CarouselTemplatedCell(CGRect frame) : base(frame)
-		{
+		{ 
 		}
 
 		public override void ConstrainTo(nfloat constant)
 		{
 		}
-
+		
 		public override void ConstrainTo(CGSize constraint)
 		{
 			ClearConstraints();

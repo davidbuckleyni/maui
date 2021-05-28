@@ -218,18 +218,18 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 
 		public static async Task<IFormsAnimationDrawable> LoadImageAnimationAsync(UriImageSource imagesource, Context context, CancellationToken cancelationToken = default(CancellationToken))
 		{
+			Uri uri = imagesource?.Uri;
 			FormsAnimationDrawable animation = null;
 
-			if (imagesource is IStreamImageSource streamImageSource)
+			if (uri != null)
 			{
-				using var stream = await streamImageSource.GetStreamAsync(cancelationToken).ConfigureAwait(false);
-				if (stream != null)
+				var options = new BitmapFactory.Options
 				{
-					var options = new BitmapFactory.Options
-					{
-						InJustDecodeBounds = true
-					};
+					InJustDecodeBounds = true
+				};
 
+				using (Stream stream = await imagesource.GetStreamAsync(cancelationToken).ConfigureAwait(false))
+				{
 					using (var decoder = new AndroidGIFImageParser(context, options.InDensity, options.InTargetDensity))
 					{
 						try
@@ -247,11 +247,11 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 							animation = null;
 						}
 					}
+				}
 
-					if (animation == null)
-					{
-						Log.Warning(nameof(FileImageSourceHandler), "Could not retrieve image or image data was invalid: {0}", imagesource);
-					}
+				if (animation == null)
+				{
+					Log.Warning(nameof(FileImageSourceHandler), "Could not retrieve image or image data was invalid: {0}", imagesource);
 				}
 			}
 

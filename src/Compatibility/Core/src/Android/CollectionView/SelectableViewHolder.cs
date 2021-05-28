@@ -4,7 +4,6 @@ using Android.Graphics.Drawables;
 using Android.Util;
 using AndroidX.Core.Content;
 using AndroidX.RecyclerView.Widget;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 {

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using NUnit.Framework;
@@ -32,7 +31,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					VerticalOptions = LayoutOptions.End,
 					ImageSource = "coffee.png",
 					Padding = new Thickness(10),
-					BackgroundColor = Colors.Green,
+					BackgroundColor = Color.Green,
 					AutomationId = "TestReady"
 				};
 				// Add BorderWidth to ImageButtons to match border of Button and allow for easier size comparisons
@@ -43,7 +42,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					BorderWidth = 2,
 					Source = "coffee.png",
 					Padding = new Thickness(10),
-					BackgroundColor = Colors.Purple
+					BackgroundColor = Color.Purple
 				};
 				ImageButton ib2 = new ImageButton
 				{
@@ -52,7 +51,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					BorderWidth = 2,
 					Source = "coffee.png",
 					Padding = new Thickness(10),
-					BackgroundColor = Colors.Red
+					BackgroundColor = Color.Red
 				};
 				Grid mainG = new Grid
 				{

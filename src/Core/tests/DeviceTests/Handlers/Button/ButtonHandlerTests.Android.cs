@@ -2,7 +2,6 @@ using System.Threading.Tasks;
 using AndroidX.AppCompat.Widget;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui.DeviceTests.Stubs;
-using Microsoft.Maui.Graphics;
 using Microsoft.Maui.Handlers;
 using Xunit;
 using AColor = global::Android.Graphics.Color;
@@ -11,32 +10,6 @@ namespace Microsoft.Maui.DeviceTests
 {
 	public partial class ButtonHandlerTests
 	{
-		[Fact(DisplayName = "CharacterSpacing Initializes Correctly")]
-		public async Task CharacterSpacingInitializesCorrectly()
-		{
-			var xplatCharacterSpacing = 4;
-
-			var button = new ButtonStub()
-			{
-				CharacterSpacing = xplatCharacterSpacing,
-				Text = "Test"
-			};
-
-			float expectedValue = button.CharacterSpacing.ToEm();
-
-			var values = await GetValueAsync(button, (handler) =>
-			{
-				return new
-				{
-					ViewValue = button.CharacterSpacing,
-					NativeViewValue = GetNativeCharacterSpacing(handler)
-				};
-			});
-
-			Assert.Equal(xplatCharacterSpacing, values.ViewValue);
-			Assert.Equal(expectedValue, values.NativeViewValue, EmCoefficientPrecision);
-		}
-
 		[Theory(DisplayName = "Font Family Initializes Correctly")]
 		[InlineData(null)]
 		[InlineData("monospace")]
@@ -74,10 +47,10 @@ namespace Microsoft.Maui.DeviceTests
 			};
 
 			var handler = await CreateHandlerAsync(button);
-			var appCompatButton = (AppCompatButton)handler.NativeView;
+			var appCompatButton = (AppCompatButton)handler.View;
 			var (left, top, right, bottom) = (appCompatButton.PaddingLeft, appCompatButton.PaddingTop, appCompatButton.PaddingRight, appCompatButton.PaddingBottom);
 
-			var context = handler.NativeView.Context;
+			var context = handler.View.Context;
 
 			var expectedLeft = context.ToPixels(5);
 			var expectedTop = context.ToPixels(10);
@@ -91,7 +64,7 @@ namespace Microsoft.Maui.DeviceTests
 		}
 
 		AppCompatButton GetNativeButton(ButtonHandler buttonHandler) =>
-			(AppCompatButton)buttonHandler.NativeView;
+			(AppCompatButton)buttonHandler.View;
 
 		string GetNativeText(ButtonHandler buttonHandler) =>
 			GetNativeButton(buttonHandler).Text;
@@ -134,21 +107,9 @@ namespace Microsoft.Maui.DeviceTests
 		}
 
 		bool GetNativeIsBold(ButtonHandler buttonHandler) =>
-			GetNativeButton(buttonHandler).Typeface.GetFontWeight() == FontWeight.Bold;
+			GetNativeButton(buttonHandler).Typeface.IsBold;
 
 		bool GetNativeIsItalic(ButtonHandler buttonHandler) =>
 			GetNativeButton(buttonHandler).Typeface.IsItalic;
-
-		double GetNativeCharacterSpacing(ButtonHandler buttonHandler)
-		{
-			var button = GetNativeButton(buttonHandler);
-
-			if (button != null)
-			{
-				return button.LetterSpacing;
-			}
-
-			return -1;
-		}
 	}
 }

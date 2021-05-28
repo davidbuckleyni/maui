@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if __MOBILE__
 using UIKit;
@@ -122,7 +121,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.MacOS
 				var eventTracker = weakEventTracker.Target as EventTracker;
 				var view = eventTracker?._renderer?.Element as View;
 				var childGestures = GetChildGestures(sender, weakEventTracker, weakRecognizer, eventTracker, view);
-
+				
 				if (childGestures?.GetChildGesturesFor<TapGestureRecognizer>(x => x.NumberOfTapsRequired == (int)sender.NumberOfClicksRequired).Count() > 0)
 					return;
 
@@ -157,7 +156,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.MacOS
 				var eventTracker = weakEventTracker.Target as EventTracker;
 				var view = eventTracker?._renderer?.Element as View;
 				var childGestures = GetChildGestures(sender, weakEventTracker, weakRecognizer, eventTracker, view);
-
+				
 				var clickGestureRecognizer = ((ChildGestureRecognizer)weakRecognizer.Target).GestureRecognizer as ClickGestureRecognizer;
 				var recognizers = childGestures?.GetChildGesturesFor<ClickGestureRecognizer>(x => x.NumberOfClicksRequired == (int)sender.NumberOfClicksRequired);
 
@@ -188,7 +187,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.MacOS
 						handled = true;
 					}
 				}
-
+						
 				return handled;
 			});
 		}
@@ -222,7 +221,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.MacOS
 
 				var recognizers = childGestures?.GetChildGesturesFor<TapGestureRecognizer>(x => x.NumberOfTapsRequired == (int)sender.NumberOfTapsRequired);
 
-				if (recognizers == null)
+				if(recognizers == null)
 					return;
 
 				var tapGestureRecognizer = ((ChildGestureRecognizer)weakRecognizer.Target).GestureRecognizer as TapGestureRecognizer;
@@ -576,7 +575,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.MacOS
 
 			if (_dragAndDropDelegate != null)
 			{
-				foreach (var interaction in _renderer.NativeView.Interactions)
+				foreach(var interaction in _renderer.NativeView.Interactions)
 				{
 					if (interaction is UIDragInteraction uIDrag && uIDrag.Delegate == _dragAndDropDelegate)
 						uIDragInteraction = uIDrag;
@@ -607,7 +606,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.MacOS
 				}
 
 #if __MOBILE__
-				if (Forms.IsiOS11OrNewer && recognizer is DragGestureRecognizer)
+				if(Forms.IsiOS11OrNewer && recognizer is DragGestureRecognizer)
 				{
 					dragFound = true;
 					_dragAndDropDelegate = _dragAndDropDelegate ?? new DragAndDropDelegate();

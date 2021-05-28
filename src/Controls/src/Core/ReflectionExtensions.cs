@@ -6,7 +6,6 @@ using System.Reflection;
 
 namespace Microsoft.Maui.Controls.Internals
 {
-	[PortHandler]
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public static class ReflectionExtensions
 	{
@@ -56,7 +55,7 @@ namespace Microsoft.Maui.Controls.Internals
 				return assembly.GetCustomAttributes(attrType).ToArray();
 #endif
 			}
-			catch (global::System.IO.FileNotFoundException)
+			catch (System.IO.FileNotFoundException)
 			{
 				// Sometimes the previewer doesn't actually have everything required for these loads to work
 				Log.Warning(nameof(Registrar), "Could not load assembly: {0} for Attribute {1} | Some renderers may not be loaded", assembly.FullName, attrType.FullName);

@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -67,7 +66,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				AutomationId = _theListView,
 				ItemsSource = new[] { _fileName },
 				HasUnevenRows = true,
-				BackgroundColor = Colors.Purple
+				BackgroundColor = Color.Purple
 			};
 
 			View[] imageControls = new View[] { _image, _button, _imageButton, _listView };
@@ -123,7 +122,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			foreach (var view in imageControls)
 			{
-				view.BackgroundColor = Colors.Red;
+				view.BackgroundColor = Color.Red;
 			}
 
 			StackLayout layout = null;
@@ -173,7 +172,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		}
 #if UITEST
 
-#if !WINDOWS
+#if !__WINDOWS__
 		[Test]
 		public void ImageFromFileSourceAppearsAndDisappearsCorrectly()
 		{

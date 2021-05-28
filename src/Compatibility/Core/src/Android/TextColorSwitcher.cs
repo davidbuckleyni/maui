@@ -1,7 +1,6 @@
 using System;
 using Android.Content.Res;
 using Android.Widget;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 {
@@ -23,7 +22,6 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 			_useLegacyColorManagement = useLegacyColorManagement;
 		}
 
-		[PortHandler]
 		public void UpdateTextColor(TextView control, Color color, Action<ColorStateList> setColor = null)
 		{
 			if (color == _currentTextColor)
@@ -36,7 +34,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 
 			_currentTextColor = color;
 
-			if (color == null)
+			if (color.IsDefault)
 			{
 				setColor(_defaultTextColors);
 			}

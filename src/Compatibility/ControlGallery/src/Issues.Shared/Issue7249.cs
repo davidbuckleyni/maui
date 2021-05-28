@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using NUnit.Framework;
@@ -54,9 +53,9 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			var customSwitch = new Issue7249Switch
 			{
-				SwitchOffColor = Colors.Red,
-				SwitchOnColor = Colors.Green,
-				SwitchThumbColor = Colors.Yellow,
+				SwitchOffColor = Color.Red,
+				SwitchOnColor = Color.Green,
+				SwitchThumbColor = Color.Yellow,
 				HorizontalOptions = LayoutOptions.Start,
 				IsToggled = false
 			};
@@ -77,7 +76,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		public static readonly BindableProperty SwitchOffColorProperty =
 		  BindableProperty.Create(nameof(SwitchOffColor),
 			  typeof(Color), typeof(CustomSwitch),
-			  null);
+			  Color.Default);
 
 		public Color SwitchOffColor
 		{
@@ -88,7 +87,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		public static readonly BindableProperty SwitchOnColorProperty =
 		  BindableProperty.Create(nameof(SwitchOnColor),
 			  typeof(Color), typeof(CustomSwitch),
-			  null);
+			  Color.Default);
 
 		public Color SwitchOnColor
 		{
@@ -99,7 +98,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		public static readonly BindableProperty SwitchThumbColorProperty =
 		  BindableProperty.Create(nameof(SwitchThumbColor),
 			  typeof(Color), typeof(CustomSwitch),
-			  null);
+			  Color.Default);
 
 		public Color SwitchThumbColor
 		{

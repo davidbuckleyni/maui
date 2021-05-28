@@ -7,11 +7,10 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls
 {
-	public partial class Page : VisualElement, ILayout, IPageController, IElementConfiguration<Page>, IPaddingElement
+	public class Page : VisualElement, ILayout, IPageController, IElementConfiguration<Page>, IPaddingElement
 	{
 		public const string BusySetSignalName = "Microsoft.Maui.Controls.BusySet";
 
@@ -41,7 +40,6 @@ namespace Microsoft.Maui.Controls
 		bool _containerAreaSet;
 
 		bool _hasAppeared;
-		private protected bool HasAppeared => _hasAppeared;
 
 		ReadOnlyCollection<Element> _logicalChildren;
 
@@ -312,7 +310,7 @@ namespace Microsoft.Maui.Controls
 
 		protected override void OnParentSet()
 		{
-			if (!Application.IsApplicationOrNull(RealParent) && !(RealParent is Page) && !(RealParent is BaseShellItem) && !(RealParent is IWindow))
+			if (!Application.IsApplicationOrNull(RealParent) && !(RealParent is Page) && !(RealParent is BaseShellItem))
 				throw new InvalidOperationException("Parent of a Page must also be a Page");
 			base.OnParentSet();
 		}

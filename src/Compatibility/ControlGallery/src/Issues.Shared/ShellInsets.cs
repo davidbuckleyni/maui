@@ -9,7 +9,6 @@ using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Microsoft.Maui.Graphics;
 
 
 #if UITEST
@@ -141,13 +140,13 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 								new Label() { Text = "This page should have no safe area padding at the top" },
 								new Button() { Text = "Reset", Command = new Command(() => SetupLandingPage()) }
 							},
-							BackgroundColor = Colors.White,
+							BackgroundColor = Color.White,
 
 						}
 					}
 				};
 
-			page.BackgroundColor = Colors.Yellow;
+			page.BackgroundColor = Color.Yellow;
 
 			PropertyChangedEventHandler propertyChangedEventHandler = null;
 			propertyChangedEventHandler = (sender, args) =>
@@ -199,7 +198,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				}),
 				ItemsSource = Enumerable.Range(0, 1000).Select(x => $"Item{x}").ToArray()
 			};
-			page.BackgroundColor = Colors.Yellow;
+			page.BackgroundColor = Color.Yellow;
 
 			CurrentItem = Items.Last();
 			Items.RemoveAt(0);
@@ -223,7 +222,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					new Button(){Text = "Reset", Command = new Command(() => SetupLandingPage() )}
 				}
 			};
-			page.BackgroundColor = Colors.Yellow;
+			page.BackgroundColor = Color.Yellow;
 
 			CurrentItem = Items.Last();
 			Items.RemoveAt(0);
@@ -242,7 +241,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 					new Button(){ Text = "Reset", Command = new Command(() => SetupLandingPage() )}
 				}
 			};
-			page.BackgroundColor = Colors.Yellow;
+			page.BackgroundColor = Color.Yellow;
 
 			page.On<iOS>().SetUseSafeArea(value);
 			CurrentItem = Items.Last();
@@ -254,7 +253,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var page = CreateContentPage();
 			page.Title = "Main";
 			page.Content = CreateEntryInsetView();
-			page.BackgroundColor = Colors.Yellow;
+			page.BackgroundColor = Color.Yellow;
 
 			CurrentItem = Items.Last();
 			Items.RemoveAt(0);

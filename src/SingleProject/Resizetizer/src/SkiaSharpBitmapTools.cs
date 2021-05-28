@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using SkiaSharp;
 
 namespace Microsoft.Maui.Resizetizer
@@ -8,12 +9,12 @@ namespace Microsoft.Maui.Resizetizer
 	{
 		SKBitmap bmp;
 
-		public SkiaSharpBitmapTools(ResizeImageInfo info, ILogger logger)
+		public SkiaSharpBitmapTools(SharedImageInfo info, ILogger logger)
 			: this(info.Filename, info.BaseSize, info.TintColor, logger)
 		{
 		}
 
-		public SkiaSharpBitmapTools(string filename, SKSize? baseSize, SKColor? tintColor, ILogger logger)
+		public SkiaSharpBitmapTools(string filename, Size? baseSize, Color? tintColor, ILogger logger)
 			: base(filename, baseSize, tintColor, logger)
 		{
 			var sw = new Stopwatch();

@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 {
@@ -26,7 +25,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				//RowHeight = SampleViewCell.RowHeight,
 				HasUnevenRows = true,
 				ItemTemplate = new DataTemplate(typeof(SampleViewCell)),
-				BackgroundColor = Color.FromArgb("E0E0E0"),
+				BackgroundColor = Color.FromHex("E0E0E0"),
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 			};
@@ -145,7 +144,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 						Padding = new Thickness(5, 5, 5, 1),
 						RowSpacing = 1,
 						ColumnSpacing = 1,
-						BackgroundColor = Color.FromArgb("FAFAFA"),
+						BackgroundColor = Color.FromHex("FAFAFA"),
 						RowDefinitions = {
 							new RowDefinition{ Height = new GridLength (1.25, GridUnitType.Star) },
 							new RowDefinition{ Height = new GridLength (0.8, GridUnitType.Star) },
@@ -209,7 +208,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 				{
 					var overallGrid = new Grid
 					{
-						BackgroundColor = Color.FromArgb("FAFAFA"),
+						BackgroundColor = Color.FromHex("FAFAFA"),
 						HorizontalOptions = LayoutOptions.FillAndExpand,
 						VerticalOptions = LayoutOptions.CenterAndExpand,
 						ColumnDefinitions = {

@@ -1,5 +1,4 @@
 using Microsoft.Maui.Controls.CustomAttributes;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -22,7 +21,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 			base.Build(stackLayout);
 
 			var progressContainer = new ViewContainer<ProgressBar>(Test.ProgressBar.Progress, new ProgressBar { Progress = 0.5 });
-			var colorContainer = new ViewContainer<ProgressBar>(Test.ProgressBar.ProgressColor, new ProgressBar { ProgressColor = Colors.Lime, Progress = 0.5 });
+			var colorContainer = new ViewContainer<ProgressBar>(Test.ProgressBar.ProgressColor, new ProgressBar { ProgressColor = Color.Lime, Progress = 0.5 });
 
 			Add(progressContainer);
 			Add(colorContainer);

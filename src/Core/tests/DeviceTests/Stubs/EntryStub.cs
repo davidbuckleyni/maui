@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.DeviceTests.Stubs
 {
@@ -19,7 +18,7 @@ namespace Microsoft.Maui.DeviceTests.Stubs
 
 		public bool IsPassword { get; set; }
 
-		public bool IsTextPredictionEnabled { get; set; } = true;
+		public bool IsTextPredictionEnabled { get; set; }
 
 		public string Placeholder { get; set; }
 
@@ -32,17 +31,9 @@ namespace Microsoft.Maui.DeviceTests.Stubs
 		public TextAlignment HorizontalTextAlignment { get; set; }
 
 		public ReturnType ReturnType { get; set; }
-
 		public ClearButtonVisibility ClearButtonVisibility { get; set; }
 
-		public Keyboard Keyboard { get; set; } = Keyboard.Default;
-
 		public event EventHandler<StubPropertyChangedEventArgs<string>> TextChanged;
-
-		public event EventHandler Completed;
-
-		void IEntry.Completed() =>
-			Completed?.Invoke(this, EventArgs.Empty);
 
 		void OnTextChanged(string oldValue, string newValue) =>
 			TextChanged?.Invoke(this, new StubPropertyChangedEventArgs<string>(oldValue, newValue));

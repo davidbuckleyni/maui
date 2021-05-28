@@ -7,7 +7,6 @@ using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Microsoft.Maui.Controls.Compatibility.UITests;
@@ -94,7 +93,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			var template = new DataTemplate(() =>
 			{
-				var grid = new Grid { HeightRequest = 100, WidthRequest = 50, BackgroundColor = Colors.AliceBlue };
+				var grid = new Grid { HeightRequest = 100, WidthRequest = 50, BackgroundColor = Color.AliceBlue };
 
 				grid.RowDefinitions = new RowDefinitionCollection { new RowDefinition { Height = new GridLength(100) } };
 				grid.ColumnDefinitions = new ColumnDefinitionCollection { new ColumnDefinition { Width = new GridLength(50) } };

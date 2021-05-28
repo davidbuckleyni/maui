@@ -1,13 +1,11 @@
 using System;
 using System.ComponentModel;
-using CoreGraphics;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Controls.Platform;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Microsoft.Maui.Graphics;
 using UIKit;
+using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using PointF = CoreGraphics.CGPoint;
 using RectangleF = CoreGraphics.CGRect;
+using CoreGraphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 {
@@ -81,7 +79,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 					_insetTracker = new KeyboardInsetTracker(this, () => Window, insets =>
 					{
 						ContentInset = ScrollIndicatorInsets = insets;
-					},
+					}, 
 					point =>
 					{
 						var offset = ContentOffset;
@@ -119,13 +117,13 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 		{
 			get { return null; }
 		}
-
+				
 		public override void LayoutSubviews()
 		{
 			_insetTracker?.OnLayoutSubviews();
 			base.LayoutSubviews();
 
-			if (Superview != null && ScrollView != null)
+			if(Superview != null && ScrollView != null)
 			{
 				if (_requestedScroll != null)
 				{
@@ -196,7 +194,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 			base.Dispose(disposing);
 		}
 
-		protected virtual void OnElementChanged(VisualElementChangedEventArgs e) => ElementChanged?.Invoke(this, e);
+		protected virtual void OnElementChanged(VisualElementChangedEventArgs e) => ElementChanged?.Invoke(this, e); 
 
 		void HandlePropertyChanged(object sender, PropertyChangedEventArgs e)
 		{
@@ -229,15 +227,15 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 		void UpdateVerticalScrollBarVisibility()
 		{
 			var verticalScrollBarVisibility = ScrollView.VerticalScrollBarVisibility;
-			ShowsVerticalScrollIndicator = verticalScrollBarVisibility == ScrollBarVisibility.Always
-										   || verticalScrollBarVisibility == ScrollBarVisibility.Default;
+			ShowsVerticalScrollIndicator = verticalScrollBarVisibility == ScrollBarVisibility.Always 
+			                               || verticalScrollBarVisibility == ScrollBarVisibility.Default;
 		}
 
 		void UpdateHorizontalScrollBarVisibility()
 		{
 			var horizontalScrollBarVisibility = ScrollView.HorizontalScrollBarVisibility;
 			ShowsHorizontalScrollIndicator = horizontalScrollBarVisibility == ScrollBarVisibility.Always
-										   || horizontalScrollBarVisibility == ScrollBarVisibility.Default;
+			                               || horizontalScrollBarVisibility == ScrollBarVisibility.Default;
 		}
 
 		void HandleScrollAnimationEnded(object sender, EventArgs e)
@@ -302,7 +300,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 
 		void UpdateBackgroundColor()
 		{
-			BackgroundColor = Element.BackgroundColor.ToUIColor(Colors.Transparent);
+			BackgroundColor = Element.BackgroundColor.ToUIColor(Color.Transparent);
 		}
 
 		void UpdateBackground()

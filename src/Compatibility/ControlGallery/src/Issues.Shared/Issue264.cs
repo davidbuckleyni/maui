@@ -3,7 +3,6 @@ using System.Linq;
 
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using NUnit.Framework;
@@ -74,7 +73,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 	{
 		public AboutPage()
 		{
-			BackgroundColor = Colors.Bisque;
+			BackgroundColor = Color.Bisque;
 			Content = new Button { Text = "Close", Command = new Command(() => Navigation.PopModalAsync()) };
 
 		}

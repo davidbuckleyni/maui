@@ -2,7 +2,6 @@
 
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using NUnit.Framework;
@@ -146,7 +145,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		public NestedNavPageRootView(string pageTitle)
 		{
 			Title = pageTitle;
-			BackgroundColor = Color.FromArgb("#666");
+			BackgroundColor = Color.FromHex("#666");
 
 			var label = new Label
 			{
@@ -181,7 +180,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		public NestedNavPageOneLevel()
 		{
 			Title = "One pushed";
-			BackgroundColor = Color.FromArgb("#999");
+			BackgroundColor = Color.FromHex("#999");
 
 			var label = new Label
 			{
@@ -210,18 +209,18 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		public NestedNavPageTwoLevels()
 		{
 			Title = "Two pushed";
-			BackgroundColor = Color.FromArgb("#BBB");
+			BackgroundColor = Color.FromHex("#BBB");
 
 			var label = new Label
 			{
 				Text = "Not Tapped",
-				TextColor = Colors.Red
+				TextColor = Color.Red
 			};
 
 			var label2 = new Label
 			{
 				Text = "You are at the end of the line",
-				TextColor = Colors.Red
+				TextColor = Color.Red
 			};
 
 			Content = new StackLayout

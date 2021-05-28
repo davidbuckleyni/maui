@@ -1,7 +1,6 @@
 using System;
 using Android.Runtime;
 using Android.Views;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 {

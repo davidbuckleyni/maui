@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
 using Microsoft.Maui.Controls.Xaml;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -67,10 +66,10 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var collection = new ObservableCollection<Model7621>();
 			Color[] _colors =
 			{
-				Colors.Red,
-				Colors.Blue,
-				Colors.Green,
-				Colors.Yellow
+				Color.Red,
+				Color.Blue,
+				Color.Green,
+				Color.Yellow
 			};
 			string[] _images =
 			{

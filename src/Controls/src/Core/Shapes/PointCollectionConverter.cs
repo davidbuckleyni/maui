@@ -1,7 +1,6 @@
 using System;
 using System.Globalization;
 using System.Linq;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Shapes
 {

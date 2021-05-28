@@ -1,11 +1,9 @@
-﻿using Microsoft.Maui.Graphics;
-
 namespace Microsoft.Maui.Controls
 {
 	public class GradientStop : Element
 	{
 		public static readonly BindableProperty ColorProperty = BindableProperty.Create(
-			nameof(Color), typeof(Color), typeof(GradientStop), null);
+			nameof(Color), typeof(Color), typeof(GradientStop), Color.Default);
 
 		public Color Color
 		{
@@ -35,7 +33,7 @@ namespace Microsoft.Maui.Controls
 			if (!(obj is GradientStop dest))
 				return false;
 
-			return Color == dest.Color && global::System.Math.Abs(Offset - dest.Offset) < 0.00001;
+			return Color == dest.Color && System.Math.Abs(Offset - dest.Offset) < 0.00001;
 		}
 
 		public override int GetHashCode()

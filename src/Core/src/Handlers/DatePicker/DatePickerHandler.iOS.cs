@@ -1,12 +1,11 @@
 ﻿using System;
 using Foundation;
-using Microsoft.Extensions.DependencyInjection;
 using UIKit;
 using RectangleF = CoreGraphics.CGRect;
 
 namespace Microsoft.Maui.Handlers
 {
-	public partial class DatePickerHandler : ViewHandler<IDatePicker, MauiDatePicker>
+	public partial class DatePickerHandler : AbstractViewHandler<IDatePicker, MauiDatePicker>
 	{
 		UIDatePicker? _picker;
 
@@ -66,38 +65,23 @@ namespace Microsoft.Maui.Handlers
 
 		public static void MapFormat(DatePickerHandler handler, IDatePicker datePicker)
 		{
-			handler.NativeView?.UpdateFormat(datePicker);
+			handler.TypedNativeView?.UpdateFormat(datePicker);
 		}
 
 		public static void MapDate(DatePickerHandler handler, IDatePicker datePicker)
 		{
-			handler.NativeView?.UpdateDate(datePicker);
+			handler.TypedNativeView?.UpdateDate(datePicker);
 		}
 
 		public static void MapMinimumDate(DatePickerHandler handler, IDatePicker datePicker)
 		{
-			handler.NativeView?.UpdateMinimumDate(datePicker, handler._picker);
+			handler.TypedNativeView?.UpdateMinimumDate(datePicker, handler._picker);
 		}
 
 		public static void MapMaximumDate(DatePickerHandler handler, IDatePicker datePicker)
 		{
-			handler.NativeView?.UpdateMaximumDate(datePicker, handler._picker);
+			handler.TypedNativeView?.UpdateMaximumDate(datePicker, handler._picker);
 		}
-
-		public static void MapCharacterSpacing(DatePickerHandler handler, IDatePicker datePicker)
-		{
-			handler.NativeView?.UpdateCharacterSpacing(datePicker);
-		}
-
-		public static void MapFont(DatePickerHandler handler, IDatePicker datePicker)
-		{
-			var fontManager = handler.GetRequiredService<IFontManager>();
-
-			handler.NativeView?.UpdateFont(datePicker, fontManager);
-		}
-
-		[MissingMapper]
-		public static void MapTextColor(DatePickerHandler handler, IDatePicker datePicker) { }
 
 		void OnValueChanged(object? sender, EventArgs? e)
 		{

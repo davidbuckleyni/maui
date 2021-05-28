@@ -14,7 +14,7 @@ namespace Microsoft.Maui.Controls.Xaml.UnitTests
 		{
 			var xaml = @"
 			<Label 
-				xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+				xmlns=""http://xamarin.com/schemas/2014/forms""
 				xmlns:x=""http://schemas.microsoft.com/winfx/2006/xaml"" TextTransform=""" + result + @""" />";
 
 			Device.PlatformServices = new MockPlatformServices();

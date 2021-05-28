@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using Android.Content;
 using Android.Content.Res;
@@ -7,10 +7,7 @@ using Android.Text;
 using Android.Util;
 using Android.Views;
 using AndroidX.Core.View;
-using Microsoft.Maui.Controls.Platform;
 using AView = Android.Views.View;
-using Color = Microsoft.Maui.Graphics.Color;
-using Size = Microsoft.Maui.Graphics.Size;
 
 namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.FastRenderers
 {
@@ -26,7 +23,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.FastRenderers
 		SizeRequest? _lastSizeRequest;
 		float _lastTextSize = -1f;
 		Typeface _lastTypeface;
-		Color _lastUpdateColor = null;
+		Color _lastUpdateColor = Color.Default;
 		float _lineSpacingExtraDefault = -1.0f;
 		float _lineSpacingMultiplierDefault = -1.0f;
 		VisualElementTracker _visualElementTracker;
@@ -306,7 +303,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.FastRenderers
 				return;
 			_lastUpdateColor = c;
 
-			if (c == null)
+			if (c.IsDefault)
 				SetTextColor(_labelTextColorDefault);
 			else
 				SetTextColor(c.ToAndroid());
@@ -324,7 +321,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.FastRenderers
 				_lastTypeface = newTypeface;
 			}
 
-			float newTextSize = (float)f.FontSize;
+			float newTextSize = f.ToScaledPixel();
 			if (newTextSize != _lastTextSize)
 			{
 				SetTextSize(ComplexUnitType.Sp, newTextSize);
@@ -398,7 +395,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android.FastRenderers
 				if (_wasFormatted)
 				{
 					SetTextColor(_labelTextColorDefault);
-					_lastUpdateColor = null;
+					_lastUpdateColor = Color.Default;
 				}
 
 				switch (Element.TextType)

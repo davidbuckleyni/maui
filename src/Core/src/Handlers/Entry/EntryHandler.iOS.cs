@@ -1,13 +1,15 @@
 ﻿using System;
 using Foundation;
-using Microsoft.Maui.Graphics;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui.Platform.iOS;
 using UIKit;
 
 namespace Microsoft.Maui.Handlers
 {
-	public partial class EntryHandler : ViewHandler<IEntry, MauiTextField>
+	public partial class EntryHandler : AbstractViewHandler<IEntry, MauiTextField>
 	{
+		static readonly int BaseHeight = 30;
+
 		static UIColor? DefaultTextColor;
 
 		protected override MauiTextField CreateNativeView()
@@ -21,7 +23,6 @@ namespace Microsoft.Maui.Handlers
 
 		protected override void ConnectHandler(MauiTextField nativeView)
 		{
-			nativeView.ShouldReturn = OnShouldReturn;
 			nativeView.EditingChanged += OnEditingChanged;
 			nativeView.EditingDidEnd += OnEditingEnded;
 			nativeView.TextPropertySet += OnTextPropertySet;
@@ -41,9 +42,12 @@ namespace Microsoft.Maui.Handlers
 			DefaultTextColor = nativeView.TextColor;
 		}
 
+		public override Size GetDesiredSize(double widthConstraint, double heightConstraint) =>
+			new SizeRequest(new Size(widthConstraint, BaseHeight));
+
 		public static void MapText(EntryHandler handler, IEntry entry)
 		{
-			handler.NativeView?.UpdateText(entry);
+			handler.TypedNativeView?.UpdateText(entry);
 
 			// Any text update requires that we update any attributed string formatting
 			MapFormatting(handler, entry);
@@ -51,87 +55,73 @@ namespace Microsoft.Maui.Handlers
 
 		public static void MapTextColor(EntryHandler handler, IEntry entry)
 		{
-			handler.NativeView?.UpdateTextColor(entry, DefaultTextColor);
+			handler.TypedNativeView?.UpdateTextColor(entry, DefaultTextColor);
 		}
 
 		public static void MapIsPassword(EntryHandler handler, IEntry entry)
 		{
-			handler.NativeView?.UpdateIsPassword(entry);
+			handler.TypedNativeView?.UpdateIsPassword(entry);
 		}
 
 		public static void MapHorizontalTextAlignment(EntryHandler handler, IEntry entry)
 		{
-			handler.NativeView?.UpdateHorizontalTextAlignment(entry);
+			handler.TypedNativeView?.UpdateHorizontalTextAlignment(entry);
 		}
 
 		public static void MapIsTextPredictionEnabled(EntryHandler handler, IEntry entry)
 		{
-			handler.NativeView?.UpdateIsTextPredictionEnabled(entry);
+			handler.TypedNativeView?.UpdateIsTextPredictionEnabled(entry);
 		}
 
 		public static void MapMaxLength(EntryHandler handler, IEntry entry)
 		{
-			handler.NativeView?.UpdateMaxLength(entry);
+			handler.TypedNativeView?.UpdateMaxLength(entry);
 		}
 
 		public static void MapPlaceholder(EntryHandler handler, IEntry entry)
 		{
-			handler.NativeView?.UpdatePlaceholder(entry);
+			handler.TypedNativeView?.UpdatePlaceholder(entry);
 		}
 
 		public static void MapIsReadOnly(EntryHandler handler, IEntry entry)
 		{
-			handler.NativeView?.UpdateIsReadOnly(entry);
-		}
-
-		public static void MapKeyboard(EntryHandler handler, IEntry entry)
-		{
-			handler.NativeView?.UpdateKeyboard(entry);
+			handler.TypedNativeView?.UpdateIsReadOnly(entry);
 		}
 
 		public static void MapReturnType(EntryHandler handler, IEntry entry)
 		{
-			handler.NativeView?.UpdateReturnType(entry);
+			handler.TypedNativeView?.UpdateReturnType(entry);
 		}
 
 		public static void MapFont(EntryHandler handler, IEntry entry)
 		{
-			var fontManager = handler.GetRequiredService<IFontManager>();
+			_ = handler.Services ?? throw new InvalidOperationException($"{nameof(Services)} should have been set by base class.");
 
-			handler.NativeView?.UpdateFont(entry, fontManager);
+			var fontManager = handler.Services.GetRequiredService<IFontManager>();
+
+			handler.TypedNativeView?.UpdateFont(entry, fontManager);
 		}
 
 		public static void MapFormatting(EntryHandler handler, IEntry entry)
 		{
-			handler.NativeView?.UpdateMaxLength(entry);
+			handler.TypedNativeView?.UpdateMaxLength(entry);
 
 			// Update all of the attributed text formatting properties
-			handler.NativeView?.UpdateCharacterSpacing(entry);
+			handler.TypedNativeView?.UpdateCharacterSpacing(entry);
 
 			// Setting any of those may have removed text alignment settings,
 			// so we need to make sure those are applied, too
-			handler.NativeView?.UpdateHorizontalTextAlignment(entry);
+			handler.TypedNativeView?.UpdateHorizontalTextAlignment(entry);
 		}
 
 		public static void MapCharacterSpacing(EntryHandler handler, IEntry entry)
 		{
-			handler.NativeView?.UpdateCharacterSpacing(entry);
+			handler.TypedNativeView?.UpdateCharacterSpacing(entry);
 		}
 
 		public static void MapClearButtonVisibility(EntryHandler handler, IEntry entry)
 		{
-			handler.NativeView?.UpdateClearButtonVisibility(entry);
-		}
-
-		protected virtual bool OnShouldReturn(UITextField view)
-		{
-			view.ResignFirstResponder();
-
-			// TODO: Focus next View
-
-			VirtualView?.Completed();
-
-			return false;
+			handler.TypedNativeView?.UpdateClearButtonVisibility(entry);
 		}
 
 		void OnEditingChanged(object? sender, EventArgs e) => OnTextChanged();
@@ -142,13 +132,13 @@ namespace Microsoft.Maui.Handlers
 
 		void OnTextChanged()
 		{
-			if (VirtualView == null || NativeView == null)
+			if (VirtualView == null || TypedNativeView == null)
 				return;
 
 			// Even though <null> is technically different to "", it has no
 			// functional difference to apps. Thus, hide it.
 			var mauiText = VirtualView!.Text ?? string.Empty;
-			var nativeText = NativeView.Text ?? string.Empty;
+			var nativeText = TypedNativeView.Text ?? string.Empty;
 			if (mauiText != nativeText)
 				VirtualView.Text = nativeText;
 		}
@@ -161,11 +151,8 @@ namespace Microsoft.Maui.Handlers
 			if (range.Length + range.Location > currLength)
 				return false;
 
-			if (VirtualView == null || NativeView == null)
+			if (VirtualView == null || TypedNativeView == null)
 				return false;
-
-			if (VirtualView.MaxLength < 0)
-				return true;
 
 			var addLength = replacementString?.Length ?? 0;
 			var remLength = range.Length;

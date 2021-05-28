@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using NUnit.Framework;
@@ -35,8 +34,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			var instructions = new Label
 			{
 				Text = "If the EmptyView BindingContext is not null, the test has passed.",
-				BackgroundColor = Colors.Black,
-				TextColor = Colors.White
+				BackgroundColor = Color.Black,
+				TextColor = Color.White
 			};
 
 			_collectionView = new CollectionView();
@@ -44,7 +43,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			var emptyView = new StackLayout
 			{
-				BackgroundColor = Colors.LightGray
+				BackgroundColor = Color.LightGray
 			};
 
 			_emptyLabel = new Label

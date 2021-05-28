@@ -1,4 +1,3 @@
-using Microsoft.Maui.Graphics;
 using NUnit.Framework;
 
 namespace Microsoft.Maui.Controls.Core.UnitTests
@@ -24,7 +23,7 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 
 			var swipeItem = new SwipeItem
 			{
-				BackgroundColor = Colors.Red,
+				BackgroundColor = Color.Red,
 				Text = "Text"
 			};
 
@@ -44,7 +43,7 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 
 			var swipeItem = new SwipeItem
 			{
-				BackgroundColor = Colors.Red,
+				BackgroundColor = Color.Red,
 				Text = "Text"
 			};
 
@@ -67,7 +66,7 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 
 			var swipeItem = new SwipeItem
 			{
-				BackgroundColor = Colors.Red,
+				BackgroundColor = Color.Red,
 				Text = "Text"
 			};
 
@@ -90,7 +89,7 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 
 			var swipeItem = new SwipeItem
 			{
-				BackgroundColor = Colors.Red,
+				BackgroundColor = Color.Red,
 				Text = "Text"
 			};
 
@@ -109,7 +108,7 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 
 			var swipeItem = new SwipeItem
 			{
-				BackgroundColor = Colors.Red,
+				BackgroundColor = Color.Red,
 				Text = "Text"
 			};
 
@@ -128,7 +127,7 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 
 			var swipeItem = new SwipeItem
 			{
-				BackgroundColor = Colors.Red,
+				BackgroundColor = Color.Red,
 				Text = "Text"
 			};
 
@@ -147,7 +146,7 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 
 			var swipeItem = new SwipeItem
 			{
-				BackgroundColor = Colors.Red,
+				BackgroundColor = Color.Red,
 				Text = "Text"
 			};
 
@@ -173,7 +172,7 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 
 			var swipeItem = new SwipeItem
 			{
-				BackgroundColor = Colors.Red,
+				BackgroundColor = Color.Red,
 				Text = "Text"
 			};
 
@@ -199,7 +198,7 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 
 			var swipeItem = new SwipeItem
 			{
-				BackgroundColor = Colors.Red,
+				BackgroundColor = Color.Red,
 				Text = "Text"
 			};
 
@@ -221,7 +220,7 @@ namespace Microsoft.Maui.Controls.Core.UnitTests
 			var swipeView = new SwipeView();
 
 			var swipeItemViewContent = new Grid();
-			swipeItemViewContent.BackgroundColor = Colors.Red;
+			swipeItemViewContent.BackgroundColor = Color.Red;
 
 			swipeItemViewContent.Children.Add(new Label
 			{

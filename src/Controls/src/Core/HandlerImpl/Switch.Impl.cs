@@ -1,5 +1,3 @@
-﻿using Microsoft.Maui.Graphics;
-
 namespace Microsoft.Maui.Controls
 {
 	public partial class Switch : ISwitch
@@ -11,14 +9,8 @@ namespace Microsoft.Maui.Controls
 				if (IsToggled)
 					return OnColor;
 
-				return null;
+				return Color.Default;
 			}
-		}
-
-		bool ISwitch.IsOn
-		{
-			get => IsToggled;
-			set => IsToggled = value;
 		}
 	}
 }

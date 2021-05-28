@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 {
@@ -57,7 +56,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery
 		{
 			var box = new Image
 			{
-				BackgroundColor = Colors.Gray,
+				BackgroundColor = Color.Gray,
 				WidthRequest = 500,
 				HeightRequest = 500,
 				VerticalOptions = LayoutOptions.Center,

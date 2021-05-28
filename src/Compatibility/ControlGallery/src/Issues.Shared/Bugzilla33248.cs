@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using NUnit.Framework;
@@ -22,12 +21,12 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 		{
 			var editor = new Editor
 			{
-				BackgroundColor = Colors.Yellow,
+				BackgroundColor = Color.Yellow,
 				HeightRequest = 300
 			};
 			var entry = new Entry
 			{
-				BackgroundColor = Colors.Red,
+				BackgroundColor = Color.Red,
 				HeightRequest = 100
 			};
 

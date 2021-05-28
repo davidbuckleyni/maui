@@ -2,7 +2,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace Microsoft.Maui.Hosting.Internal
 {
-	interface IConfigureContainerAdapter
+	internal interface IConfigureContainerAdapter
 	{
 		void ConfigureContainer(HostBuilderContext hostContext, object containerBuilder);
 	}

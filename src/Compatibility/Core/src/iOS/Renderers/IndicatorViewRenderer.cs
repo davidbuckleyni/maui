@@ -1,7 +1,6 @@
 using System;
 using System.ComponentModel;
 using CoreGraphics;
-using Microsoft.Maui.Graphics;
 using UIKit;
 using static Microsoft.Maui.Controls.IndicatorView;
 
@@ -212,7 +211,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 				return;
 
 			var color = Element.IndicatorColor;
-			UIPager.PageIndicatorTintColor = color?.ToUIColor() ?? _defaultPagesIndicatorTintColor;
+			UIPager.PageIndicatorTintColor = color.IsDefault ? _defaultPagesIndicatorTintColor : color.ToUIColor();
 		}
 
 		void UpdateCurrentPagesIndicatorTintColor()
@@ -221,7 +220,7 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.iOS
 				return;
 
 			var color = Element.SelectedIndicatorColor;
-			UIPager.CurrentPageIndicatorTintColor = color?.ToUIColor() ?? _defaultCurrentPagesIndicatorTintColor;
+			UIPager.CurrentPageIndicatorTintColor = color.IsDefault ? _defaultCurrentPagesIndicatorTintColor : color.ToUIColor();
 		}
 
 		void UpdateMaximumVisible()

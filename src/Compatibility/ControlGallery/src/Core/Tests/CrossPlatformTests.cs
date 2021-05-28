@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using Microsoft.Maui.Graphics;
 using NUnit.Framework;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Tests
@@ -24,7 +23,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Tests
 			listview.Header = new Label()
 			{
 				Text = header,
-				TextColor = Colors.Red,
+				TextColor = Color.Red,
 				HorizontalTextAlignment = TextAlignment.Center
 			};
 
@@ -51,7 +50,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Tests
 		[Description("ButtonRenderer UpdateTextColor function crash")]
 		public async Task Bugzilla35738()
 		{
-			var customButton = new TestClasses.CustomButton() { Text = "This is a custom button", TextColor = Colors.Fuchsia };
+			var customButton = new TestClasses.CustomButton() { Text = "This is a custom button", TextColor = Color.Fuchsia };
 			await TestingPlatform.CreateRenderer(customButton);
 		}
 

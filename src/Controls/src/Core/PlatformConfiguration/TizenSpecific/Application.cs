@@ -1,7 +1,6 @@
-using System.ComponentModel;
-
 namespace Microsoft.Maui.Controls.PlatformConfiguration.TizenSpecific
 {
+	using System.ComponentModel;
 	using FormsElement = Maui.Controls.Application;
 
 	public static class Application

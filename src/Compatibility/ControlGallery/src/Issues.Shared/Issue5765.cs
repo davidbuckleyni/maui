@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Microsoft.Maui.Controls.Compatibility.UITests;
@@ -29,7 +28,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 		Frame CreateFrame()
 		{
-			var frame = new Frame() { CornerRadius = 10, BackgroundColor = Colors.SeaGreen };
+			var frame = new Frame() { CornerRadius = 10, BackgroundColor = Color.SeaGreen };
 
 			var flexLayout = new FlexLayout()
 			{

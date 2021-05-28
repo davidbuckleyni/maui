@@ -8,7 +8,6 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 using AListView = Android.Widget.ListView;
 using AView = Android.Views.View;
 
@@ -698,8 +697,8 @@ namespace Microsoft.Maui.Controls.Compatibility.Platform.Android
 
 			Color separatorColor = _listView.SeparatorColor;
 
-			if (isHeader || separatorColor != null)
-				bline.SetBackgroundColor(separatorColor.ToAndroid(Application.AccentColor));
+			if (isHeader || !separatorColor.IsDefault)
+				bline.SetBackgroundColor(separatorColor.ToAndroid(Color.Accent));
 			else
 			{
 				if (s_dividerHorizontalDarkId == int.MinValue)

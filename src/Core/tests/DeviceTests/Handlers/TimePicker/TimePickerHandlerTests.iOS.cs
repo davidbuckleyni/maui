@@ -60,7 +60,7 @@ namespace Microsoft.Maui.DeviceTests
 		}
 
 		MauiTimePicker GetNativeTimePicker(TimePickerHandler timePickerHandler) =>
-			(MauiTimePicker)timePickerHandler.NativeView;
+			(MauiTimePicker)timePickerHandler.View;
 
 		async Task ValidateTime(ITimePicker timePickerStub, Action action = null)
 		{

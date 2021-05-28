@@ -1,5 +1,3 @@
-using Microsoft.Maui.Graphics;
-
 namespace Microsoft.Maui
 {
 	/// <summary>
@@ -10,7 +8,7 @@ namespace Microsoft.Maui
 		/// <summary>
 		/// Gets or sets a Boolean value that indicates whether this Switch is toggled.
 		/// </summary>
-		bool IsOn { get; set; }
+		bool IsToggled { get; set; }
 
 		/// <summary>
 		/// Gets the Switch Track Color.

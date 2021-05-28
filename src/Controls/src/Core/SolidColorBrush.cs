@@ -1,5 +1,3 @@
-﻿using Microsoft.Maui.Graphics;
-
 namespace Microsoft.Maui.Controls
 {
 	[TypeConverter(typeof(BrushTypeConverter))]
@@ -20,12 +18,12 @@ namespace Microsoft.Maui.Controls
 			get
 			{
 				var solidColorBrush = this;
-				return solidColorBrush == null || solidColorBrush.Color == null;
+				return solidColorBrush == null || solidColorBrush.Color.IsDefault;
 			}
 		}
 
 		public static readonly BindableProperty ColorProperty = BindableProperty.Create(
-			nameof(Color), typeof(Color), typeof(SolidColorBrush), null);
+			nameof(Color), typeof(Color), typeof(SolidColorBrush), Color.Default);
 
 		public Color Color
 		{

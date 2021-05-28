@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.Maui.Graphics;
 
 namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.GradientGalleries
 {
@@ -20,8 +19,8 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.GalleryPages.Grad
 			{
 				GradientStops = new GradientStopCollection
 				{
-					new GradientStop { Color = Colors.Red, Offset = 0.0f },
-					new GradientStop { Color = Colors.Orange, Offset = 0.5f }
+					new GradientStop { Color = Color.Red, Offset = 0.0f },
+					new GradientStop { Color = Color.Orange, Offset = 0.5f }
 				},
 				StartPoint = new Point(0, 0),
 				EndPoint = new Point(1, 0)

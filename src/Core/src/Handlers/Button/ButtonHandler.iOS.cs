@@ -4,7 +4,7 @@ using UIKit;
 
 namespace Microsoft.Maui.Handlers
 {
-	public partial class ButtonHandler : ViewHandler<IButton, UIButton>
+	public partial class ButtonHandler : AbstractViewHandler<IButton, UIButton>
 	{
 		static readonly UIControlState[] ControlStates = { UIControlState.Normal, UIControlState.Highlighted, UIControlState.Disabled };
 
@@ -47,50 +47,37 @@ namespace Microsoft.Maui.Handlers
 
 		public static void MapText(ButtonHandler handler, IButton button)
 		{
-			handler.NativeView?.UpdateText(button);
-
-			// Any text update requires that we update any attributed string formatting
-			MapFormatting(handler, button);
+			handler.TypedNativeView?.UpdateText(button);
 		}
 
 		public static void MapTextColor(ButtonHandler handler, IButton button)
 		{
-			handler.NativeView?.UpdateTextColor(button, ButtonTextColorDefaultNormal, ButtonTextColorDefaultHighlighted, ButtonTextColorDefaultDisabled);
+			handler.TypedNativeView?.UpdateTextColor(button, ButtonTextColorDefaultNormal, ButtonTextColorDefaultHighlighted, ButtonTextColorDefaultDisabled);
 		}
-
-		public static void MapCharacterSpacing(ButtonHandler handler, IButton button)
-		{
-			handler.NativeView?.UpdateCharacterSpacing(button);
-		}
-
 		public static void MapPadding(ButtonHandler handler, IButton button)
 		{
-			handler.NativeView?.UpdatePadding(button);
+			handler.TypedNativeView?.UpdatePadding(button);
 		}
 
 		public static void MapFont(ButtonHandler handler, IButton button)
 		{
-			var fontManager = handler.GetRequiredService<IFontManager>();
+			_ = handler.Services ?? throw new InvalidOperationException($"{nameof(Services)} should have been set by base class.");
 
-			handler.NativeView?.UpdateFont(button, fontManager);
-		}
+			var fontManager = handler.Services.GetRequiredService<IFontManager>();
 
-		public static void MapFormatting(ButtonHandler handler, IButton button)
-		{
-			// Update all of the attributed text formatting properties
-			handler.NativeView?.UpdateCharacterSpacing(button);
+			handler.TypedNativeView?.UpdateFont(button, fontManager);
 		}
 
 		void SetControlPropertiesFromProxy()
 		{
-			if (NativeView == null)
+			if (TypedNativeView == null)
 				return;
 
 			foreach (UIControlState uiControlState in ControlStates)
 			{
-				NativeView.SetTitleColor(UIButton.Appearance.TitleColor(uiControlState), uiControlState); // If new values are null, old values are preserved.
-				NativeView.SetTitleShadowColor(UIButton.Appearance.TitleShadowColor(uiControlState), uiControlState);
-				NativeView.SetBackgroundImage(UIButton.Appearance.BackgroundImageForState(uiControlState), uiControlState);
+				TypedNativeView.SetTitleColor(UIButton.Appearance.TitleColor(uiControlState), uiControlState); // If new values are null, old values are preserved.
+				TypedNativeView.SetTitleShadowColor(UIButton.Appearance.TitleShadowColor(uiControlState), uiControlState);
+				TypedNativeView.SetBackgroundImage(UIButton.Appearance.BackgroundImageForState(uiControlState), uiControlState);
 			}
 		}
 

@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Input;
-using Microsoft.Maui;
-using Microsoft.Maui.Controls;
 using Microsoft.Maui.Essentials;
-using Microsoft.Maui.Graphics;
+using Xamarin.Forms;
 
 namespace Samples.ViewModel
 {
@@ -147,11 +145,11 @@ namespace Samples.ViewModel
 				IsBusy = false;
 			}
 
-			Color GetColor(int index)
+			Color? GetColor(int index)
 			{
 				return index <= 0
-					? (Color)null
-					: colorDictionary[AllColors[index]];
+					? (Color?)null
+					: (System.Drawing.Color)colorDictionary[AllColors[index]];
 			}
 		}
 	}

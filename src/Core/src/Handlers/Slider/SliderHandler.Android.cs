@@ -4,7 +4,7 @@ using Android.Widget;
 
 namespace Microsoft.Maui.Handlers
 {
-	public partial class SliderHandler : ViewHandler<ISlider, SeekBar>
+	public partial class SliderHandler : AbstractViewHandler<ISlider, SeekBar>
 	{
 		static ColorStateList? DefaultProgressTintList { get; set; }
 		static ColorStateList? DefaultProgressBackgroundTintList { get; set; }
@@ -46,32 +46,32 @@ namespace Microsoft.Maui.Handlers
 
 		public static void MapMinimum(SliderHandler handler, ISlider slider)
 		{
-			handler.NativeView?.UpdateMinimum(slider);
+			handler.TypedNativeView?.UpdateMinimum(slider);
 		}
 
 		public static void MapMaximum(SliderHandler handler, ISlider slider)
 		{
-			handler.NativeView?.UpdateMaximum(slider);
+			handler.TypedNativeView?.UpdateMaximum(slider);
 		}
 
 		public static void MapValue(SliderHandler handler, ISlider slider)
 		{
-			handler.NativeView?.UpdateValue(slider);
+			handler.TypedNativeView?.UpdateValue(slider);
 		}
 
 		public static void MapMinimumTrackColor(SliderHandler handler, ISlider slider)
 		{
-			handler.NativeView?.UpdateMinimumTrackColor(slider, DefaultProgressBackgroundTintList, DefaultProgressBackgroundTintMode);
+			handler.TypedNativeView?.UpdateMinimumTrackColor(slider, DefaultProgressBackgroundTintList, DefaultProgressBackgroundTintMode);
 		}
 
 		public static void MapMaximumTrackColor(SliderHandler handler, ISlider slider)
 		{
-			handler.NativeView?.UpdateMaximumTrackColor(slider, DefaultProgressTintList, DefaultProgressTintMode);
+			handler.TypedNativeView?.UpdateMaximumTrackColor(slider, DefaultProgressTintList, DefaultProgressTintMode);
 		}
 
 		public static void MapThumbColor(SliderHandler handler, ISlider slider)
 		{
-			handler.NativeView?.UpdateThumbColor(slider, DefaultThumbColorFilter);
+			handler.TypedNativeView?.UpdateThumbColor(slider, DefaultThumbColorFilter);
 		}
 
 		void OnProgressChanged(SeekBar seekBar, int progress, bool fromUser)

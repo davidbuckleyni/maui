@@ -1,6 +1,5 @@
 ﻿using Microsoft.Maui.Controls.CustomAttributes;
 using Microsoft.Maui.Controls.Internals;
-using Microsoft.Maui.Graphics;
 
 #if UITEST
 using Xamarin.UITest;
@@ -36,7 +35,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 
 			var customSwitch = new CustomSwitch
 			{
-				CustomColor = Colors.Red
+				CustomColor = Color.Red
 			};
 
 			layout.Children.Add(instructions);
@@ -50,7 +49,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 	public class CustomSwitch : Switch
 	{
 		public static readonly BindableProperty CustomColorProperty =
-			BindableProperty.Create(nameof(CustomColor), typeof(Color), typeof(CustomSwitch), Colors.Black);
+			BindableProperty.Create(nameof(CustomColor), typeof(Color), typeof(CustomSwitch), Color.Black);
 
 		public Color CustomColor
 		{

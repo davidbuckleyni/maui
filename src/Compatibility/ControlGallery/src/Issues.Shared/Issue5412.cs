@@ -25,7 +25,7 @@ namespace Microsoft.Maui.Controls.Compatibility.ControlGallery.Issues
 			await Navigation.PushModalAsync(new Issue5412MainPage());
 		}
 
-#if UITEST && WINDOWS
+#if UITEST && __WINDOWS__
 		[Test]
 		public void Issue5412Test()
 		{
